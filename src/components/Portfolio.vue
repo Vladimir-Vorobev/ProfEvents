@@ -15,7 +15,7 @@
                 </div>
             </div>
         </div>
-        <div>
+        <div class="cards">
             <div class="card" >
                 <img src="./../assets/for_main.jpg" class="card-img-top">
                 <div class="card-body">

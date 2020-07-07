@@ -5,27 +5,27 @@
                 <h2>Регистрация</h2>
                 <div class="form-group row">
                     <label for="exampleInputEmail1">Имя</label>
-                    <input name="name" class="form-control" placeholder="Иван">
+                    <input name="name" class="form-control" placeholder="Иван" required>
                 </div>
                 <div class="form-group row">
                     <label for="exampleInputEmail1">Фамилия</label>
-                    <input name="surname" class="form-control" placeholder="Иванов">
+                    <input name="surname" class="form-control" placeholder="Иванов" required>
                 </div>
                 <div class="form-group row">
                     <label for="exampleInputEmail1">Email адресс</label>
-                    <input name="email" class="form-control" placeholder="example@gmail.com">
+                    <input type="email" name="email" class="form-control" placeholder="example@gmail.com" required>
                     </div>
                 <div class="form-group row">
                     <label for="exampleInputEmail1">Дата рождения</label>
-                    <input type="date" class="form-control" name="age" min="1900-01-01">
+                    <input type="date" class="form-control" name="age" min="1900-01-01" required>
                 </div>
                 <div class="form-group row">
                     <label for="exampleInputPassword1">Пароль {{passwordText}}</label>
-                    <input type="password" class="form-control" name="password" placeholder="1234567">
+                    <input type="password" class="form-control" name="password" placeholder="1234567" required>
                 </div>
                 <div class="form-group row">
                     <label for="exampleInputPassword1">Повторите пароль</label>
-                    <input type="password" class="form-control" name="password2" placeholder="1234567">
+                    <input type="password" class="form-control" name="password2" placeholder="1234567" required>
                 </div>
                 <div class="form-group row code" style="visibility: hidden;">
                     <label for="exampleInputPassword1">Введите код подтверждения из Вашей почты</label>
