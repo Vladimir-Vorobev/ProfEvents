@@ -3,13 +3,20 @@
     <div class="container warp">
       <form class="formbox">
             <h2>Войти</h2>
-            <div class="form-group row">
+            <div class="form-group" style="text-align: left">
               <label for="exampleInputEmail1">Email адресс</label>
-              <input name="email" class="form-control" placeholder="example@gmail.com">
+              <input name="email" class="form-control" placeholder="example@gmail.com" required>
             </div>
-            <div class="form-group row">
-              <label for="exampleInputPassword1">Пароль</label>
-              <input type="password" class="form-control" name="password" placeholder="Пароль">
+            <div style="text-align: left">
+                <label for="password">Пароль</label>
+            </div>
+            <div class="form-label-group input-group">
+              <input type="password" id="password" class="form-control" name="password" placeholder="Пароль" required>
+              <div class="input-group-append" @click="showHidePwd()">
+                <span class="input-group-text">
+                  <i id="eye" class="far fa-eye-slash"></i>
+                </span>
+              </div>
             </div>
             <div class="form-group row"> 
               <button class="btn btn-primary btn-lg" @click="loginUser()">Войти</button>
@@ -66,6 +73,16 @@ export default {
             }
           })
       },
+      showHidePwd() {
+          var input = document.getElementById("password");
+          if (input.type === "password") {
+              input.type = "text";
+              document.getElementById("eye").className = "far fa-eye";
+          } else {
+              input.type = "password";
+              document.getElementById("eye").className = "far fa-eye-slash";
+          }
+      },
     }
   }
 
@@ -106,5 +123,14 @@ export default {
 .link:hover{
   color: #EF5B65;
   text-decoration: none;
+}
+
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+i:hover {
+  cursor: pointer;
 }
 </style>
