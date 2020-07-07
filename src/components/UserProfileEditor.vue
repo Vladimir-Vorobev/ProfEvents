@@ -82,9 +82,6 @@
                         <input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
                         <label class="custom-file-label" for="inputGroupFile04" style="text-align: left"></label>
                     </div>
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-success" type="button" id="inputGroupFileAddon04">Добавить</button>
-                    </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-12"> 
@@ -287,5 +284,7 @@ export default {
     margin-bottom: 0px;
 }
 
-
+.custom-file-input:lang(ru)~.custom-file-label::after {
+    content: "Выбрать фото для аватара";
+}
 </style>
