@@ -7,7 +7,7 @@
                 <div class="input-group">
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
-                        <label class="custom-file-label" for="inputGroupFile04" style="text-align: left">Выбрать файл</label>
+                        <label class="custom-file-label" for="inputGroupFile04" style="text-align: left"></label>
                     </div>
                     <div class="input-group-append">
                         <button class="btn btn-outline-success" type="button" id="inputGroupFileAddon04">Добавить</button>
@@ -43,7 +43,7 @@ export default {
 <style scoped>
 .warp{
     flex: 1 0 auto;
-    padding-top: 110px !important;
+    padding-top: 90px !important;
     padding: 0px 30px;
 }
 .footer{
