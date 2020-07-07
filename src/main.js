@@ -31,6 +31,7 @@ import Literature from './components/Literature.vue'
 import Admin from './components/Admin.vue'
 import UserProfile from './components/UserProfile.vue'
 import UserProfileEditor from './components/UserProfileEditor.vue'
+import Portfolio from './components/Portfolio.vue'
 import PageNotFound from './components/PageNotFound.vue'
 
 
@@ -59,6 +60,7 @@ const routes = [
   { path: '/admin', component: Admin },
   { path: '/user-profile/:id', component: UserProfile },
   { path: '/user-profile-edit', component: UserProfileEditor },
+  { path: '/portfolio', component: Portfolio },
   { path: '/404', component: PageNotFound }, { path: '*', redirect: '/404' }
 ]
 
