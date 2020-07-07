@@ -12,7 +12,7 @@
             </div>
             <div class="form-label-group input-group">
               <input type="password" id="password" class="form-control" name="password" placeholder="Пароль" required>
-              <div class="input-group-append" @click="showHidePwd()">
+              <div class="input-group-append" @click="showHidePwd()" style="cursor: pointer">
                 <span class="input-group-text">
                   <i id="eye" class="far fa-eye-slash"></i>
                 </span>
