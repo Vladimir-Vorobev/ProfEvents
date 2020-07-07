@@ -77,6 +77,15 @@
                         </div>
                     </div>
                 </div>
+                <div class="input-group" style="margin-bottom: 1em">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+                        <label class="custom-file-label" for="inputGroupFile04" style="text-align: left"></label>
+                    </div>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-success" type="button" id="inputGroupFileAddon04">Добавить</button>
+                    </div>
+                </div>
                 <div class="form-group row">
                     <div class="col-12"> 
                         <select name="schoolType" class="custom-select custom-select-lg mb-3 schoolType">
