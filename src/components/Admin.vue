@@ -161,39 +161,7 @@
                                                     <div class="col-1 ar-collapse" :id='item.email'></div>
                                                 </div>
                                                 <div :id='item.email + "s"' style="display: none;">
-                                                    <div class="tab-pane fade show active" id="pills-list-student" v-for="item2 in students" :key="item2.person">
-                                                        <a class="person" href="#" @click="showInfo(item2.email)">
-                                                            <div class="person_box a">
-                                                                <div class="name row">
-                                                                    <div class="name_group col-10 a">{{ item2.person }} </div>
-                                                                    <div class="col-1 ar-collapse a" :id='item2.email'></div>
-                                                                </div>
-                                                                <div :id="item2.email + 'n'" style="display: none;">
-                                                                    <div style="text-align: center;"><i class='fa fa-spinner fa-pulse fa-3x' :id='item2.email + "x"' style="display: inline-block;"></i></div>
-                                                                    <form :id="'form' + item.email">
-                                                                        <input class="radio" :name="'donaught' + item2.email" type="radio" value="donaught" checked @click="changeInfo(item2.email, 'donaught')"> Кругова диаграмма
-                                                                        <input class="radio" :name="'bar' + item2.email" type="radio" value="bar" @click="changeInfo(item2.email, 'bar')"> Столбчатая диаграмма
-                                                                        <input class="radio" :name="'full' + item2.email" type="radio" value="full" @click="changeInfo(item2.email)"> Полная статистика
-                                                                    </form>
-                                                                    <div class="chart-container" :id="'chartDiv' + item2.email" style="display: none;"><canvas :id="'chart' + item2.email"></canvas></div>
-                                                                    <div class="chart-container" :id="'chartDiv2' + item2.email" style="display: none;"><canvas :id="'chart2' + item2.email"></canvas></div>
-                                                                    <div :id="'chartDiv3' + item.email" style="display: none;">
-                                                                        <div v-if="data[item2.email] != undefined && studentEvents[data.lastIndexOf(item2.email)][0].length == 0"><h3>Нет мероприятий</h3></div>
-                                                                        <div class="card" v-for="item3 in studentEvents[data.lastIndexOf(item2.email)][0]" :key="item3.value">
-                                                                            <div class="card-header">{{item3.date}}</div>
-                                                                            <div class="card-body">
-                                                                                <div class="row">
-                                                                                    <h5 class="card-title col-11">{{item3.name}}</h5>
-                                                                                    <h5><button class="btn btn-danger" @click="deleteStudent(item.email, item.name, item.surname)"> <i class="fas fa-trash-alt"></i> </button></h5>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <!-- <div v-for="item2 in students2" :key="item2.student" :class="item2.email">
+                                                    <div v-for="item2 in students[item.email]" :key="item2.student" :class="item2.email">
                                                         <a class="person" href="#" @click="showInfo(item2.email)">
                                                             <div class="person_box a">
                                                                 <div class="name row">
@@ -206,7 +174,7 @@
                                                                 </div>
                                                             </div>
                                                         </a>    
-                                                    </div> -->
+                                                    </div>
                                                 </div>
                                             </div>
                                         </a>
@@ -384,6 +352,8 @@ export default {
                     for(let i = 0; i < data.length; i++){
                         people.push({person: data[i].name + ' ' + data[i].surname, email: data[i].email})
                         this.data.push(data[i].email)
+                        this.students[data[i].email] = []
+                        console.log(this.students)
                         //this.studentEvents.push([])
                     }
                     this.teachers = people
@@ -430,73 +400,8 @@ export default {
                                 console.log(this.studentEvents[this.data.lastIndexOf(email)][0])
                                 let ctx = document.getElementById('chart' + email)
                                 let ctx2 = document.getElementById('chart2' + email)
-                                let myChart = new Chart(ctx, {
-                                    type: 'doughnut',
-                                    data: {
-                                        labels: ['Сфера услуг', 'IT', 'Творчество и Дизайн', 'Строительство', 'Инжинерные технологии', 'Транспорт и логистика'],
-                                        datasets: [{
-                                            label: '# of Votes',
-                                            data: [statistics.service, statistics.programming, 0, 0,  statistics.engeniring, 0],
-                                            backgroundColor: [
-                                                'rgba(255, 99, 132, 0.5)',
-                                                'rgba(54, 162, 235, 0.5)',
-                                                'rgba(255, 206, 86, 0.5)',
-                                                'rgba(75, 192, 192, 0.5)',
-                                                'rgba(153, 102, 255, 0.5)',
-                                                'rgba(255, 159, 64, 0.5)'
-                                            ],
-                                            borderColor: [
-                                                'rgba(255, 99, 132, 1)',
-                                                'rgba(54, 162, 235, 1)',
-                                                'rgba(255, 206, 86, 1)',
-                                                'rgba(75, 192, 192, 1)',
-                                                'rgba(153, 102, 255, 1)',
-                                                'rgba(255, 159, 64, 1)'
-                                            ],
-                                            borderWidth: 1,
-                                            hoverBorderWidth: 5,
-                                        }]
-                                    },
-                                    options: {
-                                        legend: {
-                                            position: 'bottom',
-                                        }
-                                    }
-                                });
-                                let myChart2 = new Chart(ctx2, {
-                                    type: 'bar',
-                                    data: {
-                                        labels: ['Сфера услуг', 'IT', 'Творчество и Дизайн', 'Строительство', 'Инжинерные технологии', 'Транспорт и логистика'],
-                                        datasets: [{
-                                            label: '# of Votes',
-                                            data: [statistics.service, statistics.programming, 0, 0,  statistics.engeniring, 0],
-                                            backgroundColor: [
-                                                'rgba(255, 99, 132, 0.5)',
-                                                'rgba(54, 162, 235, 0.5)',
-                                                'rgba(255, 206, 86, 0.5)',
-                                                'rgba(75, 192, 192, 0.5)',
-                                                'rgba(153, 102, 255, 0.5)',
-                                                'rgba(255, 159, 64, 0.5)'
-                                            ],
-                                            borderColor: [
-                                                'rgba(255, 99, 132, 1)',
-                                                'rgba(54, 162, 235, 1)',
-                                                'rgba(255, 206, 86, 1)',
-                                                'rgba(75, 192, 192, 1)',
-                                                'rgba(153, 102, 255, 1)',
-                                                'rgba(255, 159, 64, 1)'
-                                            ],
-                                            borderWidth: 1,
-                                            hoverBorderWidth: 5,
-                                        }]
-                                    },
-                                    options: {
-                                        legend: {
-                                            position: 'bottom',
-                                        }
-                                    }
-                                });
-                                console.log(myChart, myChart2)
+                                makeChart('doughnut', [statistics.service, statistics.programming, 0, 0,  statistics.engeniring, 0], ctx)
+                                makeChart('bar', [statistics.service, statistics.programming, 0, 0,  statistics.engeniring, 0], ctx2)
                                 document.getElementById(email + "x").style.display = 'none'
                                 document.getElementById('chartDiv' + email).style.display = 'block'
                             })
@@ -567,6 +472,42 @@ export default {
                     }
                 } 
             }
+            function makeChart(type, data, place){
+                let myChart = new Chart(place, {
+                    type: type,
+                    data: {
+                        labels: ['Сфера услуг', 'IT', 'Творчество и Дизайн', 'Строительство', 'Инжинерные технологии', 'Транспорт и логистика'],
+                        datasets: [{
+                            label: '# of Votes',
+                            data: data,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.5)',
+                                'rgba(54, 162, 235, 0.5)',
+                                'rgba(255, 206, 86, 0.5)',
+                                'rgba(75, 192, 192, 0.5)',
+                                'rgba(153, 102, 255, 0.5)',
+                                'rgba(255, 159, 64, 0.5)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1,
+                            hoverBorderWidth: 5,
+                        }]
+                    },
+                    options: {
+                        legend: {
+                            position: 'bottom',
+                        }
+                    }
+                });
+                console.log(myChart)
+            }
         },
         showTeacherInfo(email){
             if(event.target.className == 'person_box' || event.target.className == 'name row' || event.target.className == 'name_group col-11'|| event.target.className == 'col-1 ar-collapse' || event.target.className == 'col-1 ar-collapse ar-show'){
@@ -583,14 +524,17 @@ export default {
                 else{
                     document.getElementById(email).classList.add('ar-show');
                     if(document.getElementById(email + 's').style.display == 'none'){
-                        // запрос
-                            this.students = []
+                        if(this.students[email].length == 0){
+                            // запрос
                             //document.getElementById(email).style.display = 'none'
                             let students = [{student: 'Петя', email: 'v11ru'}, {student: 'Вася', email: 'v12ru'}, {student: 'Дима', email: 'v13ru'}]
+                            console.log(this.students)
                             for(let i = 0; i < 3; i++){
-                                this.students.push(students[i])
+                                this.students[email].push(students[i])
                             }
-                            document.getElementById(email + 's').style.display = 'block'
+                            console.log(this.students)
+                        }
+                        document.getElementById(email + 's').style.display = 'block'
                     } 
                 }
             }
