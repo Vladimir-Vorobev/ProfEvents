@@ -56,7 +56,7 @@
               {{loginText}}
             </button>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-              <a @click="person_profile()" class="dropdown-item" href="">Моя страница</a>
+              <a @click="person_profile()" class="dropdown-item">Моя страница</a>
               <router-link to="/your-events" class="router-link">
                   <a class="dropdown-item" ref="yourEvents" style="color: #16181b !important">Мои мероприятия</a>
               </router-link>
@@ -71,7 +71,7 @@
                 </router-link>
               </div>
               <div class="dropdown-divider"></div>
-              <button @click="exit()" class="dropdown-item exit" href="#">Выйти</button>
+              <button @click="exit()" class="dropdown-item exit personMenuDrop" href="#">Выйти</button>
             </div>
           </div>
         </div>
@@ -149,7 +149,9 @@ export default {
 .exit{
   color: red;
 }
-.exit:focus {
-  background: #f1f2f3;
+
+.dropdown-item:active {
+  background: #f1f2f3 !important;
+  outline: 0px;
 }
 </style>
