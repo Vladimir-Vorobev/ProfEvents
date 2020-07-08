@@ -69,7 +69,7 @@
                                                             <div class="card-body">
                                                                 <div class="row">
                                                                     <h5 class="card-title col-11">{{item3.name}}</h5>
-                                                                    <h5><button class="btn btn-danger" @click="deleteStudent(item.email, item.name, item.surname)"> <i class="fas fa-trash-alt"></i> </button></h5>
+                                                                    <h5><button class="btn btn-danger" @click="deletePerson(item.email, item.name, item.surname, 'student')"> <i class="fas fa-trash-alt"></i> </button></h5>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -110,7 +110,7 @@
                                     <div key="div" v-if="ShowAddList" style="text-align: left">
                                         <p key="p" style="font-size:1.3em; text-align: center"> Загрузите актуальный список Вашего класса в excel файле </p>
                                         <p><input type="file" ref="file" class="form-control-file" @change="file()" key="input"></p>
-                                        <p><button type="submit" @click="add()" class="btn btn-primary btn-lg" key="button">Обновить список</button></p>
+                                        <p><button type="submit" @click="add('!1', 'student')" class="btn btn-primary btn-lg" key="button">Обновить список</button></p>
                                     </div>
                                     <form key="form" id='formOne' v-if="ShowAddOne" style="text-align: left">
                                         <div class="row">
@@ -144,7 +144,7 @@
                                         <!-- <p key="p">Email </p><input key="input" name="email">
                                         <p key="p">Имя </p><input key="input" name="name">
                                         <p key="p">Фамилия </p><input key="input" name="surname" style="margin-bottom: 0.7em"> -->
-                                        <p><button type="submit" @click="add('one')" class="btn btn-primary btn-lg" key="button">Добавить ученика</button></p>
+                                        <p><button type="submit" @click="add('one', 'student')" class="btn btn-primary btn-lg" key="button">Добавить ученика</button></p>
                                     </form>
                                 </transition-group>
                             </div>
@@ -158,6 +158,7 @@
                                             <div class="person_box" v-on:click="showTeacherInfo(item.email)">
                                                 <div class="name row">
                                                     <div class="name_group col-11">{{ item.person }}</div>
+                                                    <h5><button class="btn btn-danger" @click="deletePerson(item.email, item.name, item.surname, 'teacher')"> <i class="fas fa-trash-alt"></i> </button></h5>
                                                     <div class="col-1 ar-collapse" :id='item.email'></div>
                                                 </div>
                                                 <div :id='item.email + "s"' style="display: none;">
@@ -177,18 +178,18 @@
                                                                     </form>
                                                                     <div class="chart-container" :id="'chartDiv' + item2.email" style="display: none;"><canvas :id="'chart' + item2.email"></canvas></div>
                                                                     <div class="chart-container" :id="'chartDiv2' + item2.email" style="display: none;"><canvas :id="'chart2' + item2.email"></canvas></div>
-                                                                    <!-- <div :id="'chartDiv3' + item2.email" style="display: none;">
-                                                                        <div v-if="data[item2.email] != undefined && studentEvents[data.lastIndexOf(item.email)][0].length == 0"><h3>Нет мероприятий</h3></div>
-                                                                        <div class="card" v-for="item3 in studentEvents[data.lastIndexOf(item.email)][0]" :key="item3.value">
+                                                                    <div :id="'chartDiv3' + item2.email" style="display: none;">
+                                                                        <div v-if="studentEvents[item2.email] != undefined && studentEvents[item2.email].length == 0"><h3>Нет мероприятий</h3></div>
+                                                                        <div class="card" v-for="item3 in studentEvents[item2.email]" :key="item3.value">
                                                                             <div class="card-header">{{item3.date}}</div>
                                                                             <div class="card-body">
                                                                                 <div class="row">
                                                                                     <h5 class="card-title col-11">{{item3.name}}</h5>
-                                                                                    <h5><button class="btn btn-danger" @click="deleteStudent(item.email, item.name, item.surname)"> <i class="fas fa-trash-alt"></i> </button></h5>
+                                                                                    <h5><button class="btn btn-danger" @click="deletePerson(item.email, item.name, item.surname, 'student')"> <i class="fas fa-trash-alt"></i> </button></h5>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </div> -->
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </a>    
@@ -229,7 +230,7 @@
                                     <div key="div" v-if="ShowAddList" style="text-align: left">
                                         <p key="p" style="font-size:1.3em; text-align: center"> Загрузите актуальный список Ваших учителей в excel файле </p>
                                         <p><input type="file" ref="file" class="form-control-file" @change="file()" key="input"></p>
-                                        <p><button type="submit" @click="add()" class="btn btn-primary btn-lg" key="button">Обновить список</button></p>
+                                        <p><button type="submit" @click="add('!1', 'teacher')" class="btn btn-primary btn-lg" key="button">Обновить список</button></p>
                                     </div>
                                     <form key="form" id='formOne' v-if="ShowAddOne" style="text-align: left">
                                         <div class="row">
@@ -263,7 +264,7 @@
                                         <!-- <p key="p">Email </p><input key="input" name="email">
                                         <p key="p">Имя </p><input key="input" name="name">
                                         <p key="p">Фамилия </p><input key="input" name="surname" style="margin-bottom: 0.7em"> -->
-                                        <p><button type="submit" @click="add('one')" class="btn btn-primary btn-lg" key="button">Добавить учителя</button></p>
+                                        <p><button type="submit" @click="add('one', 'teacher')" class="btn btn-primary btn-lg" key="button">Добавить учителя</button></p>
                                     </form>
                                 </transition-group>
                             </div>
@@ -468,6 +469,7 @@ export default {
                             .then(datan => {
                                 let statistics = datan.stat
                                 console.log(datan)
+                                this.$set(this.studentEvents, email, datan.checkedEvents)
                                 //this.studentEvents[email].push(datan.checkedEvents)
                                 console.log(this.studentEvents)
                                 let ctx = document.getElementById('chart' + email)
@@ -553,7 +555,7 @@ export default {
             })
             this.classData = data
         },
-        add(value){
+        add(value, type){
             event.preventDefault()
             if(value == 'one'){
                 let form = document.getElementById('formOne')
@@ -576,7 +578,7 @@ export default {
                     });
                 }
                 else{
-                    send([{email: form['email'].value, name: form['name'].value, surname: form['surname'].value}], this.email, 'uploadOne')
+                    send({email: form['email'].value, name: form['name'].value, surname: form['surname'].value}, this.email, 'uploadOne')
                 }
             }
             else{
@@ -586,7 +588,7 @@ export default {
                 else this.$swal('Файл не выбран');   //alert('Файл не выбран')
             }
             function send(data, email, url){
-                needle.post('http://78.155.219.12:3000/api/' + url, {data: data, email: email, type: 'update'}, {"json": true}, function(err, res){
+                needle.post('http://78.155.219.12:3000/api/' + url, {data: data, email: email, type: 'update', dopType: type}, {"json": true}, function(err, res){
                     if(err) throw err
                     if(res.body == 'OK'){
                         //alert('Файл успешно добавлен')
@@ -657,7 +659,7 @@ export default {
                 this.ShowAddOne = true
             }
         },
-        deleteStudent(email, name, surname){
+        deletePerson(email, name, surname, type){
             event.preventDefault()
             let data = {
                 email: email,
@@ -674,7 +676,7 @@ export default {
                 cancelButtonText: 'Отмена'
             }).then((result) => {
                  if (result.value) {
-                     needle.post('http://78.155.219.12:3000/api/uploadOne', {data: data, email: email, type: 'delete'}, {"json": true}, function(err, res){
+                     needle.post('http://78.155.219.12:3000/api/uploadOne', {data: data, email: email, type: 'delete', dopType: type}, {"json": true}, function(err, res){
                         if(err) throw err
                         if(res.body == 'OK'){
                             //alert('Файл успешно добавлен')
@@ -690,10 +692,6 @@ export default {
                         }
                     })
                 }
-            }).then((result) => {
-                 if (result.value) {
-                     this.getAdminList()
-                 }
             })
         },
     },
