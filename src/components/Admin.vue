@@ -162,15 +162,33 @@
                                                 </div>
                                                 <div :id='item.email + "s"' style="display: none;">
                                                     <div v-for="item2 in students[item.email]" :key="item2.student" :class="item2.email">
-                                                        <a class="person" href="#" @click="showInfo(item2.email)">
+                                                        <a class="person" href="#" @click="showInfo(item2.email, item.email)">
                                                             <div class="person_box a">
                                                                 <div class="name row">
                                                                     <div class="name_group col-11 a">{{ item2.student }} </div>
                                                                     <div class="col-1 ar-collapse a" :id='item2.email'></div>
                                                                 </div>
                                                                 <div :id="item2.email + 'n'" style="display: none;">
-                                                                    <i class='fa fa-spinner fa-pulse fa-3x' :id='item2.email + "x"' style="display: inline-block;"></i>
-                                                                    <div class="chart-container"><canvas :id="'chart' + item2.email" style="display: none;"></canvas></div>      
+                                                                    <div style="text-align: center;"><i class='fa fa-spinner fa-pulse fa-3x' :id='item2.email + "x"' style="display: inline-block;"></i></div>
+                                                                    <form :id="'form' + item2.email">
+                                                                        <input class="radio" :name="'donaught' + item2.email" type="radio" value="donaught" checked @click="changeInfo(item2.email, 'donaught')"> Кругова диаграмма
+                                                                        <input class="radio" :name="'bar' + item2.email" type="radio" value="bar" @click="changeInfo(item2.email, 'bar')"> Столбчатая диаграмма
+                                                                        <input class="radio" :name="'full' + item2.email" type="radio" value="full" @click="changeInfo(item2.email)"> Полная статистика
+                                                                    </form>
+                                                                    <div class="chart-container" :id="'chartDiv' + item2.email" style="display: none;"><canvas :id="'chart' + item2.email"></canvas></div>
+                                                                    <div class="chart-container" :id="'chartDiv2' + item2.email" style="display: none;"><canvas :id="'chart2' + item2.email"></canvas></div>
+                                                                    <!-- <div :id="'chartDiv3' + item2.email" style="display: none;">
+                                                                        <div v-if="data[item2.email] != undefined && studentEvents[data.lastIndexOf(item.email)][0].length == 0"><h3>Нет мероприятий</h3></div>
+                                                                        <div class="card" v-for="item3 in studentEvents[data.lastIndexOf(item.email)][0]" :key="item3.value">
+                                                                            <div class="card-header">{{item3.date}}</div>
+                                                                            <div class="card-body">
+                                                                                <div class="row">
+                                                                                    <h5 class="card-title col-11">{{item3.name}}</h5>
+                                                                                    <h5><button class="btn btn-danger" @click="deleteStudent(item.email, item.name, item.surname)"> <i class="fas fa-trash-alt"></i> </button></h5>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div> -->
                                                                 </div>
                                                             </div>
                                                         </a>    
@@ -324,15 +342,15 @@ export default {
             .catch(err => {
                 console.log(err)
             })
-            this.getAdminList()
+            this.getAdminList(this.email)
             // this.students = [{person: 'Иванова Мария', email: 'v11ru'}, {person: 'Иванов Иван', email: 'v12ru'}, {person: 'Сергеев Сергей', email: 'v13ru'}]
             // this.teachers = [{person: 'Иванова Мария', email: 'v14ru'}, {person: 'Иванов Иван', email: 'v15ru'}, {person: 'Сергеев Сергей', email: 'v16ru'}]
         },
-        getAdminList(){
+        getAdminList(email, teacher){
             let people = []
             fetch('http://78.155.219.12:3000/api/getAdminList', {
                 method: 'POST',
-                headers: {email: this.email},
+                headers: {email: email},
             })
             .then(response => {
                 console.log("res", response)
@@ -349,21 +367,28 @@ export default {
                     this.students = people
                 }
                 else if(this.role == 'school-admin'){
-                    for(let i = 0; i < data.length; i++){
-                        people.push({person: data[i].name + ' ' + data[i].surname, email: data[i].email})
-                        this.data.push(data[i].email)
-                        this.students[data[i].email] = []
-                        console.log(this.students)
-                        //this.studentEvents.push([])
+                    if(teacher){
+                        for(let i = 0; i < data.length; i++){
+                            this.students[email].push({student: data[i].name + ' ' + data[i].surname, email: data[i].email})
+                        }
                     }
-                    this.teachers = people
+                    else{
+                        for(let i = 0; i < data.length; i++){
+                            people.push({person: data[i].name + ' ' + data[i].surname, email: data[i].email})
+                            this.data.push(data[i].email)
+                            this.$set(this.students, data[i].email, [])
+                            console.log(this.students)
+                            //this.studentEvents.push([])
+                        }
+                        this.teachers = people
+                    }
                 }
             })
             .catch(err => {
                 console.log(err)
             })
         },
-        showInfo(email){
+        showInfo(email, teacherEmail){
             if(this.role == 'teacher'){
                 console.log(event.target.className)
                 if(event.target.className != 'chartjs-render-monitor' && event.target.className != 'radio'){
@@ -413,62 +438,49 @@ export default {
                 }
             }
             else if(this.role == 'school-admin'){
-                for(let i = 0; i < this.students2.length; i++){
-                    if(document.getElementById('.' + this.students2[i].email + 'n').style.display == 'block' && this.students2[i].email != email){
-                        document.getElementById('.' + this.students2[i].email + 'n').style.display = 'none'
-                        document.getElementById(this.students2[i].email).classList.remove('ar-show');
+                console.log(this.students[teacherEmail])
+                if(event.target.className != 'chartjs-render-monitor' && event.target.className != 'radio'){
+                    for(let key in this.students[teacherEmail]){
+                        console.log(this.students[teacherEmail][key].email)
+                        if(document.getElementById(this.students[teacherEmail][key].email + 'n').style.display == 'block' && this.students[teacherEmail][key].email != email){
+                            document.getElementById(this.students[teacherEmail][key].email + 'n').style.display = 'none'
+                            document.getElementById(this.students[teacherEmail][key].email).classList.remove('ar-show');
+                        }
                     }
-                }
-                if(document.getElementById('.' + email + 'n').style.display == 'block'){
-                    document.getElementById('.' + email + 'n').style.display = 'none'
-                    document.getElementById(email).classList.remove('ar-show');
-                }
-                else{
-                    document.getElementById('.' + email + 'n').style.display = 'block'
-                    document.getElementById(email).classList.add('ar-show');
-                    if(document.getElementById(email + "x").style.display == 'inline-block'){
-                        // запрос
-                        setTimeout(function(){
-                            var ctx = document.getElementById('chart' + email)
-                            let myChart = new Chart(ctx, {
-                                type: 'doughnut',
-                                data: {
-                                    labels: ['Сфера услуг', 'IT', 'Творчество и Дизайн', 'Строительство', 'Инжинерные технологии', 'Транспорт и логистика'],
-                                    datasets: [{
-                                        label: '# of Votes',
-                                        data: [3, 7, 2, 1, 3, 1],
-                                        backgroundColor: [
-                                            'rgba(255, 99, 132, 0.5)',
-                                            'rgba(54, 162, 235, 0.5)',
-                                            'rgba(255, 206, 86, 0.5)',
-                                            'rgba(75, 192, 192, 0.5)',
-                                            'rgba(153, 102, 255, 0.5)',
-                                            'rgba(255, 159, 64, 0.5)'
-                                        ],
-                                        borderColor: [
-                                            'rgba(255, 99, 132, 1)',
-                                            'rgba(54, 162, 235, 1)',
-                                            'rgba(255, 206, 86, 1)',
-                                            'rgba(75, 192, 192, 1)',
-                                            'rgba(153, 102, 255, 1)',
-                                            'rgba(255, 159, 64, 1)'
-                                        ],
-                                        borderWidth: 1,
-                                        howerBorderWidrh: 5,
-                                    }]
-                                },
-                                options: {
-                                    legend: {
-                                        position: 'bottom',
-                                    }
-                                }
-                            });
-                            console.log(myChart)
-                            document.getElementById(email + "x").style.display = 'none'
-                            document.getElementById('chart' + email).style.display = 'block'
-                            document.getElementById(email + "x").style.display = 'none'
-                            document.getElementById('chart' + email).style.display = 'block'
-                        }, 1500);
+                    if(document.getElementById(email + 'n').style.display == 'block'){
+                        document.getElementById(email + 'n').style.display = 'none'
+                        document.getElementById(email).classList.remove('ar-show');
+                    }
+                    else{
+                        document.getElementById(email + 'n').style.display = 'block'
+                        document.getElementById(email).classList.add('ar-show');
+                        if(document.getElementById(email + "x").style.display == 'inline-block'){
+                            let SessionID = this.$store.getters.SessionID
+                            let adminEmail = this.$store.getters.email
+                            fetch('http://78.155.219.12:3000/api/getCheckedEvents', {
+                                method: 'get',
+                                headers: {email: teacherEmail, studEmail: email, adminEmail: adminEmail, sessionid: SessionID},
+                            })
+                            .then(response => {
+                                console.log("res", response)
+                                return response.json()
+                            })
+                            .then(datan => {
+                                let statistics = datan.stat
+                                console.log(datan)
+                                //this.studentEvents[email].push(datan.checkedEvents)
+                                console.log(this.studentEvents)
+                                let ctx = document.getElementById('chart' + email)
+                                let ctx2 = document.getElementById('chart2' + email)
+                                makeChart('doughnut', [statistics.service, statistics.programming, 0, 0,  statistics.engeniring, 0], ctx)
+                                makeChart('bar', [statistics.service, statistics.programming, 0, 0,  statistics.engeniring, 0], ctx2)
+                                document.getElementById(email + "x").style.display = 'none'
+                                document.getElementById('chartDiv' + email).style.display = 'block'
+                            })
+                            .catch(err => {
+                                console.log(err)
+                            })
+                        }
                     }
                 } 
             }
@@ -525,14 +537,7 @@ export default {
                     document.getElementById(email).classList.add('ar-show');
                     if(document.getElementById(email + 's').style.display == 'none'){
                         if(this.students[email].length == 0){
-                            // запрос
-                            //document.getElementById(email).style.display = 'none'
-                            let students = [{student: 'Петя', email: 'v11ru'}, {student: 'Вася', email: 'v12ru'}, {student: 'Дима', email: 'v13ru'}]
-                            console.log(this.students)
-                            for(let i = 0; i < 3; i++){
-                                this.students[email].push(students[i])
-                            }
-                            console.log(this.students)
+                            this.getAdminList(email, true)
                         }
                         document.getElementById(email + 's').style.display = 'block'
                     } 
