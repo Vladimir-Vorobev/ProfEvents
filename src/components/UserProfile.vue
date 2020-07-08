@@ -199,21 +199,21 @@ export default {
     padding: 15px 20px;
 }
 .avatar{
-    min-width: 310px;
-    min-height: 310px;
+    /* object-fit: fill; fill or contain */
+    display: block;
+    /* max-width: 100%;
+    max-height: 100%; */
     max-width: 310px;
     max-height: 310px;
-}
-.avatar img{
-    /* object-fit: fill; fill or contain */
-    /* max-width: 310px;
-    max-height: 310px; */
-    display: block;
-    max-width: 100%;
-    max-height: 100%;
     min-width: 310px;
     min-height: 310px;
 }
+.avatar img{
+    max-width: 100%;
+    max-height: 100%;
+    min-height: 310px;
+}
+
 
 .info{
     text-align: left;

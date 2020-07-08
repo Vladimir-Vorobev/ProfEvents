@@ -1,84 +1,76 @@
 <template>
-<div>
     <div id="app">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <router-link to="/" class="router-link">
-            <a class="navbar-brand" ref="home" style="color: #f23333">Profevents</a>
-        </router-link>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <router-link to="/it-events" class="router-link">
-                  <a class="nav-link" ref="allEvents" style="color: #000 !important">Все мероприятия</a>
-              </router-link>
-            </li>
-            <li class="nav-item">
-              <router-link to="/recommended-events" class="router-link">
-                  <a class="nav-link" ref="recommendedEvents" style="color: #000 !important">Рекомендуемые мероприятия</a>
-              </router-link>
-            </li>
-            <!-- <li class="nav-item">
-              <router-link to="/your-events" class="router-link">
-                  <a class="nav-link" ref="yourEvents" style="color: #000 !important">Ваши мероприятия</a>
-              </router-link>
-            </li> -->
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #000 !important">
-                Полезное
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <router-link to="/literature" class="dropdown-item">
-                  <a ref="Literature">Литература</a>
-                </router-link>
-                <router-link to="/open-days" class="dropdown-item">
-                  <a ref="OpenDays">Дни открытых дверей</a>
-                </router-link>
-                <router-link to="/universities" class="dropdown-item">
-                  <a ref="Universities">Баллы в ВУЗы</a>
-                </router-link>
-                <router-link to="/partners" class="dropdown-item">
-                  <a ref="Partners">Партнёры</a>
-                </router-link>
-                <router-link to="/404" class="dropdown-item">
-                  <a ref="PageNotFound">Трансляция мероприятий</a>
-                </router-link>
-              </div>
-            </li>
-          </ul>
-          <router-link to='/login' class="router-link login" style="display:block">
-              <a type="button" class="btn btn-primary btn-lg" ref="login">{{loginText}}</a>
-          </router-link>
-          <div class="dropdown person_menu" style="display:none">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {{loginText}}
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <router-link to="/" class="router-link">
+                <a class="navbar-brand" ref="home" style="color: #f23333">Profevents</a>
+            </router-link>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-              <a @click="person_profile()" class="dropdown-item" href="">Моя страница</a>
-              <router-link to="/your-events" class="router-link">
-                  <a class="dropdown-item" ref="yourEvents" style="color: #16181b !important">Мои мероприятия</a>
-              </router-link>
-              <div v-if="role == 'user' || role == 'student'">
-                <router-link to="/portfolio" class="router-link">
-                  <a class="dropdown-item" ref="Portfolio" style="color: #16181b !important">Портфолио</a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <router-link to="/it-events" class="router-link">
+                            <a class="nav-link" ref="allEvents" style="color: #000 !important">Все мероприятия</a>
+                        </router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link to="/recommended-events" class="router-link">
+                            <a class="nav-link" ref="recommendedEvents" style="color: #000 !important">Рекомендуемые мероприятия</a>
+                        </router-link>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #000 !important">
+                            Полезное
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <router-link to="/literature" class="dropdown-item">
+                                <a ref="Literature">Литература</a>
+                            </router-link>
+                            <router-link to="/open-days" class="dropdown-item">
+                                <a ref="OpenDays">Дни открытых дверей</a>
+                            </router-link>
+                            <router-link to="/universities" class="dropdown-item">
+                                <a ref="Universities">Баллы в ВУЗы</a>
+                            </router-link>
+                            <router-link to="/partners" class="dropdown-item">
+                                <a ref="Partners">Партнёры</a>
+                            </router-link>
+                            <router-link to="/404" class="dropdown-item">
+                                <a ref="PageNotFound">Трансляция мероприятий</a>
+                            </router-link>
+                        </div>
+                    </li>
+                </ul>
+                <router-link to='/login' class="router-link login" style="display:block">
+                    <a type="button" class="btn btn-primary btn-lg" ref="login">{{loginText}}</a>
                 </router-link>
-              </div>
-              <div v-if="role != 'user' && role != 'student'">
-                <router-link to="/admin" class="router-link">
-                  <a class="dropdown-item" ref="Admin" style="color: #16181b !important">Админ панель</a>
-                </router-link>
-              </div>
-              <div class="dropdown-divider"></div>
-              <button @click="exit()" class="dropdown-item exit" href="#">Выйти</button>
+                <div class="dropdown person_menu" style="display:none">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{loginText}}
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                        <a @click="person_profile()" class="dropdown-item" style="color: #16181b !important">Моя страница</a>
+                        <router-link to="/your-events" class="router-link">
+                            <a class="dropdown-item" ref="yourEvents" style="color: #16181b !important">Мои мероприятия</a>
+                        </router-link>
+                        <div v-if="role == 'user' || role == 'student'">
+                            <router-link to="/portfolio" class="router-link">
+                                <a class="dropdown-item" ref="Portfolio" style="color: #16181b !important">Портфолио</a>
+                            </router-link>
+                        </div>
+                        <div v-if="role != 'user' && role != 'student'">
+                            <router-link to="/admin" class="router-link">
+                                <a class="dropdown-item" ref="Admin" style="color: #16181b !important">Админ панель</a>
+                            </router-link>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <button @click="exit()" class="dropdown-item exit personMenuDrop" href="#">Выйти</button>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </nav>
+        </nav>
     </div>
-</div>
-
 </template>
 
 
@@ -149,7 +141,28 @@ export default {
 .exit{
   color: red;
 }
-.exit:focus {
-  background: #f1f2f3;
+
+.dropdown-item:active {
+  background: #f1f2f3 !important;
+  outline: 0px;
+   /**
+   * Для эксплорера
+   */
+    -ms-user-select: none;
+
+    /**
+    * Для мозилы
+    */
+    -moz-user-select: none;
+
+    /**
+    * Для конкверора
+    */
+    -khtml-user-select: none;
+
+    /**
+    * Для Сафари и Хрома
+    */
+    -webkit-user-select: none;
 }
 </style>
