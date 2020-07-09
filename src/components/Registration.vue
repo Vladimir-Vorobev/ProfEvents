@@ -27,7 +27,7 @@
                     <label for="exampleInputPassword1">Повторите пароль</label>
                     <input type="password" class="form-control" name="password2" placeholder="1234567" required>
                 </div>
-                <div class="form-group row code" style="visibility: hidden;">
+                <div class="form-group row code" style="display: none;">
                     <label for="exampleInputPassword1">Введите код подтверждения из Вашей почты</label>
                     <input type="password" class="form-control" name="code" placeholder="1234567">
                 </div>
@@ -150,8 +150,8 @@ export default {
                     }
                     name = ''
                 }
-                if(document.querySelector('.code').style.visibility == 'hidden'){
-                    document.querySelector('.code').style.visibility = 'visible'
+                if(document.querySelector('.code').style.display == 'none'){
+                    document.querySelector('.code').style.display = 'block'
                     needle.post(this.$store.state.serverIp+'/api/mailCheck', {email: email}, {"json": true}, function(err, res){
                         if (err) throw err
                         alert(res.body)

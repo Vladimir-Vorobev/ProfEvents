@@ -99,6 +99,7 @@ export default {
         })
         .then(data => {
             if(data == '310'){
+                alert('profile ' + this.email + ' ' + this.SessionID)
                 document.cookie = "email=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
                 document.cookie = "SessionID=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
                 window.location.reload()

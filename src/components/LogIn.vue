@@ -31,6 +31,7 @@
 <script>
 import needle from "needle"
 import Footer from './footer.vue'
+import Vue from 'vue'
 export default {
     name: 'Login',
     components: { Footer },
@@ -54,14 +55,14 @@ export default {
                 if(err){console.log(err)} 
                 if(res.body == 'Incorect password'){
                     //alert('Неверный email или пароль')
-                    this.$swal({
-                    icon: 'error',
-                    text: 'Неверный email или пароль'
-                });
+                    Vue.swal({
+                        icon: 'error',
+                        text: 'Неверный email или пароль'
+                    });
                 }
                 else if(res.body == 'User undefined'){
                     //alert('Пользователь не найден')
-                    this.$swal({
+                    Vue.swal({
                         icon: 'error',
                         text: 'Пользователь не найден'
                     });
