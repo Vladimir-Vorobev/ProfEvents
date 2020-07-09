@@ -46,7 +46,7 @@
                             <a class="nav-link active" @click="showSchoolList()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="true">Список школ</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link active" @click="showList()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="false">Список учителей</a>
+                            <a class="nav-link" @click="showList()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="false">Список учителей</a>
                         </li>
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" @click="showTop()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="false">Рейтинг школ</a>
