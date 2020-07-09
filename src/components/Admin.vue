@@ -287,13 +287,19 @@
                             </div>
                         </div>
                         <div v-if="role == 'admin'">
-                            <div v-if="ShowList">
+                            <div v-if="ShowSchoolList">
                                 <transition-group name="main">
-                                    Тут список школ
+                                    <div v-for="item in schools" :key="item.school">
+                                        {{item.school}}<br>
+                                    </div>
                                 </transition-group>
                             </div>
                             <div v-if="ShowList">
                                 <transition-group name="main">
+                                    <form id='schoolInfo' key='form'>
+                                        <input name='school'>
+                                        <button type='submit' @click="getSchoolInfo()">Найти информацию по школе</button>
+                                    </form>
                                     <div class="tab-pane fade show active" id="pills-list-student" v-for="item in teachers" :key="item.person">
                                         <a class="person" href="#">
                                             <div class="person_box" v-on:click="showTeacherInfo(item.email)">
@@ -510,6 +516,7 @@ export default {
             ShowAddSchoolOne: false,
             data: [],
             studentEvents: [],
+            schools: [],
         }
     },
     methods:{
@@ -519,7 +526,7 @@ export default {
             let email = form.elements.email.value
             let password = form.elements.password.value
             let crypto = require('crypto')
-            fetch('http://78.155.219.12:3000/api/adminLogin', {
+            fetch(this.$store.state.serverIp+'/api/adminLogin', {
                 method: 'POST',
                 headers: {email: email, password: crypto.createHash('md5').update(password).digest("hex")},
             })
@@ -535,9 +542,11 @@ export default {
                         text: 'Пользователь не найден'
                     });
                 }
-                else if(data == "teacher" || data == 'school-admin'){
+                else if(data != 'user' && data != 'student'){
                     this.show = false
                     this.role = data
+                    if(this.role != 'admin') this.getAdminList(this.email)
+                    else this.getSchoolList(this.email)
                 }
                 else{
                     //alert("Неверный email или пароль")
@@ -551,13 +560,12 @@ export default {
             .catch(err => {
                 console.log(err)
             })
-            this.getAdminList(this.email)
             // this.students = [{person: 'Иванова Мария', email: 'v11ru'}, {person: 'Иванов Иван', email: 'v12ru'}, {person: 'Сергеев Сергей', email: 'v13ru'}]
             // this.teachers = [{person: 'Иванова Мария', email: 'v14ru'}, {person: 'Иванов Иван', email: 'v15ru'}, {person: 'Сергеев Сергей', email: 'v16ru'}]
         },
         getAdminList(email, teacher){
             let people = []
-            fetch('http://78.155.219.12:3000/api/getAdminList', {
+            fetch(this.$store.state.serverIp+'/api/getAdminList', {
                 method: 'POST',
                 headers: {email: email},
             })
@@ -597,6 +605,43 @@ export default {
                 console.log(err)
             })
         },
+        getSchoolInfo(email, teacher){
+            let people = []
+            //let sendEmail = email
+            // if(!teacher){
+            //     let form = document.getElementById('schoolInfo')
+            //     sendEmail = form['school'].value
+            // }
+            fetch(this.$store.state.serverIp+'/api/getAdminList', {
+                method: 'POST',
+                headers: {email: email},
+            })
+            .then(response => {
+                console.log("res", response)
+                return response.json()
+            })
+            .then(data => {
+                console.log(data)
+                if(teacher){
+                    for(let i = 0; i < data.length; i++){
+                        this.students[email].push({student: data[i].name + ' ' + data[i].surname, email: data[i].email})
+                    }
+                }
+                else{
+                    for(let i = 0; i < data.length; i++){
+                        people.push({person: data[i].name + ' ' + data[i].surname, email: data[i].email})
+                        this.data.push(data[i].email)
+                        this.$set(this.students, data[i].email, [])
+                        console.log(this.students)
+                        //this.studentEvents.push([])
+                    }
+                    this.teachers = people
+                }
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        },
         showInfo(email, teacherEmail){
             if(this.role == 'teacher'){
                 console.log(event.target.className)
@@ -617,7 +662,7 @@ export default {
                         if(document.getElementById(email + "x").style.display == 'inline-block'){
                             let SessionID = this.$store.getters.SessionID
                             let teacherEmail = this.$store.getters.email
-                            fetch('http://78.155.219.12:3000/api/getCheckedEvents', {
+                            fetch(this.$store.state.serverIp+'/api/getCheckedEvents', {
                                 method: 'get',
                                 headers: {email: teacherEmail, studEmail: email, sessionid: SessionID},
                             })
@@ -666,7 +711,7 @@ export default {
                         if(document.getElementById(email + "x").style.display == 'inline-block'){
                             let SessionID = this.$store.getters.SessionID
                             let adminEmail = this.$store.getters.email
-                            fetch('http://78.155.219.12:3000/api/getCheckedEvents', {
+                            fetch(this.$store.state.serverIp+'/api/getCheckedEvents', {
                                 method: 'get',
                                 headers: {email: teacherEmail, studEmail: email, adminEmail: adminEmail, sessionid: SessionID},
                             })
@@ -754,6 +799,21 @@ export default {
                 }
             }
         },
+        getSchoolList(email){
+            fetch(this.$store.state.serverIp+'/api/getSchoolList', {
+                method: 'POST',
+                headers: {email: email, sessionid: this.$store.getters.SessionID},
+            })
+            .then(response => {
+                console.log("res", response)
+                return response.json()
+            })
+            .then(data => {
+                for(let i = 0; i < data.length; i++){
+                    this.schools.push({school: data[i]})
+                }
+            })
+        },
         file(){
             let data = []
             readXlsxFile(this.$refs.file.files[0]).then((rows) => {
@@ -796,7 +856,7 @@ export default {
                 else this.$swal('Файл не выбран');   //alert('Файл не выбран')
             }
             function send(data, email, url){
-                needle.post('http://78.155.219.12:3000/api/' + url, {data: data, email: email, type: 'update', dopType: type}, {"json": true}, function(err, res){
+                needle.post(this.$store.state.serverIp+'/api/' + url, {data: data, email: email, type: 'update', dopType: type}, {"json": true}, function(err, res){
                     if(err) throw err
                     if(res.body == 'OK'){
                         //alert('Файл успешно добавлен')
@@ -906,7 +966,7 @@ export default {
                 cancelButtonText: 'Отмена'
             }).then((result) => {
                  if (result.value) {
-                     needle.post('http://78.155.219.12:3000/api/uploadOne', {data: data, email: email, type: 'delete', dopType: type}, {"json": true}, function(err, res){
+                     needle.post(this.$store.state.serverIp+'/api/uploadOne', {data: data, email: email, type: 'delete', dopType: type}, {"json": true}, function(err, res){
                         if(err) throw err
                         if(res.body == 'OK'){
                             //alert('Файл успешно добавлен')
