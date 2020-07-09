@@ -157,9 +157,9 @@
                                         <a class="person" href="#">
                                             <div class="person_box" v-on:click="showTeacherInfo(item.email)">
                                                 <div class="name row">
-                                                    <div class="name_group col-11">{{ item.person }}</div>
-                                                    <h5><button class="btn btn-danger" @click="deletePerson(item.email, item.name, item.surname, 'teacher')"> <i class="fas fa-trash-alt"></i> </button></h5>
+                                                    <div class="name_group col-10">{{ item.person }}</div>
                                                     <div class="col-1 ar-collapse" :id='item.email'></div>
+                                                    <div class="col-1" ><button class="btn btn-danger" @click="deletePerson(item.email, item.name, item.surname, 'teacher')"> <i class="fas fa-trash-alt"></i> </button></div>
                                                 </div>
                                                 <div :id='item.email + "s"' style="display: none;">
                                                     <div v-for="item2 in students[item.email]" :key="item2.student" :class="item2.email">
