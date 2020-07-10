@@ -546,7 +546,11 @@ export default {
                     this.show = false
                     this.role = data
                     if(this.role != 'admin') this.getAdminList(this.email)
-                    else this.getSchoolList(this.email)
+                    else{
+                        this.ShowList = false
+                        this.ShowSchoolList = true
+                        this.getSchoolList(this.email)
+                    }
                 }
                 else{
                     //alert("Неверный email или пароль")
