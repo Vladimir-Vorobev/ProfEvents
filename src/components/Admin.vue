@@ -43,10 +43,10 @@
                     </ul>
                     <ul key="ul" class="nav nav-pills mb-3" id="pills-tab" role="tablist" v-if="role == 'admin'">
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link active" @click="showSchoolList()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="true">Список школ</a>
+                            <a class="nav-link active schoolList" @click="showSchoolList()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="true">Список школ</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" @click="showList()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="false">Список учителей</a>
+                            <a class="nav-link list" @click="showList()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="false">Список учителей</a>
                         </li>
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" @click="showTop()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="false">Рейтинг школ</a>
@@ -290,22 +290,21 @@
                             <div v-if="ShowSchoolList">
                                 <transition-group name="main">
                                     <div v-for="item in schools" :key="item.school">
-                                        {{item.school}}<br>
+                                        <a href='#' class='school' @click="getSchoolInfo(item.school)">{{item.school}}</a><br>
                                     </div>
                                 </transition-group>
                             </div>
                             <div v-if="ShowList">
                                 <transition-group name="main">
                                     <form id='schoolInfo' key='form'>
-                                        <input name='school'>
+                                        <input name='school' :value="schoolName">
                                         <button type='submit' @click="getSchoolInfo()">Найти информацию по школе</button>
                                     </form>
                                     <div class="tab-pane fade show active" id="pills-list-student" v-for="item in teachers" :key="item.person">
                                         <a class="person" href="#">
-                                            <div class="person_box" v-on:click="showTeacherInfo(item.email)">
+                                            <div class="person_box" v-on:click="getAdminList(item.email, true), showTeacherInfo(item.email)">
                                                 <div class="name row">
                                                     <div class="name_group col-11">{{ item.person }}</div>
-                                                    <h5><button class="btn btn-danger" @click="deletePerson(item.email, item.name, item.surname, 'teacher')"> <i class="fas fa-trash-alt"></i> </button></h5>
                                                     <div class="col-1 ar-collapse" :id='item.email'></div>
                                                 </div>
                                                 <div :id='item.email + "s"' style="display: none;">
@@ -332,7 +331,6 @@
                                                                             <div class="card-body">
                                                                                 <div class="row">
                                                                                     <h5 class="card-title col-11">{{item3.name}}</h5>
-                                                                                    <h5><button class="btn btn-danger" @click="deletePerson(item.email, item.name, item.surname, 'student')"> <i class="fas fa-trash-alt"></i> </button></h5>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -517,6 +515,7 @@ export default {
             data: [],
             studentEvents: [],
             schools: [],
+            schoolName: '',
         }
     },
     methods:{
@@ -587,10 +586,13 @@ export default {
                     }
                     this.students = people
                 }
-                else if(this.role == 'school-admin'){
+                else if(this.role == 'school-admin' || this.role == 'admin'){
                     if(teacher){
-                        for(let i = 0; i < data.length; i++){
-                            this.students[email].push({student: data[i].name + ' ' + data[i].surname, email: data[i].email})
+                        if(this.students[email].length == 0){
+                            for(let i = 0; i < data.length; i++){
+                                this.students[email].push({student: data[i].name + ' ' + data[i].surname, email: data[i].email})
+                            }
+                            console.log(this.students)
                         }
                     }
                     else{
@@ -609,16 +611,23 @@ export default {
                 console.log(err)
             })
         },
-        getSchoolInfo(email, teacher){
+        getSchoolInfo(school){
+            event.preventDefault()
             let people = []
-            //let sendEmail = email
-            // if(!teacher){
-            //     let form = document.getElementById('schoolInfo')
-            //     sendEmail = form['school'].value
-            // }
-            fetch(this.$store.state.serverIp+'/api/getAdminList', {
+            if(school){
+                this.showList()
+                document.querySelector(".school").value = school
+                this.schoolName = school
+                document.querySelector('.list').classList.add('active')
+                document.querySelector('.schoolList').classList.remove('active')
+            }
+            else{
+                let form = document.getElementById('schoolInfo')
+                this.schoolName = form['school'].value
+            }
+            fetch(this.$store.state.serverIp+'/api/getListTeacher', {
                 method: 'POST',
-                headers: {email: email},
+                headers: {email: this.$store.state.email, sessionid: this.$store.state.SessionID, school: this.schoolName},
             })
             .then(response => {
                 console.log("res", response)
@@ -626,21 +635,22 @@ export default {
             })
             .then(data => {
                 console.log(data)
-                if(teacher){
-                    for(let i = 0; i < data.length; i++){
-                        this.students[email].push({student: data[i].name + ' ' + data[i].surname, email: data[i].email})
-                    }
+                console.log(data[0])
+                if(data[1].length == 0){
+                    this.$swal({
+                        icon: 'error',
+                        text: 'Данная школа не зарегистрирована, проверьте точное название во вкладке списка школ'
+                    });
+                    return
                 }
-                else{
-                    for(let i = 0; i < data.length; i++){
-                        people.push({person: data[i].name + ' ' + data[i].surname, email: data[i].email})
-                        this.data.push(data[i].email)
-                        this.$set(this.students, data[i].email, [])
-                        console.log(this.students)
-                        //this.studentEvents.push([])
-                    }
-                    this.teachers = people
+                for(let i = 0; i < data[0].length; i++){
+                    people.push({person: data[0][i].name + ' ' + data[0][i].surname, email: data[0][i].email})
+                    this.data.push(data[0][i].email)
+                    this.$set(this.students, data[0][i].email, [])
+                    console.log(this.students)
+                    //this.studentEvents.push([])
                 }
+                this.teachers = people
             })
             .catch(err => {
                 console.log(err)
@@ -695,7 +705,7 @@ export default {
                     }
                 }
             }
-            else if(this.role == 'school-admin'){
+            else if(this.role == 'school-admin' || this.role == 'admin'){
                 console.log(this.students[teacherEmail])
                 if(event.target.className != 'chartjs-render-monitor' && event.target.className != 'radio'){
                     for(let key in this.students[teacherEmail]){
