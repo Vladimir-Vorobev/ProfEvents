@@ -1090,7 +1090,7 @@ export default {
     font-size: 1.1em;
 }
 .school:hover{
-    background: rgba(250, 250, 250, 0.658);
+    background-color: rgba(236, 236, 236, 0.466);
     cursor: pointer;
 }
 .school-body{
