@@ -290,15 +290,22 @@
                             <div v-if="ShowSchoolList">
                                 <transition-group name="main">
                                     <div v-for="item in schools" :key="item.school">
-                                        <a href='#' class='school' @click="getSchoolInfo(item.school)">{{item.school}}</a><br>
+                                        <div class="card school" @click="getSchoolInfo(item.school)">
+                                            <div class="card-body">
+                                                {{item.school}}
+                                            </div>
+                                        </div> <br>
+                                        <!-- <a href='#' class='school' @click="getSchoolInfo(item.school)">{{item.school}}</a><br> -->
                                     </div>
                                 </transition-group>
                             </div>
                             <div v-if="ShowList">
                                 <transition-group name="main">
                                     <form id='schoolInfo' key='form'>
-                                        <input name='school' :value="schoolName">
-                                        <button type='submit' @click="getSchoolInfo()">Найти информацию по школе</button>
+                                        <div class="row" style="margin-bottom: 1em">
+                                            <input class="form-control col-12 col-md-8" name='school' :value="schoolName">
+                                            <button class="btn btn-outline-primary col-12 col-md-4" type='submit' @click="getSchoolInfo()">Найти информацию по школе</button>
+                                        </div>
                                     </form>
                                     <div class="tab-pane fade show active" id="pills-list-student" v-for="item in teachers" :key="item.person">
                                         <a class="person" href="#">
@@ -1078,5 +1085,13 @@ export default {
   position: relative;
   height: 500px;
   width: 1000px;
+}
+.school{
+    padding: 0px;
+    font-size: 1.1em;
+}
+.school:hover{
+    background: rgb(250, 250, 250);
+    cursor: pointer;
 }
 </style>
