@@ -290,7 +290,12 @@
                             <div v-if="ShowSchoolList">
                                 <transition-group name="main">
                                     <div v-for="item in schools" :key="item.school">
-                                        <a href='#' class='school' @click="getSchoolInfo(item.school)">{{item.school}}</a><br>
+                                        <div class="card school" @click="getSchoolInfo(item.school)">
+                                            <div class="card-body school-body">
+                                                {{item.school}}
+                                            </div>
+                                        </div> <br>
+                                        <!-- <a href='#' class='school' @click="getSchoolInfo(item.school)">{{item.school}}</a><br> -->
                                     </div>
                                 </transition-group>
                             </div>
@@ -375,7 +380,7 @@
                                             <div class="col-12 col-md-6">
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="basic-addon1">Имя</span>
+                                                        <span class="input-group-text" id="basic-addon1">Номер</span>
                                                     </div>
                                                     <input type="text" key="input" name="name" class="form-control name" aria-describedby="basic-addon1">
                                                 </div>
@@ -1119,12 +1124,12 @@ export default {
 .person_box:hover{
     text-decoration: none;
     color: black;
-    background-color: rgba(228, 228, 228, 0.466);
+    background-color: rgba(236, 236, 236, 0.466);
 }
 .person_box{
-    border: 1px solid black;
+    border: 1px solid rgba(0,0,0,.125);
     margin-bottom: 0.4em;
-    border-radius: 0.5em;
+    border-radius: 0.25em;
     padding: 1em;
     text-align: left;
     
@@ -1148,5 +1153,15 @@ export default {
   position: relative;
   height: 500px;
   width: 1000px;
+}
+.school{
+    font-size: 1.2em;
+}
+.school:hover{
+    background-color: rgba(236, 236, 236, 0.466);
+    cursor: pointer;
+}
+.school-body{
+    padding: 0.6em;
 }
 </style>
