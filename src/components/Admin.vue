@@ -366,7 +366,7 @@
                                             <div class="col-12">
                                                 <input key="input" name='list' class="form-check-input radio" type="radio" @click="changeAddInfo('list')" id="exampleRadios1" value="option1" checked>
                                                 <label key="p" class="form-check-label" for="exampleRadios1">
-                                                    Добавить список учителей
+                                                    Добавить список школ
                                                 </label>
                                             </div>
                                         </div>
@@ -374,13 +374,13 @@
                                             <div class="col-12">
                                                 <input  key="input" name='one' class="form-check-input radio" @click="changeAddInfo('one')" type="radio" id="exampleRadios2" value="option2">
                                                 <label key="p" class="form-check-label" for="exampleRadios2">
-                                                    Добавить учителя
+                                                    Добавить школу
                                                 </label>
                                             </div>
                                         </div>
                                     </form> <br key='br'>
                                     <div key="div" v-if="ShowAddList" style="text-align: left">
-                                        <p key="p" style="font-size:1.3em; text-align: center"> Загрузите актуальный список Ваших учителей в excel файле </p>
+                                        <p key="p" style="font-size:1.3em; text-align: center"> Загрузите актуальный список школ в excel файле </p>
                                         <p><input type="file" ref="file" class="form-control-file" @change="file()" key="input"></p>
                                         <p><button type="submit" @click="add('!1', 'teacher')" class="btn btn-primary btn-lg" key="button">Обновить список</button></p>
                                     </div>
@@ -389,22 +389,12 @@
                                             <div class="col-12 col-md-6">
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="basic-addon1">Имя</span>
+                                                        <span class="input-group-text" id="basic-addon1">Номер</span>
                                                     </div>
                                                     <input type="text" key="input" name="name" class="form-control name" aria-describedby="basic-addon1">
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-6">
-                                                <div class="input-group mb-3">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="basic-addon2">Фамилия</span>
-                                                    </div>
-                                                    <input type="text" key="input" name="surname" class="form-control surname" aria-describedby="basic-addon2">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12">
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text" id="basic-addon4">email</span>
@@ -429,7 +419,7 @@
                                             <div class="col-12">
                                                 <input key="input" name='list' class="form-check-input radio" type="radio" @click="changeAddInfo('list')" id="exampleRadios1" value="option1" checked>
                                                 <label key="p" class="form-check-label" for="exampleRadios1">
-                                                    Добавить список учителей
+                                                    Добавить список админов
                                                 </label>
                                             </div>
                                         </div>
@@ -437,13 +427,13 @@
                                             <div class="col-12">
                                                 <input  key="input" name='one' class="form-check-input radio" @click="changeAddInfo('one')" type="radio" id="exampleRadios2" value="option2">
                                                 <label key="p" class="form-check-label" for="exampleRadios2">
-                                                    Добавить учителя
+                                                    Добавить админа
                                                 </label>
                                             </div>
                                         </div>
                                     </form> <br key='br'>
                                     <div key="div" v-if="ShowAddList" style="text-align: left">
-                                        <p key="p" style="font-size:1.3em; text-align: center"> Загрузите актуальный список Ваших учителей в excel файле </p>
+                                        <p key="p" style="font-size:1.3em; text-align: center"> Загрузите актуальный список админов в excel файле </p>
                                         <p><input type="file" ref="file" class="form-control-file" @change="file()" key="input"></p>
                                         <p><button type="submit" @click="add('!1', 'teacher')" class="btn btn-primary btn-lg" key="button">Обновить список</button></p>
                                     </div>
@@ -1087,7 +1077,7 @@ export default {
   width: 1000px;
 }
 .school{
-    font-size: 1.1em;
+    font-size: 1.2em;
 }
 .school:hover{
     background-color: rgba(236, 236, 236, 0.466);
