@@ -79,7 +79,7 @@
                 </div>
                 <div class="input-group" style="margin-bottom: 1em">
                     <div class="custom-file">
-                        <input name="img_for_avatar" type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+                        <input name="img_for_avatar" type="file" accept="image/*" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
                         <label class="custom-file-label" for="inputGroupFile04" style="text-align: left"></label>
                     </div>
                 </div>
@@ -95,8 +95,13 @@
                 </div>
                 <h4>Данные для входа:</h4>
                 <div class="form-group row">
-                <div class="col-12"> 
-                    <input class="form-control email" name="email" placeholder="example@gmail.com">
+                <div class="col-12 col-md-6">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon7">Email</span>
+                        </div>
+                        <input type="text" name="email" class="form-control email" aria-describedby="basic-addon7">
+                    </div>
                 </div>
                 </div>
                 <div class="form-group row">

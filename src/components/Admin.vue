@@ -52,10 +52,10 @@
                             <a class="nav-link" @click="showTop()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="false">Рейтинг школ</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" @click="showSchoolAdd()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="false">Обновить список школ</a>
+                            <a class="nav-link" @click="showSchoolAdd()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="false">Добавить школьного администратора</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" @click="showAdd()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="false">Обновить список администраторов</a>
+                            <a class="nav-link" @click="showAdd(), getAdmins()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="false">Cписок администраторов</a>
                         </li>
                     </ul>
                     <div key="div" class="tab-content" id="pills-tabContent">
@@ -69,7 +69,7 @@
                                                 <div class="name row">
                                                     <div class="name_group col-10">{{ item.person }} </div>
                                                     <div class="col-1 ar-collapse" :id='item.email'></div>
-                                                    <div class="col-1" ><button class="btn btn-danger" @click="deleteStudent(item.email, item.name, item.surname)"><i class="fas fa-trash-alt"></i></button></div>
+                                                    <div class="col-1" ><button class="btn btn-danger" @click="deletePerson(item.email, item.name, item.surname, 'student')"><i class="fas fa-trash-alt"></i></button></div>
                                                 </div>
                                                 <div :id="item.email + 'n'" style="display: none;">
                                                     <div style="text-align: center;"><i class='fa fa-spinner fa-pulse fa-3x' :id='item.email + "x"' style="display: inline-block;"></i></div>
@@ -294,56 +294,74 @@
                                     </div>
                                 </transition-group>
                             </div>
-                            <div v-if="ShowList">
+                            <div v-if="showAdminInfo">
                                 <transition-group name="main">
-                                    <form id='schoolInfo' key='form'>
+                                    <form id='schoolInfo' key="form">
                                         <input name='school' :value="schoolName">
                                         <button type='submit' @click="getSchoolInfo()">Найти информацию по школе</button>
+                                    </form> <br key='br'>
+                                    <form id="formForList" key="form">
+                                        <input class="radio" name="school" type="radio" checked @click="changeInfo('school')"> Список школы
+                                        <input class="radio" name="admin" type="radio" @click="changeInfo('admin')"> Список администраторов школы
                                     </form>
-                                    <div class="tab-pane fade show active" id="pills-list-student" v-for="item in teachers" :key="item.person">
-                                        <a class="person" href="#">
-                                            <div class="person_box" v-on:click="getAdminList(item.email, true), showTeacherInfo(item.email)">
-                                                <div class="name row">
-                                                    <div class="name_group col-11">{{ item.person }}</div>
-                                                    <div class="col-1 ar-collapse" :id='item.email'></div>
-                                                </div>
-                                                <div :id='item.email + "s"' style="display: none;">
-                                                    <div v-for="item2 in students[item.email]" :key="item2.student" :class="item2.email">
-                                                        <a class="person" href="#" @click="showInfo(item2.email, item.email)">
-                                                            <div class="person_box a">
-                                                                <div class="name row">
-                                                                    <div class="name_group col-11 a">{{ item2.student }} </div>
-                                                                    <div class="col-1 ar-collapse a" :id='item2.email'></div>
-                                                                </div>
-                                                                <div :id="item2.email + 'n'" style="display: none;">
-                                                                    <div style="text-align: center;"><i class='fa fa-spinner fa-pulse fa-3x' :id='item2.email + "x"' style="display: inline-block;"></i></div>
-                                                                    <form :id="'form' + item2.email">
-                                                                        <input class="radio" :name="'donaught' + item2.email" type="radio" value="donaught" checked @click="changeInfo(item2.email, 'donaught')"> Кругова диаграмма
-                                                                        <input class="radio" :name="'bar' + item2.email" type="radio" value="bar" @click="changeInfo(item2.email, 'bar')"> Столбчатая диаграмма
-                                                                        <input class="radio" :name="'full' + item2.email" type="radio" value="full" @click="changeInfo(item2.email)"> Полная статистика
-                                                                    </form>
-                                                                    <div class="chart-container" :id="'chartDiv' + item2.email" style="display: none;"><canvas :id="'chart' + item2.email"></canvas></div>
-                                                                    <div class="chart-container" :id="'chartDiv2' + item2.email" style="display: none;"><canvas :id="'chart2' + item2.email"></canvas></div>
-                                                                    <div :id="'chartDiv3' + item2.email" style="display: none;">
-                                                                        <div v-if="studentEvents[item2.email] != undefined && studentEvents[item2.email].length == 0"><h3>Нет мероприятий</h3></div>
-                                                                        <div class="card" v-for="item3 in studentEvents[item2.email]" :key="item3.value">
-                                                                            <div class="card-header">{{item3.date}}</div>
-                                                                            <div class="card-body">
-                                                                                <div class="row">
-                                                                                    <h5 class="card-title col-11">{{item3.name}}</h5>
+                                    <div v-if="ShowList" key="div">
+                                        <div class="tab-pane fade show active" id="pills-list-student" v-for="item in teachers" :key="item.person">
+                                            <a class="person" href="#">
+                                                <div class="person_box" v-on:click="getAdminList(item.email, true), showTeacherInfo(item.email)">
+                                                    <div class="name row">
+                                                        <div class="name_group col-11">{{ item.person }}</div>
+                                                        <div class="col-1 ar-collapse" :id='item.email'></div>
+                                                    </div>
+                                                    <div :id='item.email + "s"' style="display: none;">
+                                                        <div v-for="item2 in students[item.email]" :key="item2.student" :class="item2.email">
+                                                            <a class="person" href="#" @click="showInfo(item2.email, item.email)">
+                                                                <div class="person_box a">
+                                                                    <div class="name row">
+                                                                        <div class="name_group col-11 a">{{ item2.student }} </div>
+                                                                        <div class="col-1 ar-collapse a" :id='item2.email'></div>
+                                                                    </div>
+                                                                    <div :id="item2.email + 'n'" style="display: none;">
+                                                                        <div style="text-align: center;"><i class='fa fa-spinner fa-pulse fa-3x' :id='item2.email + "x"' style="display: inline-block;"></i></div>
+                                                                        <form :id="'form' + item2.email">
+                                                                            <input class="radio" :name="'donaught' + item2.email" type="radio" value="donaught" checked @click="changeInfo(item2.email, 'donaught')"> Кругова диаграмма
+                                                                            <input class="radio" :name="'bar' + item2.email" type="radio" value="bar" @click="changeInfo(item2.email, 'bar')"> Столбчатая диаграмма
+                                                                            <input class="radio" :name="'full' + item2.email" type="radio" value="full" @click="changeInfo(item2.email)"> Полная статистика
+                                                                        </form>
+                                                                        <div class="chart-container" :id="'chartDiv' + item2.email" style="display: none;"><canvas :id="'chart' + item2.email"></canvas></div>
+                                                                        <div class="chart-container" :id="'chartDiv2' + item2.email" style="display: none;"><canvas :id="'chart2' + item2.email"></canvas></div>
+                                                                        <div :id="'chartDiv3' + item2.email" style="display: none;">
+                                                                            <div v-if="studentEvents[item2.email] != undefined && studentEvents[item2.email].length == 0"><h3>Нет мероприятий</h3></div>
+                                                                            <div class="card" v-for="item3 in studentEvents[item2.email]" :key="item3.value">
+                                                                                <div class="card-header">{{item3.date}}</div>
+                                                                                <div class="card-body">
+                                                                                    <div class="row">
+                                                                                        <h5 class="card-title col-11">{{item3.name}}</h5>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        </a>    
+                                                            </a>    
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div v-if="ShowAdminList" key="div">
+                                        <div class="tab-pane fade show active" id="pills-list-student" v-for="item in schoolAdmins" :key="item.person">
+                                            <div class="person">
+                                                <div class="person_box">
+                                                    <div class="name row">
+                                                        <div class="name_group col-11">{{ item.person }}</div>
+                                                        <div class="col-1" ><button class="btn btn-danger" @click="deletePerson(item.email, item.name, item.surname, 'school-admin')"><i class="fas fa-trash-alt"></i></button></div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </a>
+                                        </div>
                                     </div>
-                                </transition-group>
+                                </transition-group>   
                             </div>
                             <div v-if="ShowTop">
                                 <transition-group name="main">
@@ -352,32 +370,7 @@
                             </div>
                             <div v-if="ShowSchoolAdd">
                                <transition-group name="main">
-                                    <form key='form' id='formList' style="text-align: left; font-size: 1.2em">
-                                        <!-- <input key="input" class="radio" name='list' type="radio" checked @click="changeAddInfo('list')"> <p key="p">Добавить список учеников</p> -->
-                                        <!-- <input key="input" class="radio" name='one' type="radio" @click="changeAddInfo('one')"> <p key="p">Добавить ученика</p> -->
-                                        <div class="form-check row">
-                                            <div class="col-12">
-                                                <input key="input" name='list' class="form-check-input radio" type="radio" @click="changeAddInfo('list')" id="exampleRadios1" value="option1" checked>
-                                                <label key="p" class="form-check-label" for="exampleRadios1">
-                                                    Добавить список учителей
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="form-check row">
-                                            <div class="col-12">
-                                                <input  key="input" name='one' class="form-check-input radio" @click="changeAddInfo('one')" type="radio" id="exampleRadios2" value="option2">
-                                                <label key="p" class="form-check-label" for="exampleRadios2">
-                                                    Добавить учителя
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </form> <br key='br'>
-                                    <div key="div" v-if="ShowAddList" style="text-align: left">
-                                        <p key="p" style="font-size:1.3em; text-align: center"> Загрузите актуальный список Ваших учителей в excel файле </p>
-                                        <p><input type="file" ref="file" class="form-control-file" @change="file()" key="input"></p>
-                                        <p><button type="submit" @click="add('!1', 'teacher')" class="btn btn-primary btn-lg" key="button">Обновить список</button></p>
-                                    </div>
-                                    <form key="form" id='formOne' v-if="ShowAddOne" style="text-align: left">
+                                    <form key="form" id='formOne' style="text-align: left">
                                         <div class="row">
                                             <div class="col-12 col-md-6">
                                                 <div class="input-group mb-3">
@@ -395,52 +388,49 @@
                                                     <input type="text" key="input" name="surname" class="form-control surname" aria-describedby="basic-addon2">
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12">
+                                            <div class="col-12 col-md-6">
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="basic-addon4">email</span>
+                                                        <span class="input-group-text" id="basic-addon2">Email</span>
                                                     </div>
-                                                    <input class="form-control email" key="input" name="email" placeholder="example@gmail.com" aria-describedby="basic-addon4">
+                                                    <input type="text" key="input" name="email" class="form-control surname" aria-describedby="basic-addon2">
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="basic-addon2">Номер школы</span>
+                                                    </div>
+                                                    <input type="text" key="input" name="school" class="form-control surname" aria-describedby="basic-addon2">
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- <p key="p">Email </p><input key="input" name="email">
                                         <p key="p">Имя </p><input key="input" name="name">
                                         <p key="p">Фамилия </p><input key="input" name="surname" style="margin-bottom: 0.7em"> -->
-                                        <p><button type="submit" @click="add('one', 'teacher')" class="btn btn-primary btn-lg" key="button">Добавить учителя</button></p>
+                                        <p><button type="submit" @click="add('school-admin', 'school-admin')" class="btn btn-primary btn-lg" key="button">Добавить школьного администратора</button></p>
                                     </form>
                                 </transition-group>
                             </div>
                             <div v-if="ShowAdd">
                                <transition-group name="main">
-                                    <form key='form' id='formList' style="text-align: left; font-size: 1.2em">
-                                        <!-- <input key="input" class="radio" name='list' type="radio" checked @click="changeAddInfo('list')"> <p key="p">Добавить список учеников</p> -->
-                                        <!-- <input key="input" class="radio" name='one' type="radio" @click="changeAddInfo('one')"> <p key="p">Добавить ученика</p> -->
-                                        <div class="form-check row">
-                                            <div class="col-12">
-                                                <input key="input" name='list' class="form-check-input radio" type="radio" @click="changeAddInfo('list')" id="exampleRadios1" value="option1" checked>
-                                                <label key="p" class="form-check-label" for="exampleRadios1">
-                                                    Добавить список учителей
-                                                </label>
+                                    <form id="formForAdmin" key="form">
+                                        <input class="radio" name="adminList" type="radio" checked @click="changeInfo('adminList')"> Список администраторов
+                                        <input class="radio" name="addAdmin" type="radio" @click="changeInfo('addAdmin')"> Добавить администратора
+                                    </form>
+                                    <div v-if="AdminList" key="div">
+                                        <div class="tab-pane fade show active" id="pills-list-student" v-for="item in admins" :key="item.person">
+                                            <div class="person">
+                                                <div class="person_box">
+                                                    <div class="name row">
+                                                        <div class="name_group col-11">{{ item.person }}</div>
+                                                        <div class="col-1" ><button class="btn btn-danger" @click="deletePerson(item.email, item.name, item.surname, 'admin')"><i class="fas fa-trash-alt"></i></button></div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="form-check row">
-                                            <div class="col-12">
-                                                <input  key="input" name='one' class="form-check-input radio" @click="changeAddInfo('one')" type="radio" id="exampleRadios2" value="option2">
-                                                <label key="p" class="form-check-label" for="exampleRadios2">
-                                                    Добавить учителя
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </form> <br key='br'>
-                                    <div key="div" v-if="ShowAddList" style="text-align: left">
-                                        <p key="p" style="font-size:1.3em; text-align: center"> Загрузите актуальный список Ваших учителей в excel файле </p>
-                                        <p><input type="file" ref="file" class="form-control-file" @change="file()" key="input"></p>
-                                        <p><button type="submit" @click="add('!1', 'teacher')" class="btn btn-primary btn-lg" key="button">Обновить список</button></p>
                                     </div>
-                                    <form key="form" id='formOne' v-if="ShowAddOne" style="text-align: left">
+                                    <form key="form" id='formOne' style="text-align: left" v-if="AddAdmin">
                                         <div class="row">
                                             <div class="col-12 col-md-6">
                                                 <div class="input-group mb-3">
@@ -472,7 +462,7 @@
                                         <!-- <p key="p">Email </p><input key="input" name="email">
                                         <p key="p">Имя </p><input key="input" name="name">
                                         <p key="p">Фамилия </p><input key="input" name="surname" style="margin-bottom: 0.7em"> -->
-                                        <p><button type="submit" @click="add('one', 'teacher')" class="btn btn-primary btn-lg" key="button">Добавить учителя</button></p>
+                                        <p><button type="submit" @click="add('admin', 'admin')" class="btn btn-primary btn-lg" key="button">Добавить админа</button></p>
                                     </form>
                                 </transition-group>
                             </div>
@@ -499,16 +489,21 @@ export default {
             show: true,
             role: '',
             students: [],
-            students2: [],
             teachers: [],
+            admins: [],
+            schoolAdmins: [],
             email: this.$store.getters.email,
             classData: [],
             ShowList: true,
+            ShowAdminList: false,
+            AdminList: true,
+            AddAdmin: false,
             ShowSchoolList: false,
             ShowTop: false,
             ShowAdd: false,
             ShowSchoolAdd: false,
             ShowAddList: true,
+            showAdminInfo: false,
             ShowAddSchoolList: false,
             ShowAddOne: false,
             ShowAddSchoolOne: false,
@@ -645,12 +640,16 @@ export default {
                 }
                 for(let i = 0; i < data[0].length; i++){
                     people.push({person: data[0][i].name + ' ' + data[0][i].surname, email: data[0][i].email})
-                    this.data.push(data[0][i].email)
                     this.$set(this.students, data[0][i].email, [])
                     console.log(this.students)
                     //this.studentEvents.push([])
                 }
                 this.teachers = people
+                people = []
+                for(let i = 0; i < data[1].length; i++){
+                    people.push({person: data[1][i].name + ' ' + data[1][i].surname, email: data[1][i].email})
+                }
+                this.schoolAdmins = people
             })
             .catch(err => {
                 console.log(err)
@@ -828,6 +827,29 @@ export default {
                 }
             })
         },
+        getAdmins(){
+            if(this.admins.length == 0){
+                let people = []
+                fetch(this.$store.state.serverIp+'/api/getListAdmin', {
+                    method: 'POST',
+                    headers: {email: this.email},
+                })
+                .then(response => {
+                    console.log("res", response)
+                    return response.json()
+                })
+                .then(data => {
+                    for(let i = 0; i < data.length; i++){
+                        people.push({person: data[i].name + ' ' + data[i].surname, email: data[i].email})
+                    }
+                    this.admins = people
+                    console.log(this.admins)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+            }
+        },
         file(){
             let data = []
             readXlsxFile(this.$refs.file.files[0]).then((rows) => {
@@ -839,7 +861,7 @@ export default {
         },
         add(value, type){
             event.preventDefault()
-            if(value == 'one'){
+            if(value != '!1'){
                 let form = document.getElementById('formOne')
                 if(form['email'].value == ''){
                     this.$swal({
@@ -859,8 +881,19 @@ export default {
                         text: 'Введите фамилию'
                     });
                 }
+                else if(value == 'school-admin' && form['school'].value == ''){
+                    this.$swal({
+                        icon: 'error',
+                        text: 'Введите название школы'
+                    });
+                }
                 else{
-                    send({email: form['email'].value, name: form['name'].value, surname: form['surname'].value}, this.email, 'uploadOne')
+                    if(value == 'school-admin'){
+                        send({email: form['email'].value, name: form['name'].value, surname: form['surname'].value, school: form['school'].value}, this.email, 'uploadOne')
+                    }
+                    else{
+                        send({email: form['email'].value, name: form['name'].value, surname: form['surname'].value}, this.email, 'uploadOne')
+                    }
                 }
             }
             else{
@@ -869,8 +902,9 @@ export default {
                 }
                 else this.$swal('Файл не выбран');   //alert('Файл не выбран')
             }
+            let dopEmail = this.$store.getters.email
             function send(data, email, url){
-                needle.post(this.$store.state.serverIp+'/api/' + url, {data: data, email: email, type: 'update', dopType: type}, {"json": true}, function(err, res){
+                needle.post('http://78.155.219.12:3000/api/' + url, {data: data, email: email, type: 'update', dopType: type, dopEmail: dopEmail}, {"json": true}, function(err, res){
                     if(err) throw err
                     if(res.body == 'OK'){
                         //alert('Файл успешно добавлен')
@@ -879,9 +913,9 @@ export default {
                             text: 'Файл успешно добавлен'
                         });
                     }
-                    else{
+                    else if(res.body == 'User undefined'){
                         //alert(res.body)
-                        Vue.swal(res.body);
+                        Vue.swal('Пользователь с данной почтой не зарегистрирован');
                     }
                 })
             }
@@ -889,7 +923,9 @@ export default {
         showList(){
             event.preventDefault()
             this.ShowList = true
+            this.showAdminInfo = true
             this.ShowAdd = false
+            this.ShowAdminList = false
             this.ShowSchoolList = false
             this.ShowSchoolAdd = false
             this.ShowTop = false
@@ -897,6 +933,7 @@ export default {
         showSchoolList(){
             event.preventDefault()
             this.ShowSchoolList = true
+            this.showAdminInfo = false
             this.ShowAdd = false
             this.ShowList = false
             this.ShowSchoolAdd = false
@@ -906,6 +943,7 @@ export default {
             event.preventDefault()
             this.ShowTop = true
             this.ShowList = false
+            this.showAdminInfo = false
             this.ShowAdd = false
             this.ShowSchoolList = false
             this.ShowSchoolAdd = false
@@ -914,6 +952,7 @@ export default {
             event.preventDefault()
             this.ShowAdd = true
             this.ShowList = false
+            this.showAdminInfo = false
             this.ShowTop = false
             this.ShowSchoolList = false
             this.ShowSchoolAdd = false
@@ -923,31 +962,62 @@ export default {
             this.ShowSchoolAdd = true
             this.ShowList = false
             this.ShowTop = false
+            this.showAdminInfo = false
             this.ShowSchoolList = false
             this.ShowAdd = false
         },
         changeInfo(email, chart){
-            let form = document.getElementById('form' + email)
-            if(chart == 'donaught'){
-                form['bar' + email].checked = false
-                form['full' + email].checked = false
-                document.getElementById('chartDiv' + email).style.display = 'block'
-                document.getElementById('chartDiv2' + email).style.display = 'none'
-                document.getElementById('chartDiv3' + email).style.display = 'none'
-            }
-            else if(chart == 'bar'){
-                form['donaught' + email].checked = false
-                form['full' + email].checked = false
-                document.getElementById('chartDiv' + email).style.display = 'none'
-                document.getElementById('chartDiv2' + email).style.display = 'block'
-                document.getElementById('chartDiv3' + email).style.display = 'none'
+            if(this.chart != undefined){
+                let form = document.getElementById('form' + email)
+                if(chart == 'donaught'){
+                    form['bar' + email].checked = false
+                    form['full' + email].checked = false
+                    document.getElementById('chartDiv' + email).style.display = 'block'
+                    document.getElementById('chartDiv2' + email).style.display = 'none'
+                    document.getElementById('chartDiv3' + email).style.display = 'none'
+                }
+                else if(chart == 'bar'){
+                    form['donaught' + email].checked = false
+                    form['full' + email].checked = false
+                    document.getElementById('chartDiv' + email).style.display = 'none'
+                    document.getElementById('chartDiv2' + email).style.display = 'block'
+                    document.getElementById('chartDiv3' + email).style.display = 'none'
+                }
+                else{
+                    form['donaught' + email].checked = false
+                    form['bar' + email].checked = false
+                    document.getElementById('chartDiv' + email).style.display = 'none'
+                    document.getElementById('chartDiv2' + email).style.display = 'none'
+                    document.getElementById('chartDiv3' + email).style.display = 'block'
+                }
             }
             else{
-                form['donaught' + email].checked = false
-                form['bar' + email].checked = false
-                document.getElementById('chartDiv' + email).style.display = 'none'
-                document.getElementById('chartDiv2' + email).style.display = 'none'
-                document.getElementById('chartDiv3' + email).style.display = 'block'
+                if(this.ShowAdd == false){
+                    let form = document.getElementById('formForList')
+                    if(email == 'school'){
+                        form['admin'].checked = false
+                        this.ShowList = true
+                        this.ShowAdminList = false
+                    }
+                    else if(email == 'admin'){
+                        form['school'].checked = false
+                        this.ShowList = false
+                        this.ShowAdminList = true
+                    }
+                }
+                else{
+                    let form = document.getElementById('formForAdmin')
+                    if(email == 'adminList'){
+                        form['addAdmin'].checked = false
+                        this.AdminList = true
+                        this.AddAdmin = false
+                    }
+                    else if(email == 'addAdmin'){
+                        form['adminList'].checked = false
+                        this.AdminList = false
+                        this.AddAdmin = true
+                    }
+                }
             }
         },
         changeAddInfo(value){
