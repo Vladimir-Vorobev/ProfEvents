@@ -1056,12 +1056,12 @@ export default {
 .person_box:hover{
     text-decoration: none;
     color: black;
-    background-color: rgba(228, 228, 228, 0.466);
+    background: rgb(250, 250, 250);
 }
 .person_box{
-    border: 1px solid black;
+    border: 1px solid rgba(0,0,0,.125);
     margin-bottom: 0.4em;
-    border-radius: 0.5em;
+    border-radius: 0.25em;
     padding: 1em;
     text-align: left;
     
