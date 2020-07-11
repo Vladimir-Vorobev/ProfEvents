@@ -291,7 +291,7 @@
                                 <transition-group name="main">
                                     <div v-for="item in schools" :key="item.school">
                                         <div class="card school" @click="getSchoolInfo(item.school)">
-                                            <div class="card-body">
+                                            <div class="card-body school-body">
                                                 {{item.school}}
                                             </div>
                                         </div> <br>
@@ -1087,11 +1087,13 @@ export default {
   width: 1000px;
 }
 .school{
-    padding: 0px;
     font-size: 1.1em;
 }
 .school:hover{
     background: rgb(250, 250, 250);
     cursor: pointer;
+}
+.school-body{
+    padding: 0.6em;
 }
 </style>
