@@ -1056,7 +1056,7 @@ export default {
 .person_box:hover{
     text-decoration: none;
     color: black;
-    background: rgb(250, 250, 250);
+    background-color: rgba(236, 236, 236, 0.466);
 }
 .person_box{
     border: 1px solid rgba(0,0,0,.125);
@@ -1090,7 +1090,7 @@ export default {
     font-size: 1.1em;
 }
 .school:hover{
-    background: rgb(250, 250, 250);
+    background: rgba(250, 250, 250, 0.658);
     cursor: pointer;
 }
 .school-body{
