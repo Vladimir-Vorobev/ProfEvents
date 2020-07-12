@@ -56,11 +56,11 @@
                     <form :id="'form' + person_email">
                         <input class="radio" :name="'donaught' + person_email" type="radio" value="donaught" checked @click="changeInfo(person_email, 'donaught')"> Кругова диаграмма
                         <input class="radio" :name="'bar' + person_email" type="radio" value="bar" @click="changeInfo(person_email, 'bar')"> Столбчатая диаграмма
-                        <input class="radio" :name="'full' + person_email" type="radio" value="full" @click="changeInfo(person_email)"> Полная статистика
+                        <!-- <input class="radio" :name="'full' + person_email" type="radio" value="full" @click="changeInfo(person_email)"> Полная статистика -->
                     </form>
                     <div class="chart-container" :id="'chartDiv' + person_email" style="display: none;"><canvas :id="'chart' + person_email"></canvas></div>
                     <div class="chart-container" :id="'chartDiv2' + person_email" style="display: none;"><canvas :id="'chart2' + person_email"></canvas></div>
-                    <div :id="'chartDiv3' + person_email" style="display: none;">
+                    <!-- <div :id="'chartDiv3' + person_email" style="display: none;">
                         <div v-if="studentEvents[person_email] != undefined && studentEvents[person_email].length == 0"><h3>Нет мероприятий</h3></div>
                         <div class="card" v-for="item3 in studentEvents[person_email]" :key="item3.value">
                             <div class="card-header">{{item3.date}}</div>
@@ -70,10 +70,10 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
-            <div class="person_events row" style="padding: 15px 15px 30px">
+            <div class="person_events" style="padding: 15px 0px 30px">
                 <div class="pblock">
                     <h4>Ближайшие мероприятия:</h4>
                     <div class="row">
@@ -87,6 +87,33 @@
                                 <option value="">Инженерия</option>
                                 <option value="">Сфера услуг</option>
                             </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="person_events_archive" style="padding: 15px 0px 30px">
+                <div class="pblock">
+                    <h4>Архив мероприятий:</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-5">
+                            <h5>Направеление:</h5> 
+                        </div>
+                        <div class="col-12 col-md-7">
+                            <select class="custom-select custom-select-sm mb-3 events" style="width: 100%;">
+                                <option value="" selected>Все</option>
+                                <option value="">IT</option>
+                                <option value="">Инженерия</option>
+                                <option value="">Сфера услуг</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div v-if="studentEvents[person_email] != undefined && studentEvents[person_email].length == 0"><h3>Нет мероприятий</h3></div>
+                    <div class="card" v-for="item3 in studentEvents[person_email]" :key="item3.value" style="margin-bottom: 1em">
+                        <div class="card-header">{{item3.date}}</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <h5 class="card-title col-11">{{item3.name}}</h5>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -251,25 +278,25 @@ export default {
             let form = document.getElementById('form' + email)
             if(chart == 'donaught'){
                 form['bar' + email].checked = false
-                form['full' + email].checked = false
+                // form['full' + email].checked = false
                 document.getElementById('chartDiv' + email).style.display = 'block'
                 document.getElementById('chartDiv2' + email).style.display = 'none'
                 document.getElementById('chartDiv3' + email).style.display = 'none'
             }
             else if(chart == 'bar'){
                 form['donaught' + email].checked = false
-                form['full' + email].checked = false
+                // form['full' + email].checked = false
                 document.getElementById('chartDiv' + email).style.display = 'none'
                 document.getElementById('chartDiv2' + email).style.display = 'block'
                 document.getElementById('chartDiv3' + email).style.display = 'none'
             }
-            else{
-                form['donaught' + email].checked = false
-                form['bar' + email].checked = false
-                document.getElementById('chartDiv' + email).style.display = 'none'
-                document.getElementById('chartDiv2' + email).style.display = 'none'
-                document.getElementById('chartDiv3' + email).style.display = 'block'
-            }
+            // else{
+            //     form['donaught' + email].checked = false
+            //     form['bar' + email].checked = false
+            //     document.getElementById('chartDiv' + email).style.display = 'none'
+            //     document.getElementById('chartDiv2' + email).style.display = 'none'
+            //     document.getElementById('chartDiv3' + email).style.display = 'block'
+            // }
         },
     },
 }
