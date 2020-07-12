@@ -52,7 +52,25 @@
             <div class="person_statistic row" style="padding: 15px 15px">
                 <div class="pblock">
                     <h4>Статистика:</h4>
-                    сюда статистику
+                    <div style="text-align: center;"><i class='fa fa-spinner fa-pulse fa-3x' :id='person_email + "x"' style="display: inline-block;"></i></div>
+                    <form :id="'form' + person_email">
+                        <input class="radio" :name="'donaught' + person_email" type="radio" value="donaught" checked @click="changeInfo(person_email, 'donaught')"> Кругова диаграмма
+                        <input class="radio" :name="'bar' + person_email" type="radio" value="bar" @click="changeInfo(person_email, 'bar')"> Столбчатая диаграмма
+                        <input class="radio" :name="'full' + person_email" type="radio" value="full" @click="changeInfo(person_email)"> Полная статистика
+                    </form>
+                    <div class="chart-container" :id="'chartDiv' + person_email" style="display: none;"><canvas :id="'chart' + person_email"></canvas></div>
+                    <div class="chart-container" :id="'chartDiv2' + person_email" style="display: none;"><canvas :id="'chart2' + person_email"></canvas></div>
+                    <div :id="'chartDiv3' + person_email" style="display: none;">
+                        <div v-if="studentEvents[person_email] != undefined && studentEvents[person_email].length == 0"><h3>Нет мероприятий</h3></div>
+                        <div class="card" v-for="item3 in studentEvents[person_email]" :key="item3.value">
+                            <div class="card-header">{{item3.date}}</div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <h5 class="card-title col-11">{{item3.name}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="person_events row" style="padding: 15px 15px 30px">
@@ -81,7 +99,7 @@
 <script>
 import Footer from './footer.vue'
 import Vue from 'vue';
-
+import Chart from 'chart.js'
 export default {
     name: 'UserProfile',
     components: { Footer },
@@ -94,10 +112,11 @@ export default {
         person_date: ' ',
         person_grade: ' ',
         person_school: ' ',
+        person_email: '',
+        studentEvents: [],
       }
     },
-    beforeMount(){
-        if(this.email == '') window.location.pathname = "/login"
+    beforeMount(){ 
         fetch(this.$store.state.serverIp+'/api/getIdInformation', {
             method: 'POST',
             headers: {id: this.id, email: this.email, sessionid: this.SessionID},
@@ -113,7 +132,9 @@ export default {
                 // window.location.reload()
                 console.log("err 310")
             }
+            if(data.email == undefined) window.location.pathname = "/login"
             this.person_name = data.name + ' ' + data.surname
+            this.person_email = data.email
             let personDate = data.age
             personDate = personDate.split('-')
             personDate = new Date(personDate[0], personDate[1]-1, personDate[2]);
@@ -135,6 +156,7 @@ export default {
             else{
                 this.person_school = 'Не указана'
             }
+            this.showInfo()
         })
         .catch(err => {
             console.log(err)
@@ -163,7 +185,92 @@ export default {
         },
         GoToEditor(){
             this.$router.push({ path: `/user-profile-edit` })
-        }
+        },
+        showInfo(){
+            let SessionID = this.$store.getters.SessionID
+            let user_email = this.email
+            fetch(this.$store.state.serverIp+'/api/getCheckedEvents', {
+                method: 'get',
+                headers: {email: user_email, studEmail: this.person_email, sessionid: SessionID},
+            })
+            .then(response => {
+                console.log("res", response)
+                return response.json()
+            })
+            .then(datan => {
+                let statistics = datan.stat
+                this.$set(this.studentEvents, this.person_email, datan.checkedEvents)
+                let ctx = document.getElementById('chart' + this.person_email)
+                let ctx2 = document.getElementById('chart2' + this.person_email)
+                makeChart('doughnut', [statistics.service, statistics.programming, 0, 0,  statistics.engeniring, 0], ctx)
+                makeChart('bar', [statistics.service, statistics.programming, 0, 0,  statistics.engeniring, 0], ctx2)
+                document.getElementById(this.person_email + "x").style.display = 'none'
+                document.getElementById('chartDiv' + this.person_email).style.display = 'block'
+            })
+            .catch(err => {
+                console.log(err)
+            })
+            function makeChart(type, data, place){
+                let myChart = new Chart(place, {
+                    type: type,
+                    data: {
+                        labels: ['Сфера услуг', 'IT', 'Творчество и Дизайн', 'Строительство', 'Инжинерные технологии', 'Транспорт и логистика'],
+                        datasets: [{
+                            label: '# of Votes',
+                            data: data,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.5)',
+                                'rgba(54, 162, 235, 0.5)',
+                                'rgba(255, 206, 86, 0.5)',
+                                'rgba(75, 192, 192, 0.5)',
+                                'rgba(153, 102, 255, 0.5)',
+                                'rgba(255, 159, 64, 0.5)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1,
+                            hoverBorderWidth: 5,
+                        }]
+                    },
+                    options: {
+                        legend: {
+                            position: 'bottom',
+                        }
+                    }
+                });
+                console.log(myChart)
+            }
+        },
+        changeInfo(email, chart){
+            let form = document.getElementById('form' + email)
+            if(chart == 'donaught'){
+                form['bar' + email].checked = false
+                form['full' + email].checked = false
+                document.getElementById('chartDiv' + email).style.display = 'block'
+                document.getElementById('chartDiv2' + email).style.display = 'none'
+                document.getElementById('chartDiv3' + email).style.display = 'none'
+            }
+            else if(chart == 'bar'){
+                form['donaught' + email].checked = false
+                form['full' + email].checked = false
+                document.getElementById('chartDiv' + email).style.display = 'none'
+                document.getElementById('chartDiv2' + email).style.display = 'block'
+                document.getElementById('chartDiv3' + email).style.display = 'none'
+            }
+            else{
+                form['donaught' + email].checked = false
+                form['bar' + email].checked = false
+                document.getElementById('chartDiv' + email).style.display = 'none'
+                document.getElementById('chartDiv2' + email).style.display = 'none'
+                document.getElementById('chartDiv3' + email).style.display = 'block'
+            }
+        },
     },
 }
 </script>
