@@ -53,9 +53,21 @@
                 <div class="pblock">
                     <h4>Статистика:</h4>
                     <div style="text-align: center;"><i class='fa fa-spinner fa-pulse fa-3x' :id='person_email + "x"' style="display: inline-block;"></i></div>
-                    <form :id="'form' + person_email">
-                        <input class="radio" :name="'donaught' + person_email" type="radio" value="donaught" checked @click="changeInfo(person_email, 'donaught')"> Кругова диаграмма
-                        <input class="radio" :name="'bar' + person_email" type="radio" value="bar" @click="changeInfo(person_email, 'bar')"> Столбчатая диаграмма
+                    <form :id="'form' + person_email" class="row">
+                        <!-- <input class="radio" :name="'donaught' + person_email" type="radio" value="donaught" checked @click="changeInfo(person_email, 'donaught')"> Круговая диаграмма
+                        <input class="radio" :name="'bar' + person_email" type="radio" value="bar" @click="changeInfo(person_email, 'bar')"> Столбчатая диаграмма -->
+                        <div class="form-check col-12 col-md-6">
+                            <input id="donaughtCheck" class="radio" :name="'donaught' + person_email" type="radio" value="donaught" checked @click="changeInfo(person_email, 'donaught')">
+                            <label class="form-check-label" for="donaughtCheck">
+                               Круговая диаграмма
+                            </label>
+                        </div>
+                        <div class="form-check col-12 col-md-6">
+                            <input class="radio" id="barCheck" :name="'bar' + person_email" type="radio" value="bar" @click="changeInfo(person_email, 'bar')">
+                            <label class="form-check-label" for="barCheck">
+                                Столбчатая диаграмма
+                            </label>
+                        </div>
                         <!-- <input class="radio" :name="'full' + person_email" type="radio" value="full" @click="changeInfo(person_email)"> Полная статистика -->
                     </form>
                     <div class="chart-container" :id="'chartDiv' + person_email" style="display: none;"><canvas :id="'chart' + person_email"></canvas></div>
@@ -287,14 +299,14 @@ export default {
                 // form['full' + email].checked = false
                 document.getElementById('chartDiv' + email).style.display = 'block'
                 document.getElementById('chartDiv2' + email).style.display = 'none'
-                document.getElementById('chartDiv3' + email).style.display = 'none'
+                // document.getElementById('chartDiv3' + email).style.display = 'none'
             }
             else if(chart == 'bar'){
                 form['donaught' + email].checked = false
                 // form['full' + email].checked = false
                 document.getElementById('chartDiv' + email).style.display = 'none'
                 document.getElementById('chartDiv2' + email).style.display = 'block'
-                document.getElementById('chartDiv3' + email).style.display = 'none'
+                // document.getElementById('chartDiv3' + email).style.display = 'none'
             }
             // else{
             //     form['donaught' + email].checked = false
