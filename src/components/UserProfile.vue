@@ -268,7 +268,8 @@ export default {
                     options: {
                         legend: {
                             position: 'bottom',
-                        }
+                        },
+                        responsive: true,
                     }
                 });
                 console.log(myChart)
