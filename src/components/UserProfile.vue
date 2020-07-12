@@ -238,6 +238,10 @@ export default {
                 console.log(err)
             })
             function makeChart(type, data, place){
+                let dispalyLable = true
+                if (document.documentElement.clientWidth < 768){
+                    dispalyLable = false 
+                }
                 let myChart = new Chart(place, {
                     type: type,
                     data: {
@@ -268,6 +272,7 @@ export default {
                     options: {
                         legend: {
                             position: 'bottom',
+                            display: dispalyLable,
                         },
                         responsive: true,
                     }
