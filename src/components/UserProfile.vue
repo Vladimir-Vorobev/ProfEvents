@@ -187,7 +187,12 @@ export default {
                 schooladmin: 'Школьный Администратор',
                 admin: 'Администратор',
             }
-            this.person_role = roles[this.person_role]
+            if(this.person_role == 'school-admin'){
+                this.person_role = roles['schooladmin']
+            }
+            else{
+                this.person_role = roles[this.person_role]
+            }
             let personDate = data.age
             personDate = personDate.split('-')
             personDate = new Date(personDate[0], personDate[1]-1, personDate[2]);
