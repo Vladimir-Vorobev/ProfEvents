@@ -22,6 +22,10 @@
                         <hr style="margin-top: 3px;">
                         <div class="info">
                             <div class="row">
+                                <div class="col-6 text-muted">Роль: </div>
+                                <div class="col-6">{{person_role}}</div>
+                            </div>
+                            <div class="row">
                                 <div class="col-6 text-muted">Дата рождения: </div>
                                 <div class="col-6">{{person_date}}</div>
                             </div>
@@ -153,6 +157,7 @@ export default {
         person_school: ' ',
         person_email: '',
         studentEvents: [],
+        person_role: '',
       }
     },
     beforeMount(){ 
@@ -174,6 +179,15 @@ export default {
             if(data.email == undefined) window.location.pathname = "/login"
             this.person_name = data.name + ' ' + data.surname
             this.person_email = data.email
+            this.person_role = data.role
+            let roles = {
+                user: 'Пользователь',
+                student: 'Ученик',
+                teacher: 'Учитель',
+                schooladmin: 'Школьный Администратор',
+                admin: 'Администратор',
+            }
+            this.person_role = roles[this.person_role]
             let personDate = data.age
             personDate = personDate.split('-')
             personDate = new Date(personDate[0], personDate[1]-1, personDate[2]);
