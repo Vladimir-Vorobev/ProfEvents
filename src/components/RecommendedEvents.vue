@@ -148,10 +148,10 @@
                         <li class="list-group-item">
                             <div class="row">
                                 <div class="col-12 col-md-6 backBtn">
-                                    <a href="#" class="btn btn-secondary" style="width: 80%;">Назад</a>
+                                    <button class="btn btn-secondary" style="width: 80%;">Назад</button>
                                 </div>
                                 <div class="col-12 col-md-6">
-                                    <a href="#" class="btn btn-success" style="width: 80%;">Вперед</a>
+                                    <button class="btn btn-success" style="width: 80%;">Вперед</button>
                                 </div>
                             </div>
                         </li>
