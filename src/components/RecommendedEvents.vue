@@ -1,7 +1,7 @@
 <template>
     <div class="main">
         <div class="container warp">
-            <h4>Выберите одно из двух, то что вам больше нравиться</h4>
+            <!-- <h4>Выберите одно из двух, то что вам больше нравиться</h4>
             <form class="formb">
                 <div class="chooseb">
                     <div class="custom-control custom-radio">
@@ -124,7 +124,43 @@
                 </div>
 
                 <input class="btn btn-outline-primary" @click="Search()" type="submit" value="Завершить тест">
-            </form>
+            </form> -->
+            <div class="card tblock">
+                <div class="card-body" style="padding: 27px 0px 0px">
+                    <h5 class="card-title" style="font-weight: 600;">Вопрос</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" style="text-align: left">
+                            <div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" name="tenth" id="1" class="custom-control-input" value="medicine">
+                                    <label class="custom-control-label" for="1">Ответ 1</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" name="tenth" id="2" class="custom-control-input" value="medicine">
+                                    <label class="custom-control-label" for="2">Ответ 2</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" name="tenth" id="3" class="custom-control-input" value="medicine">
+                                    <label class="custom-control-label" for="3">Ответ 3</label>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-12 col-md-6 backBtn">
+                                    <button class="btn btn-secondary" style="width: 80%;" @click="previousQuestion">Назад</button>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <button class="btn btn-success" style="width: 80%;" @click="nextQuestion">Вперед</button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-footer text-muted">
+                    1/10
+                </div>
+            </div>
         </div>
         <div class="footer"><Footer></Footer></div> 
     </div>
@@ -183,7 +219,19 @@ export default {
                 });
                 //document.location.href = '/all-events'
             }
-        }
+        },
+        previousQuestion(){
+            this.$swal({
+                icon: 'error',
+                text: 'В разработке!'
+            });
+        },
+        nextQuestion(){
+            this.$swal({
+                icon: 'error',
+                text: 'В разработке!'
+            });
+        },
     }
 }            
 </script>
@@ -192,7 +240,7 @@ export default {
 .warp{
     flex: 1 0 auto;
     padding-top: 110px !important;
-    background-color: #fff;
+    /* background-color: #fff; */
     padding: 0px 30px;
 }
 .footer{
@@ -220,4 +268,15 @@ export default {
     border: 1.5px solid #818181; /* Белая рамка */
     border-radius: 10px; /* Радиус скругления */
 }
+.tblock{
+    position: fixed;
+    width: 80%;
+    top: 25%;
+    left: 10%;
+}
+@media (max-width: 767px) {  
+    .backBtn{
+        margin-bottom: 0.5em
+    }
+}   
 </style>

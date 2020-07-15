@@ -22,6 +22,10 @@
                         <hr style="margin-top: 3px;">
                         <div class="info">
                             <div class="row">
+                                <div class="col-6 text-muted">Роль: </div>
+                                <div class="col-6">{{person_role}}</div>
+                            </div>
+                            <div class="row">
                                 <div class="col-6 text-muted">Дата рождения: </div>
                                 <div class="col-6">{{person_date}}</div>
                             </div>
@@ -52,10 +56,40 @@
             <div class="person_statistic row" style="padding: 15px 15px">
                 <div class="pblock">
                     <h4>Статистика:</h4>
-                    сюда статистику
+                    <div style="text-align: center;"><i class='fa fa-spinner fa-pulse fa-3x' :id='person_email + "x"' style="display: inline-block;"></i></div>
+                    <form :id="'form' + person_email" class="row">
+                        <!-- <input class="radio" :name="'donaught' + person_email" type="radio" value="donaught" checked @click="changeInfo(person_email, 'donaught')"> Круговая диаграмма
+                        <input class="radio" :name="'bar' + person_email" type="radio" value="bar" @click="changeInfo(person_email, 'bar')"> Столбчатая диаграмма -->
+                        <div class="form-check col-12 col-md-6">
+                            <input id="donaughtCheck" class="radio" :name="'donaught' + person_email" type="radio" value="donaught" checked @click="changeInfo(person_email, 'donaught')">
+                            <label class="form-check-label" for="donaughtCheck">
+                               Круговая диаграмма
+                            </label>
+                        </div>
+                        <div class="form-check col-12 col-md-6">
+                            <input class="radio" id="barCheck" :name="'bar' + person_email" type="radio" value="bar" @click="changeInfo(person_email, 'bar')">
+                            <label class="form-check-label" for="barCheck">
+                                Столбчатая диаграмма
+                            </label>
+                        </div>
+                        <!-- <input class="radio" :name="'full' + person_email" type="radio" value="full" @click="changeInfo(person_email)"> Полная статистика -->
+                    </form>
+                    <div class="chart-container" :id="'chartDiv' + person_email" style="display: none;"><canvas :id="'chart' + person_email"></canvas></div>
+                    <div class="chart-container" :id="'chartDiv2' + person_email" style="display: none;"><canvas :id="'chart2' + person_email"></canvas></div>
+                    <!-- <div :id="'chartDiv3' + person_email" style="display: none;">
+                        <div v-if="studentEvents[person_email] != undefined && studentEvents[person_email].length == 0"><h3>Нет мероприятий</h3></div>
+                        <div class="card" v-for="item3 in studentEvents[person_email]" :key="item3.value">
+                            <div class="card-header">{{item3.date}}</div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <h5 class="card-title col-11">{{item3.name}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
                 </div>
             </div>
-            <div class="person_events row" style="padding: 15px 15px 30px">
+            <div class="person_events" style="padding: 15px 0px 30px">
                 <div class="pblock">
                     <h4>Ближайшие мероприятия:</h4>
                     <div class="row">
@@ -73,6 +107,33 @@
                     </div>
                 </div>
             </div>
+            <div class="person_events_archive" style="padding: 15px 0px 30px">
+                <div class="pblock">
+                    <h4>Архив мероприятий:</h4>
+                    <div class="row">
+                        <div class="col-12 col-md-5">
+                            <h5>Направеление:</h5> 
+                        </div>
+                        <div class="col-12 col-md-7">
+                            <select class="custom-select custom-select-sm mb-3 events" style="width: 100%;">
+                                <option value="" selected>Все</option>
+                                <option value="">IT</option>
+                                <option value="">Инженерия</option>
+                                <option value="">Сфера услуг</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div v-if="studentEvents[person_email] != undefined && studentEvents[person_email].length == 0"><h3>Нет мероприятий</h3></div>
+                    <div class="card" v-for="item3 in studentEvents[person_email]" :key="item3.value" style="margin-bottom: 1em">
+                        <div class="card-header">{{item3.date}}</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <h5 class="card-title col-11">{{item3.name}}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="footer"><Footer></Footer></div> 
     </div>
@@ -81,7 +142,7 @@
 <script>
 import Footer from './footer.vue'
 import Vue from 'vue';
-
+import Chart from 'chart.js'
 export default {
     name: 'UserProfile',
     components: { Footer },
@@ -94,10 +155,12 @@ export default {
         person_date: ' ',
         person_grade: ' ',
         person_school: ' ',
+        person_email: '',
+        studentEvents: [],
+        person_role: '',
       }
     },
-    beforeMount(){
-        if(this.email == '') window.location.pathname = "/login"
+    beforeMount(){ 
         fetch(this.$store.state.serverIp+'/api/getIdInformation', {
             method: 'POST',
             headers: {id: this.id, email: this.email, sessionid: this.SessionID},
@@ -113,7 +176,23 @@ export default {
                 // window.location.reload()
                 console.log("err 310")
             }
+            if(data.email == undefined) window.location.pathname = "/login"
             this.person_name = data.name + ' ' + data.surname
+            this.person_email = data.email
+            this.person_role = data.role
+            let roles = {
+                user: 'Пользователь',
+                student: 'Ученик',
+                teacher: 'Учитель',
+                schooladmin: 'Школьный Администратор',
+                admin: 'Администратор',
+            }
+            if(this.person_role == 'school-admin'){
+                this.person_role = roles['schooladmin']
+            }
+            else{
+                this.person_role = roles[this.person_role]
+            }
             let personDate = data.age
             personDate = personDate.split('-')
             personDate = new Date(personDate[0], personDate[1]-1, personDate[2]);
@@ -135,6 +214,7 @@ export default {
             else{
                 this.person_school = 'Не указана'
             }
+            this.showInfo()
         })
         .catch(err => {
             console.log(err)
@@ -163,7 +243,98 @@ export default {
         },
         GoToEditor(){
             this.$router.push({ path: `/user-profile-edit` })
-        }
+        },
+        showInfo(){
+            let SessionID = this.$store.getters.SessionID
+            let user_email = this.email
+            fetch(this.$store.state.serverIp+'/api/getCheckedEvents', {
+                method: 'get',
+                headers: {email: user_email, studEmail: this.person_email, sessionid: SessionID},
+            })
+            .then(response => {
+                console.log("res", response)
+                return response.json()
+            })
+            .then(datan => {
+                let statistics = datan.stat
+                this.$set(this.studentEvents, this.person_email, datan.checkedEvents)
+                let ctx = document.getElementById('chart' + this.person_email)
+                let ctx2 = document.getElementById('chart2' + this.person_email)
+                makeChart('doughnut', [statistics.service, statistics.programming, 0, 0,  statistics.engeniring, 0], ctx)
+                makeChart('bar', [statistics.service, statistics.programming, 0, 0,  statistics.engeniring, 0], ctx2)
+                document.getElementById(this.person_email + "x").style.display = 'none'
+                document.getElementById('chartDiv' + this.person_email).style.display = 'block'
+            })
+            .catch(err => {
+                console.log(err)
+            })
+            function makeChart(type, data, place){
+                let dispalyLable = true
+                if (document.documentElement.clientWidth < 768){
+                    dispalyLable = false 
+                }
+                let myChart = new Chart(place, {
+                    type: type,
+                    data: {
+                        labels: ['Сфера услуг', 'IT', 'Творчество и Дизайн', 'Строительство', 'Инженерные технологии', 'Транспорт и логистика'],
+                        datasets: [{
+                            label: '# of Votes',
+                            data: data,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.5)',
+                                'rgba(54, 162, 235, 0.5)',
+                                'rgba(255, 206, 86, 0.5)',
+                                'rgba(75, 192, 192, 0.5)',
+                                'rgba(153, 102, 255, 0.5)',
+                                'rgba(255, 159, 64, 0.5)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1,
+                            hoverBorderWidth: 5,
+                        }]
+                    },
+                    options: {
+                        legend: {
+                            position: 'bottom',
+                            display: dispalyLable,
+                        },
+                        responsive: true,
+                    }
+                });
+                console.log(myChart)
+            }
+        },
+        changeInfo(email, chart){
+            let form = document.getElementById('form' + email)
+            if(chart == 'donaught'){
+                form['bar' + email].checked = false
+                // form['full' + email].checked = false
+                document.getElementById('chartDiv' + email).style.display = 'block'
+                document.getElementById('chartDiv2' + email).style.display = 'none'
+                // document.getElementById('chartDiv3' + email).style.display = 'none'
+            }
+            else if(chart == 'bar'){
+                form['donaught' + email].checked = false
+                // form['full' + email].checked = false
+                document.getElementById('chartDiv' + email).style.display = 'none'
+                document.getElementById('chartDiv2' + email).style.display = 'block'
+                // document.getElementById('chartDiv3' + email).style.display = 'none'
+            }
+            // else{
+            //     form['donaught' + email].checked = false
+            //     form['bar' + email].checked = false
+            //     document.getElementById('chartDiv' + email).style.display = 'none'
+            //     document.getElementById('chartDiv2' + email).style.display = 'none'
+            //     document.getElementById('chartDiv3' + email).style.display = 'block'
+            // }
+        },
     },
 }
 </script>
@@ -199,21 +370,21 @@ export default {
     padding: 15px 20px;
 }
 .avatar{
-    min-width: 310px;
-    min-height: 310px;
+    /* object-fit: fill; fill or contain */
+    display: block;
+    /* max-width: 100%;
+    max-height: 100%; */
     max-width: 310px;
     max-height: 310px;
-}
-.avatar img{
-    /* object-fit: fill; fill or contain */
-    /* max-width: 310px;
-    max-height: 310px; */
-    display: block;
-    max-width: 100%;
-    max-height: 100%;
     min-width: 310px;
     min-height: 310px;
 }
+.avatar img{
+    max-width: 100%;
+    max-height: 100%;
+    min-height: 310px;
+}
+
 
 .info{
     text-align: left;

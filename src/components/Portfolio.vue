@@ -6,7 +6,7 @@
                 <h5 class="card-title">Добавить в портфолио:</h5>
                 <div class="input-group">
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+                        <input type="file" accept="image/*" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
                         <label class="custom-file-label" for="inputGroupFile04" style="text-align: left"></label>
                     </div>
                     <div class="input-group-append">
@@ -15,7 +15,7 @@
                 </div>
             </div>
         </div>
-        <div>
+        <div class="cards">
             <div class="card" >
                 <img src="./../assets/for_main.jpg" class="card-img-top">
                 <div class="card-body">

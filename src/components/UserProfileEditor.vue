@@ -77,6 +77,12 @@
                         </div>
                     </div>
                 </div>
+                <div class="input-group" style="margin-bottom: 1em">
+                    <div name="avatar" class="custom-file">
+                        <input name="img_for_avatar" type="file" accept="image/*" method="post" enctype="multipart/form-data" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+                        <label class="custom-file-label" for="inputGroupFile04" style="text-align: left"></label>
+                    </div>
+                </div>
                 <div class="form-group row">
                     <div class="col-12"> 
                         <select name="schoolType" class="custom-select custom-select-lg mb-3 schoolType">
@@ -89,8 +95,13 @@
                 </div>
                 <h4>Данные для входа:</h4>
                 <div class="form-group row">
-                <div class="col-12"> 
-                    <input class="form-control email" name="email" placeholder="example@gmail.com">
+                <div class="col-12 col-md-6">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon7">Email</span>
+                        </div>
+                        <input type="text" name="email" class="form-control email" aria-describedby="basic-addon7">
+                    </div>
                 </div>
                 </div>
                 <div class="form-group row">
@@ -194,6 +205,9 @@ export default {
             let schoolType = form.elements.schoolType.value
             let class_number = form.elements.class_number.value
             let simvol = form.elements.simvol.value
+            let filedata = document.querySelector(".custom-file-input");
+            let file = filedata.files[0]
+            console.log(file)
             if(password != password2){
             //alert("Пароли не совпадают")
             this.$swal({
@@ -235,9 +249,26 @@ export default {
                 if(schoolType.trim() != '' && schoolType != "Тип учебного заведения") dataq.schoolType = schoolType
                 if(class_number.trim() != '') dataq.class_number = class_number
                 if(simvol.trim() != '') dataq.simvol = simvol
+                if(file != undefined){
+                    fetch(this.$store.state.serverIp+'/api/uploadFile', {
+                        method: 'POST',
+                        headers: {email: email, sessionid: this.SessionID, type: 'avatar'},
+                        file: file,
+                    })
+                    .then(response => {
+                        console.log("res", response)
+                        return response.json()
+                    })
+                    .then(data => {
+                        console.log(data)
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
+                }
                 needle.post(this.$store.state.serverIp+'/api/updateInformation', {email: this.email, sessionid: this.SessionID, update: dataq}, {"json": true}, function(err){
                     if (err) console.log(err)
-                    window.location.reload()
+                    //window.location.reload()
                 })
             }
         },
@@ -278,5 +309,7 @@ export default {
     margin-bottom: 0px;
 }
 
-
+.custom-file-input:lang(ru)~.custom-file-label::after {
+    content: "Выбрать фото для аватара";
+}
 </style>
