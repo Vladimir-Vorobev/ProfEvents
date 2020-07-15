@@ -161,7 +161,7 @@
                                                     <div class="col-1 ar-collapse" :id='item.email'></div>
                                                 </div>
                                                 <div :id='item.email + "s"' style="display: none;">
-                                                    <div v-for="item2 in students[item.email]" :key="item2.student" :class="item2.email">
+                                                    <div v-for="item2 in students[item.email][0]" :key="item2.student" :class="item2.email">
                                                         <a class="person" href="#" @click="showInfo(item2.email)">
                                                             <div class="person_box a">
                                                                 <div class="name row">
@@ -529,15 +529,16 @@ export default {
                             //document.getElementById(email).style.display = 'none'
                             let students = [{student: 'Петя', email: 'v11ru'}, {student: 'Вася', email: 'v12ru'}, {student: 'Дима', email: 'v13ru'}]
                             console.log(this.students)
-                            for(let i = 0; i < 3; i++){
-                                this.students[email].push(students[i])
-                            }
+                            this.students[email].push(students)
                             console.log(this.students)
                         }
                         document.getElementById(email + 's').style.display = 'block'
                     } 
                 }
             }
+            this.$nextTick(function () {
+                console.log(this.$el.textContent) // => 'обновлено'
+            })
         },
         file(){
             let data = []
