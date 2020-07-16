@@ -45,8 +45,16 @@
                         <p class="card-text"><i class="far fa-clock"></i> {{item.time}}</p>
                         <p class="card-text"><i class="far fa-user"></i> {{item.places}}</p>
                         <p class="card-text">Тип: {{item.type}}</p>
-                        <p><button class="btn btn-outline-info"  @click="add(item)">Собираюсь посетить</button></p>
-                        <a :href="item.link" class="btn btn-primary" @click="setScroll()">Перейти к мероприятию</a>
+                        <!-- <p><button class="btn btn-outline-info"  @click="add(item)">Собираюсь посетить</button></p>
+                        <a :href="item.link" class="btn btn-primary" @click="setScroll()">Перейти к мероприятию</a> -->
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <button class="btn btn-outline-info"  @click="add(item)">Собираюсь посетить</button>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <a :href="item.link" class="btn btn-primary" @click="setScroll()">Перейти к мероприятию</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
         </div>
