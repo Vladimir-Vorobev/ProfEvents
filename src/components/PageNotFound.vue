@@ -68,7 +68,8 @@ export default {
 .page_404  img{ width:100%;}
 
 .four_zero_four_bg{
-    background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+    /* background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif); */
+    background-image: url(./../assets/dribbble_1.gif);
     height: 400px;
     background-position: center;
  }
