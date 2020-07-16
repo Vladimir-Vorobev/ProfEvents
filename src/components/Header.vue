@@ -5,7 +5,11 @@
                 <a class="navbar-brand" ref="home" style="color: #f23333">Profevents</a>
             </router-link>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <div class="anim-bar-dark anim-2">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </div>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
@@ -75,6 +79,7 @@
 
 
 <script>
+import $ from 'jquery'
 export default {
     name: 'Header',
     data(){
@@ -132,6 +137,19 @@ export default {
     }
 
 }
+$(document).ready(function () {
+    //animated-bootstrap-hamburger
+    $('.navbar-collapse').on('click', function () {
+        $('.navbar-collapse').collapse('hide');
+        $('.navbar-toggler').removeClass("active");
+    });
+
+    $(".navbar-toggler").on("click", function () {
+        $(this).toggleClass("active");
+    });
+    //---------------------
+
+});
 </script>
 
 <style scoped>
