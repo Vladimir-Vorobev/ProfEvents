@@ -140,14 +140,4 @@ body {
 body {
   margin: 0px;
 }
-@media (max-width: 992px) {  
-    .scrollup{
-        right: 15px; /* расстояние от правого края */
-    }
-}
-@media (min-width: 993px) {  
-    .scrollup{
-        right: 60px; /* расстояние от правого края */
-    }
-}
 </style>
