@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <page-header></page-header>
     <router-view></router-view>
-    <div style="display:none;" class="scrollup"><i class="fa fa-chevron-up"></i></div>
+    <div style="display:none;" class="btn-scrollup-gradient-blue scrollup"><i class="fa fa-chevron-up"></i></div>
   </div>
 </template>
 
@@ -149,23 +149,5 @@ body {
     .scrollup{
         right: 60px; /* расстояние от правого края */
     }
-}
-.scrollup {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    position: fixed;
-    color: #ffffff;
-    bottom: 30px;
-    padding: 7px 10px;
-    cursor: pointer;
-    text-align: center;
-    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.2);
-    background: linear-gradient(40deg, #45cafc, #303f9f);
-}
-.scrollup:hover {
-  background-color: rgb(218, 218, 218); /* цвет заднего фона при наведении */
-  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.4);
-  filter: opacity(90%);
 }
 </style>
