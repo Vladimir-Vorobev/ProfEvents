@@ -24,7 +24,7 @@
                         </router-link>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #000 !important">
+                        <a class="nav-link dropdown-toggle useful" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #000 !important">
                             Полезное
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -135,8 +135,10 @@ export default {
         //this.$router.push({ path: `/profile` })
       },
       animate_navbar(){
-          document.querySelector('.navbar-collapse').classList.remove('show')
-          document.querySelector('.navbar-toggler').classList.remove('active')
+          if(event.target.classList.contains('useful') == false){
+                document.querySelector('.navbar-collapse').classList.remove('show')
+                document.querySelector('.navbar-toggler').classList.remove('active')
+          }
       },
       animate_toggler(){
           document.querySelector('.navbar-toggler').classList.toggle('active')
