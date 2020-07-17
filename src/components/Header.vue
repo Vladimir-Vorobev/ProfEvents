@@ -4,14 +4,14 @@
             <router-link to="/" class="router-link">
                 <a class="navbar-brand" ref="home" style="color: #f23333">Profevents</a>
             </router-link>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button @click="animate_toggler()" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <div class="anim-bar-dark anim-2">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </div>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent" @click="animate_navbar()">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <router-link to="/it-events" class="router-link">
@@ -79,7 +79,7 @@
 
 
 <script>
-import $ from 'jquery'
+// import $ from 'jquery'
 export default {
     name: 'Header',
     data(){
@@ -133,23 +133,30 @@ export default {
         let userId = this.userId
         this.$router.push({ path: `/user-profile/${userId}` })
         //this.$router.push({ path: `/profile` })
-      }
+      },
+      animate_navbar(){
+          document.querySelector('.navbar-collapse').classList.remove('show')
+          document.querySelector('.navbar-toggler').classList.remove('active')
+      },
+      animate_toggler(){
+          document.querySelector('.navbar-toggler').classList.toggle('active')
+      },
     }
 
 }
-$(document).ready(function () {
-    //animated-bootstrap-hamburger
-    $('.navbar-collapse').on('click', function () {
-        $('.navbar-collapse').collapse('hide');
-        $('.navbar-toggler').removeClass("active");
-    });
+// $(document).ready(function () {
+//     //animated-bootstrap-hamburger
+//     $('.navbar-collapse').on('click', function () {
+//         $('.navbar-collapse').collapse('hide');
+//         $('.navbar-toggler').removeClass("active");
+//     });
 
-    $(".navbar-toggler").on("click", function () {
-        $(this).toggleClass("active");
-    });
-    //---------------------
+//     $(".navbar-toggler").on("click", function () {
+//         $(this).toggleClass("active");
+//     });
+//     //---------------------
 
-});
+// });
 </script>
 
 <style scoped>
