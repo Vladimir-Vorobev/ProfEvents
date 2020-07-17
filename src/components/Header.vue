@@ -24,10 +24,10 @@
                         </router-link>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle useful" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #000 !important">
+                        <a class="nav-link dropdown-toggle useful" @mouseover="show_useful()" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #000 !important">
                             Полезное
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" @mouseleave="show_useful()">
                             <router-link to="/literature" class="dropdown-item">
                                 <a ref="Literature">Литература</a>
                             </router-link>
@@ -143,6 +143,10 @@ export default {
       animate_toggler(){
           document.querySelector('.navbar-toggler').classList.toggle('active')
       },
+      show_useful(){
+          document.querySelector('.useful').classList.toggle('show')
+          document.querySelector('.dropdown-menu').classList.toggle('show')
+      }
     }
 
 }
@@ -177,5 +181,8 @@ export default {
     -moz-user-select: none;
     -khtml-user-select: none;
     -webkit-user-select: none;
+}
+.useful:hover{
+
 }
 </style>
