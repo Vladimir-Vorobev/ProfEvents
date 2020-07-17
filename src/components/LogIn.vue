@@ -18,10 +18,10 @@
                         </span>
                     </div>
                 </div>
-                <div class="form-group row"> 
-                    <button class="btn btn-primary btn-lg" @click="loginUser()">Войти</button>
+                <div class="form-row"> 
+                    <button class="btn btn-rounded-blue btn-lg" @click="loginUser()">Войти</button>
                 </div>
-            </form>
+            </form> <br>
             <p><router-link to="/registration" class="link">Еще нет аккаунта? Зарегистрируйтесь</router-link></p>
         </div>
         <div class="footer"><Footer></Footer></div> 
