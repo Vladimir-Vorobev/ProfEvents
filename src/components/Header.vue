@@ -164,24 +164,9 @@ $(document).ready(function () {
 .dropdown-item:active {
   background: #f1f2f3 !important;
   outline: 0px;
-   /**
-   * Для эксплорера
-   */
     -ms-user-select: none;
-
-    /**
-    * Для мозилы
-    */
     -moz-user-select: none;
-
-    /**
-    * Для конкверора
-    */
     -khtml-user-select: none;
-
-    /**
-    * Для Сафари и Хрома
-    */
     -webkit-user-select: none;
 }
 </style>
