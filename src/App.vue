@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <page-header></page-header>
     <router-view></router-view>
-    <div style="display:none;" class="btn-scrollup-gradient-blue scrollup"><i class="fa fa-chevron-up"></i></div>
+    <div style="display:none;" class="btn-scrollup-gradient-aqua scrollup"><i class="fa fa-chevron-up"></i></div>
   </div>
 </template>
 
