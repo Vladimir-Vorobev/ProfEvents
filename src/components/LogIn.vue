@@ -1,7 +1,7 @@
 <template>
     <div class="main">
         <div class="container warp">
-            <form class="formbox">
+            <form class="formbox needs-validation" novalidate>
                 <h2>Войти</h2>
                 <div class="form-group" style="text-align: left">
                     <label for="exampleInputEmail1">Email адресс</label>
