@@ -32,9 +32,9 @@
                     <input type="password" class="form-control" name="code" placeholder="1234567">
                 </div>
                 <div class="row"> 
-                    <button class="btn btn-primary btn-lg" @click="addUser()">Зарегистрироваться</button>
+                    <button class="btn btn-rounded-blue btn-lg" @click="addUser()">Зарегистрироваться</button>
                 </div>
-            </form>
+            </form> <br>
         </div>
         <div class="footer"><Footer></Footer></div> 
     </div>
