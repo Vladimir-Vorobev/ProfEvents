@@ -14,7 +14,7 @@
                 <div class="form-group row">
                     <label for="exampleInputEmail1">Email адресс</label>
                     <input type="email" name="email" class="form-control" placeholder="example@gmail.com" required>
-                    </div>
+                </div>
                 <div class="form-group row">
                     <label for="exampleInputEmail1">Дата рождения</label>
                     <input type="date" class="form-control" name="age" min="1900-01-01" required>
