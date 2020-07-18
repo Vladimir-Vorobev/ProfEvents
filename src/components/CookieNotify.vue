@@ -10,7 +10,7 @@
 <script>
 export default {
   name: 'CookieNotify',
-  beforeMount(){
+  mounted(){
     let cookieDate = localStorage.getItem('cookieDate');
     let cookieNotification = document.getElementById('cookie_notification');
     // Если записи про кукисы нет или она просрочена на 1 год, то показываем информацию про кукисы
