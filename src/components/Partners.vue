@@ -1,7 +1,7 @@
 <template>
     <div class="main">
         <div class="container warp">
-            Если Вы являетесь директором или уполномоченным представителем учебного заведения и хотите стать нашем партнером, заполните эту форму, прикрепив подтверждающие документы из перечня
+            <span>Если Вы являетесь директором или уполномоченным представителем учебного заведения и хотите стать нашем партнером, заполните эту форму, прикрепив подтверждающие документы из перечня</span>
             <div class="form-group row" style="margin-top: 1em">
                 <!-- <label for="exampleInputEmail1" style="text-align: left">Email адресс</label> -->
                 <div class="col-12">
@@ -26,9 +26,11 @@
                     </select>
                 </div>
             </div>
-            <form enctype="multipart/form-data" method="post" name='file' id='form'>
-            Файлы, подтверждающие Ваши права
-                <input type="file" multiple accept="image/*"> 
+            <form class="row" enctype="multipart/form-data" method="post" name='file' id='form'>
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">Файлы, подтверждающие Ваши права</label>
+                    <input type="file" multiple accept="image/*" class="form-control-file" id="exampleFormControlFile1">
+                </div>
             </form> 
             <div class="row"> 
                 <button class="btn btn-primary btn-lg" @click="addUser()">Подать заявку</button>
