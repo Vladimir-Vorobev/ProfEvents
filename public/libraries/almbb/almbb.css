@@ -95,53 +95,117 @@
   cursor: pointer;
   border-radius: 50%
 }
+.btn-rounded-almbb-danger,
+.btn-rounded-almbb-info,
+.btn-rounded-almbb-success,
+.btn-rounded-almbb-warning,
 .btn-rounded-blue,
+.btn-rounded-danger-dark,
+.btn-rounded-elegant,
+.btn-rounded-elegant-dark,
 .btn-rounded-gradient-aqua,
 .btn-rounded-gradient-blue,
 .btn-rounded-gradient-peach,
 .btn-rounded-indigo,
+.btn-rounded-info-dark,
 .btn-rounded-light-blue,
 .btn-rounded-light-green,
 .btn-rounded-light-yellow,
-.btn-rounded-red-orange {
+.btn-rounded-red-orange,
+.btn-rounded-special,
+.btn-rounded-special-dark,
+.btn-rounded-stylish,
+.btn-rounded-stylish-dark,
+.btn-rounded-success-dark,
+.btn-rounded-unique,
+.btn-rounded-unique-dark,
+.btn-rounded-warning-dark {
   outline: 0;
   border-radius: 5em!important;
   -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.2);
   box-shadow: 0 2px 5px 0 rgba(0,0,0,.2);
   color: #fff
 }
+.btn-rounded-almbb-danger:hover,
+.btn-rounded-almbb-info:hover,
+.btn-rounded-almbb-success:hover,
+.btn-rounded-almbb-warning:hover,
 .btn-rounded-blue:hover,
+.btn-rounded-danger-dark:hover,
+.btn-rounded-elegant-dark:hover,
+.btn-rounded-elegant:hover,
 .btn-rounded-gradient-aqua:hover,
 .btn-rounded-gradient-blue:hover,
 .btn-rounded-gradient-peach:hover,
 .btn-rounded-indigo:hover,
+.btn-rounded-info-dark:hover,
 .btn-rounded-light-blue:hover,
 .btn-rounded-light-green:hover,
 .btn-rounded-light-yellow:hover,
-.btn-rounded-red-orange:hover {
+.btn-rounded-red-orange:hover,
+.btn-rounded-special-dark:hover,
+.btn-rounded-special:hover,
+.btn-rounded-stylish-dark:hover,
+.btn-rounded-stylish:hover,
+.btn-rounded-success-dark:hover,
+.btn-rounded-unique-dark:hover,
+.btn-rounded-unique:hover,
+.btn-rounded-warning-dark:hover {
   outline: 0;
   -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4);
   box-shadow: 0 2px 10px 0 rgba(0,0,0,.4);
   color: #fff
 }
+.btn-check:focus + .btn-rounded-almbb-danger,
+.btn-check:focus + .btn-rounded-almbb-info,
+.btn-check:focus + .btn-rounded-almbb-success,
+.btn-check:focus + .btn-rounded-almbb-warning,
 .btn-check:focus + .btn-rounded-blue,
+.btn-check:focus + .btn-rounded-danger-dark,
+.btn-check:focus + .btn-rounded-elegant,
+.btn-check:focus + .btn-rounded-elegant-dark,
 .btn-check:focus + .btn-rounded-gradient-aqua,
 .btn-check:focus + .btn-rounded-gradient-blue,
 .btn-check:focus + .btn-rounded-gradient-peach,
 .btn-check:focus + .btn-rounded-indigo,
+.btn-check:focus + .btn-rounded-info-dark,
 .btn-check:focus + .btn-rounded-light-blue,
 .btn-check:focus + .btn-rounded-light-green,
 .btn-check:focus + .btn-rounded-light-yellow,
 .btn-check:focus + .btn-rounded-red-orange,
+.btn-check:focus + .btn-rounded-special,
+.btn-check:focus + .btn-rounded-special-dark,
+.btn-check:focus + .btn-rounded-stylish,
+.btn-check:focus + .btn-rounded-stylish-dark,
+.btn-check:focus + .btn-rounded-success-dark,
+.btn-check:focus + .btn-rounded-unique,
+.btn-check:focus + .btn-rounded-unique-dark,
+.btn-check:focus + .btn-rounded-warning-dark,
+.btn-rounded-almbb-danger:focus,
+.btn-rounded-almbb-info:focus,
+.btn-rounded-almbb-success:focus,
+.btn-rounded-almbb-warning:focus,
 .btn-rounded-blue:focus,
+.btn-rounded-danger-dark:focus,
+.btn-rounded-elegant-dark:focus,
+.btn-rounded-elegant:focus,
 .btn-rounded-gradient-aqua:focus,
 .btn-rounded-gradient-blue:focus,
 .btn-rounded-gradient-peach:focus,
 .btn-rounded-indigo:focus,
+.btn-rounded-info-dark:focus,
 .btn-rounded-light-blue:focus,
 .btn-rounded-light-green:focus,
 .btn-rounded-light-yellow:focus,
-.btn-rounded-red-orange:focus {
+.btn-rounded-red-orange:focus,
+.btn-rounded-special-dark:focus,
+.btn-rounded-special:focus,
+.btn-rounded-stylish-dark:focus,
+.btn-rounded-stylish:focus,
+.btn-rounded-success-dark:focus,
+.btn-rounded-unique-dark:focus,
+.btn-rounded-unique:focus,
+.btn-rounded-warning-dark:focus {
   outline: 0;
   -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
   box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
@@ -149,91 +213,227 @@
   filter: opacity(85%);
   color: #fff
 }
+.active.btn-rounded-almbb-danger,
+.active.btn-rounded-almbb-info,
+.active.btn-rounded-almbb-success,
+.active.btn-rounded-almbb-warning,
 .active.btn-rounded-blue,
+.active.btn-rounded-danger-dark,
+.active.btn-rounded-elegant,
+.active.btn-rounded-elegant-dark,
 .active.btn-rounded-gradient-aqua,
 .active.btn-rounded-gradient-blue,
 .active.btn-rounded-gradient-peach,
 .active.btn-rounded-indigo,
+.active.btn-rounded-info-dark,
 .active.btn-rounded-light-blue,
 .active.btn-rounded-light-green,
 .active.btn-rounded-light-yellow,
 .active.btn-rounded-red-orange,
+.active.btn-rounded-special,
+.active.btn-rounded-special-dark,
+.active.btn-rounded-stylish,
+.active.btn-rounded-stylish-dark,
+.active.btn-rounded-success-dark,
+.active.btn-rounded-unique,
+.active.btn-rounded-unique-dark,
+.active.btn-rounded-warning-dark,
+.btn-check:active + .btn-rounded-almbb-danger,
+.btn-check:active + .btn-rounded-almbb-info,
+.btn-check:active + .btn-rounded-almbb-success,
+.btn-check:active + .btn-rounded-almbb-warning,
 .btn-check:active + .btn-rounded-blue,
+.btn-check:active + .btn-rounded-danger-dark,
+.btn-check:active + .btn-rounded-elegant,
+.btn-check:active + .btn-rounded-elegant-dark,
 .btn-check:active + .btn-rounded-gradient-aqua,
 .btn-check:active + .btn-rounded-gradient-blue,
 .btn-check:active + .btn-rounded-gradient-peach,
 .btn-check:active + .btn-rounded-indigo,
+.btn-check:active + .btn-rounded-info-dark,
 .btn-check:active + .btn-rounded-light-blue,
 .btn-check:active + .btn-rounded-light-green,
 .btn-check:active + .btn-rounded-light-yellow,
 .btn-check:active + .btn-rounded-red-orange,
+.btn-check:active + .btn-rounded-special,
+.btn-check:active + .btn-rounded-special-dark,
+.btn-check:active + .btn-rounded-stylish,
+.btn-check:active + .btn-rounded-stylish-dark,
+.btn-check:active + .btn-rounded-success-dark,
+.btn-check:active + .btn-rounded-unique,
+.btn-check:active + .btn-rounded-unique-dark,
+.btn-check:active + .btn-rounded-warning-dark,
+.btn-check:checked + .btn-rounded-almbb-danger,
+.btn-check:checked + .btn-rounded-almbb-info,
+.btn-check:checked + .btn-rounded-almbb-success,
+.btn-check:checked + .btn-rounded-almbb-warning,
 .btn-check:checked + .btn-rounded-blue,
+.btn-check:checked + .btn-rounded-danger-dark,
+.btn-check:checked + .btn-rounded-elegant,
+.btn-check:checked + .btn-rounded-elegant-dark,
 .btn-check:checked + .btn-rounded-gradient-aqua,
 .btn-check:checked + .btn-rounded-gradient-blue,
 .btn-check:checked + .btn-rounded-gradient-peach,
 .btn-check:checked + .btn-rounded-indigo,
+.btn-check:checked + .btn-rounded-info-dark,
 .btn-check:checked + .btn-rounded-light-blue,
 .btn-check:checked + .btn-rounded-light-green,
 .btn-check:checked + .btn-rounded-light-yellow,
 .btn-check:checked + .btn-rounded-red-orange,
+.btn-check:checked + .btn-rounded-special,
+.btn-check:checked + .btn-rounded-special-dark,
+.btn-check:checked + .btn-rounded-stylish,
+.btn-check:checked + .btn-rounded-stylish-dark,
+.btn-check:checked + .btn-rounded-success-dark,
+.btn-check:checked + .btn-rounded-unique,
+.btn-check:checked + .btn-rounded-unique-dark,
+.btn-check:checked + .btn-rounded-warning-dark,
+.btn-rounded-almbb-danger:active,
+.btn-rounded-almbb-info:active,
+.btn-rounded-almbb-success:active,
+.btn-rounded-almbb-warning:active,
 .btn-rounded-blue:active,
+.btn-rounded-danger-dark:active,
+.btn-rounded-elegant-dark:active,
+.btn-rounded-elegant:active,
 .btn-rounded-gradient-aqua:active,
 .btn-rounded-gradient-blue:active,
 .btn-rounded-gradient-peach:active,
 .btn-rounded-indigo:active,
+.btn-rounded-info-dark:active,
 .btn-rounded-light-blue:active,
 .btn-rounded-light-green:active,
 .btn-rounded-light-yellow:active,
-.btn-rounded-red-orange:active {
+.btn-rounded-red-orange:active,
+.btn-rounded-special-dark:active,
+.btn-rounded-special:active,
+.btn-rounded-stylish-dark:active,
+.btn-rounded-stylish:active,
+.btn-rounded-success-dark:active,
+.btn-rounded-unique-dark:active,
+.btn-rounded-unique:active,
+.btn-rounded-warning-dark:active {
   outline: 0;
   -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
   box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
 }
+.active.btn-rounded-almbb-danger:focus,
+.active.btn-rounded-almbb-info:focus,
+.active.btn-rounded-almbb-success:focus,
+.active.btn-rounded-almbb-warning:focus,
 .active.btn-rounded-blue:focus,
+.active.btn-rounded-danger-dark:focus,
+.active.btn-rounded-elegant-dark:focus,
+.active.btn-rounded-elegant:focus,
 .active.btn-rounded-gradient-aqua:focus,
 .active.btn-rounded-gradient-blue:focus,
 .active.btn-rounded-gradient-peach:focus,
 .active.btn-rounded-indigo:focus,
+.active.btn-rounded-info-dark:focus,
 .active.btn-rounded-light-blue:focus,
 .active.btn-rounded-light-green:focus,
 .active.btn-rounded-light-yellow:focus,
 .active.btn-rounded-red-orange:focus,
+.active.btn-rounded-special-dark:focus,
+.active.btn-rounded-special:focus,
+.active.btn-rounded-stylish-dark:focus,
+.active.btn-rounded-stylish:focus,
+.active.btn-rounded-success-dark:focus,
+.active.btn-rounded-unique-dark:focus,
+.active.btn-rounded-unique:focus,
+.active.btn-rounded-warning-dark:focus,
+.btn-check:active + .btn-rounded-almbb-danger:focus,
+.btn-check:active + .btn-rounded-almbb-info:focus,
+.btn-check:active + .btn-rounded-almbb-success:focus,
+.btn-check:active + .btn-rounded-almbb-warning:focus,
 .btn-check:active + .btn-rounded-blue:focus,
+.btn-check:active + .btn-rounded-danger-dark:focus,
+.btn-check:active + .btn-rounded-elegant-dark:focus,
+.btn-check:active + .btn-rounded-elegant:focus,
 .btn-check:active + .btn-rounded-gradient-aqua:focus,
 .btn-check:active + .btn-rounded-gradient-blue:focus,
 .btn-check:active + .btn-rounded-gradient-peach:focus,
 .btn-check:active + .btn-rounded-indigo:focus,
+.btn-check:active + .btn-rounded-info-dark:focus,
 .btn-check:active + .btn-rounded-light-blue:focus,
 .btn-check:active + .btn-rounded-light-green:focus,
 .btn-check:active + .btn-rounded-light-yellow:focus,
 .btn-check:active + .btn-rounded-red-orange:focus,
+.btn-check:active + .btn-rounded-special-dark:focus,
+.btn-check:active + .btn-rounded-special:focus,
+.btn-check:active + .btn-rounded-stylish-dark:focus,
+.btn-check:active + .btn-rounded-stylish:focus,
+.btn-check:active + .btn-rounded-success-dark:focus,
+.btn-check:active + .btn-rounded-unique-dark:focus,
+.btn-check:active + .btn-rounded-unique:focus,
+.btn-check:active + .btn-rounded-warning-dark:focus,
+.btn-check:checked + .btn-rounded-almbb-danger:focus,
+.btn-check:checked + .btn-rounded-almbb-info:focus,
+.btn-check:checked + .btn-rounded-almbb-success:focus,
+.btn-check:checked + .btn-rounded-almbb-warning:focus,
 .btn-check:checked + .btn-rounded-blue:focus,
+.btn-check:checked + .btn-rounded-danger-dark:focus,
+.btn-check:checked + .btn-rounded-elegant-dark:focus,
+.btn-check:checked + .btn-rounded-elegant:focus,
 .btn-check:checked + .btn-rounded-gradient-aqua:focus,
 .btn-check:checked + .btn-rounded-gradient-blue:focus,
 .btn-check:checked + .btn-rounded-gradient-peach:focus,
 .btn-check:checked + .btn-rounded-indigo:focus,
+.btn-check:checked + .btn-rounded-info-dark:focus,
 .btn-check:checked + .btn-rounded-light-blue:focus,
 .btn-check:checked + .btn-rounded-light-green:focus,
 .btn-check:checked + .btn-rounded-light-yellow:focus,
 .btn-check:checked + .btn-rounded-red-orange:focus,
+.btn-check:checked + .btn-rounded-special-dark:focus,
+.btn-check:checked + .btn-rounded-special:focus,
+.btn-check:checked + .btn-rounded-stylish-dark:focus,
+.btn-check:checked + .btn-rounded-stylish:focus,
+.btn-check:checked + .btn-rounded-success-dark:focus,
+.btn-check:checked + .btn-rounded-unique-dark:focus,
+.btn-check:checked + .btn-rounded-unique:focus,
+.btn-check:checked + .btn-rounded-warning-dark:focus,
+.btn-rounded-almbb-danger:active:focus,
+.btn-rounded-almbb-info:active:focus,
+.btn-rounded-almbb-success:active:focus,
+.btn-rounded-almbb-warning:active:focus,
 .btn-rounded-blue:active:focus,
+.btn-rounded-danger-dark:active:focus,
+.btn-rounded-elegant-dark:active:focus,
+.btn-rounded-elegant:active:focus,
 .btn-rounded-gradient-aqua:active:focus,
 .btn-rounded-gradient-blue:active:focus,
 .btn-rounded-gradient-peach:active:focus,
 .btn-rounded-indigo:active:focus,
+.btn-rounded-info-dark:active:focus,
 .btn-rounded-light-blue:active:focus,
 .btn-rounded-light-green:active:focus,
 .btn-rounded-light-yellow:active:focus,
-.btn-rounded-red-orange:active:focus {
+.btn-rounded-red-orange:active:focus,
+.btn-rounded-special-dark:active:focus,
+.btn-rounded-special:active:focus,
+.btn-rounded-stylish-dark:active:focus,
+.btn-rounded-stylish:active:focus,
+.btn-rounded-success-dark:active:focus,
+.btn-rounded-unique-dark:active:focus,
+.btn-rounded-unique:active:focus,
+.btn-rounded-warning-dark:active:focus {
   outline: 0;
   -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
   box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
 }
+.btn-almbb-danger,
+.btn-almbb-info,
+.btn-almbb-success,
+.btn-almbb-warning,
 .btn-blue,
+.btn-danger-dark,
+.btn-elegant,
+.btn-elegant-dark,
 .btn-gradient-aqua,
 .btn-gradient-blue,
 .btn-gradient-peach,
 .btn-indigo,
+.btn-info-dark,
 .btn-light-blue,
 .btn-light-green,
 .btn-light-yellow,
@@ -243,20 +443,44 @@
 .btn-rounded-gradient-peach,
 .btn-scrollup-gradient-aqua,
 .btn-scrollup-gradient-blue,
-.btn-scrollup-gradient-peach {
+.btn-scrollup-gradient-peach,
+.btn-special,
+.btn-special-dark,
+.btn-stylish,
+.btn-stylish-dark,
+.btn-success-dark,
+.btn-unique,
+.btn-unique-dark,
+.btn-warning-dark {
   border-width: 0;
   outline: 0
 }
 .btn-scrollup,
+.btn-scrollup-almbb-danger,
+.btn-scrollup-almbb-info,
+.btn-scrollup-almbb-success,
+.btn-scrollup-almbb-warning,
 .btn-scrollup-blue,
+.btn-scrollup-danger-dark,
+.btn-scrollup-elegant,
+.btn-scrollup-elegant-dark,
 .btn-scrollup-gradient-aqua,
 .btn-scrollup-gradient-blue,
 .btn-scrollup-gradient-peach,
 .btn-scrollup-indigo,
+.btn-scrollup-info-dark,
 .btn-scrollup-light-blue,
 .btn-scrollup-light-green,
 .btn-scrollup-light-yellow,
-.btn-scrollup-red-orange {
+.btn-scrollup-red-orange,
+.btn-scrollup-special,
+.btn-scrollup-special-dark,
+.btn-scrollup-stylish,
+.btn-scrollup-stylish-dark,
+.btn-scrollup-success-dark,
+.btn-scrollup-unique,
+.btn-scrollup-unique-dark,
+.btn-scrollup-warning-dark {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -269,30 +493,62 @@
   -webkit-box-shadow: 0 5px 11px 0 rgba(0,0,0,.2);
   box-shadow: 0 5px 11px 0 rgba(0,0,0,.2)
 }
+.btn-scrollup-almbb-danger:hover,
+.btn-scrollup-almbb-info:hover,
+.btn-scrollup-almbb-success:hover,
+.btn-scrollup-almbb-warning:hover,
 .btn-scrollup-blue:hover,
+.btn-scrollup-danger-dark:hover,
+.btn-scrollup-elegant-dark:hover,
+.btn-scrollup-elegant:hover,
 .btn-scrollup-gradient-aqua:hover,
 .btn-scrollup-gradient-blue:hover,
 .btn-scrollup-gradient-peach:hover,
 .btn-scrollup-indigo:hover,
+.btn-scrollup-info-dark:hover,
 .btn-scrollup-light-blue:hover,
 .btn-scrollup-light-green:hover,
 .btn-scrollup-light-yellow:hover,
 .btn-scrollup-red-orange:hover,
+.btn-scrollup-special-dark:hover,
+.btn-scrollup-special:hover,
+.btn-scrollup-stylish-dark:hover,
+.btn-scrollup-stylish:hover,
+.btn-scrollup-success-dark:hover,
+.btn-scrollup-unique-dark:hover,
+.btn-scrollup-unique:hover,
+.btn-scrollup-warning-dark:hover,
 .btn-scrollup:hover {
   -webkit-box-shadow: 0 5px 11px 0 rgba(0,0,0,.4);
   box-shadow: 0 5px 11px 0 rgba(0,0,0,.4);
   -webkit-filter: opacity(90%);
   filter: opacity(90%)
 }
+.btn-scrollup-almbb-danger:focus,
+.btn-scrollup-almbb-info:focus,
+.btn-scrollup-almbb-success:focus,
+.btn-scrollup-almbb-warning:focus,
 .btn-scrollup-blue:focus,
+.btn-scrollup-danger-dark:focus,
+.btn-scrollup-elegant-dark:focus,
+.btn-scrollup-elegant:focus,
 .btn-scrollup-gradient-aqua:focus,
 .btn-scrollup-gradient-blue:focus,
 .btn-scrollup-gradient-peach:focus,
 .btn-scrollup-indigo:focus,
+.btn-scrollup-info-dark:focus,
 .btn-scrollup-light-blue:focus,
 .btn-scrollup-light-green:focus,
 .btn-scrollup-light-yellow:focus,
 .btn-scrollup-red-orange:focus,
+.btn-scrollup-special-dark:focus,
+.btn-scrollup-special:focus,
+.btn-scrollup-stylish-dark:focus,
+.btn-scrollup-stylish:focus,
+.btn-scrollup-success-dark:focus,
+.btn-scrollup-unique-dark:focus,
+.btn-scrollup-unique:focus,
+.btn-scrollup-warning-dark:focus,
 .btn-scrollup:focus {
   -webkit-box-shadow: 0 5px 11px 0 rgba(0,0,0,.4);
   box-shadow: 0 5px 11px 0 rgba(0,0,0,.4);
@@ -302,29 +558,61 @@
 }
 @media (max-width:992px) {
   .btn-scrollup,
+  .btn-scrollup-almbb-danger,
+  .btn-scrollup-almbb-info,
+  .btn-scrollup-almbb-success,
+  .btn-scrollup-almbb-warning,
   .btn-scrollup-blue,
+  .btn-scrollup-danger-dark,
+  .btn-scrollup-elegant,
+  .btn-scrollup-elegant-dark,
   .btn-scrollup-gradient-aqua,
   .btn-scrollup-gradient-blue,
   .btn-scrollup-gradient-peach,
   .btn-scrollup-indigo,
+  .btn-scrollup-info-dark,
   .btn-scrollup-light-blue,
   .btn-scrollup-light-green,
   .btn-scrollup-light-yellow,
-  .btn-scrollup-red-orange {
+  .btn-scrollup-red-orange,
+  .btn-scrollup-special,
+  .btn-scrollup-special-dark,
+  .btn-scrollup-stylish,
+  .btn-scrollup-stylish-dark,
+  .btn-scrollup-success-dark,
+  .btn-scrollup-unique,
+  .btn-scrollup-unique-dark,
+  .btn-scrollup-warning-dark {
     right: 15px
   }
 }
 @media (min-width:993px) {
   .btn-scrollup,
+  .btn-scrollup-almbb-danger,
+  .btn-scrollup-almbb-info,
+  .btn-scrollup-almbb-success,
+  .btn-scrollup-almbb-warning,
   .btn-scrollup-blue,
+  .btn-scrollup-danger-dark,
+  .btn-scrollup-elegant,
+  .btn-scrollup-elegant-dark,
   .btn-scrollup-gradient-aqua,
   .btn-scrollup-gradient-blue,
   .btn-scrollup-gradient-peach,
   .btn-scrollup-indigo,
+  .btn-scrollup-info-dark,
   .btn-scrollup-light-blue,
   .btn-scrollup-light-green,
   .btn-scrollup-light-yellow,
-  .btn-scrollup-red-orange {
+  .btn-scrollup-red-orange,
+  .btn-scrollup-special,
+  .btn-scrollup-special-dark,
+  .btn-scrollup-stylish,
+  .btn-scrollup-stylish-dark,
+  .btn-scrollup-success-dark,
+  .btn-scrollup-unique,
+  .btn-scrollup-unique-dark,
+  .btn-scrollup-warning-dark {
     right: 160px
   }
 }
@@ -350,6 +638,54 @@
 }
 .btn-rounded-light-green {
   background: #05ffa3
+}
+.btn-rounded-almbb-success {
+  background: #00c851
+}
+.btn-rounded-success-dark {
+  background: #007e33
+}
+.btn-rounded-almbb-danger {
+  background: #f44
+}
+.btn-rounded-danger-dark {
+  background: #c00
+}
+.btn-rounded-almbb-warning {
+  background: #fb3
+}
+.btn-rounded-warning-dark {
+  background: #f80
+}
+.btn-rounded-almbb-info {
+  background: #33b5e5
+}
+.btn-rounded-info-dark {
+  background: #09c
+}
+.btn-rounded-elegant {
+  background: #2e2e2e
+}
+.btn-rounded-elegant-dark {
+  background: #212121
+}
+.btn-rounded-stylish {
+  background: #4b515d
+}
+.btn-rounded-stylish-dark {
+  background: #3e4551
+}
+.btn-rounded-unique {
+  background: #3f729b
+}
+.btn-rounded-unique-dark {
+  background: #1c2331
+}
+.btn-rounded-special {
+  background: #2e2e2e
+}
+.btn-rounded-special-dark {
+  background: #263238
 }
 .btn-rounded-gradient-blue {
   background: -o-linear-gradient(50deg,#45cafc,#303f9f);
@@ -579,6 +915,406 @@
   -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
   box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
 }
+.btn-almbb-success {
+  background: #00c851;
+  color: #fff;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-almbb-success:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-almbb-success.active,
+.btn-almbb-success:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-almbb-success:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-success-dark {
+  background: #007e33;
+  color: #fff;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-success-dark:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-success-dark.active,
+.btn-success-dark:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-success-dark:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-almbb-danger {
+  background: #f44;
+  color: #fff;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-almbb-danger:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-almbb-danger.active,
+.btn-almbb-danger:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-almbb-danger:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-danger-dark {
+  background: #c00;
+  color: #fff;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-danger-dark:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-danger-dark.active,
+.btn-danger-dark:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-danger-dark:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-almbb-warning {
+  background: #fb3;
+  color: #fff;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-almbb-warning:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-almbb-warning.active,
+.btn-almbb-warning:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-almbb-warning:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-warning-dark {
+  background: #f80;
+  color: #fff;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-warning-dark:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-warning-dark.active,
+.btn-warning-dark:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-warning-dark:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-almbb-info {
+  background: #33b5e5;
+  color: #fff;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-almbb-info:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-almbb-info.active,
+.btn-almbb-info:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-almbb-info:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-info-dark {
+  background: #09c;
+  color: #fff;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-info-dark:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-info-dark.active,
+.btn-info-dark:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-info-dark:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-elegant {
+  background: #2e2e2e;
+  color: #fff;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-elegant:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-elegant.active,
+.btn-elegant:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-elegant:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-elegant-dark {
+  background: #212121;
+  color: #fff;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-elegant-dark:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-elegant-dark.active,
+.btn-elegant-dark:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-elegant-dark:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-stylish {
+  background: #4b515d;
+  color: #fff;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-stylish:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-stylish.active,
+.btn-stylish:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-stylish:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-stylish-dark {
+  background: #3e4551;
+  color: #fff;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-stylish-dark:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-stylish-dark.active,
+.btn-stylish-dark:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-stylish-dark:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-unique {
+  background: #3f729b;
+  color: #fff;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-unique:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-unique.active,
+.btn-unique:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-unique:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-unique-dark {
+  background: #1c2331;
+  color: #fff;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-unique-dark:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-unique-dark.active,
+.btn-unique-dark:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-unique-dark:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-special {
+  background: #2e2e2e;
+  color: #fff;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-special:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-special.active,
+.btn-special:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-special:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-special-dark {
+  background: #263238;
+  color: #fff;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-special-dark:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-special-dark.active,
+.btn-special-dark:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-special-dark:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
 .btn-gradient-blue {
   background: -o-linear-gradient(50deg,#45cafc,#303f9f);
   background: linear-gradient(40deg,#45cafc,#303f9f);
@@ -674,6 +1410,54 @@
 }
 .btn-scrollup-light-green {
   background: #05ffa3
+}
+.btn-scrollup-almbb-success {
+  background: #00c851
+}
+.btn-scrollup-success-dark {
+  background: #007e33
+}
+.btn-scrollup-almbb-danger {
+  background: #f44
+}
+.btn-scrollup-danger-dark {
+  background: #c00
+}
+.btn-scrollup-almbb-warning {
+  background: #fb3
+}
+.btn-scrollup-warning-dark {
+  background: #f80
+}
+.btn-scrollup-almbb-info {
+  background: #33b5e5
+}
+.btn-scrollup-info-dark {
+  background: #09c
+}
+.btn-scrollup-elegant {
+  background: #2e2e2e
+}
+.btn-scrollup-elegant-dark {
+  background: #212121
+}
+.btn-scrollup-stylish {
+  background: #4b515d
+}
+.btn-scrollup-stylish-dark {
+  background: #3e4551
+}
+.btn-scrollup-unique {
+  background: #3f729b
+}
+.btn-scrollup-unique-dark {
+  background: #1c2331
+}
+.btn-scrollup-special {
+  background: #2e2e2e
+}
+.btn-scrollup-special-dark {
+  background: #263238
 }
 .btn-scrollup-gradient-blue {
   background: -o-linear-gradient(50deg,#45cafc,#303f9f);
