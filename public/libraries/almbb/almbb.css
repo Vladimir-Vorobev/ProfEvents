@@ -111,6 +111,28 @@
 .btn-rounded-light-blue,
 .btn-rounded-light-green,
 .btn-rounded-light-yellow,
+.btn-rounded-outline-almbb-danger,
+.btn-rounded-outline-almbb-info,
+.btn-rounded-outline-almbb-success,
+.btn-rounded-outline-almbb-warning,
+.btn-rounded-outline-blue,
+.btn-rounded-outline-danger-dark,
+.btn-rounded-outline-elegant,
+.btn-rounded-outline-elegant-dark,
+.btn-rounded-outline-indigo,
+.btn-rounded-outline-info-dark,
+.btn-rounded-outline-light-blue,
+.btn-rounded-outline-light-green,
+.btn-rounded-outline-light-yellow,
+.btn-rounded-outline-red-orange,
+.btn-rounded-outline-special,
+.btn-rounded-outline-special-dark,
+.btn-rounded-outline-stylish,
+.btn-rounded-outline-stylish-dark,
+.btn-rounded-outline-success-dark,
+.btn-rounded-outline-unique,
+.btn-rounded-outline-unique-dark,
+.btn-rounded-outline-warning-dark,
 .btn-rounded-red-orange,
 .btn-rounded-special,
 .btn-rounded-special-dark,
@@ -142,6 +164,28 @@
 .btn-rounded-light-blue:hover,
 .btn-rounded-light-green:hover,
 .btn-rounded-light-yellow:hover,
+.btn-rounded-outline-almbb-danger:hover,
+.btn-rounded-outline-almbb-info:hover,
+.btn-rounded-outline-almbb-success:hover,
+.btn-rounded-outline-almbb-warning:hover,
+.btn-rounded-outline-blue:hover,
+.btn-rounded-outline-danger-dark:hover,
+.btn-rounded-outline-elegant-dark:hover,
+.btn-rounded-outline-elegant:hover,
+.btn-rounded-outline-indigo:hover,
+.btn-rounded-outline-info-dark:hover,
+.btn-rounded-outline-light-blue:hover,
+.btn-rounded-outline-light-green:hover,
+.btn-rounded-outline-light-yellow:hover,
+.btn-rounded-outline-red-orange:hover,
+.btn-rounded-outline-special-dark:hover,
+.btn-rounded-outline-special:hover,
+.btn-rounded-outline-stylish-dark:hover,
+.btn-rounded-outline-stylish:hover,
+.btn-rounded-outline-success-dark:hover,
+.btn-rounded-outline-unique-dark:hover,
+.btn-rounded-outline-unique:hover,
+.btn-rounded-outline-warning-dark:hover,
 .btn-rounded-red-orange:hover,
 .btn-rounded-special-dark:hover,
 .btn-rounded-special:hover,
@@ -172,6 +216,28 @@
 .btn-check:focus + .btn-rounded-light-blue,
 .btn-check:focus + .btn-rounded-light-green,
 .btn-check:focus + .btn-rounded-light-yellow,
+.btn-check:focus + .btn-rounded-outline-almbb-danger,
+.btn-check:focus + .btn-rounded-outline-almbb-info,
+.btn-check:focus + .btn-rounded-outline-almbb-success,
+.btn-check:focus + .btn-rounded-outline-almbb-warning,
+.btn-check:focus + .btn-rounded-outline-blue,
+.btn-check:focus + .btn-rounded-outline-danger-dark,
+.btn-check:focus + .btn-rounded-outline-elegant,
+.btn-check:focus + .btn-rounded-outline-elegant-dark,
+.btn-check:focus + .btn-rounded-outline-indigo,
+.btn-check:focus + .btn-rounded-outline-info-dark,
+.btn-check:focus + .btn-rounded-outline-light-blue,
+.btn-check:focus + .btn-rounded-outline-light-green,
+.btn-check:focus + .btn-rounded-outline-light-yellow,
+.btn-check:focus + .btn-rounded-outline-red-orange,
+.btn-check:focus + .btn-rounded-outline-special,
+.btn-check:focus + .btn-rounded-outline-special-dark,
+.btn-check:focus + .btn-rounded-outline-stylish,
+.btn-check:focus + .btn-rounded-outline-stylish-dark,
+.btn-check:focus + .btn-rounded-outline-success-dark,
+.btn-check:focus + .btn-rounded-outline-unique,
+.btn-check:focus + .btn-rounded-outline-unique-dark,
+.btn-check:focus + .btn-rounded-outline-warning-dark,
 .btn-check:focus + .btn-rounded-red-orange,
 .btn-check:focus + .btn-rounded-special,
 .btn-check:focus + .btn-rounded-special-dark,
@@ -197,6 +263,28 @@
 .btn-rounded-light-blue:focus,
 .btn-rounded-light-green:focus,
 .btn-rounded-light-yellow:focus,
+.btn-rounded-outline-almbb-danger:focus,
+.btn-rounded-outline-almbb-info:focus,
+.btn-rounded-outline-almbb-success:focus,
+.btn-rounded-outline-almbb-warning:focus,
+.btn-rounded-outline-blue:focus,
+.btn-rounded-outline-danger-dark:focus,
+.btn-rounded-outline-elegant-dark:focus,
+.btn-rounded-outline-elegant:focus,
+.btn-rounded-outline-indigo:focus,
+.btn-rounded-outline-info-dark:focus,
+.btn-rounded-outline-light-blue:focus,
+.btn-rounded-outline-light-green:focus,
+.btn-rounded-outline-light-yellow:focus,
+.btn-rounded-outline-red-orange:focus,
+.btn-rounded-outline-special-dark:focus,
+.btn-rounded-outline-special:focus,
+.btn-rounded-outline-stylish-dark:focus,
+.btn-rounded-outline-stylish:focus,
+.btn-rounded-outline-success-dark:focus,
+.btn-rounded-outline-unique-dark:focus,
+.btn-rounded-outline-unique:focus,
+.btn-rounded-outline-warning-dark:focus,
 .btn-rounded-red-orange:focus,
 .btn-rounded-special-dark:focus,
 .btn-rounded-special:focus,
@@ -229,6 +317,28 @@
 .active.btn-rounded-light-blue,
 .active.btn-rounded-light-green,
 .active.btn-rounded-light-yellow,
+.active.btn-rounded-outline-almbb-danger,
+.active.btn-rounded-outline-almbb-info,
+.active.btn-rounded-outline-almbb-success,
+.active.btn-rounded-outline-almbb-warning,
+.active.btn-rounded-outline-blue,
+.active.btn-rounded-outline-danger-dark,
+.active.btn-rounded-outline-elegant,
+.active.btn-rounded-outline-elegant-dark,
+.active.btn-rounded-outline-indigo,
+.active.btn-rounded-outline-info-dark,
+.active.btn-rounded-outline-light-blue,
+.active.btn-rounded-outline-light-green,
+.active.btn-rounded-outline-light-yellow,
+.active.btn-rounded-outline-red-orange,
+.active.btn-rounded-outline-special,
+.active.btn-rounded-outline-special-dark,
+.active.btn-rounded-outline-stylish,
+.active.btn-rounded-outline-stylish-dark,
+.active.btn-rounded-outline-success-dark,
+.active.btn-rounded-outline-unique,
+.active.btn-rounded-outline-unique-dark,
+.active.btn-rounded-outline-warning-dark,
 .active.btn-rounded-red-orange,
 .active.btn-rounded-special,
 .active.btn-rounded-special-dark,
@@ -254,6 +364,28 @@
 .btn-check:active + .btn-rounded-light-blue,
 .btn-check:active + .btn-rounded-light-green,
 .btn-check:active + .btn-rounded-light-yellow,
+.btn-check:active + .btn-rounded-outline-almbb-danger,
+.btn-check:active + .btn-rounded-outline-almbb-info,
+.btn-check:active + .btn-rounded-outline-almbb-success,
+.btn-check:active + .btn-rounded-outline-almbb-warning,
+.btn-check:active + .btn-rounded-outline-blue,
+.btn-check:active + .btn-rounded-outline-danger-dark,
+.btn-check:active + .btn-rounded-outline-elegant,
+.btn-check:active + .btn-rounded-outline-elegant-dark,
+.btn-check:active + .btn-rounded-outline-indigo,
+.btn-check:active + .btn-rounded-outline-info-dark,
+.btn-check:active + .btn-rounded-outline-light-blue,
+.btn-check:active + .btn-rounded-outline-light-green,
+.btn-check:active + .btn-rounded-outline-light-yellow,
+.btn-check:active + .btn-rounded-outline-red-orange,
+.btn-check:active + .btn-rounded-outline-special,
+.btn-check:active + .btn-rounded-outline-special-dark,
+.btn-check:active + .btn-rounded-outline-stylish,
+.btn-check:active + .btn-rounded-outline-stylish-dark,
+.btn-check:active + .btn-rounded-outline-success-dark,
+.btn-check:active + .btn-rounded-outline-unique,
+.btn-check:active + .btn-rounded-outline-unique-dark,
+.btn-check:active + .btn-rounded-outline-warning-dark,
 .btn-check:active + .btn-rounded-red-orange,
 .btn-check:active + .btn-rounded-special,
 .btn-check:active + .btn-rounded-special-dark,
@@ -279,6 +411,28 @@
 .btn-check:checked + .btn-rounded-light-blue,
 .btn-check:checked + .btn-rounded-light-green,
 .btn-check:checked + .btn-rounded-light-yellow,
+.btn-check:checked + .btn-rounded-outline-almbb-danger,
+.btn-check:checked + .btn-rounded-outline-almbb-info,
+.btn-check:checked + .btn-rounded-outline-almbb-success,
+.btn-check:checked + .btn-rounded-outline-almbb-warning,
+.btn-check:checked + .btn-rounded-outline-blue,
+.btn-check:checked + .btn-rounded-outline-danger-dark,
+.btn-check:checked + .btn-rounded-outline-elegant,
+.btn-check:checked + .btn-rounded-outline-elegant-dark,
+.btn-check:checked + .btn-rounded-outline-indigo,
+.btn-check:checked + .btn-rounded-outline-info-dark,
+.btn-check:checked + .btn-rounded-outline-light-blue,
+.btn-check:checked + .btn-rounded-outline-light-green,
+.btn-check:checked + .btn-rounded-outline-light-yellow,
+.btn-check:checked + .btn-rounded-outline-red-orange,
+.btn-check:checked + .btn-rounded-outline-special,
+.btn-check:checked + .btn-rounded-outline-special-dark,
+.btn-check:checked + .btn-rounded-outline-stylish,
+.btn-check:checked + .btn-rounded-outline-stylish-dark,
+.btn-check:checked + .btn-rounded-outline-success-dark,
+.btn-check:checked + .btn-rounded-outline-unique,
+.btn-check:checked + .btn-rounded-outline-unique-dark,
+.btn-check:checked + .btn-rounded-outline-warning-dark,
 .btn-check:checked + .btn-rounded-red-orange,
 .btn-check:checked + .btn-rounded-special,
 .btn-check:checked + .btn-rounded-special-dark,
@@ -304,6 +458,28 @@
 .btn-rounded-light-blue:active,
 .btn-rounded-light-green:active,
 .btn-rounded-light-yellow:active,
+.btn-rounded-outline-almbb-danger:active,
+.btn-rounded-outline-almbb-info:active,
+.btn-rounded-outline-almbb-success:active,
+.btn-rounded-outline-almbb-warning:active,
+.btn-rounded-outline-blue:active,
+.btn-rounded-outline-danger-dark:active,
+.btn-rounded-outline-elegant-dark:active,
+.btn-rounded-outline-elegant:active,
+.btn-rounded-outline-indigo:active,
+.btn-rounded-outline-info-dark:active,
+.btn-rounded-outline-light-blue:active,
+.btn-rounded-outline-light-green:active,
+.btn-rounded-outline-light-yellow:active,
+.btn-rounded-outline-red-orange:active,
+.btn-rounded-outline-special-dark:active,
+.btn-rounded-outline-special:active,
+.btn-rounded-outline-stylish-dark:active,
+.btn-rounded-outline-stylish:active,
+.btn-rounded-outline-success-dark:active,
+.btn-rounded-outline-unique-dark:active,
+.btn-rounded-outline-unique:active,
+.btn-rounded-outline-warning-dark:active,
 .btn-rounded-red-orange:active,
 .btn-rounded-special-dark:active,
 .btn-rounded-special:active,
@@ -333,6 +509,28 @@
 .active.btn-rounded-light-blue:focus,
 .active.btn-rounded-light-green:focus,
 .active.btn-rounded-light-yellow:focus,
+.active.btn-rounded-outline-almbb-danger:focus,
+.active.btn-rounded-outline-almbb-info:focus,
+.active.btn-rounded-outline-almbb-success:focus,
+.active.btn-rounded-outline-almbb-warning:focus,
+.active.btn-rounded-outline-blue:focus,
+.active.btn-rounded-outline-danger-dark:focus,
+.active.btn-rounded-outline-elegant-dark:focus,
+.active.btn-rounded-outline-elegant:focus,
+.active.btn-rounded-outline-indigo:focus,
+.active.btn-rounded-outline-info-dark:focus,
+.active.btn-rounded-outline-light-blue:focus,
+.active.btn-rounded-outline-light-green:focus,
+.active.btn-rounded-outline-light-yellow:focus,
+.active.btn-rounded-outline-red-orange:focus,
+.active.btn-rounded-outline-special-dark:focus,
+.active.btn-rounded-outline-special:focus,
+.active.btn-rounded-outline-stylish-dark:focus,
+.active.btn-rounded-outline-stylish:focus,
+.active.btn-rounded-outline-success-dark:focus,
+.active.btn-rounded-outline-unique-dark:focus,
+.active.btn-rounded-outline-unique:focus,
+.active.btn-rounded-outline-warning-dark:focus,
 .active.btn-rounded-red-orange:focus,
 .active.btn-rounded-special-dark:focus,
 .active.btn-rounded-special:focus,
@@ -358,6 +556,28 @@
 .btn-check:active + .btn-rounded-light-blue:focus,
 .btn-check:active + .btn-rounded-light-green:focus,
 .btn-check:active + .btn-rounded-light-yellow:focus,
+.btn-check:active + .btn-rounded-outline-almbb-danger:focus,
+.btn-check:active + .btn-rounded-outline-almbb-info:focus,
+.btn-check:active + .btn-rounded-outline-almbb-success:focus,
+.btn-check:active + .btn-rounded-outline-almbb-warning:focus,
+.btn-check:active + .btn-rounded-outline-blue:focus,
+.btn-check:active + .btn-rounded-outline-danger-dark:focus,
+.btn-check:active + .btn-rounded-outline-elegant-dark:focus,
+.btn-check:active + .btn-rounded-outline-elegant:focus,
+.btn-check:active + .btn-rounded-outline-indigo:focus,
+.btn-check:active + .btn-rounded-outline-info-dark:focus,
+.btn-check:active + .btn-rounded-outline-light-blue:focus,
+.btn-check:active + .btn-rounded-outline-light-green:focus,
+.btn-check:active + .btn-rounded-outline-light-yellow:focus,
+.btn-check:active + .btn-rounded-outline-red-orange:focus,
+.btn-check:active + .btn-rounded-outline-special-dark:focus,
+.btn-check:active + .btn-rounded-outline-special:focus,
+.btn-check:active + .btn-rounded-outline-stylish-dark:focus,
+.btn-check:active + .btn-rounded-outline-stylish:focus,
+.btn-check:active + .btn-rounded-outline-success-dark:focus,
+.btn-check:active + .btn-rounded-outline-unique-dark:focus,
+.btn-check:active + .btn-rounded-outline-unique:focus,
+.btn-check:active + .btn-rounded-outline-warning-dark:focus,
 .btn-check:active + .btn-rounded-red-orange:focus,
 .btn-check:active + .btn-rounded-special-dark:focus,
 .btn-check:active + .btn-rounded-special:focus,
@@ -383,6 +603,28 @@
 .btn-check:checked + .btn-rounded-light-blue:focus,
 .btn-check:checked + .btn-rounded-light-green:focus,
 .btn-check:checked + .btn-rounded-light-yellow:focus,
+.btn-check:checked + .btn-rounded-outline-almbb-danger:focus,
+.btn-check:checked + .btn-rounded-outline-almbb-info:focus,
+.btn-check:checked + .btn-rounded-outline-almbb-success:focus,
+.btn-check:checked + .btn-rounded-outline-almbb-warning:focus,
+.btn-check:checked + .btn-rounded-outline-blue:focus,
+.btn-check:checked + .btn-rounded-outline-danger-dark:focus,
+.btn-check:checked + .btn-rounded-outline-elegant-dark:focus,
+.btn-check:checked + .btn-rounded-outline-elegant:focus,
+.btn-check:checked + .btn-rounded-outline-indigo:focus,
+.btn-check:checked + .btn-rounded-outline-info-dark:focus,
+.btn-check:checked + .btn-rounded-outline-light-blue:focus,
+.btn-check:checked + .btn-rounded-outline-light-green:focus,
+.btn-check:checked + .btn-rounded-outline-light-yellow:focus,
+.btn-check:checked + .btn-rounded-outline-red-orange:focus,
+.btn-check:checked + .btn-rounded-outline-special-dark:focus,
+.btn-check:checked + .btn-rounded-outline-special:focus,
+.btn-check:checked + .btn-rounded-outline-stylish-dark:focus,
+.btn-check:checked + .btn-rounded-outline-stylish:focus,
+.btn-check:checked + .btn-rounded-outline-success-dark:focus,
+.btn-check:checked + .btn-rounded-outline-unique-dark:focus,
+.btn-check:checked + .btn-rounded-outline-unique:focus,
+.btn-check:checked + .btn-rounded-outline-warning-dark:focus,
 .btn-check:checked + .btn-rounded-red-orange:focus,
 .btn-check:checked + .btn-rounded-special-dark:focus,
 .btn-check:checked + .btn-rounded-special:focus,
@@ -408,6 +650,28 @@
 .btn-rounded-light-blue:active:focus,
 .btn-rounded-light-green:active:focus,
 .btn-rounded-light-yellow:active:focus,
+.btn-rounded-outline-almbb-danger:active:focus,
+.btn-rounded-outline-almbb-info:active:focus,
+.btn-rounded-outline-almbb-success:active:focus,
+.btn-rounded-outline-almbb-warning:active:focus,
+.btn-rounded-outline-blue:active:focus,
+.btn-rounded-outline-danger-dark:active:focus,
+.btn-rounded-outline-elegant-dark:active:focus,
+.btn-rounded-outline-elegant:active:focus,
+.btn-rounded-outline-indigo:active:focus,
+.btn-rounded-outline-info-dark:active:focus,
+.btn-rounded-outline-light-blue:active:focus,
+.btn-rounded-outline-light-green:active:focus,
+.btn-rounded-outline-light-yellow:active:focus,
+.btn-rounded-outline-red-orange:active:focus,
+.btn-rounded-outline-special-dark:active:focus,
+.btn-rounded-outline-special:active:focus,
+.btn-rounded-outline-stylish-dark:active:focus,
+.btn-rounded-outline-stylish:active:focus,
+.btn-rounded-outline-success-dark:active:focus,
+.btn-rounded-outline-unique-dark:active:focus,
+.btn-rounded-outline-unique:active:focus,
+.btn-rounded-outline-warning-dark:active:focus,
 .btn-rounded-red-orange:active:focus,
 .btn-rounded-special-dark:active:focus,
 .btn-rounded-special:active:focus,
@@ -437,6 +701,28 @@
 .btn-light-blue,
 .btn-light-green,
 .btn-light-yellow,
+.btn-outline-almbb-danger,
+.btn-outline-almbb-info,
+.btn-outline-almbb-success,
+.btn-outline-almbb-warning,
+.btn-outline-blue,
+.btn-outline-danger-dark,
+.btn-outline-elegant,
+.btn-outline-elegant-dark,
+.btn-outline-indigo,
+.btn-outline-info-dark,
+.btn-outline-light-blue,
+.btn-outline-light-green,
+.btn-outline-light-yellow,
+.btn-outline-red-orange,
+.btn-outline-special,
+.btn-outline-special-dark,
+.btn-outline-stylish,
+.btn-outline-stylish-dark,
+.btn-outline-success-dark,
+.btn-outline-unique,
+.btn-outline-unique-dark,
+.btn-outline-warning-dark,
 .btn-red-orange,
 .btn-rounded-gradient-aqua,
 .btn-rounded-gradient-blue,
@@ -686,6 +972,116 @@
 }
 .btn-rounded-special-dark {
   background: #263238
+}
+.btn-rounded-outline-blue {
+  color: #2096ff!important;
+  background-color: transparent!important;
+  border: 2px solid #2096ff!important
+}
+.btn-rounded-outline-indigo {
+  color: #303f9f!important;
+  background-color: transparent!important;
+  border: 2px solid #303f9f!important
+}
+.btn-rounded-outline-light-yellow {
+  color: #ffd86f!important;
+  background-color: transparent!important;
+  border: 2px solid #ffd86f!important
+}
+.btn-rounded-outline-red-orange {
+  color: #fc6262!important;
+  background-color: transparent!important;
+  border: 2px solid #fc6262!important
+}
+.btn-rounded-outline-light-blue {
+  color: #45cafc!important;
+  background-color: transparent!important;
+  border: 2px solid #45cafc!important
+}
+.btn-rounded-outline-light-green {
+  color: #05ffa3!important;
+  background-color: transparent!important;
+  border: 2px solid #05ffa3!important
+}
+.btn-rounded-outline-almbb-success {
+  color: #00c851!important;
+  background-color: transparent!important;
+  border: 2px solid #00c851!important
+}
+.btn-rounded-outline-success-dark {
+  color: #007e33!important;
+  background-color: transparent!important;
+  border: 2px solid #007e33!important
+}
+.btn-rounded-outline-almbb-danger {
+  color: #f44!important;
+  background-color: transparent!important;
+  border: 2px solid #f44!important
+}
+.btn-rounded-outline-danger-dark {
+  color: #c00!important;
+  background-color: transparent!important;
+  border: 2px solid #c00!important
+}
+.btn-rounded-outline-almbb-warning {
+  color: #fb3!important;
+  background-color: transparent!important;
+  border: 2px solid #fb3!important
+}
+.btn-rounded-outline-warning-dark {
+  color: #f80!important;
+  background-color: transparent!important;
+  border: 2px solid #f80!important
+}
+.btn-rounded-outline-almbb-info {
+  color: #33b5e5!important;
+  background-color: transparent!important;
+  border: 2px solid #33b5e5!important
+}
+.btn-rounded-outline-info-dark {
+  color: #09c!important;
+  background-color: transparent!important;
+  border: 2px solid #09c!important
+}
+.btn-rounded-outline-elegant {
+  color: #2e2e2e!important;
+  background-color: transparent!important;
+  border: 2px solid #2e2e2e!important
+}
+.btn-rounded-outline-elegant-dark {
+  color: #212121!important;
+  background-color: transparent!important;
+  border: 2px solid #212121!important
+}
+.btn-rounded-outline-stylish {
+  color: #4b515d!important;
+  background-color: transparent!important;
+  border: 2px solid #4b515d!important
+}
+.btn-rounded-outline-stylish-dark {
+  color: #3e4551!important;
+  background-color: transparent!important;
+  border: 2px solid #3e4551!important
+}
+.btn-rounded-outline-unique {
+  color: #3f729b!important;
+  background-color: transparent!important;
+  border: 2px solid #3f729b!important
+}
+.btn-rounded-outline-unique-dark {
+  color: #1c2331!important;
+  background-color: transparent!important;
+  border: 2px solid #1c2331!important
+}
+.btn-rounded-outline-special {
+  color: #2e2e2e!important;
+  background-color: transparent!important;
+  border: 2px solid #2e2e2e!important
+}
+.btn-rounded-outline-special-dark {
+  color: #263238!important;
+  background-color: transparent!important;
+  border: 2px solid #263238!important
 }
 .btn-rounded-gradient-blue {
   background: -o-linear-gradient(50deg,#45cafc,#303f9f);
@@ -1310,6 +1706,578 @@
   box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
 }
 .btn-special-dark:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-blue {
+  color: #2096ff!important;
+  background-color: transparent!important;
+  border: 2px solid #2096ff!important;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-outline-blue:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-blue.active,
+.btn-outline-blue:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-blue:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-indigo {
+  color: #303f9f!important;
+  background-color: transparent!important;
+  border: 2px solid #303f9f!important;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-outline-indigo:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-indigo.active,
+.btn-outline-indigo:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-indigo:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-light-yellow {
+  color: #ffd86f!important;
+  background-color: transparent!important;
+  border: 2px solid #ffd86f!important;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-outline-light-yellow:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-light-yellow.active,
+.btn-outline-light-yellow:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-light-yellow:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-red-orange {
+  color: #fc6262!important;
+  background-color: transparent!important;
+  border: 2px solid #fc6262!important;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-outline-red-orange:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-red-orange.active,
+.btn-outline-red-orange:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-red-orange:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-light-blue {
+  color: #45cafc!important;
+  background-color: transparent!important;
+  border: 2px solid #45cafc!important;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-outline-light-blue:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-light-blue.active,
+.btn-outline-light-blue:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-light-blue:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-light-green {
+  color: #05ffa3!important;
+  background-color: transparent!important;
+  border: 2px solid #05ffa3!important;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-outline-light-green:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-light-green.active,
+.btn-outline-light-green:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-light-green:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-almbb-success {
+  color: #00c851!important;
+  background-color: transparent!important;
+  border: 2px solid #00c851!important;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-outline-almbb-success:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-almbb-success.active,
+.btn-outline-almbb-success:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-almbb-success:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-success-dark {
+  color: #007e33!important;
+  background-color: transparent!important;
+  border: 2px solid #007e33!important;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-outline-success-dark:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-success-dark.active,
+.btn-outline-success-dark:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-success-dark:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-almbb-danger {
+  color: #f44!important;
+  background-color: transparent!important;
+  border: 2px solid #f44!important;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-outline-almbb-danger:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-almbb-danger.active,
+.btn-outline-almbb-danger:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-almbb-danger:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-danger-dark {
+  color: #c00!important;
+  background-color: transparent!important;
+  border: 2px solid #c00!important;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-outline-danger-dark:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-danger-dark.active,
+.btn-outline-danger-dark:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-danger-dark:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-almbb-warning {
+  color: #fb3!important;
+  background-color: transparent!important;
+  border: 2px solid #fb3!important;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-outline-almbb-warning:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-almbb-warning.active,
+.btn-outline-almbb-warning:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-almbb-warning:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-warning-dark {
+  color: #f80!important;
+  background-color: transparent!important;
+  border: 2px solid #f80!important;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-outline-warning-dark:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-warning-dark.active,
+.btn-outline-warning-dark:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-warning-dark:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-almbb-info {
+  color: #33b5e5!important;
+  background-color: transparent!important;
+  border: 2px solid #33b5e5!important;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-outline-almbb-info:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-almbb-info.active,
+.btn-outline-almbb-info:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-almbb-info:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-info-dark {
+  color: #09c!important;
+  background-color: transparent!important;
+  border: 2px solid #09c!important;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-outline-info-dark:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-info-dark.active,
+.btn-outline-info-dark:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-info-dark:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-elegant {
+  color: #2e2e2e!important;
+  background-color: transparent!important;
+  border: 2px solid #2e2e2e!important;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-outline-elegant:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-elegant.active,
+.btn-outline-elegant:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-elegant:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-elegant-dark {
+  color: #212121!important;
+  background-color: transparent!important;
+  border: 2px solid #212121!important;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-outline-elegant-dark:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-elegant-dark.active,
+.btn-outline-elegant-dark:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-elegant-dark:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-stylish {
+  color: #4b515d!important;
+  background-color: transparent!important;
+  border: 2px solid #4b515d!important;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-outline-stylish:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-stylish.active,
+.btn-outline-stylish:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-stylish:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-stylish-dark {
+  color: #3e4551!important;
+  background-color: transparent!important;
+  border: 2px solid #3e4551!important;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-outline-stylish-dark:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-stylish-dark.active,
+.btn-outline-stylish-dark:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-stylish-dark:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-unique {
+  color: #3f729b!important;
+  background-color: transparent!important;
+  border: 2px solid #3f729b!important;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-outline-unique:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-unique.active,
+.btn-outline-unique:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-unique:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-unique-dark {
+  color: #1c2331!important;
+  background-color: transparent!important;
+  border: 2px solid #1c2331!important;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-outline-unique-dark:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-unique-dark.active,
+.btn-outline-unique-dark:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-unique-dark:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-special {
+  color: #2e2e2e!important;
+  background-color: transparent!important;
+  border: 2px solid #2e2e2e!important;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-outline-special:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-special.active,
+.btn-outline-special:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-special:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-special-dark {
+  color: #263238!important;
+  background-color: transparent!important;
+  border: 2px solid #263238!important;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-outline-special-dark:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-special-dark.active,
+.btn-outline-special-dark:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-special-dark:focus {
   -webkit-filter: opacity(85%);
   filter: opacity(85%);
   -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
