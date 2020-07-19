@@ -740,7 +740,10 @@
 .btn-unique-dark,
 .btn-warning-dark {
   border-width: 0;
-  outline: 0
+  outline: 0;
+  border-width: 0;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.2);
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.2)
 }
 .btn-scrollup,
 .btn-scrollup-almbb-danger,
