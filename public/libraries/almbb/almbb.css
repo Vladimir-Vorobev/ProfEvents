@@ -144,6 +144,7 @@
 .btn-rounded-warning-dark {
   outline: 0;
   border-radius: 5em!important;
+  border-width: 0;
   -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.2);
   box-shadow: 0 2px 5px 0 rgba(0,0,0,.2);
   color: #fff
