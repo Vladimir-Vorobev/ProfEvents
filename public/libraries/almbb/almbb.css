@@ -725,9 +725,53 @@
 .btn-outline-unique-dark,
 .btn-outline-warning-dark,
 .btn-red-orange,
+.btn-rounded-almbb-danger,
+.btn-rounded-almbb-info,
+.btn-rounded-almbb-success,
+.btn-rounded-almbb-warning,
+.btn-rounded-blue,
+.btn-rounded-danger-dark,
+.btn-rounded-elegant,
+.btn-rounded-elegant-dark,
 .btn-rounded-gradient-aqua,
 .btn-rounded-gradient-blue,
 .btn-rounded-gradient-peach,
+.btn-rounded-indigo,
+.btn-rounded-info-dark,
+.btn-rounded-light-blue,
+.btn-rounded-light-green,
+.btn-rounded-light-yellow,
+.btn-rounded-outline-almbb-danger,
+.btn-rounded-outline-almbb-info,
+.btn-rounded-outline-almbb-success,
+.btn-rounded-outline-almbb-warning,
+.btn-rounded-outline-blue,
+.btn-rounded-outline-danger-dark,
+.btn-rounded-outline-elegant,
+.btn-rounded-outline-elegant-dark,
+.btn-rounded-outline-indigo,
+.btn-rounded-outline-info-dark,
+.btn-rounded-outline-light-blue,
+.btn-rounded-outline-light-green,
+.btn-rounded-outline-light-yellow,
+.btn-rounded-outline-red-orange,
+.btn-rounded-outline-special,
+.btn-rounded-outline-special-dark,
+.btn-rounded-outline-stylish,
+.btn-rounded-outline-stylish-dark,
+.btn-rounded-outline-success-dark,
+.btn-rounded-outline-unique,
+.btn-rounded-outline-unique-dark,
+.btn-rounded-outline-warning-dark,
+.btn-rounded-red-orange,
+.btn-rounded-special,
+.btn-rounded-special-dark,
+.btn-rounded-stylish,
+.btn-rounded-stylish-dark,
+.btn-rounded-success-dark,
+.btn-rounded-unique,
+.btn-rounded-unique-dark,
+.btn-rounded-warning-dark,
 .btn-scrollup-gradient-aqua,
 .btn-scrollup-gradient-blue,
 .btn-scrollup-gradient-peach,
@@ -743,7 +787,10 @@
   outline: 0;
   border-width: 0;
   -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.2);
-  box-shadow: 0 2px 5px 0 rgba(0,0,0,.2)
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.2);
+  padding: .84rem 2.14rem;
+  font-size: .81rem;
+  text-transform: uppercase
 }
 .btn-scrollup,
 .btn-scrollup-almbb-danger,
@@ -906,11 +953,6 @@
   .btn-scrollup-warning-dark {
     right: 160px
   }
-}
-.btn {
-  padding: .84rem 2.14rem;
-  font-size: .81rem;
-  text-transform: uppercase
 }
 .btn-rounded-blue {
   background: #2096ff
