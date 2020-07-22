@@ -97,6 +97,7 @@
 }
 .btn-rounded-almbb-danger,
 .btn-rounded-almbb-info,
+.btn-rounded-almbb-light,
 .btn-rounded-almbb-success,
 .btn-rounded-almbb-warning,
 .btn-rounded-blue,
@@ -113,6 +114,7 @@
 .btn-rounded-light-yellow,
 .btn-rounded-outline-almbb-danger,
 .btn-rounded-outline-almbb-info,
+.btn-rounded-outline-almbb-light,
 .btn-rounded-outline-almbb-success,
 .btn-rounded-outline-almbb-warning,
 .btn-rounded-outline-blue,
@@ -151,6 +153,7 @@
 }
 .btn-rounded-almbb-danger:hover,
 .btn-rounded-almbb-info:hover,
+.btn-rounded-almbb-light:hover,
 .btn-rounded-almbb-success:hover,
 .btn-rounded-almbb-warning:hover,
 .btn-rounded-blue:hover,
@@ -167,6 +170,7 @@
 .btn-rounded-light-yellow:hover,
 .btn-rounded-outline-almbb-danger:hover,
 .btn-rounded-outline-almbb-info:hover,
+.btn-rounded-outline-almbb-light:hover,
 .btn-rounded-outline-almbb-success:hover,
 .btn-rounded-outline-almbb-warning:hover,
 .btn-rounded-outline-blue:hover,
@@ -203,6 +207,7 @@
 }
 .btn-check:focus + .btn-rounded-almbb-danger,
 .btn-check:focus + .btn-rounded-almbb-info,
+.btn-check:focus + .btn-rounded-almbb-light,
 .btn-check:focus + .btn-rounded-almbb-success,
 .btn-check:focus + .btn-rounded-almbb-warning,
 .btn-check:focus + .btn-rounded-blue,
@@ -219,6 +224,7 @@
 .btn-check:focus + .btn-rounded-light-yellow,
 .btn-check:focus + .btn-rounded-outline-almbb-danger,
 .btn-check:focus + .btn-rounded-outline-almbb-info,
+.btn-check:focus + .btn-rounded-outline-almbb-light,
 .btn-check:focus + .btn-rounded-outline-almbb-success,
 .btn-check:focus + .btn-rounded-outline-almbb-warning,
 .btn-check:focus + .btn-rounded-outline-blue,
@@ -250,6 +256,7 @@
 .btn-check:focus + .btn-rounded-warning-dark,
 .btn-rounded-almbb-danger:focus,
 .btn-rounded-almbb-info:focus,
+.btn-rounded-almbb-light:focus,
 .btn-rounded-almbb-success:focus,
 .btn-rounded-almbb-warning:focus,
 .btn-rounded-blue:focus,
@@ -266,6 +273,7 @@
 .btn-rounded-light-yellow:focus,
 .btn-rounded-outline-almbb-danger:focus,
 .btn-rounded-outline-almbb-info:focus,
+.btn-rounded-outline-almbb-light:focus,
 .btn-rounded-outline-almbb-success:focus,
 .btn-rounded-outline-almbb-warning:focus,
 .btn-rounded-outline-blue:focus,
@@ -304,6 +312,7 @@
 }
 .active.btn-rounded-almbb-danger,
 .active.btn-rounded-almbb-info,
+.active.btn-rounded-almbb-light,
 .active.btn-rounded-almbb-success,
 .active.btn-rounded-almbb-warning,
 .active.btn-rounded-blue,
@@ -320,6 +329,7 @@
 .active.btn-rounded-light-yellow,
 .active.btn-rounded-outline-almbb-danger,
 .active.btn-rounded-outline-almbb-info,
+.active.btn-rounded-outline-almbb-light,
 .active.btn-rounded-outline-almbb-success,
 .active.btn-rounded-outline-almbb-warning,
 .active.btn-rounded-outline-blue,
@@ -351,6 +361,7 @@
 .active.btn-rounded-warning-dark,
 .btn-check:active + .btn-rounded-almbb-danger,
 .btn-check:active + .btn-rounded-almbb-info,
+.btn-check:active + .btn-rounded-almbb-light,
 .btn-check:active + .btn-rounded-almbb-success,
 .btn-check:active + .btn-rounded-almbb-warning,
 .btn-check:active + .btn-rounded-blue,
@@ -367,6 +378,7 @@
 .btn-check:active + .btn-rounded-light-yellow,
 .btn-check:active + .btn-rounded-outline-almbb-danger,
 .btn-check:active + .btn-rounded-outline-almbb-info,
+.btn-check:active + .btn-rounded-outline-almbb-light,
 .btn-check:active + .btn-rounded-outline-almbb-success,
 .btn-check:active + .btn-rounded-outline-almbb-warning,
 .btn-check:active + .btn-rounded-outline-blue,
@@ -398,6 +410,7 @@
 .btn-check:active + .btn-rounded-warning-dark,
 .btn-check:checked + .btn-rounded-almbb-danger,
 .btn-check:checked + .btn-rounded-almbb-info,
+.btn-check:checked + .btn-rounded-almbb-light,
 .btn-check:checked + .btn-rounded-almbb-success,
 .btn-check:checked + .btn-rounded-almbb-warning,
 .btn-check:checked + .btn-rounded-blue,
@@ -414,6 +427,7 @@
 .btn-check:checked + .btn-rounded-light-yellow,
 .btn-check:checked + .btn-rounded-outline-almbb-danger,
 .btn-check:checked + .btn-rounded-outline-almbb-info,
+.btn-check:checked + .btn-rounded-outline-almbb-light,
 .btn-check:checked + .btn-rounded-outline-almbb-success,
 .btn-check:checked + .btn-rounded-outline-almbb-warning,
 .btn-check:checked + .btn-rounded-outline-blue,
@@ -445,6 +459,7 @@
 .btn-check:checked + .btn-rounded-warning-dark,
 .btn-rounded-almbb-danger:active,
 .btn-rounded-almbb-info:active,
+.btn-rounded-almbb-light:active,
 .btn-rounded-almbb-success:active,
 .btn-rounded-almbb-warning:active,
 .btn-rounded-blue:active,
@@ -461,6 +476,7 @@
 .btn-rounded-light-yellow:active,
 .btn-rounded-outline-almbb-danger:active,
 .btn-rounded-outline-almbb-info:active,
+.btn-rounded-outline-almbb-light:active,
 .btn-rounded-outline-almbb-success:active,
 .btn-rounded-outline-almbb-warning:active,
 .btn-rounded-outline-blue:active,
@@ -496,6 +512,7 @@
 }
 .active.btn-rounded-almbb-danger:focus,
 .active.btn-rounded-almbb-info:focus,
+.active.btn-rounded-almbb-light:focus,
 .active.btn-rounded-almbb-success:focus,
 .active.btn-rounded-almbb-warning:focus,
 .active.btn-rounded-blue:focus,
@@ -512,6 +529,7 @@
 .active.btn-rounded-light-yellow:focus,
 .active.btn-rounded-outline-almbb-danger:focus,
 .active.btn-rounded-outline-almbb-info:focus,
+.active.btn-rounded-outline-almbb-light:focus,
 .active.btn-rounded-outline-almbb-success:focus,
 .active.btn-rounded-outline-almbb-warning:focus,
 .active.btn-rounded-outline-blue:focus,
@@ -543,6 +561,7 @@
 .active.btn-rounded-warning-dark:focus,
 .btn-check:active + .btn-rounded-almbb-danger:focus,
 .btn-check:active + .btn-rounded-almbb-info:focus,
+.btn-check:active + .btn-rounded-almbb-light:focus,
 .btn-check:active + .btn-rounded-almbb-success:focus,
 .btn-check:active + .btn-rounded-almbb-warning:focus,
 .btn-check:active + .btn-rounded-blue:focus,
@@ -559,6 +578,7 @@
 .btn-check:active + .btn-rounded-light-yellow:focus,
 .btn-check:active + .btn-rounded-outline-almbb-danger:focus,
 .btn-check:active + .btn-rounded-outline-almbb-info:focus,
+.btn-check:active + .btn-rounded-outline-almbb-light:focus,
 .btn-check:active + .btn-rounded-outline-almbb-success:focus,
 .btn-check:active + .btn-rounded-outline-almbb-warning:focus,
 .btn-check:active + .btn-rounded-outline-blue:focus,
@@ -590,6 +610,7 @@
 .btn-check:active + .btn-rounded-warning-dark:focus,
 .btn-check:checked + .btn-rounded-almbb-danger:focus,
 .btn-check:checked + .btn-rounded-almbb-info:focus,
+.btn-check:checked + .btn-rounded-almbb-light:focus,
 .btn-check:checked + .btn-rounded-almbb-success:focus,
 .btn-check:checked + .btn-rounded-almbb-warning:focus,
 .btn-check:checked + .btn-rounded-blue:focus,
@@ -606,6 +627,7 @@
 .btn-check:checked + .btn-rounded-light-yellow:focus,
 .btn-check:checked + .btn-rounded-outline-almbb-danger:focus,
 .btn-check:checked + .btn-rounded-outline-almbb-info:focus,
+.btn-check:checked + .btn-rounded-outline-almbb-light:focus,
 .btn-check:checked + .btn-rounded-outline-almbb-success:focus,
 .btn-check:checked + .btn-rounded-outline-almbb-warning:focus,
 .btn-check:checked + .btn-rounded-outline-blue:focus,
@@ -637,6 +659,7 @@
 .btn-check:checked + .btn-rounded-warning-dark:focus,
 .btn-rounded-almbb-danger:active:focus,
 .btn-rounded-almbb-info:active:focus,
+.btn-rounded-almbb-light:active:focus,
 .btn-rounded-almbb-success:active:focus,
 .btn-rounded-almbb-warning:active:focus,
 .btn-rounded-blue:active:focus,
@@ -653,6 +676,7 @@
 .btn-rounded-light-yellow:active:focus,
 .btn-rounded-outline-almbb-danger:active:focus,
 .btn-rounded-outline-almbb-info:active:focus,
+.btn-rounded-outline-almbb-light:active:focus,
 .btn-rounded-outline-almbb-success:active:focus,
 .btn-rounded-outline-almbb-warning:active:focus,
 .btn-rounded-outline-blue:active:focus,
@@ -688,6 +712,7 @@
 }
 .btn-almbb-danger,
 .btn-almbb-info,
+.btn-almbb-light,
 .btn-almbb-success,
 .btn-almbb-warning,
 .btn-blue,
@@ -704,6 +729,7 @@
 .btn-light-yellow,
 .btn-outline-almbb-danger,
 .btn-outline-almbb-info,
+.btn-outline-almbb-light,
 .btn-outline-almbb-success,
 .btn-outline-almbb-warning,
 .btn-outline-blue,
@@ -727,6 +753,7 @@
 .btn-red-orange,
 .btn-rounded-almbb-danger,
 .btn-rounded-almbb-info,
+.btn-rounded-almbb-light,
 .btn-rounded-almbb-success,
 .btn-rounded-almbb-warning,
 .btn-rounded-blue,
@@ -743,6 +770,7 @@
 .btn-rounded-light-yellow,
 .btn-rounded-outline-almbb-danger,
 .btn-rounded-outline-almbb-info,
+.btn-rounded-outline-almbb-light,
 .btn-rounded-outline-almbb-success,
 .btn-rounded-outline-almbb-warning,
 .btn-rounded-outline-blue,
@@ -795,6 +823,7 @@
 .btn-scrollup,
 .btn-scrollup-almbb-danger,
 .btn-scrollup-almbb-info,
+.btn-scrollup-almbb-light,
 .btn-scrollup-almbb-success,
 .btn-scrollup-almbb-warning,
 .btn-scrollup-blue,
@@ -833,6 +862,7 @@
 }
 .btn-scrollup-almbb-danger:hover,
 .btn-scrollup-almbb-info:hover,
+.btn-scrollup-almbb-light:hover,
 .btn-scrollup-almbb-success:hover,
 .btn-scrollup-almbb-warning:hover,
 .btn-scrollup-blue:hover,
@@ -864,6 +894,7 @@
 }
 .btn-scrollup-almbb-danger:focus,
 .btn-scrollup-almbb-info:focus,
+.btn-scrollup-almbb-light:focus,
 .btn-scrollup-almbb-success:focus,
 .btn-scrollup-almbb-warning:focus,
 .btn-scrollup-blue:focus,
@@ -898,6 +929,7 @@
   .btn-scrollup,
   .btn-scrollup-almbb-danger,
   .btn-scrollup-almbb-info,
+  .btn-scrollup-almbb-light,
   .btn-scrollup-almbb-success,
   .btn-scrollup-almbb-warning,
   .btn-scrollup-blue,
@@ -928,6 +960,7 @@
   .btn-scrollup,
   .btn-scrollup-almbb-danger,
   .btn-scrollup-almbb-info,
+  .btn-scrollup-almbb-light,
   .btn-scrollup-almbb-success,
   .btn-scrollup-almbb-warning,
   .btn-scrollup-blue,
@@ -1023,6 +1056,9 @@
 }
 .btn-rounded-special-dark {
   background: #263238
+}
+.btn-rounded-almbb-light {
+  background: #f8f9fa
 }
 .btn-rounded-outline-blue {
   color: #2096ff!important;
@@ -1133,6 +1169,11 @@
   color: #263238!important;
   background-color: transparent!important;
   border: 2px solid #263238!important
+}
+.btn-rounded-outline-almbb-light {
+  color: #f8f9fa!important;
+  background-color: transparent!important;
+  border: 2px solid #f8f9fa!important
 }
 .btn-rounded-gradient-blue {
   background: -o-linear-gradient(50deg,#45cafc,#303f9f);
@@ -1762,6 +1803,31 @@
   -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
   box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
 }
+.btn-almbb-light {
+  background: #f8f9fa;
+  color: #fff;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-almbb-light:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-almbb-light.active,
+.btn-almbb-light:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-almbb-light:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
 .btn-outline-blue {
   color: #2096ff!important;
   background-color: transparent!important;
@@ -2334,6 +2400,32 @@
   -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
   box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
 }
+.btn-outline-almbb-light {
+  color: #f8f9fa!important;
+  background-color: transparent!important;
+  border: 2px solid #f8f9fa!important;
+  -webkit-transition: .2s ease-in-out;
+  -o-transition: .2s ease-in-out;
+  transition: .2s ease-in-out
+}
+.btn-outline-almbb-light:hover {
+  color: #fff;
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-almbb-light.active,
+.btn-outline-almbb-light:active {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
+.btn-outline-almbb-light:focus {
+  -webkit-filter: opacity(85%);
+  filter: opacity(85%);
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.4)!important
+}
 .btn-gradient-blue {
   background: -o-linear-gradient(50deg,#45cafc,#303f9f);
   background: linear-gradient(40deg,#45cafc,#303f9f);
@@ -2477,6 +2569,9 @@
 }
 .btn-scrollup-special-dark {
   background: #263238
+}
+.btn-scrollup-almbb-light {
+  background: #f8f9fa
 }
 .btn-scrollup-gradient-blue {
   background: -o-linear-gradient(50deg,#45cafc,#303f9f);

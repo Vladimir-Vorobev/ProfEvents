@@ -7,7 +7,7 @@
                         <div class="avatar">
                             <img src="./../assets/noavatar.jpg" alt="">
                         </div>
-                        <button @click="GoToEditor()" class="btn btn-light" style="width: 100%; margin-top: 15px;">Редактировать</button>
+                        <button @click="GoToEditor()" class="btn btn-almbb-light" style="width: 100%; margin-top: 30px; color: black;">Редактировать</button>
                     </div>
                 </div>
                 
