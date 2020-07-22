@@ -49,10 +49,10 @@
                         <a :href="item.link" class="btn btn-primary" @click="setScroll()">Перейти к мероприятию</a> -->
                         <div class="row">
                             <div class="col-12 col-md-6">
-                                <button class="btn btn-outline-info"  @click="add(item)">Собираюсь посетить</button>
+                                <button class="btn btn-outline-almbb-info"  @click="add(item)">Собираюсь посетить</button>
                             </div>
-                            <div class="col-12 col-md-6">
-                                <a :href="item.link" class="btn btn-primary" @click="setScroll()">Перейти к мероприятию</a>
+                            <div class="col-12 col-md-6 gotoevents">
+                                <a :href="item.link" class="btn btn-blue" @click="setScroll()">Перейти к мероприятию</a>
                             </div>
                         </div>
                     </div>
@@ -181,5 +181,10 @@ export default {
 }
 .card-header{
     font-weight: bold;
+}
+@media (max-width: 767px) {  
+    .gotoevents{
+        margin-top: 0.5em
+    }
 }
 </style>

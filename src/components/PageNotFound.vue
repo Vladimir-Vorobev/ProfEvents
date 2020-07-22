@@ -19,7 +19,8 @@
                 <p>Страница, которую Вы ищете, недоступна или находится в разработке!</p>
                 
                 <router-link to='/' class="router-link">
-                    <a type="button" class="link_404" ref="profile">Домой</a>
+                    <!-- <a type="button" class="link_404" ref="profile">Домой</a> -->
+                    <a class="btn btn-rounded-almbb-success" ref="profile" style="text-decoration: none; color: white;">Домой</a>
                 </router-link>
                 
             </div>

@@ -7,11 +7,11 @@
                 <div class="card-body">
                     <div class="row">
                         <h5 class="card-title col-11">{{item.name}}</h5>
-                        <h5><button class="btn btn-danger" @click="deleteEvent(item)"> <i class="fas fa-trash-alt"></i> </button></h5>
+                        <h5><button class="btn btn-almbb-danger btn-almbb-small" @click="deleteEvent(item)"> <i class="fas fa-trash-alt"></i> </button></h5>
                     </div>
                     <p class="card-text"><i class="far fa-clock"></i> {{item.time}}</p>
                     <p class="card-text">Тип: {{item.type}}</p>
-                    <a :href="item.link" class="btn btn-primary">Перейти к мероприятию</a>
+                    <a :href="item.link" class="btn btn-blue">Перейти к мероприятию</a>
                 </div>
             </div>
         </div>
