@@ -1,6 +1,6 @@
 <template>
 <div>
-    <footer class="footer mt-auto py-3">
+    <footer class="py-3">
         <div class="container">
             <span class="text-muted">Разработано DARK_LED</span>
         </div>
@@ -20,5 +20,6 @@ export default {
 <style scoped>
 footer {
     background-color: #f8f9fa;
+    margin-top: 1em;
 }
 </style>
