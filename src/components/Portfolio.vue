@@ -6,20 +6,23 @@
                 <h5 class="card-title">Добавить в портфолио:</h5>
                 <div class="input-group">
                     <div class="custom-file">
-                        <input type="file" accept="image/*" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+                        <input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" multiple>
                         <label class="custom-file-label" for="inputGroupFile04" style="text-align: left"></label>
                     </div>
                     <div class="input-group-append">
-                        <button class="btn btn-outline-success" type="button" id="inputGroupFileAddon04">Добавить</button>
+                        <button class="btn btn-outline-success" type="button" id="inputGroupFileAddon04" @click="send()">Добавить</button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="cards">
-            <div class="card" >
-                <img src="./../assets/for_main.jpg" class="card-img-top">
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <div class="img justify-content-center">
+            <div v-if="photo.length == 0">
+                <div class="justify-content-center h2">Загрузка портфолио</div>
+                <div style="text-align: center;"><i class='fa fa-spinner fa-pulse fa-3x'></i></div>
+            </div>
+            <div v-for="item in photo" :key="item.data">
+                <div class="form-group text-center my-sm-2" style="padding-left: 5px;" v-lazy-container="{ selector: 'img' }">
+                    <img width="300" height="200" :data-src="item.data" alt="">
                 </div>
             </div>
         </div>
@@ -31,10 +34,143 @@
 <script>
 // import needle from "needle"
 import Footer from './footer.vue'
+import Swal from 'sweetalert2'
+import needle from 'needle'
+import anime from 'animejs'
 export default {
     name: 'Portfolio',
     components: { Footer },
-    
+    data(){
+        return{
+            photo: [],
+            email: this.$store.state.email,
+            num: 0,
+        }
+    },
+    beforeMount(){
+        fetch(this.$store.state.serverIp+'/api/getPortfolio', {
+            method: 'POST',
+            headers: {email: this.email, sessionid: this.SessionID},
+        })
+        .then(response => {
+            console.log("res", response)
+            return response.json()
+        })
+        .then(response => {
+            console.log("res", response)
+            this.photo = []
+            return response.json()
+        })
+    },
+    mounted(){
+        let rec = false
+        let socket = require('socket.io-client')(this.$store.state.socketIp)
+        socket.on('connect', () => {
+            if(rec){
+                socket.emit('recon', this.email)
+            }
+        })
+        socket.on('disconnect', () => {
+            rec = true
+        })
+        socket.emit('new_user', this.email)
+        let numOfUploadedFiles = 0
+        socket.on('send_image', (data) => {
+            console.log(data)
+            this.photo.push({contentType: data.data.contentType, data: data.data.file})
+        })
+        socket.on('add_system_image', () => {
+            numOfUploadedFiles += 1
+            let pers = document.querySelector('.persents')
+            let num = numOfUploadedFiles / this.num * 100
+            anime({
+                targets: 'progress',
+                value: num,
+                easing: 'linear'
+            });
+            anime({
+                targets: pers,
+                innerHTML: num + '%',
+                easing: 'linear',
+                round: 1,
+            });
+            pers.value = num
+            if(numOfUploadedFiles == this.num){
+                setTimeout(() => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Изображения успешно сохранены',
+                        timer: 2000
+                    })
+                    setTimeout(() => {
+                        window.location.reload()
+                    }, 2000);
+                }, 2000);
+            }
+        })
+    },
+    methods:{
+        send(){
+            event.preventDefault()
+            let data = []
+            let len = document.querySelector('.custom-file-input').files.length
+            let url = this.$store.state.serverIp
+            if(len == 0){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Ошибка',
+                    text: 'Файл не выбран',
+                    timer: 2000
+                })
+                setTimeout(() => {
+                    return
+                }, 2000);
+            }
+            this.num = len
+            Swal.fire({
+                icon: 'info',
+                title: 'Ваши файлы загружаются',
+                html: '<div class="justify-content-center h2 persents" value="0">0%</div>' +
+                '<progress class="progress_swal" value="0" max="100"></progress>',
+            })
+            for(let i = 0; i < len; i++){
+                let reader = new FileReader();
+                let file = document.querySelector('.custom-file-input').files[i]
+                reader.readAsDataURL(file);
+                let email = this.email
+                reader.onload = function () {
+                    data.push({file: reader.result, type: file.type})
+                    if(i == len - 1){
+                        needle.post(url + '/api/uploadPortfolio', {images: data, email: email}, {"json": true}, function(err, res){
+                            if(err){
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Ошибка',
+                                    text: 'Непредвиденная ошибка, повторите попытку',
+                                    timer: 2000
+                                })
+                                console.log(err)
+                            }
+                            else if(res.body == '310'){
+                                document.cookie = "email=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
+                                document.cookie = "SessionID=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
+                                document.location.href = '/login'
+                            }
+                        })
+                    }
+                }
+                reader.onerror = function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Ошибка',
+                        text: 'Непредвиденная ошибка, повторите попытку',
+                        timer: 2000
+                    })
+                    console.log('Error: ', error);
+                };
+            }
+        },
+    }
 }
 
 

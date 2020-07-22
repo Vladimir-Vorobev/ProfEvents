@@ -82,6 +82,9 @@
                         <input name="img_for_avatar" type="file" accept="image/*" method="post" enctype="multipart/form-data" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
                         <label class="custom-file-label" for="inputGroupFile04" style="text-align: left"></label>
                     </div>
+                    <div class="form-group text-center my-sm-2" style="padding-left: 5px;" v-lazy-container="{ selector: 'img' }">
+                        <img width="300" height="200" :data-src="avatar.file" alt="">
+                    </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-12"> 
@@ -125,8 +128,9 @@
 
 <script>
 import Footer from './footer.vue'
-// import Vue from 'vue';
+import Swal from 'sweetalert2'
 import needle from 'needle'
+import anime from 'animejs'
 export default {
     name: 'UserProfileEditor',
     components: { Footer },
@@ -135,10 +139,30 @@ export default {
         email: this.$store.getters.email,
         SessionID: this.$store.getters.SessionID,
         userId: 0,
+        avatar: '',
       }
     },
     beforeMount(){
         if(this.email == '') window.location.pathname = "/login"
+        fetch(this.$store.state.serverIp+'/api/getAvatar', {
+            method: 'POST',
+            headers: {email: this.email, sessionid: this.SessionID},
+        })
+        .then(response => {
+            console.log("res", response)
+            return response.json()
+        })
+        .then(data => {
+            console.log(data)
+            if(data == '310'){
+                document.cookie = "email=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
+                document.cookie = "SessionID=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
+                window.location.reload()
+            }
+            else{
+                this.avatar = data.data
+            }
+        })
         fetch(this.$store.state.serverIp+'/api/getInformation', {
             method: 'POST',
             headers: {email: this.email, sessionid: this.SessionID},
@@ -188,6 +212,53 @@ export default {
         .catch(err => {
             console.log(err)
         })
+        },
+        mounted(){
+            let rec = false
+            console.log(this.$store.state.socketIp)
+            let socket = require('socket.io-client')(this.$store.state.socketIp)
+            socket.on('connect', () => {
+                if(rec){
+                    socket.emit('recon', this.email)
+                }
+            })
+            socket.on('disconnect', () => {
+                rec = true
+            })
+            socket.emit('new_user', this.email)
+            let numOfUploadedFiles = 0
+            socket.on('send_image', (data) => {
+                this.photo.push({contentType: data.photo.contentType, data: data.photo.data})
+            })
+            socket.on('add_system_image', () => {
+                numOfUploadedFiles += 1
+                let pers = document.querySelector('.persents')
+                let num = numOfUploadedFiles / this.num * 100
+                anime({
+                    targets: 'progress',
+                    value: num,
+                    easing: 'linear'
+                });
+                anime({
+                    targets: pers,
+                    innerHTML: num + '%',
+                    easing: 'linear',
+                    round: 1,
+                });
+                pers.value = num
+                if(numOfUploadedFiles == this.num){
+                    setTimeout(() => {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Изображения успешно сохранены',
+                            timer: 2000
+                        })
+                        setTimeout(() => {
+                            window.location.reload()
+                        }, 2000);
+                    }, 2000);
+                }
+            })
         },
     methods: {
         updateUser(){
@@ -250,21 +321,60 @@ export default {
                 if(class_number.trim() != '') dataq.class_number = class_number
                 if(simvol.trim() != '') dataq.simvol = simvol
                 if(file != undefined){
-                    fetch(this.$store.state.serverIp+'/api/uploadFile', {
-                        method: 'POST',
-                        headers: {email: email, sessionid: this.SessionID, type: 'avatar'},
-                        file: file,
+                    let data = []
+                    let len = 1
+                    let url = this.$store.state.serverIp
+                    if(len == 0){
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Ошибка',
+                            text: 'Файл не выбран',
+                            timer: 2000
+                        })
+                        setTimeout(() => {
+                            return
+                        }, 2000);
+                    }
+                    this.num = len
+                    Swal.fire({
+                        icon: 'info',
+                        title: 'Ваши файлы загружаются',
+                        html: '<div class="justify-content-center h2 persents" value="0">0%</div>' +
+                        '<progress class="progress_swal" value="0" max="100"></progress>',
                     })
-                    .then(response => {
-                        console.log("res", response)
-                        return response.json()
-                    })
-                    .then(data => {
-                        console.log(data)
-                    })
-                    .catch(err => {
-                        console.log(err)
-                    })
+                    let reader = new FileReader();
+                    let file = document.querySelector('.custom-file-input').files[0]
+                    reader.readAsDataURL(file);
+                    let email = this.email
+                    let SessionID = this.SessionID
+                    reader.onload = function () {
+                        data.push({file: reader.result, type: file.type})
+                        needle.post(url + '/api/uploadAvatar', {images: data, email: email, sessionid: SessionID}, {"json": true}, function(err, res){
+                            if(err){
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Ошибка',
+                                    text: 'Непредвиденная ошибка, повторите попытку',
+                                    timer: 2000
+                                })
+                                console.log(err)
+                            }
+                            else if(res.body == '310'){
+                                document.cookie = "email=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
+                                document.cookie = "SessionID=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
+                                document.location.href = '/login'
+                            }
+                        })
+                        reader.onerror = function (error) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Ошибка',
+                                text: 'Непредвиденная ошибка, повторите попытку',
+                                timer: 2000
+                            })
+                            console.log('Error: ', error);
+                        };
+                    }
                 }
                 needle.post(this.$store.state.serverIp+'/api/updateInformation', {email: this.email, sessionid: this.SessionID, update: dataq}, {"json": true}, function(err){
                     if (err) console.log(err)

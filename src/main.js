@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex';
 import { APP_STORE } from '../store';
+import VueLazyload from 'vue-lazyload'
+Vue.use(VueLazyload)
+
 import VueRouter from 'vue-router'
 import App from './App.vue'
 
