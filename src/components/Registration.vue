@@ -5,31 +5,31 @@
                 <h2>Регистрация</h2>
                 <div class="form-group row">
                     <label for="exampleInputEmail1">Имя</label>
-                    <input name="name" class="form-control" placeholder="Иван" required>
+                    <input name="name" class="form-control formInput" placeholder="Иван" required>
                 </div>
                 <div class="form-group row">
                     <label for="exampleInputEmail1">Фамилия</label>
-                    <input name="surname" class="form-control" placeholder="Иванов" required>
+                    <input name="surname" class="form-control formInput" placeholder="Иванов" required>
                 </div>
                 <div class="form-group row">
                     <label for="exampleInputEmail1">Email адресс</label>
-                    <input type="email" name="email" class="form-control" placeholder="example@gmail.com" required>
+                    <input type="email" name="email" class="form-control formInput" placeholder="example@gmail.com" required>
                 </div>
                 <div class="form-group row">
                     <label for="exampleInputEmail1">Дата рождения</label>
-                    <input type="date" class="form-control" name="age" min="1900-01-01" required>
+                    <input type="date" class="form-control formInput" name="age" min="1900-01-01" required>
                 </div>
                 <div class="form-group row">
                     <label for="exampleInputPassword1">Пароль {{passwordText}}</label>
-                    <input type="password" class="form-control" name="password" placeholder="1234567" required>
+                    <input type="password" class="form-control formInput" name="password" placeholder="1234567" required>
                 </div>
                 <div class="form-group row">
                     <label for="exampleInputPassword1">Повторите пароль</label>
-                    <input type="password" class="form-control" name="password2" placeholder="1234567" required>
+                    <input type="password" class="form-control formInput" name="password2" placeholder="1234567" required>
                 </div>
                 <div class="form-group row code" style="display: none;">
                     <label for="exampleInputPassword1">Введите код подтверждения из Вашей почты</label>
-                    <input type="password" class="form-control" name="code" placeholder="1234567">
+                    <input type="password" class="form-control formInput" name="code" placeholder="1234567">
                 </div>
                 <div class="row"> 
                     <button class="btn btn-rounded-blue btn-lg" @click="addUser()">Зарегистрироваться</button>
@@ -228,5 +228,8 @@ export default {
     padding: 0px;
     min-height: 100vh;
     margin-bottom: 0px;
+}
+.formInput{
+    border-radius: 50px;
 }
 </style>
