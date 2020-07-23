@@ -19,7 +19,7 @@
                     </form>
                 </div>
                 <div v-if="!show" key="div">
-                    <ul key="ul" class="nav nav-pills mb-3" id="pills-tab" role="tablist" v-if="role == 'teacher'">
+                    <ul key="ul" class="nav nav-pills almbb-pills mb-3" id="pills-tab" role="tablist" v-if="role == 'teacher'">
                         <li class="nav-item" role="presentation">
                             <a class="nav-link active" @click="showList()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="true">Список класса</a>
                         </li>
@@ -30,7 +30,7 @@
                             <a class="nav-link" @click="showAdd()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="false">Обновить список</a>
                         </li>
                     </ul>
-                    <ul key="ul" class="nav nav-pills mb-3" id="pills-tab" role="tablist" v-if="role == 'school-admin'">
+                    <ul key="ul" class="nav nav-pills almbb-pills mb-3" id="pills-tab" role="tablist" v-if="role == 'school-admin'">
                         <li class="nav-item" role="presentation">
                             <a class="nav-link active" @click="showList()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="true">Список учителей</a>
                         </li>
@@ -41,7 +41,7 @@
                             <a class="nav-link" @click="showAdd()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="false">Обновить список</a>
                         </li>
                     </ul>
-                    <ul key="ul" class="nav nav-pills mb-3" id="pills-tab" role="tablist" v-if="role == 'admin'">
+                    <ul key="ul" class="nav nav-pills almbb-pills mb-3" id="pills-tab" role="tablist" v-if="role == 'admin'">
                         <li class="nav-item" role="presentation">
                             <a class="nav-link active schoolList" @click="showSchoolList()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="true">Список школ</a>
                         </li>
@@ -177,7 +177,7 @@
                                                 <div class="name row">
                                                     <div class="name_group col-10">{{ item.person }}</div>
                                                     <div class="col-1 ar-collapse" :id='item.email'></div>
-                                                    <div class="col-1" ><button class="btn btn-danger" @click="deletePerson(item.email, item.name, item.surname, 'teacher')"> <i class="fas fa-trash-alt"></i> </button></div>
+                                                    <div class="col-1" ><button class="btn btn-almbb-danger btn-almbb-small" @click="deletePerson(item.email, item.name, item.surname, 'teacher')"> <i class="fas fa-trash-alt"></i> </button></div>
                                                 </div>
                                                 <div :id='item.email + "s"' style="display: none;">
                                                     <div v-for="item2 in students[item.email]" :key="item2.student" :class="item2.email">
@@ -247,7 +247,7 @@
                                     <div key="div" v-if="ShowAddList" style="text-align: left">
                                         <p key="p" style="font-size:1.3em; text-align: center"> Загрузите актуальный список Ваших учителей в excel файле </p>
                                         <p><input type="file" ref="file" class="form-control-file" @change="file()" key="input"></p>
-                                        <p><button type="submit" @click="add('!1', 'teacher')" class="btn btn-primary btn-lg" key="button">Обновить список</button></p>
+                                        <p><button type="submit" @click="add('!1', 'teacher')" class="btn btn-blue btn-lg" key="button">Обновить список</button></p>
                                     </div>
                                     <form key="form" id='formOne' v-if="ShowAddOne" style="text-align: left">
                                         <div class="row">
@@ -281,7 +281,7 @@
                                         <!-- <p key="p">Email </p><input key="input" name="email">
                                         <p key="p">Имя </p><input key="input" name="name">
                                         <p key="p">Фамилия </p><input key="input" name="surname" style="margin-bottom: 0.7em"> -->
-                                        <p><button type="submit" @click="add('one', 'teacher')" class="btn btn-primary btn-lg" key="button">Добавить учителя</button></p>
+                                        <p><button type="submit" @click="add('one', 'teacher')" class="btn btn-blue btn-lg" key="button">Добавить учителя</button></p>
                                     </form>
                                 </transition-group>
                             </div>
@@ -360,7 +360,7 @@
                                                 <div class="person_box">
                                                     <div class="name row">
                                                         <div class="name_group col-11">{{ item.person }}</div>
-                                                        <div class="col-1" ><button class="btn btn-danger" @click="deletePerson(item.email, item.name, item.surname, 'school-admin')"><i class="fas fa-trash-alt"></i></button></div>
+                                                        <div class="col-1" ><button class="btn btn-almbb-danger btn-almbb-small" @click="deletePerson(item.email, item.name, item.surname, 'school-admin')"><i class="fas fa-trash-alt"></i></button></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -413,7 +413,7 @@
                                         <!-- <p key="p">Email </p><input key="input" name="email">
                                         <p key="p">Имя </p><input key="input" name="name">
                                         <p key="p">Фамилия </p><input key="input" name="surname" style="margin-bottom: 0.7em"> -->
-                                        <p><button type="submit" @click="add('school-admin', 'school-admin')" class="btn btn-primary btn-lg" key="button">Добавить школьного администратора</button></p>
+                                        <p><button type="submit" @click="add('school-admin', 'school-admin')" class="btn btn-blue btn-lg" key="button">Добавить школьного администратора</button></p>
                                     </form>
                                 </transition-group>
                             </div>
@@ -429,7 +429,7 @@
                                                 <div class="person_box">
                                                     <div class="name row">
                                                         <div class="name_group col-11">{{ item.person }}</div>
-                                                        <div class="col-1" ><button class="btn btn-danger" @click="deletePerson(item.email, item.name, item.surname, 'admin')"><i class="fas fa-trash-alt"></i></button></div>
+                                                        <div class="col-1" ><button class="btn btn-almbb-danger btn-almbb-small" @click="deletePerson(item.email, item.name, item.surname, 'admin')"><i class="fas fa-trash-alt"></i></button></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -467,7 +467,7 @@
                                         <!-- <p key="p">Email </p><input key="input" name="email">
                                         <p key="p">Имя </p><input key="input" name="name">
                                         <p key="p">Фамилия </p><input key="input" name="surname" style="margin-bottom: 0.7em"> -->
-                                        <p><button type="submit" @click="add('admin', 'admin')" class="btn btn-primary btn-lg" key="button">Добавить админа</button></p>
+                                        <p><button type="submit" @click="add('admin', 'admin')" class="btn btn-blue btn-lg" key="button">Добавить админа</button></p>
                                     </form>
                                 </transition-group>
                             </div>
