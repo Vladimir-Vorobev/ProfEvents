@@ -50,7 +50,7 @@
                     <a type="button" class="btn btn-rounded-blue btn-lg" ref="login">{{loginText}}</a>
                 </router-link>
                 <div class="dropdown person_menu" style="display:none">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn btn-rounded-blue dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{loginText}}
                     </button>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
