@@ -5,11 +5,11 @@
                 <h2>Регистрация</h2>
                 <div class="form-group row">
                     <label for="exampleInputEmail1">Имя</label>
-                    <input name="name" class="form-control formInput" placeholder="Иван" required>
+                    <input name="name" class="form-control formInput" placeholder="Имя" required>
                 </div>
                 <div class="form-group row">
                     <label for="exampleInputEmail1">Фамилия</label>
-                    <input name="surname" class="form-control formInput" placeholder="Иванов" required>
+                    <input name="surname" class="form-control formInput" placeholder="Фамилия" required>
                 </div>
                 <div class="form-group row">
                     <label for="exampleInputEmail1">Email адресс</label>
@@ -21,15 +21,15 @@
                 </div>
                 <div class="form-group row">
                     <label for="exampleInputPassword1">Пароль {{passwordText}}</label>
-                    <input type="password" class="form-control formInput" name="password" placeholder="1234567" required>
+                    <input type="password" class="form-control formInput" name="password" placeholder="Пароль" required>
                 </div>
                 <div class="form-group row">
                     <label for="exampleInputPassword1">Повторите пароль</label>
-                    <input type="password" class="form-control formInput" name="password2" placeholder="1234567" required>
+                    <input type="password" class="form-control formInput" name="password2" placeholder="Повторите пароль" required>
                 </div>
                 <div class="form-group row code" style="display: none;">
                     <label for="exampleInputPassword1">Введите код подтверждения из Вашей почты</label>
-                    <input type="password" class="form-control formInput" name="code" placeholder="1234567">
+                    <input type="password" class="form-control formInput" name="code" placeholder="Код подтверждения">
                 </div>
                 <div class="row"> 
                     <button class="btn btn-rounded-blue btn-lg" @click="addUser()">Зарегистрироваться</button>
