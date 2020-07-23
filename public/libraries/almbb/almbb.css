@@ -2724,3 +2724,23 @@
 .waves-effect .waves-ripple {
   z-index: -1
 }
+.nav-pills.almbb-pills .nav-item {
+  padding: 10px
+}
+.nav-pills.almbb-pills .nav-link {
+  border-width: 0;
+  outline: 0;
+  padding: .84rem 2.14rem;
+  font-size: .81rem;
+  text-transform: uppercase
+}
+.nav-pills.almbb-pills .nav-link.active {
+  background-color: #2096ff;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.2);
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.2)
+}
+.nav-pills.almbb-pills .nav-link:not(.active):hover {
+  background-color: #f8f9fa;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.2);
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.2)
+}
