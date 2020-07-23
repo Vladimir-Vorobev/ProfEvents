@@ -76,7 +76,7 @@
                                                     <form :id="'form' + item.email">
                                                         <input class="radio" :name="'donaught' + item.email" type="radio" value="donaught" checked @click="changeInfo(item.email, 'donaught')"> Кругова диаграмма
                                                         <input class="radio" :name="'bar' + item.email" type="radio" value="bar" @click="changeInfo(item.email, 'bar')"> Столбчатая диаграмма
-                                                        <input class="radio" :name="'full' + item.email" type="radio" value="full" @click="changeInfo(item.email)"> Полная статистика
+                                                        <input class="radio" :name="'full' + item.email" type="radio" value="full" @click="changeInfo(item.email, 'full')"> Полная статистика
                                                     </form>
                                                     <div class="chart-container" :id="'chartDiv' + item.email" style="display: none;"><canvas :id="'chart' + item.email"></canvas></div>
                                                     <div class="chart-container" :id="'chartDiv2' + item.email" style="display: none;"><canvas :id="'chart2' + item.email"></canvas></div>
@@ -192,7 +192,7 @@
                                                                     <form :id="'form' + item2.email">
                                                                         <input class="radio" :name="'donaught' + item2.email" type="radio" value="donaught" checked @click="changeInfo(item2.email, 'donaught')"> Кругова диаграмма
                                                                         <input class="radio" :name="'bar' + item2.email" type="radio" value="bar" @click="changeInfo(item2.email, 'bar')"> Столбчатая диаграмма
-                                                                        <input class="radio" :name="'full' + item2.email" type="radio" value="full" @click="changeInfo(item2.email)"> Полная статистика
+                                                                        <input class="radio" :name="'full' + item2.email" type="radio" value="full" @click="changeInfo(item2.email, 'full')"> Полная статистика
                                                                     </form>
                                                                     <div class="chart-container" :id="'chartDiv' + item2.email" style="display: none;"><canvas :id="'chart' + item2.email"></canvas></div>
                                                                     <div class="chart-container" :id="'chartDiv2' + item2.email" style="display: none;"><canvas :id="'chart2' + item2.email"></canvas></div>
@@ -330,7 +330,7 @@
                                                                         <form :id="'form' + item2.email">
                                                                             <input class="radio" :name="'donaught' + item2.email" type="radio" value="donaught" checked @click="changeInfo(item2.email, 'donaught')"> Кругова диаграмма
                                                                             <input class="radio" :name="'bar' + item2.email" type="radio" value="bar" @click="changeInfo(item2.email, 'bar')"> Столбчатая диаграмма
-                                                                            <input class="radio" :name="'full' + item2.email" type="radio" value="full" @click="changeInfo(item2.email)"> Полная статистика
+                                                                            <input class="radio" :name="'full' + item2.email" type="radio" value="full" @click="changeInfo(item2.email, 'full')"> Полная статистика
                                                                         </form>
                                                                         <div class="chart-container" :id="'chartDiv' + item2.email" style="display: none;"><canvas :id="'chart' + item2.email"></canvas></div>
                                                                         <div class="chart-container" :id="'chartDiv2' + item2.email" style="display: none;"><canvas :id="'chart2' + item2.email"></canvas></div>
@@ -972,7 +972,7 @@ export default {
             this.ShowAdd = false
         },
         changeInfo(email, chart){
-            if(this.chart != undefined){
+            if(chart != undefined){
                 let form = document.getElementById('form' + email)
                 if(chart == 'donaught'){
                     form['bar' + email].checked = false
