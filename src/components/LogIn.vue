@@ -5,13 +5,13 @@
                 <h2>Войти</h2>
                 <div class="form-group" style="text-align: left">
                     <label for="exampleInputEmail1">Email адресс</label>
-                    <input name="email" class="form-control" placeholder="example@gmail.com" required>
+                    <input name="email" class="form-control formInput" placeholder="example@gmail.com" required>
                 </div>
                 <div style="text-align: left">
                     <label for="password">Пароль</label>
                 </div>
                 <div class="form-label-group input-group">
-                    <input type="password" id="password" class="form-control" name="password" placeholder="Пароль" required>
+                    <input type="password" id="password" class="form-control formInput" name="password" placeholder="Пароль" required>
                     <div class="input-group-append" @click="showHidePwd()" style="cursor: pointer">
                         <span class="input-group-text">
                             <i id="eye" class="far fa-eye-slash"></i>
@@ -131,5 +131,8 @@ export default {
 
 i:hover {
     cursor: pointer;
+}
+.formInput{
+    border-radius: 50px;
 }
 </style>
