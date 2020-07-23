@@ -12,8 +12,8 @@
                 </div>
                 <div class="form-label-group input-group">
                     <input type="password" id="password" class="form-control formInput" name="password" placeholder="Пароль" required>
-                    <div class="input-group-append" @click="showHidePwd()" style="cursor: pointer">
-                        <span class="input-group-text">
+                    <div class="input-group-append" @click="showHidePwd()" style="cursor: pointer;">
+                        <span class="input-group-text showHidePwd">
                             <i id="eye" class="far fa-eye-slash"></i>
                         </span>
                     </div>
@@ -133,6 +133,9 @@ i:hover {
     cursor: pointer;
 }
 .formInput{
+    border-radius: 50px;
+}
+.showHidePwd{
     border-radius: 50px;
 }
 </style>
