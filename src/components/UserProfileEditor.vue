@@ -3,7 +3,7 @@
         <div class="container warp">
             <div class="row">
                 <div class="col-1">
-                    <button class='btn btn-light' @click="backInProfile()"><i class="fas fa-arrow-left"></i></button>
+                    <button class='btn btn-almbb-light btn-almbb-small' @click="backInProfile()" style="color: black;"><i class="fas fa-arrow-left"></i></button>
                 </div>
                 <div class="col-11">
                     <h3>Редактирование профиля:</h3>
@@ -82,7 +82,7 @@
                         <input name="img_for_avatar" type="file" accept="image/*" method="post" enctype="multipart/form-data" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
                         <label class="custom-file-label" for="inputGroupFile04" style="text-align: left"></label>
                     </div>
-                    <div class="form-group text-center my-sm-2" style="padding-left: 5px;" v-lazy-container="{ selector: 'img' }">
+                    <div class="form-group text-center my-sm-2" style="padding-left: 5px; border: 1px solid grey" v-lazy-container="{ selector: 'img' }">
                         <img width="300" height="200" :data-src="avatar.file" alt="">
                     </div>
                 </div>
@@ -98,7 +98,7 @@
                 </div>
                 <h4>Данные для входа:</h4>
                 <div class="form-group row">
-                <div class="col-12 col-md-6">
+                <div class="col-12">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon7">Email</span>
@@ -118,7 +118,7 @@
                 </div>
                 </div>
                 <div class="form-group row"> 
-                    <button class="btn btn-primary btn-lg" @click="updateUser()">Сохранить</button>
+                    <button class="btn btn-blue btn-lg" @click="updateUser()">Сохранить</button>
                 </div>
             </form>
         </div>
