@@ -19,7 +19,7 @@
                     </form>
                 </div>
                 <div v-if="!show" key="div">
-                    <ul key="ul" class="nav nav-pills mb-3" id="pills-tab" role="tablist" v-if="role == 'teacher'">
+                    <ul key="ul" class="nav nav-pills almbb-pills mb-3" id="pills-tab" role="tablist" v-if="role == 'teacher'">
                         <li class="nav-item" role="presentation">
                             <a class="nav-link active" @click="showList()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="true">Список класса</a>
                         </li>
@@ -30,7 +30,7 @@
                             <a class="nav-link" @click="showAdd()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="false">Обновить список</a>
                         </li>
                     </ul>
-                    <ul key="ul" class="nav nav-pills mb-3" id="pills-tab" role="tablist" v-if="role == 'school-admin'">
+                    <ul key="ul" class="nav nav-pills almbb-pills mb-3" id="pills-tab" role="tablist" v-if="role == 'school-admin'">
                         <li class="nav-item" role="presentation">
                             <a class="nav-link active" @click="showList()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="true">Список учителей</a>
                         </li>
@@ -41,7 +41,7 @@
                             <a class="nav-link" @click="showAdd()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="false">Обновить список</a>
                         </li>
                     </ul>
-                    <ul key="ul" class="nav nav-pills mb-3" id="pills-tab" role="tablist" v-if="role == 'admin'">
+                    <ul key="ul" class="nav nav-pills almbb-pills mb-3" id="pills-tab" role="tablist" v-if="role == 'admin'">
                         <li class="nav-item" role="presentation">
                             <a class="nav-link active schoolList" @click="showSchoolList()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="true">Список школ</a>
                         </li>
