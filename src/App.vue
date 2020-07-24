@@ -4,7 +4,7 @@
     <page-header></page-header>
     <router-view></router-view>
     <CookieNotify></CookieNotify>
-    <div style="display:none;" class="btn-scrollup-gradient-aqua scrollup"><i class="fa fa-chevron-up"></i></div>
+    <div style="display:none;" class="btn-scrollup-gradient-aqua scrollup"></div>
   </div>
 </template>
 

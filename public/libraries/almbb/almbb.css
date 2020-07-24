@@ -953,7 +953,35 @@
   .btn-scrollup-unique,
   .btn-scrollup-unique-dark,
   .btn-scrollup-warning-dark {
-    right: 15px;
+    right: 15px
+  }
+  .btn-scrollup-almbb-danger:after,
+  .btn-scrollup-almbb-info:after,
+  .btn-scrollup-almbb-light:after,
+  .btn-scrollup-almbb-success:after,
+  .btn-scrollup-almbb-warning:after,
+  .btn-scrollup-blue:after,
+  .btn-scrollup-danger-dark:after,
+  .btn-scrollup-elegant-dark:after,
+  .btn-scrollup-elegant:after,
+  .btn-scrollup-gradient-aqua:after,
+  .btn-scrollup-gradient-blue:after,
+  .btn-scrollup-gradient-peach:after,
+  .btn-scrollup-indigo:after,
+  .btn-scrollup-info-dark:after,
+  .btn-scrollup-light-blue:after,
+  .btn-scrollup-light-green:after,
+  .btn-scrollup-light-yellow:after,
+  .btn-scrollup-red-orange:after,
+  .btn-scrollup-special-dark:after,
+  .btn-scrollup-special:after,
+  .btn-scrollup-stylish-dark:after,
+  .btn-scrollup-stylish:after,
+  .btn-scrollup-success-dark:after,
+  .btn-scrollup-unique-dark:after,
+  .btn-scrollup-unique:after,
+  .btn-scrollup-warning-dark:after,
+  .btn-scrollup:after {
     font-size: 1.5em
   }
 }
@@ -987,6 +1015,36 @@
   .btn-scrollup-warning-dark {
     right: 160px
   }
+}
+.btn-scrollup-almbb-danger:after,
+.btn-scrollup-almbb-info:after,
+.btn-scrollup-almbb-light:after,
+.btn-scrollup-almbb-success:after,
+.btn-scrollup-almbb-warning:after,
+.btn-scrollup-blue:after,
+.btn-scrollup-danger-dark:after,
+.btn-scrollup-elegant-dark:after,
+.btn-scrollup-elegant:after,
+.btn-scrollup-gradient-aqua:after,
+.btn-scrollup-gradient-blue:after,
+.btn-scrollup-gradient-peach:after,
+.btn-scrollup-indigo:after,
+.btn-scrollup-info-dark:after,
+.btn-scrollup-light-blue:after,
+.btn-scrollup-light-green:after,
+.btn-scrollup-light-yellow:after,
+.btn-scrollup-red-orange:after,
+.btn-scrollup-special-dark:after,
+.btn-scrollup-special:after,
+.btn-scrollup-stylish-dark:after,
+.btn-scrollup-stylish:after,
+.btn-scrollup-success-dark:after,
+.btn-scrollup-unique-dark:after,
+.btn-scrollup-unique:after,
+.btn-scrollup-warning-dark:after,
+.btn-scrollup:after {
+  content: "\f077";
+  font-family: fontawesome!important
 }
 .btn-almbb-small {
   padding: .375rem .75rem;
