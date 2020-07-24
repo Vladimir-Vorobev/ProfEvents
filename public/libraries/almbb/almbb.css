@@ -856,7 +856,7 @@
   padding: 7px 10px;
   cursor: pointer;
   text-align: center;
-  font-size: 1em;
+  font-size: 19.25px 23.2px;
   -webkit-box-shadow: 0 5px 11px 0 rgba(0,0,0,.2);
   box-shadow: 0 5px 11px 0 rgba(0,0,0,.2)
 }
@@ -953,40 +953,7 @@
   .btn-scrollup-unique,
   .btn-scrollup-unique-dark,
   .btn-scrollup-warning-dark {
-    right: 15px;
-    font-size: 1.5em
-  }
-}
-@media (max-width:1140px) {
-  .btn-scrollup,
-  .btn-scrollup-almbb-danger,
-  .btn-scrollup-almbb-info,
-  .btn-scrollup-almbb-light,
-  .btn-scrollup-almbb-success,
-  .btn-scrollup-almbb-warning,
-  .btn-scrollup-blue,
-  .btn-scrollup-danger-dark,
-  .btn-scrollup-elegant,
-  .btn-scrollup-elegant-dark,
-  .btn-scrollup-gradient-aqua,
-  .btn-scrollup-gradient-blue,
-  .btn-scrollup-gradient-peach,
-  .btn-scrollup-indigo,
-  .btn-scrollup-info-dark,
-  .btn-scrollup-light-blue,
-  .btn-scrollup-light-green,
-  .btn-scrollup-light-yellow,
-  .btn-scrollup-red-orange,
-  .btn-scrollup-special,
-  .btn-scrollup-special-dark,
-  .btn-scrollup-stylish,
-  .btn-scrollup-stylish-dark,
-  .btn-scrollup-success-dark,
-  .btn-scrollup-unique,
-  .btn-scrollup-unique-dark,
-  .btn-scrollup-warning-dark {
-    right: 15px;
-    font-size: 1.5em
+    right: 15px
   }
 }
 @media (min-width:993px) {
