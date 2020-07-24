@@ -953,7 +953,8 @@
   .btn-scrollup-unique,
   .btn-scrollup-unique-dark,
   .btn-scrollup-warning-dark {
-    right: 15px
+    right: 15px;
+    font-size: 1.5em
   }
 }
 @media (min-width:993px) {
