@@ -381,8 +381,8 @@ export default {
 }
 .avatar img{
     max-width: 100%;
-    max-height: 100%;
     min-height: 310px;
+    max-height: 310px;
 }
 
 

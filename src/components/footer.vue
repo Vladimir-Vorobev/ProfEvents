@@ -9,7 +9,7 @@
                 <a href="#" class="links">Политика конфиденциальности</a>
             </div>
             <div class="col-12 col-lg-4 lb2">
-                <a href="#" class="links">Разработано DARK_LED</a>
+                <a href="#" class="link_Led">Разработано DARK_LED</a>
             </div>
             <div class="col-12 col-lg-4 lb3">
                 <a href="#" class="links" >Нашли ошибку?</a>
@@ -38,6 +38,15 @@ footer {
     text-decoration: none;
 }
 .links:hover{
+    color: #EF5B65;
+    text-decoration: none;
+}
+.link_Led{
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
+}
+.link_Led:hover{
     color: #EF5B65;
     text-decoration: none;
 }
