@@ -2732,7 +2732,8 @@
   outline: 0;
   padding: .84rem 2.14rem;
   font-size: .81rem;
-  text-transform: uppercase
+  text-transform: uppercase;
+  cursor: pointer
 }
 .nav-pills.almbb-pills .nav-link.active {
   background-color: #2096ff;
