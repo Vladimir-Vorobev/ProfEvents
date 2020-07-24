@@ -54,7 +54,7 @@
                         {{loginText}}
                     </button>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                        <a @click="person_profile()" class="dropdown-item" style="color: #16181b !important">Моя страница</a>
+                        <a @click="person_profile()" class="dropdown-item router-link" style="color: #16181b !important; cursor: pointer;">Моя страница</a>
                         <router-link to="/your-events" class="router-link">
                             <a class="dropdown-item" ref="yourEvents" style="color: #16181b !important">Мои мероприятия</a>
                         </router-link>
