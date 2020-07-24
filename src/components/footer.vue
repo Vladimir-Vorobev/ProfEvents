@@ -5,15 +5,14 @@
             <span class="text-muted">Разработано DARK_LED</span>
         </div> -->
         <div class="row" style="margin: 0px">
-            <div class="col-4" style="text-align: left !important;">
+            <div class="col-12 col-lg-4 lb1">
+                <a href="#" class="links">Политика конфиденциальности</a>
+            </div>
+            <div class="col-12 col-lg-4 lb2">
                 <a href="#" class="links">Разработано DARK_LED</a>
             </div>
-            <div class="col-3" style="text-align: center !important;">
-                <span class="text-muted">&#169; Profevents, 2020</span>
-            </div>
-            <div class="col-5" style="text-align: right !important;">
-                <a href="#" class="links">Нашли ошибку? </a>
-                <a href="#" class="links">Политика конфиденциальности</a>
+            <div class="col-12 col-lg-4 lb3">
+                <a href="#" class="links" >Нашли ошибку?</a>
             </div>
         </div>
     </footer>
@@ -41,5 +40,30 @@ footer {
 .links:hover{
     color: #EF5B65;
     text-decoration: none;
+}
+ @media (max-width: 992px) {
+        .lb1{
+            padding: 0px;
+            text-align: center !important;
+        }
+        .lb2{
+            padding: 0px;
+            text-align: center !important;
+        }
+        .lb3{
+            padding: 0px;
+            text-align: center !important;
+        }
+}
+ @media (min-width: 993px) {
+        .lb1{
+            text-align: center !important;
+        }
+        .lb2{
+            text-align: center !important;
+        }
+        .lb3{
+            text-align: center !important;
+        }
 }
 </style>
