@@ -856,7 +856,7 @@
   padding: 7px 10px;
   cursor: pointer;
   text-align: center;
-  font-size: 19.25px 23.2px;
+  font-size: 1em!important;
   -webkit-box-shadow: 0 5px 11px 0 rgba(0,0,0,.2);
   box-shadow: 0 5px 11px 0 rgba(0,0,0,.2)
 }
