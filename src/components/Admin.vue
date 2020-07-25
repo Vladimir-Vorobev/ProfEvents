@@ -27,6 +27,9 @@
                             <a class="nav-link" @click="showTop()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="false">Рейтинг класса</a>
                         </li>
                         <li class="nav-item" role="presentation">
+                            <a class="nav-link" @click="showModerationList(), getModerationList()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="false">Модерация посещаемости</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
                             <a class="nav-link" @click="showAdd()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="false">Обновить список</a>
                         </li>
                     </ul>
@@ -101,6 +104,11 @@
                             <div v-if="ShowTop">
                                 <transition-group name="main">
                                     <p key="p">Рейтинг тут</p>
+                                </transition-group>
+                            </div>
+                            <div v-if="ShowModerationList">
+                                <transition-group name="main">
+                                    <p key="p">Список для модерации тут</p>
                                 </transition-group>
                             </div>
                             <div v-if="ShowAdd">
@@ -512,6 +520,7 @@ export default {
             ShowAddSchoolList: false,
             ShowAddOne: false,
             ShowAddSchoolOne: false,
+            ShowModerationList: false,
             data: [],
             studentEvents: [],
             schools: [],
@@ -655,6 +664,32 @@ export default {
                     people.push({person: data[1][i].name + ' ' + data[1][i].surname, email: data[1][i].email})
                 }
                 this.schoolAdmins = people
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        },
+        getModerationList(){
+            // let people = []
+            console.log('moderation')
+            fetch(this.$store.state.serverIp+'/api/getModerationList', {
+                method: 'POST',
+                headers: {email: this.email},
+            })
+            .then(response => {
+                console.log("res", response)
+                return response.json()
+            })
+            .then(data => {
+                console.log(data)
+                // if(this.role == 'teacher'){
+                //     for(let i = 0; i < data.length; i++){
+                //         people.push({person: data[i].name + ' ' + data[i].surname, email: data[i].email})
+                //         this.data.push(data[i].email)
+                //         this.studentEvents.push([])
+                //     }
+                //     this.students = people
+                // }
             })
             .catch(err => {
                 console.log(err)
@@ -934,6 +969,7 @@ export default {
             this.ShowSchoolList = false
             this.ShowSchoolAdd = false
             this.ShowTop = false
+            this.ShowModerationList = false
         },
         showSchoolList(){
             event.preventDefault()
@@ -952,6 +988,7 @@ export default {
             this.ShowAdd = false
             this.ShowSchoolList = false
             this.ShowSchoolAdd = false
+            this.ShowModerationList = false
         },
         showAdd(){
             event.preventDefault()
@@ -961,6 +998,7 @@ export default {
             this.ShowTop = false
             this.ShowSchoolList = false
             this.ShowSchoolAdd = false
+            this.ShowModerationList = false
         },
         showSchoolAdd(){
             event.preventDefault()
@@ -970,6 +1008,16 @@ export default {
             this.showAdminInfo = false
             this.ShowSchoolList = false
             this.ShowAdd = false
+        },
+        showModerationList(){
+            event.preventDefault()
+            this.ShowModerationList = true
+            this.ShowAdd = false
+            this.ShowList = false
+            this.showAdminInfo = false
+            this.ShowTop = false
+            this.ShowSchoolList = false
+            this.ShowSchoolAdd = false
         },
         changeInfo(email, chart){
             if(chart != undefined){

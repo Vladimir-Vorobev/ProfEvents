@@ -130,6 +130,9 @@
                             <div class="row">
                                 <h5 class="card-title col-11">{{item3.name}}</h5>
                             </div>
+                            <!-- <p class="card-text" style="color: green;">Участие подтверждено</p> -->
+                            <!-- <p class="card-text" style="color: #0099CC;">Участие проверяется модератором</p> -->
+                            <p class="card-text" style="color: red;">Участие не подтверждено</p>
                         </div>
                     </div>
                 </div>
