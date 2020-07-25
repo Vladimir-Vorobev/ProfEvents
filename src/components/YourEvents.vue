@@ -18,11 +18,10 @@
                         <div class="col-12 col-md-6">
                             <a :href="item.data.link" class="btn btn-blue">Перейти к мероприятию</a>
                         </div>
-                        <div class="col-12 col-md-6 gotoevents">
+                        <div class="col-12 col-md-6">
                             <button class="btn btn-blue" @click="moderate(item.data)">Отправить на модерацию</button>
                         </div>
                     </div>
-                    <!-- <a :href="item.link" class="btn btn-blue">Перейти к мероприятию</a> -->
                 </div>
             </div>
         </div>
@@ -257,7 +256,6 @@ export default {
     min-height: 100vh;
     margin-bottom: 0px;
 }
-
 .card{ 
     margin-top: 10px !important;
 }
