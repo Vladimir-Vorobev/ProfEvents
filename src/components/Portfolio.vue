@@ -100,6 +100,7 @@ export default {
                     Swal.fire({
                         icon: 'success',
                         title: 'Изображения успешно сохранены',
+                        showConfirmButton: false,
                         timer: 2000
                     })
                     setTimeout(() => {
@@ -120,6 +121,7 @@ export default {
                     icon: 'error',
                     title: 'Ошибка',
                     text: 'Файл не выбран',
+                    showConfirmButton: false,
                     timer: 2000
                 })
                 setTimeout(() => {
@@ -164,6 +166,7 @@ export default {
                         icon: 'error',
                         title: 'Ошибка',
                         text: 'Непредвиденная ошибка, повторите попытку',
+                        showConfirmButton: false,
                         timer: 2000
                     })
                     console.log('Error: ', error);
