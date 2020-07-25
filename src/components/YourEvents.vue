@@ -9,27 +9,20 @@
                         <h5 class="card-title col-11">{{item.data.name}}</h5>
                         <h5><button class="btn btn-almbb-danger btn-almbb-small" @click="deleteEvent(item.data)"> <i class="fas fa-trash-alt"></i> </button></h5>
                     </div>
-<<<<<<< HEAD
-                    <p class="card-text"><i class="far fa-clock"></i> {{item.time}}</p>
-                    <p class="card-text">Тип: {{item.type}}</p>
+                    <p class="card-text"><i class="far fa-clock"></i> {{item.data.time}}</p>
+                    <p class="card-text">Тип: {{item.data.type}}</p>
                     <!-- <p class="card-text" style="color: green;">Участие подтверждено</p> -->
                     <!-- <p class="card-text" style="color: #0099CC;">Участие проверяется модератором</p> -->
                     <p class="card-text" style="color: red;">Участие не подтверждено</p>
                     <div class="row">
                         <div class="col-12 col-md-6">
-                            <a :href="item.link" class="btn btn-blue">Перейти к мероприятию</a>
+                            <a :href="item.data.link" class="btn btn-blue">Перейти к мероприятию</a>
                         </div>
                         <div class="col-12 col-md-6 gotoevents">
-                            <a :href="item.link" class="btn btn-almbb-success">Подтвердить участие</a>
+                            <button class="btn btn-blue" @click="moderate(item.data)">Отправить на модерацию</button>
                         </div>
                     </div>
                     <!-- <a :href="item.link" class="btn btn-blue">Перейти к мероприятию</a> -->
-=======
-                    <p class="card-text"><i class="far fa-clock"></i> {{item.data.time}}</p>
-                    <p class="card-text">Тип: {{item.data.type}}</p>
-                    <a :href="item.data.link" class="btn btn-blue">Перейти к мероприятию</a>
-                    <button class="btn btn-blue" @click="moderate(item.data)">Отправить на модерацию</button>
->>>>>>> 36dcfb73109ae49274c8e3f0a86837f3efa91f76
                 </div>
             </div>
         </div>
