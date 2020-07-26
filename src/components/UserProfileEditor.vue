@@ -118,7 +118,7 @@
                     <input name="password2" class="form-control returnpass" placeholder="Повторите пароль">
                 </div>
                 </div>
-                <div class="form-group row"> 
+                <div class="form-group"> 
                     <button class="btn btn-blue btn-lg" @click="updateUser()">Сохранить</button>
                 </div>
             </form>
