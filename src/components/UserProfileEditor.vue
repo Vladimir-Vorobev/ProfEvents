@@ -77,12 +77,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="input-group row" style="margin-bottom: 1em">
+                <div class="input-group row" style="margin: 0px 0px 1em">
                     <div name="avatar" class="custom-file col-12 col-lg-8">
                         <input name="img_for_avatar" type="file" accept="image/*" method="post" enctype="multipart/form-data" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
                         <label class="custom-file-label" for="inputGroupFile04" style="text-align: left"></label>
                     </div>
-                    <div class="form-group text-center my-sm-2 col-12 col-lg-4" style="padding-left: 5px; border: 1px solid grey" v-lazy-container="{ selector: 'img' }">
+                    <div class="form-group text-center col-12 col-lg-4" style="padding: 0px 5px; border: 1px solid grey; margin: 0px" v-lazy-container="{ selector: 'img' }">
                         <img width="300" height="200" :data-src="avatar.file" alt="">
                     </div>
                 </div>
