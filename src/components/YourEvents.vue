@@ -47,11 +47,9 @@ export default {
         }
     },
      beforeMount(){
-        let email = this.email
-        let SessionID = this.SessionID
         fetch(this.$store.state.serverIp+'/api/getCheckedEvents', {
             method: 'get',
-            headers: {email: email, sessionid: SessionID},
+            headers: {email: this.email, sessionid: this.SessionID},
 		})
         .then(response => {
             console.log("res", response)
@@ -131,9 +129,7 @@ export default {
             }).then((result) => {
                 if (result.value) {
                     event.preventDefault()
-                    let email = this.email
-                    let SessionID = this.SessionID
-                    needle.post(this.$store.state.serverIp+'/api/deleteEvent', {email: email, event: events, sessionid: SessionID}, {"json": true}, function(err, res){
+                    needle.post(this.$store.state.serverIp+'/api/deleteEvent', {email: this.email, event: events, sessionid: this.SessionID}, {"json": true}, function(err, res){
                         if(err) console.log(err)
                         if(res.body == '310'){
                             document.cookie = "email=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"

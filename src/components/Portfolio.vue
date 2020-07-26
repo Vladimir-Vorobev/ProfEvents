@@ -44,6 +44,7 @@ export default {
         return{
             photo: [],
             email: this.$store.state.email,
+            SessionID: this.$store.state.SessionID,
             num: 0,
         }
     },
@@ -140,10 +141,11 @@ export default {
                 let file = document.querySelector('.custom-file-input').files[i]
                 reader.readAsDataURL(file);
                 let email = this.email
+                let SessionID = this.SessionID
                 reader.onload = function () {
                     data.push({file: reader.result, type: file.type})
                     if(i == len - 1){
-                        needle.post(url + '/api/uploadPortfolio', {images: data, email: email}, {"json": true}, function(err, res){
+                        needle.post(url + '/api/uploadPortfolio', {images: data, email: email, sessionid: SessionID}, {"json": true}, function(err, res){
                             if(err){
                                 Swal.fire({
                                     icon: 'error',

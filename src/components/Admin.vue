@@ -506,6 +506,7 @@ export default {
             admins: [],
             schoolAdmins: [],
             email: this.$store.getters.email,
+            SessionID: this.$store.getters.SessionID,
             classData: [],
             ShowList: true,
             ShowAdminList: false,
@@ -579,7 +580,7 @@ export default {
             let people = []
             fetch(this.$store.state.serverIp+'/api/getAdminList', {
                 method: 'POST',
-                headers: {email: email},
+                headers: {email: email, sessionid: this.SessionID},
             })
             .then(response => {
                 console.log("res", response)
@@ -636,7 +637,7 @@ export default {
             }
             fetch(this.$store.state.serverIp+'/api/getListTeacher', {
                 method: 'POST',
-                headers: {email: this.$store.state.email, sessionid: this.$store.state.SessionID, school: this.schoolName},
+                headers: {email: this.$store.state.email, sessionid: this.SessionID, school: this.schoolName},
             })
             .then(response => {
                 console.log("res", response)
@@ -674,7 +675,7 @@ export default {
             console.log('moderation')
             fetch(this.$store.state.serverIp+'/api/getModerationList', {
                 method: 'POST',
-                headers: {email: this.email},
+                headers: {email: this.email, sessionid: this.SessionID},
             })
             .then(response => {
                 console.log("res", response)
@@ -713,11 +714,9 @@ export default {
                         document.getElementById(email + 'n').style.display = 'block'
                         document.getElementById(email).classList.add('ar-show');
                         if(document.getElementById(email + "x").style.display == 'inline-block'){
-                            let SessionID = this.$store.getters.SessionID
-                            let teacherEmail = this.$store.getters.email
                             fetch(this.$store.state.serverIp+'/api/getCheckedEvents', {
                                 method: 'get',
-                                headers: {email: teacherEmail, studEmail: email, sessionid: SessionID},
+                                headers: {email: teacherEmail, studEmail: this.email, sessionid: this.SessionID},
                             })
                             .then(response => {
                                 console.log("res", response)
@@ -762,11 +761,9 @@ export default {
                         document.getElementById(email + 'n').style.display = 'block'
                         document.getElementById(email).classList.add('ar-show');
                         if(document.getElementById(email + "x").style.display == 'inline-block'){
-                            let SessionID = this.$store.getters.SessionID
-                            let adminEmail = this.$store.getters.email
                             fetch(this.$store.state.serverIp+'/api/getCheckedEvents', {
                                 method: 'get',
-                                headers: {email: teacherEmail, studEmail: email, adminEmail: adminEmail, sessionid: SessionID},
+                                headers: {email: teacherEmail, studEmail: email, adminEmail: this.email, sessionid: this.SessionID},
                             })
                             .then(response => {
                                 console.log("res", response)
@@ -855,7 +852,7 @@ export default {
         getSchoolList(email){
             fetch(this.$store.state.serverIp+'/api/getSchoolList', {
                 method: 'POST',
-                headers: {email: email, sessionid: this.$store.getters.SessionID},
+                headers: {email: email, sessionid: this.SessionID},
             })
             .then(response => {
                 console.log("res", response)
@@ -872,7 +869,7 @@ export default {
                 let people = []
                 fetch(this.$store.state.serverIp+'/api/getListAdmin', {
                     method: 'POST',
-                    headers: {email: this.email},
+                    headers: {email: this.email, sessionid: this.SessionID},
                 })
                 .then(response => {
                     console.log("res", response)
@@ -942,9 +939,10 @@ export default {
                 }
                 else this.$swal('Файл не выбран');   //alert('Файл не выбран')
             }
-            let dopEmail = this.$store.getters.email
+            let dopEmail = this.email
+            let SessionID = this.SessionID
             function send(data, email, url){
-                needle.post('http://78.155.219.12:3000/api/' + url, {data: data, email: email, type: 'update', dopType: type, dopEmail: dopEmail}, {"json": true}, function(err, res){
+                needle.post('http://78.155.219.12:3000/api/' + url, {data: data, email: email, type: 'update', dopType: type, dopEmail: dopEmail, sessionid: SessionID}, {"json": true}, function(err, res){
                     if(err) throw err
                     if(res.body == 'OK'){
                         //alert('Файл успешно добавлен')
@@ -1103,7 +1101,7 @@ export default {
                 cancelButtonText: 'Отмена'
             }).then((result) => {
                  if (result.value) {
-                     needle.post(this.$store.state.serverIp+'/api/uploadOne', {data: data, email: email, type: 'delete', dopType: type}, {"json": true}, function(err, res){
+                     needle.post(this.$store.state.serverIp+'/api/uploadOne', {data: data, email: email, type: 'delete', dopType: type, sessionid: this.SessionID}, {"json": true}, function(err, res){
                         if(err) throw err
                         if(res.body == 'OK'){
                             //alert('Файл успешно добавлен')
