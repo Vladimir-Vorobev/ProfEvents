@@ -89,7 +89,7 @@
 
                 <div class="form-group row">
                     <div class="col-12"> 
-                        <select name="schoolType" class="custom-select custom-select-lg mb-3 schoolType">
+                        <select name="schoolType" class="custom-select custom-select-lg mb-3 schoolType" disabled>
                             <option selected>Тип учебного заведения</option>
                             <option value="школа">Школа</option>
                             <option value="колледж">Колледж</option>
