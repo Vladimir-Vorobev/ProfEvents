@@ -11,9 +11,9 @@
                     </div>
                     <p class="card-text"><i class="far fa-clock"></i> {{item.data.time}}</p>
                     <p class="card-text">Тип: {{item.data.type}}</p>
-                    <!-- <p class="card-text" style="color: green;">Участие подтверждено</p> -->
-                    <!-- <p class="card-text" style="color: #0099CC;">Участие проверяется модератором</p> -->
-                    <p class="card-text" style="color: red;">Участие не подтверждено</p>
+                    <p v-if="item.status == 'checked'" class="card-text" style="color: green;">Участие подтверждено</p>
+                    <p v-if="item.status == 'on_moderate'" class="card-text" style="color: #0099CC;">Участие проверяется модератором</p>
+                    <p v-if="item.status == 'not_checked'" class="card-text" style="color: red;">Участие не подтверждено</p>
                     <div class="row">
                         <div class="col-12 col-md-6">
                             <a :href="item.data.link" class="btn btn-blue">Перейти к мероприятию</a>

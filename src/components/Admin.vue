@@ -108,7 +108,35 @@
                             </div>
                             <div v-if="ShowModerationList">
                                 <transition-group name="main">
-                                    <p key="p">Список для модерации тут</p>
+                                    <div class="tab-pane fade show active" id="pills-list-student" v-for="item in students_on_moderation" :key="item.email">
+                                        <a class="person" href="#">
+                                            <div class="person_box" v-on:click="showModerationIvents(item.email)">
+                                                <div class="name row">
+                                                    <div class="name_group col-10">{{ item.name + ' ' + item.surname }}</div>
+                                                    <div class="col-1 ar-collapse" :id='item.email + "s"'></div>
+                                                </div>
+                                                <div :id='item.email' style="display: none;">
+                                                    <div v-for="item2 in item.events" :key="item2.data">
+                                                        <a class="person" href="#" @click="showModerationInfo(item.email, item2.data.link)">
+                                                            <div class="person_box a">
+                                                                <div class="name row">
+                                                                    <div class="name_group col-11 a">{{ item2.data.name }} </div>
+                                                                    <div class="col-1 ar-collapse a" :id='item2.data.link + "n"'></div>
+                                                                </div>
+                                                                <div :id="item2.data.link" style="display: none;">
+                                                                    <div v-for="item3 in item2.moderImg" :key="item3.file">
+                                                                        <div class="form-group text-center my-sm-2" style="padding-left: 5px;" v-lazy-container="{ selector: 'img' }">
+                                                                            <img width="300" height="200" :data-src="item3.file" alt="">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </a>    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
                                 </transition-group>
                             </div>
                             <div v-if="ShowAdd">
@@ -526,6 +554,7 @@ export default {
             studentEvents: [],
             schools: [],
             schoolName: '',
+            students_on_moderation: {},
         }
     },
     methods:{
@@ -671,30 +700,26 @@ export default {
             })
         },
         getModerationList(){
-            // let people = []
-            console.log('moderation')
-            fetch(this.$store.state.serverIp+'/api/getModerationList', {
-                method: 'POST',
-                headers: {email: this.email, sessionid: this.SessionID},
-            })
-            .then(response => {
-                console.log("res", response)
-                return response.json()
-            })
-            .then(data => {
-                console.log(data)
-                // if(this.role == 'teacher'){
-                //     for(let i = 0; i < data.length; i++){
-                //         people.push({person: data[i].name + ' ' + data[i].surname, email: data[i].email})
-                //         this.data.push(data[i].email)
-                //         this.studentEvents.push([])
-                //     }
-                //     this.students = people
-                // }
-            })
-            .catch(err => {
-                console.log(err)
-            })
+            if(Object.keys(this.students_on_moderation).length == 0){
+                fetch(this.$store.state.serverIp+'/api/getModerationList', {
+                    method: 'POST',
+                    headers: {email: this.email, sessionid: this.SessionID},
+                })
+                .then(response => {
+                    console.log("res", response)
+                    return response.json()
+                })
+                .then(data => {
+                    console.log(data)
+                    for(let i = 0; i < data.length; i++){
+                        this.$set(this.students_on_moderation, data[i].email, {name: data[i].name, surname: data[i].surname, events: data[i].events, email: data[i].email})
+                    }
+                    console.log(this.students_on_moderation)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+            }
         },
         showInfo(email, teacherEmail){
             if(this.role == 'teacher'){
@@ -845,6 +870,47 @@ export default {
                             this.getAdminList(email, true)
                         }
                         document.getElementById(email + 's').style.display = 'block'
+                    } 
+                }
+            }
+        },
+        showModerationIvents(email){
+            if(event.target.className == 'person_box' || event.target.className == 'name row' || event.target.className == 'name_group col-10'|| event.target.className == 'col-1 ar-collapse' || event.target.className == 'col-1 ar-collapse ar-show'){
+                for(let key in this.students_on_moderation){
+                    if(document.getElementById(key).style.display == 'block' && key != email){
+                        document.getElementById(key).style.display = 'none'
+                        document.getElementById(key + 's').classList.remove('ar-show');
+                    }
+                }
+                if(document.getElementById(email).style.display == 'block'){
+                    document.getElementById(email).style.display = 'none'
+                    document.getElementById(email + 's').classList.remove('ar-show');
+                }
+                else{
+                    document.getElementById(email + 's').classList.add('ar-show');
+                    if(document.getElementById(email).style.display == 'none'){
+                        document.getElementById(email).style.display = 'block'
+                    } 
+                }
+            }
+        },
+        showModerationInfo(email, link){
+            if(event.target.className != 'chartjs-render-monitor' && event.target.className != 'radio'){
+                for(let key in this.students_on_moderation[email].events.data){
+                    console.log(key)
+                    if(document.getElementById(key.link).style.display == 'block' && key.link != link){
+                        document.getElementById(key.link).style.display = 'none'
+                        document.getElementById(key.link + 'n').classList.remove('ar-show');
+                    }
+                }
+                if(document.getElementById(link).style.display == 'block'){
+                    document.getElementById(link).style.display = 'none'
+                    document.getElementById(link + 'n').classList.remove('ar-show');
+                }
+                else{
+                    document.getElementById(link + 'n').classList.add('ar-show');
+                    if(document.getElementById(link).style.display == 'none'){
+                        document.getElementById(link).style.display = 'block'
                     } 
                 }
             }
