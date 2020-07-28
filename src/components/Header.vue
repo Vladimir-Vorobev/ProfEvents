@@ -1,5 +1,4 @@
 <template>
-    <div id="app">
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
             <router-link to="/" class="router-link">
                 <a class="navbar-brand" ref="home" style="color: #f23333">Profevents</a>
@@ -74,7 +73,6 @@
                 </div>
             </div>
         </nav>
-    </div>
 </template>
 
 
