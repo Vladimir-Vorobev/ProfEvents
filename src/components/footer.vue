@@ -31,7 +31,7 @@ export default {
             (async () => {
 
                 const { value: formValues } = await Swal.fire({
-                title: 'Добавте фото и описание ошибки',
+                title: 'Добавте описание и фото ошибки',
                 html:
                     '<textarea class="form-control" id="Bug_comment"></textarea>' +
                     '<br>' +
