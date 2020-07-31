@@ -12,7 +12,7 @@
                 <a href="#" class="link_Led">Разработано DARK_LED</a>
             </div>
             <div class="col-12 col-lg-4 lb3">
-                <a href="#" class="links" >Нашли ошибку?</a>
+                <a href="#" class="links" @click="findBug()">Нашли ошибку?</a>
             </div>
         </div>
     </footer>
@@ -22,9 +22,35 @@
 
 
 <script>
-
+import Swal from 'sweetalert2'
 export default {
     name: 'Footer',
+
+    methods: {
+        findBug(){
+            (async () => {
+
+                const { value: formValues } = await Swal.fire({
+                title: 'Добавте фото и описание ошибки',
+                html:
+                    '<textarea class="form-control" id="Bug_comment"></textarea>' +
+                    '<br>' +
+                    '<input type="file" class="form-control-file" id="Bug_screen">',
+                focusConfirm: false,
+                preConfirm: () => {
+                    return [
+                    document.getElementById('Bug_comment').value,
+                    document.getElementById('Bug_screen').value
+                    ]
+                }
+                })
+                if (formValues) {
+                    Swal.fire(JSON.stringify(formValues))   
+                }
+
+            })()
+        }
+    },
 }
 </script>
 
