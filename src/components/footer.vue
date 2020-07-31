@@ -37,6 +37,12 @@ export default {
                     '<br>' +
                     '<input type="file" class="form-control-file" id="Bug_screen">',
                 focusConfirm: false,
+                confirmButtonText: 'Отправить',
+                confirmButtonColor: '#2096ff',
+                buttonsStyling: false,
+                customClass: {
+                    confirmButton: 'btn btn-rounded-blue'
+                },
                 preConfirm: () => {
                     return [
                     document.getElementById('Bug_comment').value,
