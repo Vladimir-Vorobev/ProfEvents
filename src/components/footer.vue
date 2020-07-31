@@ -40,6 +40,8 @@ export default {
                 confirmButtonText: 'Отправить',
                 confirmButtonColor: '#2096ff',
                 buttonsStyling: false,
+                allowOutsideClick: false,
+                showCloseButton: true,
                 customClass: {
                     confirmButton: 'btn btn-rounded-blue'
                 },
