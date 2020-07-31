@@ -6,7 +6,7 @@
         </div> -->
         <div class="row" style="margin: 0px">
             <div class="col-12 col-lg-4 lb1">
-                <a href="#" class="links">Политика конфиденциальности</a>
+                <a href="#" class="links" @click="showPolitics()">Политика конфиденциальности</a>
             </div>
             <div class="col-12 col-lg-4 lb2">
                 <a href="#" class="link_Led">Разработано DARK_LED</a>
@@ -57,7 +57,16 @@ export default {
                 }
 
             })()
-        }
+        },
+
+        showPolitics(){
+            Swal.fire({
+                title: 'Политика конфиденциальности',
+                html: '<span>Test msg</span>',
+                showCloseButton: true,
+                showConfirmButton: false,
+            })
+        },
     },
 }
 </script>
