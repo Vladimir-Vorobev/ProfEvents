@@ -53,6 +53,7 @@ ol {
 li:before {
     counter-increment: li; 
     content: counters(li,".") ". "; 
+    font-weight: 600;
 }
 .list{ 
     text-align: left; 
