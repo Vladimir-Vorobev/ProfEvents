@@ -62,7 +62,11 @@ export default {
         showPolitics(){
             Swal.fire({
                 title: 'Политика конфиденциальности',
-                html: '<span>Test msg</span>',
+                html:   '<ul class="list">' +
+                            '<li>Test</li>'+
+                            '<li>Test 2</li>'+
+                        '</ul>' +
+                        '<style>.list{ list-style-type: decimal; text-align: left; margin: 0px 2em }</style>',
                 showCloseButton: true,
                 showConfirmButton: false,
             })
