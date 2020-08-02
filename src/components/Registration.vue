@@ -27,6 +27,14 @@
                     <label for="exampleInputPassword1">Повторите пароль</label>
                     <input type="password" class="form-control formInput" name="password2" placeholder="Повторите пароль" required>
                 </div>
+                <div class="form-group form-check row" style="text-align: left; margin: 0px 0.5em">
+                    <input name="accessPrivacy" type="checkbox" class="form-check-input" id="accessPrivacy">
+                    <label class="form-check-label" for="accessPrivacy">Согласен с 
+                        <router-link to="/privacy" class="router-link">
+                            <a ref="PrivacyPolicy" class="links">политикой конфиденциальности</a>
+                        </router-link>
+                    </label>
+                </div> <br>
                 <div class="form-group row code" style="display: none;">
                     <label for="exampleInputPassword1">Введите код подтверждения из Вашей почты</label>
                     <input type="password" class="form-control formInput" name="code" placeholder="Код подтверждения">
@@ -63,6 +71,7 @@ export default {
             let age = form.elements.age.value
             let password = form.elements.password.value
             let password2 = form.elements.password2.value
+            let accessPrivacy = document.getElementById('accessPrivacy');
             let code = form.elements.code.value
             if(namet.trim() == ''){
                 //alert("Введите имя")
@@ -127,7 +136,7 @@ export default {
                     text: 'Пароль слишком длинный'
                 });
             }
-            else{
+            else if (accessPrivacy.checked) {
                 let data = document.cookie.split(";")
                 let name = ''
                 let b = 0
@@ -212,6 +221,12 @@ export default {
                         text: 'Проверьте Вашу почту, на нее был выслан код подтверждения'
                     });
                 }
+            }
+            else {
+                Vue.swal({  
+                    icon: 'error',
+                    text: 'Вы обязаны согласиться с политикой конфиденциальности'
+                });
             }
         },
     }
