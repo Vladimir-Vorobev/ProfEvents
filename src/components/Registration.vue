@@ -152,46 +152,55 @@ export default {
                 }
                 if(document.querySelector('.code').style.display == 'none'){
                     document.querySelector('.code').style.display = 'block'
-                    needle.post(this.$store.state.serverIp+'/api/mailCheck', {email: email}, {"json": true}, function(err, res){
+                    needle.post(this.$store.state.serverIp+'/api/mailCheck', {email: email}, {"json": true}, function(err){
                         if (err) throw err
-                        alert(res.body)
-                        document.cookie = "_relx=" + res.body
                     })
                 }
-                else if(code == this.codeCheck){
-                    let crypto = require('crypto')
-                    let data = {
-                        name: namet,
-                        surname: surname,
-                        email: email,
-                        age: age,
-                        password: crypto.createHash('md5').update(password).digest("hex"),
-                    }
-                    needle.post(this.$store.state.serverIp+'/api/registration', data, {"json": true}, function(err, res, body){
-                        if(body == "Reg succsesful"){
-                            Vue.swal({
-                                icon: 'success',
-                                title: 'Вы успешно зарегистрированы!',
-                                showConfirmButton: false,
-                                timer: 2000,
-                                timerProgressBar: true,
-                            }).then(() => {
-                                document.location.href = "/login"
-                            });
-                            //document.location.href = "/login"
-                        }
-                        else if(body == "Reg Fail"){
-                            //alert('Пользователь с таким email существует')
-                            Vue.swal({
-                                icon: 'error',
-                                text: 'Пользователь с таким email существует'
-                            });
+                else if(code != ''){
+                    let serverIp =  this.$store.state.serverIp;
+                    needle.post(this.$store.state.serverIp+'/api/codeCheck', {email: email, code: code}, {"json": true}, function(err, res, check){
+                        if (check == "OK"){
+                            let crypto = require('crypto')
+                            let regData = {
+                                name: namet,
+                                surname: surname,
+                                email: email,
+                                age: age,
+                                password: crypto.createHash('md5').update(password).digest("hex"),
+                            }
+                            needle.post(serverIp+'/api/registration', regData, {"json": true}, function(err, res, body){
+                                if(body == "Reg succsesful"){
+                                    Vue.swal({
+                                        icon: 'success',
+                                        title: 'Вы успешно зарегистрированы!',
+                                        showConfirmButton: false,
+                                        timer: 2000,
+                                        timerProgressBar: true,
+                                    }).then(() => {
+                                        document.location.href = "/login"
+                                    });
+                                    //document.location.href = "/login"
+                                }
+                                else if(body == "Reg Fail"){
+                                    //alert('Пользователь с таким email существует')
+                                    Vue.swal({
+                                        icon: 'error',
+                                        text: 'Пользователь с таким email существует'
+                                    });
+                                }
+                                else{
+                                    //alert("Регистрация не удалась. Возможно, у Вас проблема с интернетом, или на нашем сервере ведутся технические работы")
+                                    Vue.swal({
+                                        icon: 'error',
+                                        text: 'Регистрация не удалась. Возможно, у Вас проблема с интернетом, или на нашем сервере ведутся технические работы'
+                                    });
+                                }
+                            })
                         }
                         else{
-                            //alert("Регистрация не удалась. Возможно, у Вас проблема с интернетом, или на нашем сервере ведутся технические работы")
-                            Vue.swal({
+                            Vue.swal({  
                                 icon: 'error',
-                                text: 'Регистрация не удалась. Возможно, у Вас проблема с интернетом, или на нашем сервере ведутся технические работы'
+                                text: 'Введеный код не верный'
                             });
                         }
                     })

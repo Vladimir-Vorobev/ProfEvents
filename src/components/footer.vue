@@ -6,7 +6,9 @@
         </div> -->
         <div class="row" style="margin: 0px">
             <div class="col-12 col-lg-4 lb1">
-                <a href="#" class="links" @click="showPolitics()">Политика конфиденциальности</a>
+                <router-link to="/privacy-policy" class="router-link">
+                    <a ref="PrivacyPolicy" class="links">Политика конфиденциальности</a>
+                </router-link>
             </div>
             <div class="col-12 col-lg-4 lb2">
                 <a href="#" class="link_Led">Разработано DARK_LED</a>
@@ -35,7 +37,8 @@ export default {
                 html:
                     '<textarea class="form-control" id="Bug_comment"></textarea>' +
                     '<br>' +
-                    '<input type="file" class="form-control-file" id="Bug_screen">',
+                    '<input type="file" class="form-control-file" id="Bug_screen">'+
+                    '<style>.swal2-close:focus{ outline: 0 }</style>',
                 focusConfirm: false,
                 confirmButtonText: 'Отправить',
                 confirmButtonColor: '#2096ff',
@@ -57,19 +60,6 @@ export default {
                 }
 
             })()
-        },
-
-        showPolitics(){
-            Swal.fire({
-                title: 'Политика конфиденциальности',
-                html:   '<ul class="list">' +
-                            '<li>Test</li>'+
-                            '<li>Test 2</li>'+
-                        '</ul>' +
-                        '<style>.list{ list-style-type: decimal; text-align: left; margin: 0px 2em }</style>',
-                showCloseButton: true,
-                showConfirmButton: false,
-            })
         },
     },
 }

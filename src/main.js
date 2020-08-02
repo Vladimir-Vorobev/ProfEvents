@@ -36,6 +36,7 @@ import UserProfile from './components/UserProfile.vue'
 import UserProfileEditor from './components/UserProfileEditor.vue'
 import Portfolio from './components/Portfolio.vue'
 import PageNotFound from './components/PageNotFound.vue'
+import PrivacyPolicy from './components/PrivacyPolicy.vue'
 
 
 Vue.config.productionTip = false
@@ -64,6 +65,7 @@ const routes = [
   { path: '/user-profile/:id', component: UserProfile },
   { path: '/user-profile-edit', component: UserProfileEditor },
   { path: '/portfolio', component: Portfolio },
+  { path: '/privacy-policy', component: PrivacyPolicy },
   { path: '/404', component: PageNotFound }, { path: '*', redirect: '/404' }
 ]
 
