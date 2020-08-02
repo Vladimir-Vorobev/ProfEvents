@@ -6,7 +6,7 @@
         </div> -->
         <div class="row" style="margin: 0px">
             <div class="col-12 col-lg-4 lb1">
-                <router-link to="/privacy-policy" class="router-link">
+                <router-link to="/privacy" class="router-link">
                     <a ref="PrivacyPolicy" class="links">Политика конфиденциальности</a>
                 </router-link>
             </div>

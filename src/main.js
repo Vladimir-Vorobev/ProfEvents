@@ -65,7 +65,7 @@ const routes = [
   { path: '/user-profile/:id', component: UserProfile },
   { path: '/user-profile-edit', component: UserProfileEditor },
   { path: '/portfolio', component: Portfolio },
-  { path: '/privacy-policy', component: PrivacyPolicy },
+  { path: '/privacy', component: PrivacyPolicy },
   { path: '/404', component: PageNotFound }, { path: '*', redirect: '/404' }
 ]
 
