@@ -310,6 +310,20 @@ export default {
     margin: 1em 0em;
 }
 
+.badge-primary {
+    color: #fff !important;
+    background-color: #4285f4 !important;
+}
+.badge-pill {
+    padding-right: .6em;
+    padding-left: .6em;
+    border-radius: 10rem;
+}
+.badge {
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+}
+
 .deleteDirection{
     cursor: pointer;
     font-size: 1.1em;
