@@ -57,6 +57,42 @@
                     </div>
                 </div>
             </div>
+
+
+
+            <!-- <div class="ChosenClassList">
+                <div class="row align-items-end">
+                    <div class="col-12 col-md-3" style="font-weight: bold; font-size: 1.3em; margin-top: 0.5em">Направления: </div>
+                    <div class="col-12 col-md-9" id="classList" style="text-align: left; font-size: 1.3em;">
+                        <span class="badge badge-pill badge-primary" id="itbadge" style="display: none; margin-right: 0.5em">IT <a class="deleteDirection" @click="delActive('it')">&times;</a></span>
+                        <span class="badge badge-pill badge-primary" id="engineeringbadge" style="display: none; margin-right: 0.5em">Инженерия <a class="deleteDirection" @click="delActive('engineering')">&times;</a></span>
+                        <span class="badge badge-pill badge-primary" id="serviceEventsbadge" style="display: none;">Сфера услуг <a class="deleteDirection" @click="delActive('serviceEvents')">&times;</a></span>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-12 col-md-10" style="padding-right: 0px">
+                        <input type="text" class="form-control" name="search">
+                    </div>
+                    <div class="col-12 col-md-2" style="padding: 0px"><button class="btn btn-blue btn-almbb-small">Найти</button></div>
+                </div>
+            </div>
+
+            <div class="block" @click="setActive('it')" id="it">
+                <div class="bname">IT</div>
+                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquet nisi id quam sollicitudin molestie. Curabitur fermentum augue nulla, in vehicula augue tincidunt vitae. Etiam mollis massa vitae velit semper, lacinia suscipit est imperdiet. Suspendisse maximus tincidunt accumsan. Morbi ac iaculis enim. Nunc convallis nec lorem nec mollis. Fusce molestie.</div>
+            </div>
+
+            <div class="block" @click="setActive('engineering')" id="engineering">
+                <div class="bname">Инженерия</div>
+                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquet nisi id quam sollicitudin molestie. Curabitur fermentum augue nulla, in vehicula augue tincidunt vitae. Etiam mollis massa vitae velit semper, lacinia suscipit est imperdiet. Suspendisse maximus tincidunt accumsan. Morbi ac iaculis enim. Nunc convallis nec lorem nec mollis. Fusce molestie.</div>
+            </div>
+
+            <div class="block" @click="setActive('serviceEvents')" id="serviceEvents">
+                <div class="bname">Сфера услуг</div>
+                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquet nisi id quam sollicitudin molestie. Curabitur fermentum augue nulla, in vehicula augue tincidunt vitae. Etiam mollis massa vitae velit semper, lacinia suscipit est imperdiet. Suspendisse maximus tincidunt accumsan. Morbi ac iaculis enim. Nunc convallis nec lorem nec mollis. Fusce molestie.</div>
+            </div> -->
+
         </div>
         <div class="footer"><Footer></Footer></div> 
     </div>
@@ -146,6 +182,23 @@ export default {
         setScroll(){
             document.cookie = "allEventsScroll=" + window.pageYOffset
         },
+
+        setActive(elem){
+            if (!document.getElementById(elem).classList.contains('active')){
+                document.getElementById(elem).classList.add('active')
+                document.getElementById(elem+'badge').style.display = 'inline-block'
+            }
+            else{
+                document.getElementById(elem).classList.remove('active')
+                document.getElementById(elem+'badge').style.display = 'none'
+
+            }
+        
+        },
+        delActive(elem){
+            document.getElementById(elem).classList.remove('active')
+            document.getElementById(elem+'badge').style.display = 'none'
+        }
     }
 }
 </script>
@@ -186,5 +239,60 @@ export default {
     .gotoevents{
         margin-top: 0.5em
     }
+}
+
+.block{
+    background-color: #ffffff;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 0px 5px 2px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 0px 5px 2px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 0px 5px 2px rgba(34, 60, 80, 0.2);
+    min-height: 300px;
+    padding: 15px 20px;
+    margin: 1em 0em;
+    cursor: pointer;
+}
+.block:hover{
+    -webkit-box-shadow: 0px 0px 5px 4px rgba(34, 60, 80, 0.26);
+    -moz-box-shadow: 0px 0px 5px 4px rgba(34, 60, 80, 0.26);
+    box-shadow: 0px 0px 5px 4px rgba(34, 60, 80, 0.26);
+}
+.block.active{
+    background: #ff8a65;
+    color: rgb(255, 255, 255);
+}
+.bname{
+    text-align: center; 
+    font-weight: bold; 
+    font-size: 1.3em;
+}
+
+.ChosenClassList{
+    background-color: #ffffff;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 0px 5px 2px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 0px 0px 5px 2px rgba(34, 60, 80, 0.2);
+    box-shadow: 0px 0px 5px 2px rgba(34, 60, 80, 0.2);
+    min-height: 100px;
+    padding: 15px 20px;
+    margin: 1em 0em;
+}
+
+.deleteDirection{
+    cursor: pointer;
+    font-size: 1.1em;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+.deleteDirection:hover{
+    color: #ff4444;
+    text-transform: uppercase;
 }
 </style>
