@@ -4,59 +4,59 @@
             <div class="card">
                 <div class="card-body row">
                     <div class="col-md-5 col-12"> <p class="card-text" style="font-weight: bold; font-size: 1.3em">Сортировка мероприятий: </p> </div> 
-                        <!-- <div class="col-md-7 col-12" v-if="this.$route.path == '/all-events'"> 
-                            <select class="custom-select custom-select-sm mb-3 events " onchange="location.href=this.value">
-                                <option value="/all-events">Все</option>
-                                <option value="/it-events" selected>IT</option>
-                                <option value="/engineering-events">Инженерия</option>
-                                <option value="/service-events">Сфера услуг</option>
-                            </select>
-                        </div> -->
-                        <div class="col-md-7 col-12" v-if="this.$route.path == '/it-events'"> 
-                            <select class="custom-select custom-select-sm mb-3 events" onchange="location.href=this.value">
-                                <!-- <option value="/all-events">Все</option> -->
-                                <option value="/it-events" selected>IT</option>
-                                <option value="/engineering-events">Инженерия</option>
-                                <option value="/service-events">Сфера услуг</option>
-                            </select>
+                    <!-- <div class="col-md-7 col-12" v-if="this.$route.path == '/all-events'"> 
+                        <select class="custom-select custom-select-sm mb-3 events " onchange="location.href=this.value">
+                            <option value="/all-events">Все</option>
+                            <option value="/it-events" selected>IT</option>
+                            <option value="/engineering-events">Инженерия</option>
+                            <option value="/service-events">Сфера услуг</option>
+                        </select>
+                    </div> -->
+                    <div class="col-md-7 col-12" v-if="this.$route.path == '/it-events'"> 
+                        <select class="custom-select custom-select-sm mb-3 events" onchange="location.href=this.value">
+                            <!-- <option value="/all-events">Все</option> -->
+                            <option value="/it-events" selected>IT</option>
+                            <option value="/engineering-events">Инженерия</option>
+                            <option value="/service-events">Сфера услуг</option>
+                        </select>
+                    </div>
+                    <div class="col-md-7 col-12" v-else-if="this.$route.path == '/service-events'"> 
+                        <select class="custom-select custom-select-sm mb-3 events" onchange="location.href=this.value">
+                            <!-- <option value="/all-events">Все</option> -->
+                            <option value="/it-events">IT</option>
+                            <option value="/engineering-events">Инженерия</option>
+                            <option value="/service-events" selected>Сфера услуг</option>
+                        </select>
+                    </div>
+                    <div class="col-md-7 col-12" v-else> 
+                        <select class="custom-select custom-select-sm mb-3 events" onchange="location.href=this.value">
+                            <!-- <option value="/all-events">Все</option> -->
+                            <option value="/it-events">IT</option>
+                            <option value="/engineering-events" selected>Инженерия</option>
+                            <option value="/service-events">Сфера услуг</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="card" v-for="item in data" :key="item.value">
+                <div class="card-header">{{item.date}}</div>
+                <div class="card-body">
+                    <h5 class="card-title">{{item.name}}</h5>
+                    <p class="card-text"><i class="far fa-clock"></i> {{item.time}}</p>
+                    <p class="card-text"><i class="far fa-user"></i> {{item.places}}</p>
+                    <p class="card-text">Тип: {{item.type}}</p>
+                    <!-- <p><button class="btn btn-outline-info"  @click="add(item)">Собираюсь посетить</button></p>
+                    <a :href="item.link" class="btn btn-primary" @click="setScroll()">Перейти к мероприятию</a> -->
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <button class="btn btn-outline-almbb-info"  @click="add(item)">Собираюсь посетить</button>
                         </div>
-                        <div class="col-md-7 col-12" v-else-if="this.$route.path == '/service-events'"> 
-                            <select class="custom-select custom-select-sm mb-3 events" onchange="location.href=this.value">
-                                <!-- <option value="/all-events">Все</option> -->
-                                <option value="/it-events">IT</option>
-                                <option value="/engineering-events">Инженерия</option>
-                                <option value="/service-events" selected>Сфера услуг</option>
-                            </select>
-                        </div>
-                        <div class="col-md-7 col-12" v-else> 
-                            <select class="custom-select custom-select-sm mb-3 events" onchange="location.href=this.value">
-                                <!-- <option value="/all-events">Все</option> -->
-                                <option value="/it-events">IT</option>
-                                <option value="/engineering-events" selected>Инженерия</option>
-                                <option value="/service-events">Сфера услуг</option>
-                            </select>
+                        <div class="col-12 col-md-6 gotoevents">
+                            <a :href="item.link" class="btn btn-blue" @click="setScroll()">Перейти к мероприятию</a>
                         </div>
                     </div>
                 </div>
-                <div class="card" v-for="item in data" :key="item.value">
-                    <div class="card-header">{{item.date}}</div>
-                    <div class="card-body">
-                        <h5 class="card-title">{{item.name}}</h5>
-                        <p class="card-text"><i class="far fa-clock"></i> {{item.time}}</p>
-                        <p class="card-text"><i class="far fa-user"></i> {{item.places}}</p>
-                        <p class="card-text">Тип: {{item.type}}</p>
-                        <!-- <p><button class="btn btn-outline-info"  @click="add(item)">Собираюсь посетить</button></p>
-                        <a :href="item.link" class="btn btn-primary" @click="setScroll()">Перейти к мероприятию</a> -->
-                        <div class="row">
-                            <div class="col-12 col-md-6">
-                                <button class="btn btn-outline-almbb-info"  @click="add(item)">Собираюсь посетить</button>
-                            </div>
-                            <div class="col-12 col-md-6 gotoevents">
-                                <a :href="item.link" class="btn btn-blue" @click="setScroll()">Перейти к мероприятию</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            </div>
         </div>
         <div class="footer"><Footer></Footer></div> 
     </div>
