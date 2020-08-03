@@ -60,6 +60,8 @@
 
 
 
+
+            <!-- <div class="col-1"><a class="btn btn-almbb-small btn-red-orange" style="border-radius: 50%; color: white"><i class="fas fa-plus"></i></a></div> -->
             <!-- <div class="ChosenClassList">
                 <div class="row align-items-end">
                     <div class="col-12 col-md-3" style="font-weight: bold; font-size: 1.3em; margin-top: 0.5em">Направления: </div>
