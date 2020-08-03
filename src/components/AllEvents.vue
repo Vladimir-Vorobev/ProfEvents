@@ -140,13 +140,6 @@ export default {
             });
         }, 500);
         this.$store.commit('SET_ALL_EVENTS_SCROLL', 0)
-
-        let modal = document.getElementById("my_modal");
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
     },
     methods:{
         add(event){
