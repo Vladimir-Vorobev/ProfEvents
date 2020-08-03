@@ -51,12 +51,13 @@
             <!-- <div class="col-1"><a class="btn btn-almbb-small btn-red-orange" style="border-radius: 50%; color: white"><i class="fas fa-plus"></i></a></div> -->
             <!-- <div class="ChosenClassList">
                 <div class="row align-items-end">
-                    <div class="col-12 col-md-3" style="font-weight: bold; font-size: 1.3em; margin-top: 0.5em">Направления: </div>
-                    <div class="col-12 col-md-9" id="classList" style="text-align: left; font-size: 1.3em;">
+                    <div class="col-12 col-lg-3" style="font-weight: bold; font-size: 1.3em; margin-top: 0.5em">Направления: </div>
+                    <div class="col-9 col-lg-8" id="classList" style="text-align: left; font-size: 1.3em;">
                         <span class="badge badge-pill badge-primary" id="itbadge" style="display: none; margin-right: 0.5em">IT <a class="deleteDirection" @click="delActive('it')">&times;</a></span>
                         <span class="badge badge-pill badge-primary" id="engineeringbadge" style="display: none; margin-right: 0.5em">Инженерия <a class="deleteDirection" @click="delActive('engineering')">&times;</a></span>
                         <span class="badge badge-pill badge-primary" id="serviceEventsbadge" style="display: none;">Сфера услуг <a class="deleteDirection" @click="delActive('serviceEvents')">&times;</a></span>
                     </div>
+                    <div class="col-3 col-lg-1"><a class="btn btn-almbb-small btn-red-orange" style="border-radius: 50%; color: white" @click="showChoseModal()"><i class="fas fa-plus"></i></a></div>
                 </div>
                 <hr>
                 <div class="row">
@@ -67,7 +68,24 @@
                 </div>
             </div>
 
-            <div class="block" @click="setActive('it')" id="it">
+
+            <div id="my_modal" class="modal">
+                <div class="modal_content">
+                    <span class="close_modal_window" @click="closeChoseModal()"><i class="fas fa-times"></i></span>
+                    <div class="row">
+                        <div class="col-12" style="font-weight: bold; font-size: 1.5em;">Выберите направления</div>
+                    </div>
+                    <div class="selectGroup">
+                        <div class="row item" id="it-item" @click="Chose('it')">IT</div>
+                        <div class="row item" id="engineering-item" @click="Chose('engineering')">Инженерия</div>
+                        <div class="row item" id="serviceEvents-item" @click="Chose('serviceEvents')">Сфера услуг</div>
+                    </div>
+                </div>
+            </div> -->
+
+
+
+            <!-- <div class="block" @click="setActive('it')" id="it">
                 <div class="bname">IT</div>
                 <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquet nisi id quam sollicitudin molestie. Curabitur fermentum augue nulla, in vehicula augue tincidunt vitae. Etiam mollis massa vitae velit semper, lacinia suscipit est imperdiet. Suspendisse maximus tincidunt accumsan. Morbi ac iaculis enim. Nunc convallis nec lorem nec mollis. Fusce molestie.</div>
             </div>
@@ -83,13 +101,14 @@
             </div> -->
 
         </div>
-        <div class="footer"><Footer></Footer></div> 
+        <div class="footer"><Footer></Footer></div>
     </div>
 </template>
 
 <script>
 import needle from 'needle'
 import Vue from 'vue';
+// import Swal from 'sweetalert2'
 import Footer from './footer.vue'
 export default {
     name: 'AllEvents',
@@ -121,6 +140,13 @@ export default {
             });
         }, 500);
         this.$store.commit('SET_ALL_EVENTS_SCROLL', 0)
+
+        let modal = document.getElementById("my_modal");
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
     },
     methods:{
         add(event){
@@ -185,8 +211,28 @@ export default {
         
         },
         delActive(elem){
-            document.getElementById(elem).classList.remove('active')
+            // document.getElementById(elem).classList.remove('active')
             document.getElementById(elem+'badge').style.display = 'none'
+            document.getElementById(elem+'-item').classList.remove('selected')
+        },
+
+        Chose(elem){
+            if(document.getElementById(elem+'badge').style.display == 'none'){
+                document.getElementById(elem+'badge').style.display = 'inline-block'
+                document.getElementById(elem+'-item').classList.add('selected')
+            }
+            else{
+                document.getElementById(elem+'badge').style.display = 'none'
+                document.getElementById(elem+'-item').classList.remove('selected')
+            }
+        },
+        showChoseModal(){
+            let modal = document.getElementById("my_modal");
+            modal.style.display = "block";
+        },
+        closeChoseModal(){
+            let modal = document.getElementById("my_modal");
+            modal.style.display = "none"
         }
     }
 }
@@ -283,5 +329,65 @@ export default {
 .deleteDirection:hover{
     color: #ff4444;
     text-transform: uppercase;
+}
+
+
+
+.modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 9999;
+}
+.modal .modal_content {
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    z-index: 99999;
+}
+
+@media (max-width: 575px) {
+    .modal .modal_content {
+        width: 100%;
+        min-height: 60%;
+        margin: 30% 0;
+    }
+}
+@media (min-width: 576px) { 
+    .modal .modal_content {
+        margin: 15% auto;
+        width: 60%;
+        min-height: 300px;
+    }
+}
+
+.modal .modal_content .close_modal_window {
+    color: #aaa;
+    float: right;
+    font-size: 1.3em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: -20px;
+    margin-right: -10px;
+}
+.modal .modal_content .close_modal_window:hover {
+    color: #ff4444;
+}
+.selectGroup .item{
+    font-size: 1.1em;
+    padding: 0.5em;
+    margin: 0.5em 0px;
+}
+.selectGroup .item:hover{
+    background: #ebecec;
+}
+.selectGroup .item.selected{
+    background: #3F729B;
+    color: white;
 }
 </style>
