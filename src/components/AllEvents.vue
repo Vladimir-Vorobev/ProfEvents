@@ -1,7 +1,7 @@
 <template>
     <div class="main">
         <div class="container warp">
-            <div class="card">
+            <!-- <div class="card">
                 <div class="card-body row">
                     <div class="col-md-5 col-12"> <p class="card-text" style="font-weight: bold; font-size: 1.3em">Сортировка мероприятий: </p> </div> 
                     <div class="col-md-7 col-12" v-if="this.$route.path == '/it-events'"> 
@@ -26,7 +26,45 @@
                         </select>
                     </div>
                 </div>
+            </div> -->
+
+
+            
+            <div class="ChosenClassList">
+                <div class="row align-items-end">
+                    <div class="col-12 col-lg-3" style="font-weight: bold; font-size: 1.3em; margin-top: 0.5em">Направления: </div>
+                    <div class="col-9 col-lg-8" id="classList" style="text-align: left; font-size: 1.3em;">
+                        <span class="badge badge-pill badge-primary" id="programmingbadge" style="display: none; margin-right: 0.5em">IT <a class="deleteDirection" @click="delActive('programming')">&times;</a></span>
+                        <span class="badge badge-pill badge-primary" id="engineeringbadge" style="display: none; margin-right: 0.5em">Инженерия <a class="deleteDirection" @click="delActive('engineering')">&times;</a></span>
+                        <span class="badge badge-pill badge-primary" id="servicebadge" style="display: none;">Сфера услуг <a class="deleteDirection" @click="delActive('service')">&times;</a></span>
+                    </div>
+                    <div class="col-3 col-lg-1"><a class="btn btn-almbb-small btn-red-orange" style="border-radius: 50%; color: white" @click="showChoseModal()"><i class="fas fa-plus"></i></a></div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-12 col-md-10" style="padding-right: 0px">
+                        <input type="text" class="form-control" style="border-radius: 50px;">
+                    </div>
+                    <div class="col-12 col-md-2" style="padding: 0px"><button class="btn btn-blue btn-almbb-small">Найти</button></div>
+                </div>
             </div>
+
+
+            <div id="my_modal" class="modal">
+                <div class="modal_content">
+                    <span class="close_modal_window" @click="closeChoseModal()"><i class="fas fa-times"></i></span>
+                    <div class="row">
+                        <div class="col-12" style="font-weight: bold; font-size: 1.5em;">Выберите направления</div>
+                    </div>
+                    <div class="selectGroup">
+                        <div class="row item" id="programming-item" @click="Chose('programming')">IT</div>
+                        <div class="row item" id="engineering-item" @click="Chose('engineering')">Инженерия</div>
+                        <div class="row item" id="service-item" @click="Chose('service')">Сфера услуг</div>
+                    </div>
+                </div>
+            </div>
+
+            <div v-if="data.length == 0"><h3>Вы не выбрали ни одно направление</h3></div>
             <div class="card" v-for="item in data" :key="item.value">
                 <div class="card-header">{{item.date}}</div>
                 <div class="card-body">
@@ -44,62 +82,6 @@
                     </div>
                 </div>
             </div>
-
-
-
-
-            <!-- <div class="col-1"><a class="btn btn-almbb-small btn-red-orange" style="border-radius: 50%; color: white"><i class="fas fa-plus"></i></a></div> -->
-            <!-- <div class="ChosenClassList">
-                <div class="row align-items-end">
-                    <div class="col-12 col-lg-3" style="font-weight: bold; font-size: 1.3em; margin-top: 0.5em">Направления: </div>
-                    <div class="col-9 col-lg-8" id="classList" style="text-align: left; font-size: 1.3em;">
-                        <span class="badge badge-pill badge-primary" id="itbadge" style="display: none; margin-right: 0.5em">IT <a class="deleteDirection" @click="delActive('it')">&times;</a></span>
-                        <span class="badge badge-pill badge-primary" id="engineeringbadge" style="display: none; margin-right: 0.5em">Инженерия <a class="deleteDirection" @click="delActive('engineering')">&times;</a></span>
-                        <span class="badge badge-pill badge-primary" id="serviceEventsbadge" style="display: none;">Сфера услуг <a class="deleteDirection" @click="delActive('serviceEvents')">&times;</a></span>
-                    </div>
-                    <div class="col-3 col-lg-1"><a class="btn btn-almbb-small btn-red-orange" style="border-radius: 50%; color: white" @click="showChoseModal()"><i class="fas fa-plus"></i></a></div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-12 col-md-10" style="padding-right: 0px">
-                        <input type="text" class="form-control" name="search" style="border-radius: 50px;">
-                    </div>
-                    <div class="col-12 col-md-2" style="padding: 0px"><button class="btn btn-blue btn-almbb-small">Найти</button></div>
-                </div>
-            </div>
-
-
-            <div id="my_modal" class="modal">
-                <div class="modal_content">
-                    <span class="close_modal_window" @click="closeChoseModal()"><i class="fas fa-times"></i></span>
-                    <div class="row">
-                        <div class="col-12" style="font-weight: bold; font-size: 1.5em;">Выберите направления</div>
-                    </div>
-                    <div class="selectGroup">
-                        <div class="row item" id="it-item" @click="Chose('it')">IT</div>
-                        <div class="row item" id="engineering-item" @click="Chose('engineering')">Инженерия</div>
-                        <div class="row item" id="serviceEvents-item" @click="Chose('serviceEvents')">Сфера услуг</div>
-                    </div>
-                </div>
-            </div> -->
-
-
-
-            <!-- <div class="block" @click="setActive('it')" id="it">
-                <div class="bname">IT</div>
-                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquet nisi id quam sollicitudin molestie. Curabitur fermentum augue nulla, in vehicula augue tincidunt vitae. Etiam mollis massa vitae velit semper, lacinia suscipit est imperdiet. Suspendisse maximus tincidunt accumsan. Morbi ac iaculis enim. Nunc convallis nec lorem nec mollis. Fusce molestie.</div>
-            </div>
-
-            <div class="block" @click="setActive('engineering')" id="engineering">
-                <div class="bname">Инженерия</div>
-                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquet nisi id quam sollicitudin molestie. Curabitur fermentum augue nulla, in vehicula augue tincidunt vitae. Etiam mollis massa vitae velit semper, lacinia suscipit est imperdiet. Suspendisse maximus tincidunt accumsan. Morbi ac iaculis enim. Nunc convallis nec lorem nec mollis. Fusce molestie.</div>
-            </div>
-
-            <div class="block" @click="setActive('serviceEvents')" id="serviceEvents">
-                <div class="bname">Сфера услуг</div>
-                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquet nisi id quam sollicitudin molestie. Curabitur fermentum augue nulla, in vehicula augue tincidunt vitae. Etiam mollis massa vitae velit semper, lacinia suscipit est imperdiet. Suspendisse maximus tincidunt accumsan. Morbi ac iaculis enim. Nunc convallis nec lorem nec mollis. Fusce molestie.</div>
-            </div> -->
-
         </div>
         <div class="footer"><Footer></Footer></div>
     </div>
@@ -116,26 +98,47 @@ export default {
     data(){
         return{
             data: [],
-            eventsChose: {
-                it: false,
-                engineering: false,
-                serviceEvents: false
-            },
+            allEventsCategoriesData: {},
+            // eventsChose: {
+            //     programming: true,
+            //     engineering: false,
+            //     service: false
+            // },
         }
     },
     beforeMount(){
-        fetch(this.$store.state.serverIp+'/api/getAllEvents', {
-            method: 'get',
-        })
-        .then(response => {
-            console.log("res", response)
-            return response.json()
-        })
-        .then(datan => {
-            if(this.$route.path == '/it-events') this.data = datan.programming
-            else if(this.$route.path == '/service-events') this.data = datan.service
-            else this.data = datan.engeniring
-        })
+        // fetch(this.$store.state.serverIp+'/api/getAllEvents', {
+        //     method: 'get',
+        // })
+        // .then(response => {
+        //     console.log("res", response)
+        //     return response.json()
+        // })
+        // .then(datan => {
+        //     if(this.$route.path == '/it-events') this.data = datan.programming
+        //     else if(this.$route.path == '/service-events') this.data = datan.service
+        //     else this.data = datan.engeniring
+        // })
+        // let email = this.$store.getters.email
+        // let SessionID = this.$store.getters.SessionID
+        // needle('post',this.$store.state.serverIp+'/api/getAllEvents', {email: email, sessionid: SessionID}, {"json": true})
+        // .then(res => {
+        //     console.log(res.body)
+        //     this.data = res.body['programming']
+        // })
+        // .catch(function(err) {
+        //     console.log(err)
+        // })
+
+        if(localStorage.eventsChosen == undefined){
+            let eventsChose = {
+                programming: false,
+                engineering: false,
+                service: false
+            }
+            localStorage.eventsChosen = JSON.stringify(eventsChose)
+        }
+        // console.log(JSON.parse(localStorage.eventsChosen))
     },
     mounted(){
         setTimeout(() => {
@@ -145,13 +148,32 @@ export default {
             });
         }, 500);
         this.$store.commit('SET_ALL_EVENTS_SCROLL', 0)
-        for (let key in this.eventsChose){
-            // console.log(key +' '+ this.eventsChose[key])
-            if( this.eventsChose[key] == true ){
-                document.getElementById(key+'badge').style.display = 'inline-block'
-                document.getElementById(key+'-item').classList.add('selected')
+
+        let eventsChose = JSON.parse(localStorage.eventsChosen)
+        let email = this.$store.getters.email
+        let SessionID = this.$store.getters.SessionID 
+        needle('post',this.$store.state.serverIp+'/api/getAllEvents', {email: email, sessionid: SessionID}, {"json": true})
+        .then(res => {
+            for (let key in eventsChose){
+                // console.log(key +' '+ eventsChose[key])
+                if( eventsChose[key] == true ){
+                    document.getElementById(key+'badge').style.display = 'inline-block'
+                    document.getElementById(key+'-item').classList.add('selected')
+                    this.data = this.data.concat(res.body[key])
+                    // console.log(this.data.length)
+                }
             }
-        }
+        })
+        .catch(function(err) {
+            console.log(err)
+        })
+        // let eventsChose = JSON.parse(localStorage.eventsChosen)
+        // for (let key in eventsChose){
+        //     if( eventsChose[key] == true ){
+        //         document.getElementById(key+'badge').style.display = 'inline-block'
+        //         document.getElementById(key+'-item').classList.add('selected')
+        //     }
+        // }
     },
     methods:{
         add(event){
@@ -216,22 +238,28 @@ export default {
         
         // },
         delActive(elem){
-            // document.getElementById(elem).classList.remove('active')
             document.getElementById(elem+'badge').style.display = 'none'
             document.getElementById(elem+'-item').classList.remove('selected')
-            this.eventsChose[elem] = false
+            let tmp = JSON.parse(localStorage.eventsChosen)
+            tmp[elem] = false
+            localStorage.eventsChosen = JSON.stringify(tmp)
+            location.reload()
         },
 
         Chose(elem){
             if(document.getElementById(elem+'badge').style.display == 'none'){
                 document.getElementById(elem+'badge').style.display = 'inline-block'
                 document.getElementById(elem+'-item').classList.add('selected')
-                this.eventsChose[elem] = true
+                let tmp = JSON.parse(localStorage.eventsChosen)
+                tmp[elem] = true
+                localStorage.eventsChosen = JSON.stringify(tmp)
             }
             else{
                 document.getElementById(elem+'badge').style.display = 'none'
                 document.getElementById(elem+'-item').classList.remove('selected')
-                this.eventsChose[elem] = false
+                let tmp = JSON.parse(localStorage.eventsChosen)
+                tmp[elem] = false
+                localStorage.eventsChosen = JSON.stringify(tmp)
             }
         },
         showChoseModal(){
@@ -241,6 +269,7 @@ export default {
         closeChoseModal(){
             let modal = document.getElementById("my_modal");
             modal.style.display = "none"
+            location.reload()
         }
     }
 }
