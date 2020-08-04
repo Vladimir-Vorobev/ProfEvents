@@ -116,6 +116,11 @@ export default {
     data(){
         return{
             data: [],
+            eventsChose: {
+                it: false,
+                engineering: false,
+                serviceEvents: false
+            },
         }
     },
     beforeMount(){
@@ -140,6 +145,13 @@ export default {
             });
         }, 500);
         this.$store.commit('SET_ALL_EVENTS_SCROLL', 0)
+        for (let key in this.eventsChose){
+            // console.log(key +' '+ this.eventsChose[key])
+            if( this.eventsChose[key] == true ){
+                document.getElementById(key+'badge').style.display = 'inline-block'
+                document.getElementById(key+'-item').classList.add('selected')
+            }
+        }
     },
     methods:{
         add(event){
@@ -191,32 +203,35 @@ export default {
             document.cookie = "allEventsScroll=" + window.pageYOffset
         },
 
-        setActive(elem){
-            if (!document.getElementById(elem).classList.contains('active')){
-                document.getElementById(elem).classList.add('active')
-                document.getElementById(elem+'badge').style.display = 'inline-block'
-            }
-            else{
-                document.getElementById(elem).classList.remove('active')
-                document.getElementById(elem+'badge').style.display = 'none'
+        // setActive(elem){
+        //     if (!document.getElementById(elem).classList.contains('active')){
+        //         document.getElementById(elem).classList.add('active')
+        //         document.getElementById(elem+'badge').style.display = 'inline-block'
+        //     }
+        //     else{
+        //         document.getElementById(elem).classList.remove('active')
+        //         document.getElementById(elem+'badge').style.display = 'none'
 
-            }
+        //     }
         
-        },
+        // },
         delActive(elem){
             // document.getElementById(elem).classList.remove('active')
             document.getElementById(elem+'badge').style.display = 'none'
             document.getElementById(elem+'-item').classList.remove('selected')
+            this.eventsChose[elem] = false
         },
 
         Chose(elem){
             if(document.getElementById(elem+'badge').style.display == 'none'){
                 document.getElementById(elem+'badge').style.display = 'inline-block'
                 document.getElementById(elem+'-item').classList.add('selected')
+                this.eventsChose[elem] = true
             }
             else{
                 document.getElementById(elem+'badge').style.display = 'none'
                 document.getElementById(elem+'-item').classList.remove('selected')
+                this.eventsChose[elem] = false
             }
         },
         showChoseModal(){

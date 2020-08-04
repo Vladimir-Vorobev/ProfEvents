@@ -87,6 +87,9 @@ footer {
     color: #EF5B65;
     text-decoration: none;
 }
+.router-link{
+    text-decoration: none;
+}
  @media (max-width: 992px) {
         .lb1{
             padding: 0px;
