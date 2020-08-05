@@ -133,8 +133,8 @@ export default {
                     this.data = this.data.concat(res.body[key])
                 }
             }
-            // console.log(res.body)
-            // this.allEventsCategoriesData = 
+            console.log(res.body)
+            this.allEventsCategoriesData = {engineering: res.body['engineering'], programming: res.body['programming'], service: res.body['service']}
         })
         .catch(function(err) {
             console.log(err)
@@ -206,7 +206,16 @@ export default {
             let tmp = JSON.parse(localStorage.eventsChosen)
             tmp[elem] = false
             localStorage.eventsChosen = JSON.stringify(tmp)
-            location.reload()
+            // location.reload()
+            let eventsChose = JSON.parse(localStorage.eventsChosen)
+            this.data = []
+            for (let key in eventsChose){
+                if( eventsChose[key] == true ){
+                    document.getElementById(key+'badge').style.display = 'inline-block'
+                    document.getElementById(key+'-item').classList.add('selected')
+                    this.data = this.data.concat(this.allEventsCategoriesData[key])
+                }
+            }
         },
 
         Chose(elem){
@@ -232,7 +241,16 @@ export default {
         closeChoseModal(){
             let modal = document.getElementById("my_modal");
             modal.style.display = "none"
-            location.reload()
+            // location.reload()
+            let eventsChose = JSON.parse(localStorage.eventsChosen)
+            this.data = []
+            for (let key in eventsChose){
+                if( eventsChose[key] == true ){
+                    document.getElementById(key+'badge').style.display = 'inline-block'
+                    document.getElementById(key+'-item').classList.add('selected')
+                    this.data = this.data.concat(this.allEventsCategoriesData[key])
+                }
+            }
         }
     }
 }
