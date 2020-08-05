@@ -98,7 +98,7 @@ export default {
     data(){
         return{
             data: [],
-            // allEventsCategoriesData: {},
+            allEventsCategoriesData: {},
         }
     },
     beforeMount(){
@@ -172,6 +172,7 @@ export default {
                             timerProgressBar: true,
                         }).then(()=>{
                             this.$delete(this.data, eventPlace)
+                            // console.log(event)
                         });
                     }
                 })
@@ -207,22 +208,14 @@ export default {
             localStorage.eventsChosen = JSON.stringify(tmp)
             // location.reload()
             let eventsChose = JSON.parse(localStorage.eventsChosen)
-            let email = this.$store.getters.email
-            let SessionID = this.$store.getters.SessionID 
             this.data = []
-            needle('post',this.$store.state.serverIp+'/api/getAllEvents', {email: email, sessionid: SessionID}, {"json": true})
-            .then(res => {
-                for (let key in eventsChose){
-                    if( eventsChose[key] == true ){
-                        document.getElementById(key+'badge').style.display = 'inline-block'
-                        document.getElementById(key+'-item').classList.add('selected')
-                        this.data = this.data.concat(res.body[key])
-                    }
+            for (let key in eventsChose){
+                if( eventsChose[key] == true ){
+                    document.getElementById(key+'badge').style.display = 'inline-block'
+                    document.getElementById(key+'-item').classList.add('selected')
+                    this.data = this.data.concat(this.allEventsCategoriesData[key])
                 }
-            })
-            .catch(function(err) {
-                console.log(err)
-            })
+            }
         },
 
         Chose(elem){
@@ -250,22 +243,14 @@ export default {
             modal.style.display = "none"
             // location.reload()
             let eventsChose = JSON.parse(localStorage.eventsChosen)
-            let email = this.$store.getters.email
-            let SessionID = this.$store.getters.SessionID 
             this.data = []
-            needle('post',this.$store.state.serverIp+'/api/getAllEvents', {email: email, sessionid: SessionID}, {"json": true})
-            .then(res => {
-                for (let key in eventsChose){
-                    if( eventsChose[key] == true ){
-                        document.getElementById(key+'badge').style.display = 'inline-block'
-                        document.getElementById(key+'-item').classList.add('selected')
-                        this.data = this.data.concat(res.body[key])
-                    }
+            for (let key in eventsChose){
+                if( eventsChose[key] == true ){
+                    document.getElementById(key+'badge').style.display = 'inline-block'
+                    document.getElementById(key+'-item').classList.add('selected')
+                    this.data = this.data.concat(this.allEventsCategoriesData[key])
                 }
-            })
-            .catch(function(err) {
-                console.log(err)
-            })
+            }
         }
     }
 }
