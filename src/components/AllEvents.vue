@@ -98,7 +98,7 @@ export default {
     data(){
         return{
             data: [],
-            allEventsCategoriesData: {},
+            // allEventsCategoriesData: {},
         }
     },
     beforeMount(){
@@ -154,7 +154,7 @@ export default {
                 // delete event.places
                 // if(this.$route.path == '/it-events') event.mainType = 'programming'
                 // else if(this.$route.path == '/service-events') event.mainType = 'service'
-                // else event.mainType = 'engeniring'
+                // else event.mainType = 'engineering'
                 needle('post',this.$store.state.serverIp+'/api/checkedEventsUpdate', {email: email, events: event, sessionid: SessionID}, {"json": true})
                 .then(res => {
                     if(res.body == '310'){
@@ -207,14 +207,22 @@ export default {
             localStorage.eventsChosen = JSON.stringify(tmp)
             // location.reload()
             let eventsChose = JSON.parse(localStorage.eventsChosen)
+            let email = this.$store.getters.email
+            let SessionID = this.$store.getters.SessionID 
             this.data = []
-            for (let key in eventsChose){
-                if( eventsChose[key] == true ){
-                    document.getElementById(key+'badge').style.display = 'inline-block'
-                    document.getElementById(key+'-item').classList.add('selected')
-                    this.data = this.data.concat(this.allEventsCategoriesData[key])
+            needle('post',this.$store.state.serverIp+'/api/getAllEvents', {email: email, sessionid: SessionID}, {"json": true})
+            .then(res => {
+                for (let key in eventsChose){
+                    if( eventsChose[key] == true ){
+                        document.getElementById(key+'badge').style.display = 'inline-block'
+                        document.getElementById(key+'-item').classList.add('selected')
+                        this.data = this.data.concat(res.body[key])
+                    }
                 }
-            }
+            })
+            .catch(function(err) {
+                console.log(err)
+            })
         },
 
         Chose(elem){
@@ -242,14 +250,22 @@ export default {
             modal.style.display = "none"
             // location.reload()
             let eventsChose = JSON.parse(localStorage.eventsChosen)
+            let email = this.$store.getters.email
+            let SessionID = this.$store.getters.SessionID 
             this.data = []
-            for (let key in eventsChose){
-                if( eventsChose[key] == true ){
-                    document.getElementById(key+'badge').style.display = 'inline-block'
-                    document.getElementById(key+'-item').classList.add('selected')
-                    this.data = this.data.concat(this.allEventsCategoriesData[key])
+            needle('post',this.$store.state.serverIp+'/api/getAllEvents', {email: email, sessionid: SessionID}, {"json": true})
+            .then(res => {
+                for (let key in eventsChose){
+                    if( eventsChose[key] == true ){
+                        document.getElementById(key+'badge').style.display = 'inline-block'
+                        document.getElementById(key+'-item').classList.add('selected')
+                        this.data = this.data.concat(res.body[key])
+                    }
                 }
-            }
+            })
+            .catch(function(err) {
+                console.log(err)
+            })
         }
     }
 }
