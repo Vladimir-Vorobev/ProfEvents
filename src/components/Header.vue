@@ -13,7 +13,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent" @click="animate_navbar()">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <router-link to="/it-events" class="router-link">
+                        <router-link to="/events" class="router-link">
                             <a class="nav-link" ref="allEvents" style="color: #000 !important">Все мероприятия</a>
                         </router-link>
                     </li>

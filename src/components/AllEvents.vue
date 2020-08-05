@@ -181,10 +181,10 @@ export default {
             let SessionID = this.$store.getters.SessionID
             if(email != ''){
                 delete event.places
-                if(this.$route.path == '/it-events') event.mainType = 'programming'
-                else if(this.$route.path == '/service-events') event.mainType = 'service'
-                else event.mainType = 'engeniring'
-                console.log(event)
+                // if(this.$route.path == '/it-events') event.mainType = 'programming'
+                // else if(this.$route.path == '/service-events') event.mainType = 'service'
+                // else event.mainType = 'engeniring'
+                // console.log(event)
                 needle.post(this.$store.state.serverIp+'/api/checkedEventsUpdate', {email: email, events: event, sessionid: SessionID}, {"json": true}, function(err, res){
                     if (err) throw err
                     if(res.body == '310'){
