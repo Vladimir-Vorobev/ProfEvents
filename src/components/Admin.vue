@@ -129,6 +129,8 @@
                                                                             <img width="300" height="200" :data-src="item3.file" alt="">
                                                                         </div>
                                                                     </div>
+                                                                    <button class="btn btn-success" @click="moderate_event(item2.data, 'confirm', item.email)">Подтвердить</button>
+                                                                    <button class="btn btn-danger" @click="moderate_event(item2.data, 'dismiss', item.email)">Отклонить</button>
                                                                 </div>
                                                             </div>
                                                         </a>    
@@ -1182,6 +1184,22 @@ export default {
                             Vue.swal(res.body);
                         }
                     })
+                }
+            })
+        },
+        moderate_event(event, status, studEmail){
+            needle.post('http://78.155.219.12:3000/api/moderateEvent', {email: this.email, type: 'teacher', sessionid: this.SessionID, action: status, data: event, studEmail: studEmail}, {"json": true}, function(err, res){
+                if(err) throw err
+                if(res.body == 'OK'){
+                    //alert('Файл успешно добавлен')
+                    Vue.swal({
+                        icon: 'success',
+                        text: 'Файл успешно добавлен'
+                    });
+                }
+                else if(res.body == 'User undefined'){
+                    //alert(res.body)
+                    Vue.swal('Пользователь с данной почтой не зарегистрирован');
                 }
             })
         },
