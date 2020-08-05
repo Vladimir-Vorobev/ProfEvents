@@ -121,7 +121,7 @@ export default {
         }, 500);
         this.$store.commit('SET_ALL_EVENTS_SCROLL', 0)
 
-        // let eventsChose = JSON.parse(localStorage.eventsChosen)
+        let eventsChose = JSON.parse(localStorage.eventsChosen)
         let email = this.$store.getters.email
         let SessionID = this.$store.getters.SessionID 
         needle('post',this.$store.state.serverIp+'/api/getAllEvents', {email: email, sessionid: SessionID}, {"json": true})
