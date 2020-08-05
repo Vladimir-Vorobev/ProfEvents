@@ -229,19 +229,6 @@ export default {
         setScroll(){
             document.cookie = "allEventsScroll=" + window.pageYOffset
         },
-
-        // setActive(elem){
-        //     if (!document.getElementById(elem).classList.contains('active')){
-        //         document.getElementById(elem).classList.add('active')
-        //         document.getElementById(elem+'badge').style.display = 'inline-block'
-        //     }
-        //     else{
-        //         document.getElementById(elem).classList.remove('active')
-        //         document.getElementById(elem+'badge').style.display = 'none'
-
-        //     }
-        
-        // },
         delActive(elem){
             document.getElementById(elem+'badge').style.display = 'none'
             document.getElementById(elem+'-item').classList.remove('selected')
@@ -318,34 +305,6 @@ export default {
     }
 }
 
-.block{
-    background-color: #ffffff;
-    width: 100%;
-    height: 100%;
-    border-radius: 4px;
-    -webkit-box-shadow: 0px 0px 5px 2px rgba(34, 60, 80, 0.2);
-    -moz-box-shadow: 0px 0px 5px 2px rgba(34, 60, 80, 0.2);
-    box-shadow: 0px 0px 5px 2px rgba(34, 60, 80, 0.2);
-    min-height: 300px;
-    padding: 15px 20px;
-    margin: 1em 0em;
-    cursor: pointer;
-}
-.block:hover{
-    -webkit-box-shadow: 0px 0px 5px 4px rgba(34, 60, 80, 0.26);
-    -moz-box-shadow: 0px 0px 5px 4px rgba(34, 60, 80, 0.26);
-    box-shadow: 0px 0px 5px 4px rgba(34, 60, 80, 0.26);
-}
-.block.active{
-    background: #ff8a65;
-    color: rgb(255, 255, 255);
-}
-.bname{
-    text-align: center; 
-    font-weight: bold; 
-    font-size: 1.3em;
-}
-
 .ChosenClassList{
     background-color: #ffffff;
     width: 100%;
@@ -386,8 +345,6 @@ export default {
     color: #ff4444;
     text-transform: uppercase;
 }
-
-
 
 .modal {
     display: none;
