@@ -99,37 +99,9 @@ export default {
         return{
             data: [],
             allEventsCategoriesData: {},
-            // eventsChose: {
-            //     programming: true,
-            //     engineering: false,
-            //     service: false
-            // },
         }
     },
     beforeMount(){
-        // fetch(this.$store.state.serverIp+'/api/getAllEvents', {
-        //     method: 'get',
-        // })
-        // .then(response => {
-        //     console.log("res", response)
-        //     return response.json()
-        // })
-        // .then(datan => {
-        //     if(this.$route.path == '/it-events') this.data = datan.programming
-        //     else if(this.$route.path == '/service-events') this.data = datan.service
-        //     else this.data = datan.engeniring
-        // })
-        // let email = this.$store.getters.email
-        // let SessionID = this.$store.getters.SessionID
-        // needle('post',this.$store.state.serverIp+'/api/getAllEvents', {email: email, sessionid: SessionID}, {"json": true})
-        // .then(res => {
-        //     console.log(res.body)
-        //     this.data = res.body['programming']
-        // })
-        // .catch(function(err) {
-        //     console.log(err)
-        // })
-
         if(localStorage.eventsChosen == undefined){
             let eventsChose = {
                 programming: false,
@@ -149,20 +121,20 @@ export default {
         }, 500);
         this.$store.commit('SET_ALL_EVENTS_SCROLL', 0)
 
-        let eventsChose = JSON.parse(localStorage.eventsChosen)
+        // let eventsChose = JSON.parse(localStorage.eventsChosen)
         let email = this.$store.getters.email
         let SessionID = this.$store.getters.SessionID 
         needle('post',this.$store.state.serverIp+'/api/getAllEvents', {email: email, sessionid: SessionID}, {"json": true})
         .then(res => {
             for (let key in eventsChose){
-                // console.log(key +' '+ eventsChose[key])
                 if( eventsChose[key] == true ){
                     document.getElementById(key+'badge').style.display = 'inline-block'
                     document.getElementById(key+'-item').classList.add('selected')
                     this.data = this.data.concat(res.body[key])
-                    // console.log(this.data.length)
                 }
             }
+            // console.log(res.body)
+            // this.allEventsCategoriesData = 
         })
         .catch(function(err) {
             console.log(err)

@@ -129,25 +129,6 @@ export default {
             }).then((result) => {
                 if (result.value) {
                     event.preventDefault()
-                    // needle.post(this.$store.state.serverIp+'/api/deleteEvent', {email: this.email, event: events, sessionid: this.SessionID}, {"json": true}, function(err, res){
-                    //     if(err) console.log(err)
-                    //     if(res.body == '310'){
-                    //         document.cookie = "email=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
-                    //         document.cookie = "SessionID=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
-                    //         window.location.href = '/login'
-                    //     }
-                    //     Vue.swal({
-                    //         icon: 'success',
-                    //         text: 'Мероприятие успешно удаленно',
-                    //         showConfirmButton: false,
-                    //         timer: 1500,
-                    //         timerProgressBar: true,
-                    //     }).then(() => {
-                    //         // window.location.reload()
-                    //         this.$delete(this.data, eventPlace)
-                    //     });
-                    // })
-
                     needle('post',this.$store.state.serverIp+'/api/deleteEvent', {email: this.email, event: events, sessionid: this.SessionID}, {"json": true})
                     .then(res => {
                         if(res.body == '310'){
