@@ -2,12 +2,12 @@
     <div class="main" id="main">
         <div class="container warp">
             <div v-if="data.length == 0"><h3>Возможно, Вы еще не добавили ни одного мероприятия, посмотрите страницу всех мероприятий</h3></div>
-            <div class="card" v-for="item in data" :key="item">
+            <div class="card" v-for="(item, index) in data" :key="item">
                 <div class="card-header">{{item.data.date}}</div>
                 <div class="card-body">
                     <div class="row">
                         <h5 class="card-title col-11">{{item.data.name}}</h5>
-                        <h5><button class="btn btn-almbb-danger btn-almbb-small" @click="deleteEvent(item.data)"> <i class="fas fa-trash-alt"></i> </button></h5>
+                        <h5><button class="btn btn-almbb-danger btn-almbb-small" @click="deleteEvent(item.data, index)"> <i class="fas fa-trash-alt"></i> </button></h5>
                     </div>
                     <p class="card-text"><i class="far fa-clock"></i> {{item.data.time}}</p>
                     <p class="card-text">Тип: {{item.data.type}}</p>
@@ -117,7 +117,7 @@ export default {
         })
     },
      methods:{
-        deleteEvent(events){
+        deleteEvent(events, eventPlace){
             this.$swal({
                 icon: 'warning',
                 title: 'Вы уверены что хотите удалить?',
@@ -129,8 +129,27 @@ export default {
             }).then((result) => {
                 if (result.value) {
                     event.preventDefault()
-                    needle.post(this.$store.state.serverIp+'/api/deleteEvent', {email: this.email, event: events, sessionid: this.SessionID}, {"json": true}, function(err, res){
-                        if(err) console.log(err)
+                    // needle.post(this.$store.state.serverIp+'/api/deleteEvent', {email: this.email, event: events, sessionid: this.SessionID}, {"json": true}, function(err, res){
+                    //     if(err) console.log(err)
+                    //     if(res.body == '310'){
+                    //         document.cookie = "email=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
+                    //         document.cookie = "SessionID=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
+                    //         window.location.href = '/login'
+                    //     }
+                    //     Vue.swal({
+                    //         icon: 'success',
+                    //         text: 'Мероприятие успешно удаленно',
+                    //         showConfirmButton: false,
+                    //         timer: 1500,
+                    //         timerProgressBar: true,
+                    //     }).then(() => {
+                    //         // window.location.reload()
+                    //         this.$delete(this.data, eventPlace)
+                    //     });
+                    // })
+
+                    needle('post',this.$store.state.serverIp+'/api/deleteEvent', {email: this.email, event: events, sessionid: this.SessionID}, {"json": true})
+                    .then(res => {
                         if(res.body == '310'){
                             document.cookie = "email=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
                             document.cookie = "SessionID=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
@@ -143,9 +162,14 @@ export default {
                             timer: 1500,
                             timerProgressBar: true,
                         }).then(() => {
-                            window.location.reload()
+                            // window.location.reload()
+                            this.$delete(this.data, eventPlace)
                         });
                     })
+                    .catch(function(err) {
+                        console.log(err)
+                    })
+
                 }
             });
         },
