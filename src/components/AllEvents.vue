@@ -72,7 +72,6 @@
                     <p class="card-text"><i class="far fa-clock"></i> {{item.time}}</p>
                     <p class="card-text"><i class="far fa-user"></i> {{item.places}}</p>
                     <p class="card-text">Тип: {{item.type}}</p>
-                    <p class="card-text">{{index}}</p>
                     <div class="row">
                         <div class="col-12 col-md-6">
                             <button class="btn btn-outline-almbb-info"  @click="add(item, index)">Собираюсь посетить</button>
