@@ -133,7 +133,6 @@ export default {
                     this.data = this.data.concat(res.body[key])
                 }
             }
-            console.log(res.body)
             this.allEventsCategoriesData = {engineering: res.body['engineering'], programming: res.body['programming'], service: res.body['service']}
         })
         .catch(function(err) {
