@@ -65,7 +65,7 @@
             </div>
 
             <div v-if="data.length == 0"><h3>Вы не выбрали ни одно направление</h3></div>
-            <div class="card" v-for="item in data" :key="item.value">
+            <div class="card" v-for="(item, index) in data" :key="item.value">
                 <div class="card-header">{{item.date}}</div>
                 <div class="card-body">
                     <h5 class="card-title">{{item.name}}</h5>
@@ -74,7 +74,7 @@
                     <p class="card-text">Тип: {{item.type}}</p>
                     <div class="row">
                         <div class="col-12 col-md-6">
-                            <button class="btn btn-outline-almbb-info"  @click="add(item)">Собираюсь посетить</button>
+                            <button class="btn btn-outline-almbb-info"  @click="add(item, index)">Собираюсь посетить</button>
                         </div>
                         <div class="col-12 col-md-6 gotoevents">
                             <a :href="item.link" class="btn btn-blue" @click="setScroll()">Перейти к мероприятию</a>
@@ -176,17 +176,16 @@ export default {
         // }
     },
     methods:{
-        add(event){
+        add(event, eventPlace){
             let email = this.$store.getters.email
             let SessionID = this.$store.getters.SessionID
             if(email != ''){
-                delete event.places
+                // delete event.places
                 // if(this.$route.path == '/it-events') event.mainType = 'programming'
                 // else if(this.$route.path == '/service-events') event.mainType = 'service'
                 // else event.mainType = 'engeniring'
-                // console.log(event)
-                needle.post(this.$store.state.serverIp+'/api/checkedEventsUpdate', {email: email, events: event, sessionid: SessionID}, {"json": true}, function(err, res){
-                    if (err) throw err
+                needle('post',this.$store.state.serverIp+'/api/checkedEventsUpdate', {email: email, events: event, sessionid: SessionID}, {"json": true})
+                .then(res => {
                     if(res.body == '310'){
                         document.cookie = "email=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
                         document.cookie = "SessionID=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
@@ -200,8 +199,13 @@ export default {
                             showConfirmButton: false,
                             timer: 1500,
                             timerProgressBar: true,
+                        }).then(()=>{
+                            this.$delete(this.data, eventPlace)
                         });
                     }
+                })
+                .catch(function(err) {
+                    console.log(err)
                 })
             }
             else{
@@ -224,19 +228,6 @@ export default {
         setScroll(){
             document.cookie = "allEventsScroll=" + window.pageYOffset
         },
-
-        // setActive(elem){
-        //     if (!document.getElementById(elem).classList.contains('active')){
-        //         document.getElementById(elem).classList.add('active')
-        //         document.getElementById(elem+'badge').style.display = 'inline-block'
-        //     }
-        //     else{
-        //         document.getElementById(elem).classList.remove('active')
-        //         document.getElementById(elem+'badge').style.display = 'none'
-
-        //     }
-        
-        // },
         delActive(elem){
             document.getElementById(elem+'badge').style.display = 'none'
             document.getElementById(elem+'-item').classList.remove('selected')
@@ -313,34 +304,6 @@ export default {
     }
 }
 
-.block{
-    background-color: #ffffff;
-    width: 100%;
-    height: 100%;
-    border-radius: 4px;
-    -webkit-box-shadow: 0px 0px 5px 2px rgba(34, 60, 80, 0.2);
-    -moz-box-shadow: 0px 0px 5px 2px rgba(34, 60, 80, 0.2);
-    box-shadow: 0px 0px 5px 2px rgba(34, 60, 80, 0.2);
-    min-height: 300px;
-    padding: 15px 20px;
-    margin: 1em 0em;
-    cursor: pointer;
-}
-.block:hover{
-    -webkit-box-shadow: 0px 0px 5px 4px rgba(34, 60, 80, 0.26);
-    -moz-box-shadow: 0px 0px 5px 4px rgba(34, 60, 80, 0.26);
-    box-shadow: 0px 0px 5px 4px rgba(34, 60, 80, 0.26);
-}
-.block.active{
-    background: #ff8a65;
-    color: rgb(255, 255, 255);
-}
-.bname{
-    text-align: center; 
-    font-weight: bold; 
-    font-size: 1.3em;
-}
-
 .ChosenClassList{
     background-color: #ffffff;
     width: 100%;
@@ -381,8 +344,6 @@ export default {
     color: #ff4444;
     text-transform: uppercase;
 }
-
-
 
 .modal {
     display: none;
