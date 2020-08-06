@@ -172,6 +172,33 @@ export default {
                             timerProgressBar: true,
                         }).then(()=>{
                             this.$delete(this.data, eventPlace)
+                            if(event.id == '/events/allEvents/it'){
+                                this.$delete(this.allEventsCategoriesData['programming'], eventPlace)
+                            }
+                            else if(event.id == "/events/allEvents/inj"){
+                                let tmp = JSON.parse(localStorage.eventsChosen)
+                                if(tmp['programming'] == true){
+                                    this.$delete(this.allEventsCategoriesData['engineering'], eventPlace-this.allEventsCategoriesData['programming'].length)
+                                }
+                                else{
+                                    this.$delete(this.allEventsCategoriesData['engineering'], eventPlace)
+                                }
+                            }
+                            else if(event.id == "/events/allEvents/service"){
+                                let tmp = JSON.parse(localStorage.eventsChosen)
+                                if(tmp['programming'] == false && tmp['engineering'] == false){
+                                    this.$delete(this.allEventsCategoriesData['service'], eventPlace)
+                                }
+                                else if(tmp['programming'] == true && tmp['engineering'] == false){
+                                    this.$delete(this.allEventsCategoriesData['service'], eventPlace-this.allEventsCategoriesData['programming'].length)
+                                }
+                                else if(tmp['programming'] == false && tmp['engineering'] == true){
+                                    this.$delete(this.allEventsCategoriesData['service'], eventPlace-this.allEventsCategoriesData['engineering'].length)
+                                }
+                                else if(tmp['programming'] == true && tmp['engineering'] == true){
+                                    this.$delete(this.allEventsCategoriesData['service'], eventPlace-this.allEventsCategoriesData['engineering'].length-this.allEventsCategoriesData['programming'].length)
+                                }
+                            }
                         });
                     }
                 })
