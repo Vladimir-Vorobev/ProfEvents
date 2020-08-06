@@ -225,6 +225,15 @@ export default {
                 let tmp = JSON.parse(localStorage.eventsChosen)
                 tmp[elem] = true
                 localStorage.eventsChosen = JSON.stringify(tmp)
+                let eventsChose = JSON.parse(localStorage.eventsChosen)
+                this.data = []
+                for (let key in eventsChose){
+                    if( eventsChose[key] == true ){
+                        document.getElementById(key+'badge').style.display = 'inline-block'
+                        document.getElementById(key+'-item').classList.add('selected')
+                        this.data = this.data.concat(this.allEventsCategoriesData[key])
+                    }
+                }
             }
             else{
                 document.getElementById(elem+'badge').style.display = 'none'
@@ -232,6 +241,15 @@ export default {
                 let tmp = JSON.parse(localStorage.eventsChosen)
                 tmp[elem] = false
                 localStorage.eventsChosen = JSON.stringify(tmp)
+                let eventsChose = JSON.parse(localStorage.eventsChosen)
+                this.data = []
+                for (let key in eventsChose){
+                    if( eventsChose[key] == true ){
+                        document.getElementById(key+'badge').style.display = 'inline-block'
+                        document.getElementById(key+'-item').classList.add('selected')
+                        this.data = this.data.concat(this.allEventsCategoriesData[key])
+                    }
+                }
             }
         },
         showChoseModal(){
@@ -242,15 +260,15 @@ export default {
             let modal = document.getElementById("my_modal");
             modal.style.display = "none"
             // location.reload()
-            let eventsChose = JSON.parse(localStorage.eventsChosen)
-            this.data = []
-            for (let key in eventsChose){
-                if( eventsChose[key] == true ){
-                    document.getElementById(key+'badge').style.display = 'inline-block'
-                    document.getElementById(key+'-item').classList.add('selected')
-                    this.data = this.data.concat(this.allEventsCategoriesData[key])
-                }
-            }
+            // let eventsChose = JSON.parse(localStorage.eventsChosen)
+            // this.data = []
+            // for (let key in eventsChose){
+            //     if( eventsChose[key] == true ){
+            //         document.getElementById(key+'badge').style.display = 'inline-block'
+            //         document.getElementById(key+'-item').classList.add('selected')
+            //         this.data = this.data.concat(this.allEventsCategoriesData[key])
+            //     }
+            // }
         }
     }
 }
