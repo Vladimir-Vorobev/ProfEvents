@@ -16,6 +16,7 @@
 
 <script>
 import Footer from './footer.vue'
+import needle from 'needle'
 export default {
     name: 'Universities',
     components: { Footer },
