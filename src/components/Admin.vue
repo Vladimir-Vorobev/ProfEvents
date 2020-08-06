@@ -897,9 +897,8 @@ export default {
             }
         },
         showModerationInfo(email, link){
-            if(event.target.className != 'chartjs-render-monitor' && event.target.className != 'radio'){
+            if(event.target.className != 'chartjs-render-monitor' && event.target.className != 'radio' && event.target.classList.contains('btn') == false){
                 for(let key in this.students_on_moderation[email].events.data){
-                    console.log(key)
                     if(document.getElementById(key.link).style.display == 'block' && key.link != link){
                         document.getElementById(key.link).style.display = 'none'
                         document.getElementById(key.link + 'n').classList.remove('ar-show');

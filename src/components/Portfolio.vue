@@ -143,9 +143,10 @@ export default {
                 let email = this.email
                 let SessionID = this.SessionID
                 reader.onload = function () {
-                    data.push({file: reader.result, type: file.type})
+                    data.push({file: reader.result, type: file.type, id: new Date().toISOString()})
                     if(i == len - 1){
-                        needle.post(url + '/api/uploadPortfolio', {images: data, email: email, sessionid: SessionID}, {"json": true}, function(err, res){
+                        console.log(data)
+                        needle.post(url + '/api/uploadPortfolio', {images: data, email: email, sessionid: SessionID, type: 'update'}, {"json": true}, function(err, res){
                             if(err){
                                 Swal.fire({
                                     icon: 'error',
