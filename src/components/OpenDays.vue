@@ -34,15 +34,14 @@ export default {
         }
     },
     beforeMount(){
-        fetch(this.$store.state.serverIp+'/api/getAllEvents', {
-            method: 'get',
+        let email = this.$store.getters.email
+        let SessionID = this.$store.getters.SessionID 
+        needle('post',this.$store.state.serverIp+'/api/getAllEvents', {email: email, sessionid: SessionID}, {"json": true})
+        .then(res => {
+            this.data = res.body['open']
         })
-        .then(response => {
-            console.log("res", response)
-            return response.json()
-        })
-        .then(data => {
-            this.data = data.open
+        .catch(function(err) {
+            console.log(err)
         })
     },
     mounted(){

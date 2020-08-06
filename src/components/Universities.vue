@@ -25,15 +25,14 @@ export default {
         }
     },
     beforeMount(){
-        fetch(this.$store.state.serverIp+'/api/getAllEvents', {
-            method: 'get',
+        let email = this.$store.getters.email
+        let SessionID = this.$store.getters.SessionID 
+        needle('post',this.$store.state.serverIp+'/api/getAllEvents', {email: email, sessionid: SessionID}, {"json": true})
+        .then(res => {
+            this.data = res.body['points']
         })
-        .then(response => {
-            console.log("res", response)
-            return response.json()
-        })
-        .then(data => {
-            this.data = data.points
+        .catch(function(err) {
+            console.log(err)
         })
     },
 }            
