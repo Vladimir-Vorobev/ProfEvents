@@ -172,7 +172,6 @@ export default {
                             timerProgressBar: true,
                         }).then(()=>{
                             this.$delete(this.data, eventPlace)
-                            // console.log(event)
                         });
                     }
                 })
