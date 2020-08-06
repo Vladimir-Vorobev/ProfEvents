@@ -2,7 +2,7 @@
     <div class="main" id="main">
         <div class="container warp">
             <div v-if="data.length == 0"><h3>Возможно, Вы еще не добавили ни одного мероприятия, посмотрите страницу всех мероприятий</h3></div>
-            <div class="card" v-for="(item, index) in data" :key="item">
+            <div class="card" v-for="(item, index) in data" :key="item.value">
                 <div class="card-header">{{item.data.date}}</div>
                 <div class="card-body">
                     <div class="row">
