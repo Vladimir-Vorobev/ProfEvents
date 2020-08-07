@@ -21,8 +21,9 @@
                 <div style="text-align: center;"><i class='fa fa-spinner fa-pulse fa-3x'></i></div>
             </div>
             <div v-for="item in photo" :key="item.data">
-                <div class="form-group text-center my-sm-2" style="padding-left: 5px;" v-lazy-container="{ selector: 'img' }">
-                    <img width="300" height="200" :data-src="item.data" alt="">
+                <div class="form-group text-center my-sm-2" style="padding-left: 5px;" v-lazy-container="{ selector: 'img' }" :id="item.id">
+                    <img width="300" height="200" :data-src="item.data" alt="" >
+                    <button class="btn btn-danger" @click="delete_portfolio(item.id)">Удалить</button>
                 </div>
             </div>
         </div>
@@ -55,10 +56,6 @@ export default {
         })
         .then(response => {
             console.log("res", response)
-            return response.json()
-        })
-        .then(response => {
-            console.log("res", response)
             this.photo = []
             return response.json()
         })
@@ -77,8 +74,7 @@ export default {
         socket.emit('new_user', this.email)
         let numOfUploadedFiles = 0
         socket.on('send_image', (data) => {
-            console.log(data)
-            this.photo.push({contentType: data.data.contentType, data: data.data.file})
+            this.photo.push({contentType: data.type, data: data.file, id: data.id})
         })
         socket.on('add_system_image', () => {
             numOfUploadedFiles += 1
@@ -175,6 +171,12 @@ export default {
                     console.log('Error: ', error);
                 };
             }
+        },
+        delete_portfolio(id){
+            needle.post(this.$store.state.serverIp + '/api/uploadPortfolio', {id: id, email: this.email, sessionid: this.SessionID, type: 'delete'}, {"json": true}, function(err, res){
+                if(err) throw err
+                else if(res.body == "OK") document.getElementById(id).style.display = 'none'
+            })
         },
     }
 }
