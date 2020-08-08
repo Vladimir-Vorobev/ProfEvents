@@ -124,9 +124,9 @@
                                                                     <div class="col-1 ar-collapse a" :id='item2.data.link + "n"'></div>
                                                                 </div>
                                                                 <div :id="item2.data.link" style="display: none;">
-                                                                    <div v-for="item3 in item2.moderImg" :key="item3.file">
-                                                                        <div class="form-group text-center my-sm-2" style="padding-left: 5px;" v-lazy-container="{ selector: 'img' }">
-                                                                            <img width="300" height="200" :data-src="item3.file" alt="">
+                                                                    <div class="row" v-for="item3 in item2.moderImg" :key="item3.file">
+                                                                        <div class=" text-center col-12 col-lg-6" v-lazy-container="{ selector: 'img' }">
+                                                                            <img class="moderationImg" width="300" height="200" :data-src="item3.file" alt="">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row" style="margin-top: 1em">
@@ -1298,5 +1298,10 @@ export default {
 }
 .formInput{
     border-radius: 50px;
+}
+@media (max-width: 576px) { 
+    .moderationImg{
+        width: 250px !important;
+    }   
 }
 </style>
