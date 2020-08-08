@@ -129,8 +129,14 @@
                                                                             <img width="300" height="200" :data-src="item3.file" alt="">
                                                                         </div>
                                                                     </div>
-                                                                    <button class="btn btn-success" @click="moderate_event(item2.data, 'confirm', item.email)">Подтвердить</button>
-                                                                    <button class="btn btn-danger" @click="moderate_event(item2.data, 'dismiss', item.email)">Отклонить</button>
+                                                                    <div class="row" style="margin-top: 1em">
+                                                                        <div class="col-12 col-lg-6" style="text-align: center">
+                                                                            <button class="btn btn-almbb-success" @click="moderate_event(item2.data, 'confirm', item.email)">Подтвердить</button>
+                                                                        </div>
+                                                                        <div class="col-12 col-lg-6" style="text-align: center">
+                                                                            <button class="btn btn-almbb-danger" @click="moderate_event(item2.data, 'dismiss', item.email)">Отклонить</button>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </a>    
