@@ -125,14 +125,17 @@
                     </div>
                     <div v-if="studentEvents[person_email] != undefined && studentEvents[person_email].length == 0"><h3>Нет мероприятий</h3></div>
                     <div class="card" v-for="item3 in studentEvents[person_email]" :key="item3.value" style="margin-bottom: 1em">
-                        <div class="card-header">{{item3.date}}</div>
+                        <div class="card-header">{{item3.data.date}}</div>
                         <div class="card-body">
                             <div class="row">
-                                <h5 class="card-title col-11">{{item3.name}}</h5>
+                                <h5 class="card-title col-12">{{item3.data.name}}</h5>
                             </div>
-                            <!-- <p class="card-text" style="color: green;">Участие подтверждено</p> -->
-                            <!-- <p class="card-text" style="color: #0099CC;">Участие проверяется модератором</p> -->
-                            <p class="card-text" style="color: red;">Участие не подтверждено</p>
+                            <p class="card-text"><i class="far fa-clock"></i> {{item3.data.time}}</p>
+                            <p class="card-text"><i class="far fa-user"></i> {{item3.data.places}}</p>
+                            <p class="card-text">Тип: {{item3.data.type}}</p>
+                            <p v-if="item3.status == 'checked'" class="card-text" style="color: green;">Участие подтверждено</p>
+                            <p v-if="item3.status == 'on_moderate'" class="card-text" style="color: #0099CC;">Участие проверяется модератором</p>
+                            <p v-if="item3.status == 'not_checked'" class="card-text" style="color: red;">Участие не подтверждено</p>
                         </div>
                     </div>
                 </div>
@@ -262,6 +265,7 @@ export default {
                 console.log(datan)
                 let statistics = datan.stat
                 this.$set(this.studentEvents, this.person_email, datan.checkedEvents)
+                console.log(this.studentEvents)
                 let ctx = document.getElementById('chart' + this.person_email)
                 let ctx2 = document.getElementById('chart2' + this.person_email)
                 makeChart('doughnut', [statistics.service, statistics.programming, 0, 0,  statistics.engeniring, 0], ctx)
@@ -360,6 +364,21 @@ export default {
     padding: 30px 0px 0px;
     min-height: 100vh;
     margin-bottom: 0px;
+}
+.card{ 
+    margin-top: 10px !important;
+}
+.card-body{ 
+    text-align: left !important;
+}
+.card-header{
+    font-weight: bold;
+}
+.card-body h5{ 
+    font-weight: bold;
+}
+.card-title{
+    text-align: center;
 }
 
 .pblock{

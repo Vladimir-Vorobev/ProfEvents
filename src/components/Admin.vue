@@ -7,14 +7,14 @@
                         <h2>Войти</h2>
                         <div class="form-group row">
                             <label for="exampleInputEmail1">Email адресс</label>
-                            <input name="email" class="form-control" placeholder="example@gmail.com">
+                            <input name="email" class="form-control formInput" placeholder="example@gmail.com">
                         </div>
                         <div class="form-group row">
                             <label for="exampleInputPassword1">Пароль</label>
-                            <input type="password" class="form-control" name="password" placeholder="Пароль">
+                            <input type="password" class="form-control formInput" name="password" placeholder="Пароль">
                         </div>
                         <div class="form-group row"> 
-                            <button class="btn btn-primary btn-lg" @click="loginUser()">Войти в админ панель</button>
+                            <button class="btn btn-rounded-blue btn-lg" @click="loginUser()">Войти в админ панель</button>
                         </div>
                     </form>
                 </div>
@@ -124,13 +124,19 @@
                                                                     <div class="col-1 ar-collapse a" :id='item2.data.link + "n"'></div>
                                                                 </div>
                                                                 <div :id="item2.data.link" style="display: none;">
-                                                                    <div v-for="item3 in item2.moderImg" :key="item3.file">
-                                                                        <div class="form-group text-center my-sm-2" style="padding-left: 5px;" v-lazy-container="{ selector: 'img' }">
-                                                                            <img width="300" height="200" :data-src="item3.file" alt="">
+                                                                    <div class="row" v-for="item3 in item2.moderImg" :key="item3.file">
+                                                                        <div class=" text-center col-12 col-lg-6" v-lazy-container="{ selector: 'img' }">
+                                                                            <img class="moderationImg" width="300" height="200" :data-src="item3.file" alt="">
                                                                         </div>
                                                                     </div>
-                                                                    <button class="btn btn-success" @click="moderate_event(item2.data, 'confirm', item.email)">Подтвердить</button>
-                                                                    <button class="btn btn-danger" @click="moderate_event(item2.data, 'dismiss', item.email)">Отклонить</button>
+                                                                    <div class="row" style="margin-top: 1em">
+                                                                        <div class="col-12 col-lg-6" style="text-align: center">
+                                                                            <button class="btn btn-almbb-success" @click="moderate_event(item2.data, 'confirm', item.email)">Подтвердить</button>
+                                                                        </div>
+                                                                        <div class="col-12 col-lg-6" style="text-align: center">
+                                                                            <button class="btn btn-almbb-danger" @click="moderate_event(item2.data, 'dismiss', item.email)">Отклонить</button>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </a>    
@@ -1289,5 +1295,13 @@ export default {
 }
 .school-body{
     padding: 0.6em;
+}
+.formInput{
+    border-radius: 50px;
+}
+@media (max-width: 576px) { 
+    .moderationImg{
+        width: 250px !important;
+    }   
 }
 </style>
