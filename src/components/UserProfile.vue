@@ -252,13 +252,14 @@ export default {
             let user_email = this.email
             fetch(this.$store.state.serverIp+'/api/getCheckedEvents', {
                 method: 'get',
-                headers: {email: user_email, studEmail: this.person_email, sessionid: SessionID},
+                headers: {email: user_email, studEmail: this.person_email, sessionid: SessionID, type: 'studentAll'},
             })
             .then(response => {
                 console.log("res", response)
                 return response.json()
             })
             .then(datan => {
+                console.log(datan)
                 let statistics = datan.stat
                 this.$set(this.studentEvents, this.person_email, datan.checkedEvents)
                 let ctx = document.getElementById('chart' + this.person_email)

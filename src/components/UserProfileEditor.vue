@@ -162,6 +162,7 @@ export default {
             }
             else{
                 this.avatar = data.data
+                console.log(data)
             }
         })
         fetch(this.$store.state.serverIp+'/api/getInformation', {
