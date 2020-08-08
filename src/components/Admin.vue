@@ -7,14 +7,14 @@
                         <h2>Войти</h2>
                         <div class="form-group row">
                             <label for="exampleInputEmail1">Email адресс</label>
-                            <input name="email" class="form-control" placeholder="example@gmail.com">
+                            <input name="email" class="form-control formInput" placeholder="example@gmail.com">
                         </div>
                         <div class="form-group row">
                             <label for="exampleInputPassword1">Пароль</label>
-                            <input type="password" class="form-control" name="password" placeholder="Пароль">
+                            <input type="password" class="form-control formInput" name="password" placeholder="Пароль">
                         </div>
                         <div class="form-group row"> 
-                            <button class="btn btn-primary btn-lg" @click="loginUser()">Войти в админ панель</button>
+                            <button class="btn btn-rounded-blue btn-lg" @click="loginUser()">Войти в админ панель</button>
                         </div>
                     </form>
                 </div>
@@ -1289,5 +1289,8 @@ export default {
 }
 .school-body{
     padding: 0.6em;
+}
+.formInput{
+    border-radius: 50px;
 }
 </style>
