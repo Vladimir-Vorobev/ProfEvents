@@ -255,7 +255,7 @@ export default {
             let user_email = this.email
             fetch(this.$store.state.serverIp+'/api/getCheckedEvents', {
                 method: 'get',
-                headers: {email: user_email, studEmail: this.person_email, sessionid: SessionID, type: 'studentAll'},
+                headers: {adminemail: user_email, studemail: this.person_email, sessionid: SessionID, type: 'studentAll'},
             })
             .then(response => {
                 console.log("res", response)

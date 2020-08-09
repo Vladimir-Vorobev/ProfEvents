@@ -49,7 +49,7 @@ export default {
      beforeMount(){
         fetch(this.$store.state.serverIp+'/api/getCheckedEvents', {
             method: 'get',
-            headers: {email: this.email, sessionid: this.SessionID},
+            headers: {studemail: this.email, sessionid: this.SessionID},
 		})
         .then(response => {
             console.log("res", response)

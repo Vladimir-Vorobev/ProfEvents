@@ -752,7 +752,7 @@ export default {
                     if(email == 'teacher' || email == 'school'){
                         fetch(this.$store.state.serverIp+'/api/getCheckedEvents', {
                             method: 'get',
-                            headers: {email: teacherEmail, studEmail: this.email, sessionid: this.SessionID, type: email},
+                            headers: {adminemail: teacherEmail, studemail: this.email, sessionid: this.SessionID, type: email},
                         })
                         .then(response => {
                             console.log("res", response)
@@ -789,7 +789,7 @@ export default {
                             if(document.getElementById(email + "x").style.display == 'inline-block'){
                                 fetch(this.$store.state.serverIp+'/api/getCheckedEvents', {
                                     method: 'get',
-                                    headers: {email: teacherEmail, studEmail: this.email, sessionid: this.SessionID, type: 'student'},
+                                    headers: {adminemail: teacherEmail, studemail: this.email, sessionid: this.SessionID},
                                 })
                                 .then(response => {
                                     console.log("res", response)
