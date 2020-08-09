@@ -155,6 +155,9 @@ export default {
                 // if(this.$route.path == '/it-events') event.mainType = 'programming'
                 // else if(this.$route.path == '/service-events') event.mainType = 'service'
                 // else event.mainType = 'engineering'
+                if(event.id == '/events/allEvents/it') event.mainType = 'programming'
+                else if(event.id == "/events/allEvents/inj") event.mainType = 'engineering'
+                else if(event.id == "/events/allEvents/service") event.mainType = 'service'
                 needle('post',this.$store.state.serverIp+'/api/checkedEventsUpdate', {email: email, events: event, sessionid: SessionID}, {"json": true})
                 .then(res => {
                     if(res.body == '310'){
