@@ -24,7 +24,7 @@
                             <a class="nav-link active" @click="showList()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="true">Список класса</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" @click="showTop()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="false">Рейтинг класса</a>
+                            <a class="nav-link" @click="showTop(), showInfo('teacher')" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="false">Рейтинг класса</a>
                         </li>
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" @click="showModerationList(), getModerationList()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="false">Модерация посещаемости</a>
@@ -38,7 +38,7 @@
                             <a class="nav-link active" @click="showList()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="true">Список учителей</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" @click="showTop()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="false">Рейтинг школы</a>
+                            <a class="nav-link" @click="showTop(), showInfo('school')" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="false">Рейтинг школы</a>
                         </li>
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" @click="showAdd()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="false">Обновить список</a>
@@ -103,7 +103,15 @@
                             </div>
                             <div v-if="ShowTop">
                                 <transition-group name="main">
-                                    <p key="p">Рейтинг тут</p>
+                                    <div key="div">
+                                        <div style="text-align: center;"><i class='fa fa-spinner fa-pulse fa-3x' :id='"teacherx"' style="display: inline-block;"></i></div>
+                                        <form :id="'formteacher'">
+                                            <input class="radio" :name="'donaughtteacher'" type="radio" value="donaught" checked @click="changeInfo('teacher', 'donaught')"> Кругова диаграмма
+                                            <input class="radio" :name="'barteacher'" type="radio" value="bar" @click="changeInfo('teacher', 'bar')"> Столбчатая диаграмма
+                                        </form>
+                                        <div class="chart-container" :id="'chartDivteacher'" style="display: none;"><canvas :id="'chartteacher'"></canvas></div>
+                                        <div class="chart-container" :id="'chartDiv2'" style="display: none;"><canvas :id="'chart2teacher'"></canvas></div>
+                                    </div>
                                 </transition-group>
                             </div>
                             <div v-if="ShowModerationList">
@@ -263,7 +271,15 @@
                             </div>
                             <div v-if="ShowTop">
                                 <transition-group name="main">
-                                    <p key="p">Рейтинг тут</p>
+                                    <div key="div">
+                                        <div style="text-align: center;"><i class='fa fa-spinner fa-pulse fa-3x' :id='"schoolx"' style="display: inline-block;"></i></div>
+                                        <form :id="'formschool'">
+                                            <input class="radio" :name="'donaughtschool'" type="radio" value="donaught" checked @click="changeInfo('school', 'donaught')"> Кругова диаграмма
+                                            <input class="radio" :name="'barschool'" type="radio" value="bar" @click="changeInfo('school', 'bar')"> Столбчатая диаграмма
+                                        </form>
+                                        <div class="chart-container" :id="'chartDivschool'" style="display: none;"><canvas :id="'chartschool'"></canvas></div>
+                                        <div class="chart-container" :id="'chartDiv2'" style="display: none;"><canvas :id="'chart2school'"></canvas></div>
+                                    </div>
                                 </transition-group>
                             </div>
                             <div v-if="ShowAdd">
@@ -733,46 +749,67 @@ export default {
             if(this.role == 'teacher'){
                 console.log(event.target.className)
                 if(event.target.className != 'chartjs-render-monitor' && event.target.className != 'radio'){
-                    for(let i = 0; i < this.students.length; i++){
-                        if(document.getElementById(this.students[i].email + 'n').style.display == 'block' && this.students[i].email != email){
-                            document.getElementById(this.students[i].email + 'n').style.display = 'none'
-                            document.getElementById(this.students[i].email).classList.remove('ar-show');
-                        }
-                    }
-                    if(document.getElementById(email + 'n').style.display == 'block'){
-                        document.getElementById(email + 'n').style.display = 'none'
-                        document.getElementById(email).classList.remove('ar-show');
+                    if(email == 'teacher' || email == 'school'){
+                        fetch(this.$store.state.serverIp+'/api/getCheckedEvents', {
+                            method: 'get',
+                            headers: {email: teacherEmail, studEmail: this.email, sessionid: this.SessionID, type: email},
+                        })
+                        .then(response => {
+                            console.log("res", response)
+                            return response.json()
+                        })
+                        .then(datan => {
+                            let statistics = datan.stat
+                            if(email != 'teacher' && email != 'school') this.studentEvents[this.data.lastIndexOf(email)].push(datan.checkedEvents)
+                            let ctx = document.getElementById('chart' + email)
+                            let ctx2 = document.getElementById('chart2' + email)
+                            makeChart('doughnut', [statistics.service, statistics.programming, 0, 0,  statistics.engeniring, 0], ctx)
+                            makeChart('bar', [statistics.service, statistics.programming, 0, 0,  statistics.engeniring, 0], ctx2)
+                            document.getElementById(email + "x").style.display = 'none'
+                            document.getElementById('chartDiv' + email).style.display = 'block'
+                        })
+                        .catch(err => {
+                            console.log(err)
+                        })
                     }
                     else{
-                        document.getElementById(email + 'n').style.display = 'block'
-                        document.getElementById(email).classList.add('ar-show');
-                        if(document.getElementById(email + "x").style.display == 'inline-block'){
-                            fetch(this.$store.state.serverIp+'/api/getCheckedEvents', {
-                                method: 'get',
-                                headers: {email: teacherEmail, studEmail: this.email, sessionid: this.SessionID},
-                            })
-                            .then(response => {
-                                console.log("res", response)
-                                return response.json()
-                            })
-                            .then(datan => {
-                                let statistics = datan.stat
-                                console.log(this.data)
-                                console.log(this.data.lastIndexOf(email))
-                                this.studentEvents[this.data.lastIndexOf(email)].push(datan.checkedEvents)
-                                console.log(this.studentEvents)
-                                console.log(this.studentEvents[this.data.lastIndexOf(email)][0])
-                                let ctx = document.getElementById('chart' + email)
-                                let ctx2 = document.getElementById('chart2' + email)
-                                makeChart('doughnut', [statistics.service, statistics.programming, 0, 0,  statistics.engeniring, 0], ctx)
-                                makeChart('bar', [statistics.service, statistics.programming, 0, 0,  statistics.engeniring, 0], ctx2)
-                                document.getElementById(email + "x").style.display = 'none'
-                                document.getElementById('chartDiv' + email).style.display = 'block'
-                            })
-                            .catch(err => {
-                                console.log(err)
-                            })
-                        } 
+                        for(let i = 0; i < this.students.length; i++){
+                            if(document.getElementById(this.students[i].email + 'n').style.display == 'block' && this.students[i].email != email){
+                                document.getElementById(this.students[i].email + 'n').style.display = 'none'
+                                document.getElementById(this.students[i].email).classList.remove('ar-show');
+                            }
+                        }
+                        if(document.getElementById(email + 'n').style.display == 'block'){
+                            document.getElementById(email + 'n').style.display = 'none'
+                            document.getElementById(email).classList.remove('ar-show');
+                        }
+                        else{
+                            document.getElementById(email + 'n').style.display = 'block'
+                            document.getElementById(email).classList.add('ar-show');
+                            if(document.getElementById(email + "x").style.display == 'inline-block'){
+                                fetch(this.$store.state.serverIp+'/api/getCheckedEvents', {
+                                    method: 'get',
+                                    headers: {email: teacherEmail, studEmail: this.email, sessionid: this.SessionID, type: 'student'},
+                                })
+                                .then(response => {
+                                    console.log("res", response)
+                                    return response.json()
+                                })
+                                .then(datan => {
+                                    let statistics = datan.stat
+                                    if(email != 'teacher' && email != 'school') this.studentEvents[this.data.lastIndexOf(email)].push(datan.checkedEvents)
+                                    let ctx = document.getElementById('chart' + email)
+                                    let ctx2 = document.getElementById('chart2' + email)
+                                    makeChart('doughnut', [statistics.service, statistics.programming, 0, 0,  statistics.engeniring, 0], ctx)
+                                    makeChart('bar', [statistics.service, statistics.programming, 0, 0,  statistics.engeniring, 0], ctx2)
+                                    document.getElementById(email + "x").style.display = 'none'
+                                    document.getElementById('chartDiv' + email).style.display = 'block'
+                                })
+                                .catch(err => {
+                                    console.log(err)
+                                })
+                            } 
+                        }
                     }
                 }
             }
