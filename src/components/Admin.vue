@@ -67,7 +67,7 @@
                             <div v-if="ShowList">
                                 <transition-group name="main">
                                     <div class="tab-pane fade show active" id="pills-list-student" v-for="item in students" :key="item.person">
-                                        <a class="person" href="#" @click="showInfo(item.email)">
+                                        <a class="person" href="#" @click="showInfo(item.email, email)">
                                             <div class="person_box">
                                                 <div class="name row">
                                                     <div class="name_group col-10">{{ item.person }} </div>
@@ -752,7 +752,7 @@ export default {
                     if(email == 'teacher' || email == 'school'){
                         fetch(this.$store.state.serverIp+'/api/getCheckedEvents', {
                             method: 'get',
-                            headers: {adminemail: teacherEmail, studemail: this.email, sessionid: this.SessionID, type: email},
+                            headers: {adminemail: teacherEmail, studemail: email, sessionid: this.SessionID, type: email},
                         })
                         .then(response => {
                             console.log("res", response)
@@ -789,7 +789,7 @@ export default {
                             if(document.getElementById(email + "x").style.display == 'inline-block'){
                                 fetch(this.$store.state.serverIp+'/api/getCheckedEvents', {
                                     method: 'get',
-                                    headers: {adminemail: teacherEmail, studemail: this.email, sessionid: this.SessionID},
+                                    headers: {adminemail: teacherEmail, studemail: email, sessionid: this.SessionID},
                                 })
                                 .then(response => {
                                     console.log("res", response)
