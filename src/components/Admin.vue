@@ -833,7 +833,7 @@ export default {
                         if(document.getElementById(email + "x").style.display == 'inline-block'){
                             fetch(this.$store.state.serverIp+'/api/getCheckedEvents', {
                                 method: 'get',
-                                headers: {email: teacherEmail, studEmail: email, adminEmail: this.email, sessionid: this.SessionID},
+                                headers: {studemail: email, adminemail: this.email, sessionid: this.SessionID},
                             })
                             .then(response => {
                                 console.log("res", response)
