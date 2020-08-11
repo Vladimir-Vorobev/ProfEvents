@@ -406,6 +406,7 @@ export default {
     max-width: 100%;
     min-height: 310px;
     max-height: 310px;
+    object-fit: cover;
 }
 
 
