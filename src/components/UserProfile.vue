@@ -393,7 +393,6 @@ export default {
     padding: 15px 20px;
 }
 .avatar{
-    /* object-fit: fill; fill or contain */
     display: block;
     /* max-width: 100%;
     max-height: 100%; */
@@ -406,6 +405,7 @@ export default {
     max-width: 100%;
     min-height: 310px;
     max-height: 310px;
+    object-fit: cover;
 }
 
 
