@@ -24,7 +24,7 @@
                             <a class="nav-link active" @click="showList()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="true">Список класса</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" @click="showTop(), showInfo('teacher')" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="false">Рейтинг класса</a>
+                            <a class="nav-link" @click="showTop(), showInfo('teacher', email)" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="false">Рейтинг класса</a>
                         </li>
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" @click="showModerationList(), getModerationList()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="false">Модерация посещаемости</a>
@@ -750,21 +750,20 @@ export default {
                 console.log(event.target.className)
                 if(event.target.className != 'chartjs-render-monitor' && event.target.className != 'radio'){
                     if(email == 'teacher' || email == 'school'){
-                        fetch(this.$store.state.serverIp+'/api/getCheckedEvents', {
+                        console.log({email: teacherEmail, sessionid: this.SessionID, type: email})
+                        fetch(this.$store.state.serverIp+'/api/getRating', {
                             method: 'get',
-                            headers: {adminemail: teacherEmail, studemail: email, sessionid: this.SessionID, type: email},
+                            headers: {email: teacherEmail, sessionid: this.SessionID, type: email},
                         })
                         .then(response => {
                             console.log("res", response)
                             return response.json()
                         })
-                        .then(datan => {
-                            let statistics = datan.stat
-                            if(email != 'teacher' && email != 'school') this.studentEvents[this.data.lastIndexOf(email)].push(datan.checkedEvents)
+                        .then(data => {
                             let ctx = document.getElementById('chart' + email)
                             let ctx2 = document.getElementById('chart2' + email)
-                            makeChart('doughnut', [statistics.service, statistics.programming, 0, 0,  statistics.engeniring, 0], ctx)
-                            makeChart('bar', [statistics.service, statistics.programming, 0, 0,  statistics.engeniring, 0], ctx2)
+                            makeChart('doughnut', [data.service, data.programming, 0, 0,  data.engeniring, 0], ctx)
+                            makeChart('bar', [data.service, data.programming, 0, 0,  data.engeniring, 0], ctx2)
                             document.getElementById(email + "x").style.display = 'none'
                             document.getElementById('chartDiv' + email).style.display = 'block'
                         })
@@ -797,7 +796,7 @@ export default {
                                 })
                                 .then(datan => {
                                     let statistics = datan.stat
-                                    if(email != 'teacher' && email != 'school') this.studentEvents[this.data.lastIndexOf(email)].push(datan.checkedEvents)
+                                    this.studentEvents[this.data.lastIndexOf(email)].push(datan.checkedEvents)
                                     let ctx = document.getElementById('chart' + email)
                                     let ctx2 = document.getElementById('chart2' + email)
                                     makeChart('doughnut', [statistics.service, statistics.programming, 0, 0,  statistics.engeniring, 0], ctx)
