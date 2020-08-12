@@ -79,6 +79,10 @@ export default {
             $('.scrollup').fadeOut();
         }
     });
+    var ua = window.navigator.userAgent.toLowerCase()
+    if((/trident/gi).test(ua) || (/msie/gi).test(ua) || (navigator.userAgent.search(/Edge/) > 0)){
+        alert('Используйте Google Chrome или Яндекс браузер для корректной работы сайта')
+    }
   },
 }
 </script>
