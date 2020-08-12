@@ -38,7 +38,7 @@
                             <a class="nav-link active" @click="showList()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="true">Список учителей</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" @click="showTop(), showInfo('school')" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="false">Рейтинг школы</a>
+                            <a class="nav-link" @click="showTop(), showInfo('school', email)" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="false">Рейтинг школы</a>
                         </li>
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" @click="showAdd()" id="pills-home-tab" data-toggle="pill" role="tab" aria-selected="false">Обновить список</a>
@@ -85,7 +85,7 @@
                                                     <div class="chart-container" :id="'chartDiv2' + item.email" style="display: none;"><canvas :id="'chart2' + item.email"></canvas></div>
                                                     <div :id="'chartDiv3' + item.email" style="display: none;">
                                                         <div v-if="data[item.email] != undefined && studentEvents[data.lastIndexOf(item.email)][0].length == 0"><h3>Нет мероприятий</h3></div>
-                                                        <div class="card" v-for="item3 in studentEvents[data.lastIndexOf(item.email)][0]" :key="item3.value">
+                                                        <div class="card" v-for="item3 in studentEvents[data.lastIndexOf(item.email)]" :key="item3.value">
                                                             <div class="card-header">{{item3.date}}</div>
                                                             <div class="card-body">
                                                                 <div class="row">
@@ -746,69 +746,72 @@ export default {
             }
         },
         showInfo(email, teacherEmail){
-            if(this.role == 'teacher'){
+            if(email == 'teacher' || email == 'school'){
+                console.log(email)
+                fetch(this.$store.state.serverIp+'/api/getRating', {
+                    method: 'POST',
+                    headers: {email: teacherEmail, sessionid: this.SessionID, type: email},
+                })
+                .then(response => {
+                    console.log("res", response)
+                    return response.json()
+                })
+                .then(data => {
+                    console.log(data)
+                    let ctx = document.getElementById('chart' + email)
+                    let ctx2 = document.getElementById('chart2' + email)
+                    makeChart('doughnut', [data.service, data.programming, 0, 0,  data.engeniring, 0], ctx)
+                    makeChart('bar', [data.service, data.programming, 0, 0,  data.engeniring, 0], ctx2)
+                    document.getElementById(email + "x").style.display = 'none'
+                    document.getElementById('chartDiv' + email).style.display = 'block'
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+            }
+            else if(this.role == 'teacher'){
                 console.log(event.target.className)
                 if(event.target.className != 'chartjs-render-monitor' && event.target.className != 'radio'){
-                    if(email == 'teacher' || email == 'school'){
-                        console.log({email: teacherEmail, sessionid: this.SessionID, type: email})
-                        fetch(this.$store.state.serverIp+'/api/getRating', {
-                            method: 'get',
-                            headers: {email: teacherEmail, sessionid: this.SessionID, type: email},
-                        })
-                        .then(response => {
-                            console.log("res", response)
-                            return response.json()
-                        })
-                        .then(data => {
-                            let ctx = document.getElementById('chart' + email)
-                            let ctx2 = document.getElementById('chart2' + email)
-                            makeChart('doughnut', [data.service, data.programming, 0, 0,  data.engeniring, 0], ctx)
-                            makeChart('bar', [data.service, data.programming, 0, 0,  data.engeniring, 0], ctx2)
-                            document.getElementById(email + "x").style.display = 'none'
-                            document.getElementById('chartDiv' + email).style.display = 'block'
-                        })
-                        .catch(err => {
-                            console.log(err)
-                        })
+                    for(let i = 0; i < this.students.length; i++){
+                        if(document.getElementById(this.students[i].email + 'n').style.display == 'block' && this.students[i].email != email){
+                            document.getElementById(this.students[i].email + 'n').style.display = 'none'
+                            document.getElementById(this.students[i].email).classList.remove('ar-show');
+                        }
+                    }
+                    if(document.getElementById(email + 'n').style.display == 'block'){
+                        document.getElementById(email + 'n').style.display = 'none'
+                        document.getElementById(email).classList.remove('ar-show');
                     }
                     else{
-                        for(let i = 0; i < this.students.length; i++){
-                            if(document.getElementById(this.students[i].email + 'n').style.display == 'block' && this.students[i].email != email){
-                                document.getElementById(this.students[i].email + 'n').style.display = 'none'
-                                document.getElementById(this.students[i].email).classList.remove('ar-show');
-                            }
-                        }
-                        if(document.getElementById(email + 'n').style.display == 'block'){
-                            document.getElementById(email + 'n').style.display = 'none'
-                            document.getElementById(email).classList.remove('ar-show');
-                        }
-                        else{
-                            document.getElementById(email + 'n').style.display = 'block'
-                            document.getElementById(email).classList.add('ar-show');
-                            if(document.getElementById(email + "x").style.display == 'inline-block'){
-                                fetch(this.$store.state.serverIp+'/api/getCheckedEvents', {
-                                    method: 'get',
-                                    headers: {adminemail: teacherEmail, studemail: email, sessionid: this.SessionID},
-                                })
-                                .then(response => {
-                                    console.log("res", response)
-                                    return response.json()
-                                })
-                                .then(datan => {
-                                    let statistics = datan.stat
-                                    this.studentEvents[this.data.lastIndexOf(email)].push(datan.checkedEvents)
-                                    let ctx = document.getElementById('chart' + email)
-                                    let ctx2 = document.getElementById('chart2' + email)
-                                    makeChart('doughnut', [statistics.service, statistics.programming, 0, 0,  statistics.engeniring, 0], ctx)
-                                    makeChart('bar', [statistics.service, statistics.programming, 0, 0,  statistics.engeniring, 0], ctx2)
-                                    document.getElementById(email + "x").style.display = 'none'
-                                    document.getElementById('chartDiv' + email).style.display = 'block'
-                                })
-                                .catch(err => {
-                                    console.log(err)
-                                })
-                            } 
-                        }
+                        document.getElementById(email + 'n').style.display = 'block'
+                        document.getElementById(email).classList.add('ar-show');
+                        if(document.getElementById(email + "x").style.display == 'inline-block'){
+                            fetch(this.$store.state.serverIp+'/api/getCheckedEvents', {
+                                method: 'get',
+                                headers: {adminemail: teacherEmail, studemail: email, sessionid: this.SessionID},
+                            })
+                            .then(response => {
+                                console.log("res", response)
+                                return response.json()
+                            })
+                            .then(datan => {
+                                let statistics = datan.stat
+                                for(let i = 0; i < datan.checkedEvents.length; i++){
+                                    console.log(datan.checkedEvents[i].data)
+                                    this.studentEvents[this.data.lastIndexOf(email)].push(datan.checkedEvents[i].data)
+                                }
+                                console.log(this.studentEvents)
+                                let ctx = document.getElementById('chart' + email)
+                                let ctx2 = document.getElementById('chart2' + email)
+                                makeChart('doughnut', [statistics.service, statistics.programming, 0, 0,  statistics.engeniring, 0], ctx)
+                                makeChart('bar', [statistics.service, statistics.programming, 0, 0,  statistics.engeniring, 0], ctx2)
+                                document.getElementById(email + "x").style.display = 'none'
+                                document.getElementById('chartDiv' + email).style.display = 'block'
+                            })
+                            .catch(err => {
+                                console.log(err)
+                            })
+                        } 
                     }
                 }
             }
@@ -862,7 +865,7 @@ export default {
                 let myChart = new Chart(place, {
                     type: type,
                     data: {
-                        labels: ['Сфера услуг', 'IT', 'Творчество и Дизайн', 'Строительство', 'Инженерные технологии', 'Транспорт и логистика'],
+                        labels: ['Сфера услуг', 'IT', 'Творчество и Дизайн', 'Строительство', 'Инжинерные технологии', 'Транспорт и логистика'],
                         datasets: [{
                             label: '# of Votes',
                             data: data,
