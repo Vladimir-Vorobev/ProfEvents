@@ -76,10 +76,30 @@
                                                 </div>
                                                 <div :id="item.email + 'n'" style="display: none;">
                                                     <div style="text-align: center;"><i class='fa fa-spinner fa-pulse fa-3x' :id='item.email + "x"' style="display: inline-block;"></i></div>
-                                                    <form :id="'form' + item.email">
-                                                        <input class="radio" :name="'donaught' + item.email" type="radio" value="donaught" checked @click="changeInfo(item.email, 'donaught')"> Кругова диаграмма
-                                                        <input class="radio" :name="'bar' + item.email" type="radio" value="bar" @click="changeInfo(item.email, 'bar')"> Столбчатая диаграмма
-                                                        <input class="radio" :name="'full' + item.email" type="radio" value="full" @click="changeInfo(item.email, 'full')"> Полная статистика
+                                                    <form class="row" :id="'form' + item.email">
+                                                        <!-- <input class="radio" :name="'donaught' + item.email" type="radio" value="donaught" checked @click="changeInfo(item.email, 'donaught')"> Кругова диаграмма -->
+                                                        <!-- <input class="radio" :name="'bar' + item.email" type="radio" value="bar" @click="changeInfo(item.email, 'bar')"> Столбчатая диаграмма -->
+                                                        <!-- <input class="radio" :name="'full' + item.email" type="radio" value="full" @click="changeInfo(item.email, 'full')"> Полная статистика -->
+                                                    
+                                                        <div class="form-check col-12 col-md-4 radio">
+                                                            <input id="donaughtCheck" :name="'donaught' + item.email" type="radio" value="donaught" checked @click="changeInfo(item.email, 'donaught')">
+                                                            <label class="form-check-label" for="donaughtCheck">
+                                                            Круговая диаграмма
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check col-12 col-md-4 radio">
+                                                            <input id="barCheck" :name="'bar' + item.email" type="radio" value="bar" @click="changeInfo(item.email, 'bar')">
+                                                            <label class="form-check-label" for="barCheck">
+                                                                Столбчатая диаграмма
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check col-12 col-md-4 radio">
+                                                            <input id="fullCheck" :name="'full' + item.email" type="radio" value="full" @click="changeInfo(item.email, 'full')">
+                                                            <label class="form-check-label" for="fullCheck">
+                                                                Полная статистика
+                                                            </label>
+                                                        </div>
+
                                                     </form>
                                                     <div class="chart-container" :id="'chartDiv' + item.email" style="display: none;"><canvas :id="'chart' + item.email"></canvas></div>
                                                     <div class="chart-container" :id="'chartDiv2' + item.email" style="display: none;"><canvas :id="'chart2' + item.email"></canvas></div>
