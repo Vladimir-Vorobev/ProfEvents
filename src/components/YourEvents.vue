@@ -17,7 +17,7 @@
                     <p v-if="item.status == 'checked'" class="card-text" style="color: green;">Участие подтверждено</p>
                     <p v-if="item.status == 'on_moderate'" class="card-text" style="color: #0099CC;">Участие проверяется модератором</p>
                     <p v-if="item.status == 'not_checked'" class="card-text" style="color: red;">Участие не подтверждено</p>
-                    <div class="row">
+                    <div class="row" v-if="item.status != 'checked'">
                         <div class="col-12 col-md-6">
                             <a :href="item.data.link" class="btn btn-blue">Перейти к мероприятию</a>
                         </div>
