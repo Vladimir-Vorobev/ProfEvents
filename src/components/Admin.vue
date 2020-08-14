@@ -130,7 +130,7 @@
                                             <input class="radio" :name="'barteacher'" type="radio" value="bar" @click="changeInfo('teacher', 'bar')"> Столбчатая диаграмма
                                         </form>
                                         <div class="chart-container" :id="'chartDivteacher'" style="display: none;"><canvas :id="'chartteacher'"></canvas></div>
-                                        <div class="chart-container" :id="'chartDiv2'" style="display: none;"><canvas :id="'chart2teacher'"></canvas></div>
+                                        <div class="chart-container" :id="'chartDiv2teacher'" style="display: none;"><canvas :id="'chart2teacher'"></canvas></div>
                                     </div>
                                 </transition-group>
                             </div>
@@ -298,7 +298,7 @@
                                             <input class="radio" :name="'barschool'" type="radio" value="bar" @click="changeInfo('school', 'bar')"> Столбчатая диаграмма
                                         </form>
                                         <div class="chart-container" :id="'chartDivschool'" style="display: none;"><canvas :id="'chartschool'"></canvas></div>
-                                        <div class="chart-container" :id="'chartDiv2'" style="display: none;"><canvas :id="'chart2school'"></canvas></div>
+                                        <div class="chart-container" :id="'chartDiv2school'" style="display: none;"><canvas :id="'chart2school'"></canvas></div>
                                     </div>
                                 </transition-group>
                             </div>
@@ -394,7 +394,7 @@
                                             <a class="person" href="#">
                                                 <div class="person_box" v-on:click="getAdminList(item.email, true), showTeacherInfo(item.email)">
                                                     <div class="name row">
-                                                        <div class="name_group col-11">{{ item.person }}</div>
+                                                        <div class="name_group col-10">{{ item.person }}</div>
                                                         <div class="col-1 ar-collapse" :id='item.email'></div>
                                                     </div>
                                                     <div :id='item.email + "s"' style="display: none;">
@@ -919,7 +919,7 @@ export default {
             }
         },
         showTeacherInfo(email){
-            if(event.target.className == 'person_box' || event.target.className == 'name row' || event.target.className == 'name_group col-11'|| event.target.className == 'col-1 ar-collapse' || event.target.className == 'col-1 ar-collapse ar-show'){
+            if(event.target.className == 'person_box' || event.target.className == 'name row' || event.target.className == 'name_group col-10'|| event.target.className == 'col-1 ar-collapse' || event.target.className == 'col-1 ar-collapse ar-show'){
                 for(let i = 0; i < this.teachers.length; i++){
                     if(document.getElementById(this.teachers[i].email + 's').style.display == 'block' && this.teachers[i].email != email){
                         document.getElementById(this.teachers[i].email + 's').style.display = 'none'
@@ -1073,7 +1073,6 @@ export default {
                 else this.$swal('Файл не выбран');   //alert('Файл не выбран')
             }
             function send(data, email, url){
-                console.log({data: data, email: email, type: 'update', doptype: type, sessionid: SessionID})
                 needle.post('http://78.155.219.12:3000/api/' + url, {data: data, email: email, type: 'update', doptype: type, sessionid: SessionID}, {"json": true}, function(err, res){
                     if(err) throw err
                     if(res.body == 'OK'){
@@ -1152,21 +1151,22 @@ export default {
         changeInfo(email, chart){
             if(chart != undefined){
                 let form = document.getElementById('form' + email)
+                
                 if(chart == 'donaught'){
                     form['bar' + email].checked = false
-                    form['full' + email].checked = false
+                    if(email != 'teacher' && email != 'school') form['full' + email].checked = false
                     document.getElementById('chartDiv' + email).style.display = 'block'
                     document.getElementById('chartDiv2' + email).style.display = 'none'
-                    document.getElementById('chartDiv3' + email).style.display = 'none'
+                    if(email != 'teacher' && email != 'school') document.getElementById('chartDiv3' + email).style.display = 'none'
                 }
                 else if(chart == 'bar'){
                     form['donaught' + email].checked = false
-                    form['full' + email].checked = false
+                    if(email != 'teacher' && email != 'school') form['full' + email].checked = false
                     document.getElementById('chartDiv' + email).style.display = 'none'
                     document.getElementById('chartDiv2' + email).style.display = 'block'
-                    document.getElementById('chartDiv3' + email).style.display = 'none'
+                    if(email != 'teacher' && email != 'school') document.getElementById('chartDiv3' + email).style.display = 'none'
                 }
-                else{
+                else if(email != 'teacher' && email != 'school'){
                     form['donaught' + email].checked = false
                     form['bar' + email].checked = false
                     document.getElementById('chartDiv' + email).style.display = 'none'
