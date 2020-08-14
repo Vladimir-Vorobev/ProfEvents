@@ -35,11 +35,6 @@ import Vue from 'vue'
 export default {
     name: 'Login',
     components: { Footer },
-    beforeMount(){
-        if(this.$store.getters.email != '' && this.$store.getters.SessionID != ''){
-            this.$router.push("/profile")
-        }
-    },
     methods: {
         loginUser(){
             event.preventDefault()
@@ -67,10 +62,10 @@ export default {
                         text: 'Пользователь не найден'
                     });
                 }
-                else if(res.body.length == 128){
+                else if(res.body.sessionid != undefined){
                     document.cookie = "email=" + email + "; expires=" + new Date(Date.now() + 864000e3).toUTCString()
-                    document.cookie = "SessionID=" + res.body + "; expires=" + new Date(Date.now() + 864000e3).toUTCString()
-                    document.location.href = "/profile"
+                    document.cookie = "SessionID=" + res.body.sessionid + "; expires=" + new Date(Date.now() + 864000e3).toUTCString()
+                    document.location.href = `/user-profile/${res.body.userid}`
                 }
             })
         },

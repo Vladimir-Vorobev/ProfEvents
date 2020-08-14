@@ -1030,6 +1030,7 @@ export default {
         },
         add(value, type){
             event.preventDefault()
+            let SessionID = this.SessionID
             if(value != '!1'){
                 let form = document.getElementById('formOne')
                 if(form['email'].value == ''){
@@ -1058,7 +1059,7 @@ export default {
                 }
                 else{
                     if(value == 'school-admin'){
-                        send({email: form['email'].value, name: form['name'].value, surname: form['surname'].value, school: form['school'].value}, this.email, 'uploadOne')
+                        send({email: form['email'].value, name: form['name'].value, surname: form['surname'].value, school: form['school'].value}, this.email, 'uploadOne', type)
                     }
                     else{
                         send({email: form['email'].value, name: form['name'].value, surname: form['surname'].value}, this.email, 'uploadOne')
@@ -1071,10 +1072,9 @@ export default {
                 }
                 else this.$swal('Файл не выбран');   //alert('Файл не выбран')
             }
-            let dopEmail = this.email
-            let SessionID = this.SessionID
             function send(data, email, url){
-                needle.post('http://78.155.219.12:3000/api/' + url, {data: data, email: email, type: 'update', dopType: type, dopEmail: dopEmail, sessionid: SessionID}, {"json": true}, function(err, res){
+                console.log({data: data, email: email, type: 'update', doptype: type, sessionid: SessionID})
+                needle.post('http://78.155.219.12:3000/api/' + url, {data: data, email: email, type: 'update', doptype: type, sessionid: SessionID}, {"json": true}, function(err, res){
                     if(err) throw err
                     if(res.body == 'OK'){
                         //alert('Файл успешно добавлен')

@@ -108,7 +108,7 @@ export default {
               window.location.reload()
             }
             this.loginText = data.name + ' ' + data.surname
-            this.userId = data._id
+            this.userId = data.userId
             this.role = data.role
             document.querySelector('.login').style.display = 'none'
             document.querySelector('.person_menu').style.display = 'block'

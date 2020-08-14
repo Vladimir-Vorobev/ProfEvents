@@ -176,6 +176,7 @@ export default {
             return response.json()
         })
         .then(data => {
+            console.log(data)
             if(data == '310'){
                 // document.cookie = "email=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
                 // document.cookie = "SessionID=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
@@ -223,6 +224,7 @@ export default {
             this.showInfo()
         })
         .catch(err => {
+            //window.location.pathname = "/login"
             console.log(err)
         })
     },
