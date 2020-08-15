@@ -1,5 +1,5 @@
 <template>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-light  fixed-top navStyle">
             <router-link to="/" class="router-link">
                 <a class="navbar-brand" ref="home" style="color: #f23333">Profevents</a>
             </router-link>
@@ -180,7 +180,8 @@ export default {
     -khtml-user-select: none;
     -webkit-user-select: none;
 }
-.useful:hover{
-
+.navStyle{
+    background-color: rgba(255,255,255,1);
+    box-shadow: 0px 1px 3px rgba(0,0,0,0.10);
 }
 </style>
