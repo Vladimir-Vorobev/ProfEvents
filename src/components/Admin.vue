@@ -460,7 +460,7 @@
                                             <div class="col-12 col-md-6">
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="basic-addon1">Номер</span>
+                                                        <span class="input-group-text" id="basic-addon1">Имя</span>
                                                     </div>
                                                     <input type="text" key="input" name="name" class="form-control name" aria-describedby="basic-addon1">
                                                 </div>
@@ -1036,8 +1036,9 @@ export default {
         add(value, type){
             event.preventDefault()
             let SessionID = this.SessionID
+            let form
             if(value != '!1'){
-                let form = document.getElementById('formOne')
+                form = document.getElementById('formOne')
                 if(form['email'].value == ''){
                     this.$swal({
                         icon: 'error',
@@ -1092,6 +1093,35 @@ export default {
                         Vue.swal('Пользователь с данной почтой не зарегистрирован');
                     }
                 })
+                fetch('http://78.155.219.12:3000/api/' + url, {
+                    method: 'POST',
+                    body: JSON.stringify({data: data, email: email, type: 'update', doptype: type, sessionid: SessionID}),
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                })
+                .then(response => {
+                    console.log("res", response)
+                    return response.json()
+                })
+                .then((data) => {
+                    if(data == 'OK'){
+                        if(this.role == 'teacher') this.students.push({person: form['name'].value + ' ' + form['surname'].value, email: form['email'].value})
+                        else if(this.role == 'school-admin') this.teachers.push({person: form['name'].value + ' ' + form['surname'].value, email: form['email'].value})
+                        else if(this.role == 'admin') this.admins.push({person: form['name'].value + ' ' + form['surname'].value, email: form['email'].value})
+                        Vue.swal({
+                            icon: 'success',
+                            text: 'Файл успешно добавлен'
+                        });
+                    }
+                    else if(data == 'User undefined'){
+                        //alert(res.body)
+                        Vue.swal('Пользователь с данной почтой не зарегистрирован');
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                })
             }
         },
         showList(){
@@ -1126,6 +1156,10 @@ export default {
         },
         showAdd(){
             event.preventDefault()
+            if(this.role == 'admin'){
+                this.AdminList = true
+                this.AddAdmin = false
+            }
             this.ShowAdd = true
             this.ShowList = false
             this.showAdminInfo = false
@@ -1257,19 +1291,33 @@ export default {
             })
         },
         moderate_event(event, status, studEmail){
-            needle.post('http://78.155.219.12:3000/api/moderateEvent', {email: this.email, type: 'teacher', sessionid: this.SessionID, action: status, data: event, studEmail: studEmail}, {"json": true}, function(err, res){
-                if(err) throw err
-                if(res.body == 'OK'){
+            fetch('http://78.155.219.12:3000/api/moderateEvent', {
+                method: 'POST',
+                body: JSON.stringify({email: this.email, type: 'teacher', sessionid: this.SessionID, action: status, data: event, studEmail: studEmail}),
+                headers: {
+                    "Content-Type": "application/json"
+                },
+            })
+            .then(response => {
+                console.log("res", response)
+                return response.json()
+            })
+            .then((data) => {
+                delete this.students_on_moderation[studEmail][event]
+                if(data == 'OK'){
                     //alert('Файл успешно добавлен')
                     Vue.swal({
                         icon: 'success',
                         text: 'Файл успешно добавлен'
                     });
                 }
-                else if(res.body == 'User undefined'){
+                else if(data == 'User undefined'){
                     //alert(res.body)
                     Vue.swal('Пользователь с данной почтой не зарегистрирован');
                 }
+            })
+            .catch(err => {
+                console.log(err)
             })
         },
     },
