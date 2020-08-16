@@ -490,10 +490,17 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- <p key="p">Email </p><input key="input" name="email">
-                                        <p key="p">Имя </p><input key="input" name="name">
-                                        <p key="p">Фамилия </p><input key="input" name="surname" style="margin-bottom: 0.7em"> -->
-                                        <p><button type="submit" @click="add('school-admin', 'school-admin')" class="btn btn-blue btn-lg" key="button">Добавить школьного администратора</button></p>
+                                        <!-- <div class="row">
+                                            <div class="col-12">
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="basic-addon2">Email</span>
+                                                    </div>
+                                                    <input type="text" key="input" name="email" class="form-control surname" aria-describedby="basic-addon2">
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                        <p><button type="submit" @click="add('school-admin', 'school-admin')" class="btn btn-blue btn-lg" key="button">Добавить</button></p>
                                     </form>
                                 </transition-group>
                             </div>
