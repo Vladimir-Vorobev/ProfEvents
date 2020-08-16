@@ -210,6 +210,12 @@ export default {
             document.querySelector(".surname").value = data.surname;
             document.querySelector(".email").value = data.email;
             document.querySelector(".age").value = data.age;
+            if(data.role != 'user'){
+                document.querySelector(".email").disabled = true;
+                document.querySelector(".school").disabled = true;
+                document.querySelector(".class_number").disabled = true;
+                document.querySelector(".simvol").disabled = true;
+            }
         })
         .catch(err => {
             console.log(err)
