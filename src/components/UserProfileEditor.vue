@@ -47,7 +47,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon4">@</span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Ник пользователя" aria-label="Короткое имя" aria-describedby="basic-addon4">
+                            <input type="text" class="form-control" placeholder="Ник пользователя" aria-label="Короткое имя" aria-describedby="basic-addon4" disabled>
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
