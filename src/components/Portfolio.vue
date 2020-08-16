@@ -21,9 +21,9 @@
                 <div style="text-align: center;"><i class='fa fa-spinner fa-pulse fa-3x'></i></div>
             </div>
             <div v-for="item in photo" :key="item.data">
-                <div class="form-group text-center my-sm-2" style="padding-left: 5px;" v-lazy-container="{ selector: 'img' }" :id="item.id">
-                    <img width="300" height="200" :data-src="item.data" alt="" >
-                    <button class="btn btn-danger" @click="delete_portfolio(item.id)">Удалить</button>
+                <div class="form-group text-center my-sm-2 block" v-lazy-container="{ selector: 'img' }" :id="item.id">
+                    <a class="delItem" @click="delete_portfolio(item.id)"><i class="fas fa-times"></i></a>
+                    <img :data-src="item.data" alt="" >
                 </div>
             </div>
         </div>
@@ -214,11 +214,26 @@ export default {
 .card-body{ 
     text-align: left !important;
 }
-.card img{
-    display: block;
+.block{
+    background-color: #ffffff;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 2px 5px 1px rgba(34, 60, 80, 0.18);
+    -moz-box-shadow: 0px 2px 5px 1px rgba(34, 60, 80, 0.18);
+    box-shadow: 0px 2px 5px 1px rgba(34, 60, 80, 0.18);
+    min-height: 300px;
+    padding: 15px 20px;
+}
+.block img{
     max-width: 100%;
-    max-height: 100%;
-    min-width: 310px;
-    min-height: 310px;
+}
+.delItem{
+    float: right;
+    font-size: 1.5em;
+    margin-top: -15px;
+}
+.delItem:hover{
+    color: #ff4444;
 }
 </style>
