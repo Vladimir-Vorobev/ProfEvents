@@ -83,7 +83,7 @@
                         <label class="custom-file-label" for="inputGroupFile04" style="text-align: left"></label>
                     </div>
                     <div class="form-group text-center col-12" style="padding: 0px 5px; border: 1px solid grey; margin: 0px" v-lazy-container="{ selector: 'img' }">
-                        <img width="300" height="200" :data-src="avatar.file" alt="">
+                        <img width="310" height="310" :data-src="avatar.file" alt="">
                     </div>
                 </div>
 

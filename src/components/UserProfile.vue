@@ -4,8 +4,9 @@
             <div class="person_info row" >
                 <div class="col-12 col-md-4" style="padding: 30px 15px 15px">
                     <div class="photo pblock">
-                        <div class="avatar">
-                            <img src="./../assets/noavatar.jpg" alt="">
+                        <div class="avatar" v-lazy-container="{ selector: 'img' }">
+                            <!-- <img src="./../assets/noavatar.jpg" alt=""> -->
+                            <img width="310" height="310" :data-src="avatar.file" alt="">
                         </div>
                         <button @click="GoToEditor()" class="btn btn-almbb-light" style="width: 100%; margin-top: 30px; color: black;">Редактировать</button>
                     </div>
@@ -164,6 +165,7 @@ export default {
         person_email: '',
         studentEvents: [],
         person_role: '',
+        avatar: '',
       }
     },
     beforeMount(){ 
@@ -222,6 +224,7 @@ export default {
                 this.person_school = 'Не указана'
             }
             this.showInfo()
+            this.showAvatar()
         })
         .catch(err => {
             //window.location.pathname = "/login"
@@ -251,6 +254,29 @@ export default {
         },
         GoToEditor(){
             this.$router.push({ path: `/user-profile-edit` })
+        },
+        showAvatar(){
+            fetch(this.$store.state.serverIp+'/api/getAvatar', {
+                method: 'POST',
+                headers: {email: this.email, dopemail: this.person_email, sessionid: this.SessionID},
+            })
+            .then(response => {
+                console.log("res", response)
+                return response.json()
+            })
+            .then(data => {
+                console.log(data)
+                if(data == '310'){
+                    document.cookie = "email=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
+                    document.cookie = "SessionID=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
+                    // window.location.reload()
+                    window.location.pathname = "/login"
+                }
+                else{
+                    this.avatar = data.data
+                    console.log(data.data)
+                }
+            })
         },
         showInfo(){
             let SessionID = this.$store.getters.SessionID
