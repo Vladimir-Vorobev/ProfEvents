@@ -5,7 +5,6 @@
                 <div class="col-12 col-md-4" style="padding: 30px 15px 15px">
                     <div class="photo pblock">
                         <div class="avatar" v-lazy-container="{ selector: 'img' }">
-                            <!-- <img src="./../assets/noavatar.jpg" alt=""> -->
                             <img width="310" height="310" :data-src="avatar.file" alt="">
                         </div>
                         <button @click="GoToEditor()" class="btn btn-almbb-light" style="width: 100%; margin-top: 30px; color: black;">Редактировать</button>
