@@ -1,9 +1,6 @@
 <template>
 <div>
     <footer class="mt-auto py-3">
-        <!-- <div class="container">
-            <span class="text-muted">Разработано DARK_LED</span>
-        </div> -->
         <div class="row" style="margin: 0px">
             <div class="col-12 col-lg-4 lb1">
                 <router-link to="/privacy" class="router-link">
