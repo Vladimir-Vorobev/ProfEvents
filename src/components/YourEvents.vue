@@ -5,11 +5,11 @@
             <div class="card" v-for="(item, index) in data" :key="item.value">
                 <div class="card-header">{{item.data.date}}</div>
                 <div class="card-body">
-                    <div class="row" v-if="item.status != 'checked'">
+                    <div class="row" v-if="item.status == 'not_checked'">
                         <h5 class="card-title col-11">{{item.data.name}}</h5>
                         <h5><button class="btn btn-almbb-danger btn-almbb-small" @click="deleteEvent(item.data, index)"> <i class="fas fa-trash-alt"></i> </button></h5>
                     </div>
-                    <div class="row" v-if="item.status == 'checked'">
+                    <div class="row" v-if="item.status != 'not_checked'">
                         <h5 class="card-title col-12">{{item.data.name}}</h5>
                     </div>
                     <p class="card-text"><i class="far fa-clock"></i> {{item.data.time}}</p>
