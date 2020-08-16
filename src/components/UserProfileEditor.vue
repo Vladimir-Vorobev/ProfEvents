@@ -205,7 +205,7 @@ export default {
             //     span.innerText = data.statNumber;
             //     }
             // }
-            this.userId = data._id
+            this.userId = data.userId
             document.querySelector(".name").value = data.name;
             document.querySelector(".surname").value = data.surname;
             document.querySelector(".email").value = data.email;
