@@ -254,11 +254,6 @@ export default {
         },
         nextQuestion(){
             if(this.questionIndex+1 === this.questionsData.length){
-                // this.$swal({
-                //     icon: 'question',
-                //     // text: 'Завершить тест?'
-                //     text: JSON.stringify(this.results)
-                // });
                 Swal.fire({
                     icon: 'question',
                     title: 'Завершить тест?',
