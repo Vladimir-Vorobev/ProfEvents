@@ -787,8 +787,8 @@ export default {
                     console.log(data)
                     let ctx = document.getElementById('chart' + email)
                     let ctx2 = document.getElementById('chart2' + email)
-                    makeChart('doughnut', [data.service, data.programming, 0, 0,  data.engeniring, 0], ctx)
-                    makeChart('bar', [data.service, data.programming, 0, 0,  data.engeniring, 0], ctx2)
+                    makeChart('doughnut', [data.service, data.programming, 0, 0,  data.engineering, 0], ctx)
+                    makeChart('bar', [data.service, data.programming, 0, 0,  data.engineering, 0], ctx2)
                     document.getElementById(email + "x").style.display = 'none'
                     document.getElementById('chartDiv' + email).style.display = 'block'
                 })
@@ -830,8 +830,8 @@ export default {
                                 console.log(this.studentEvents)
                                 let ctx = document.getElementById('chart' + email)
                                 let ctx2 = document.getElementById('chart2' + email)
-                                makeChart('doughnut', [statistics.service, statistics.programming, 0, 0,  statistics.engeniring, 0], ctx)
-                                makeChart('bar', [statistics.service, statistics.programming, 0, 0,  statistics.engeniring, 0], ctx2)
+                                makeChart('doughnut', [statistics.service, statistics.programming, 0, 0,  statistics.engineering, 0], ctx)
+                                makeChart('bar', [statistics.service, statistics.programming, 0, 0,  statistics.engineering, 0], ctx2)
                                 document.getElementById(email + "x").style.display = 'none'
                                 document.getElementById('chartDiv' + email).style.display = 'block'
                             })
@@ -876,8 +876,8 @@ export default {
                                 console.log(this.studentEvents)
                                 let ctx = document.getElementById('chart' + email)
                                 let ctx2 = document.getElementById('chart2' + email)
-                                makeChart('doughnut', [statistics.service, statistics.programming, 0, 0,  statistics.engeniring, 0], ctx)
-                                makeChart('bar', [statistics.service, statistics.programming, 0, 0,  statistics.engeniring, 0], ctx2)
+                                makeChart('doughnut', [statistics.service, statistics.programming, 0, 0,  statistics.engineering, 0], ctx)
+                                makeChart('bar', [statistics.service, statistics.programming, 0, 0,  statistics.engineering, 0], ctx2)
                                 document.getElementById(email + "x").style.display = 'none'
                                 document.getElementById('chartDiv' + email).style.display = 'block'
                             })

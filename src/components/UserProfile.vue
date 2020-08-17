@@ -272,10 +272,10 @@ export default {
                 return response.json()
             })
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 if(data == '310'){
-                    document.cookie = "email=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
-                    document.cookie = "SessionID=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
+                    // document.cookie = "email=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
+                    // document.cookie = "SessionID=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
                     // window.location.reload()
                     // window.location.pathname = "/login"
                     console.log('310 getAvatar')
@@ -298,14 +298,15 @@ export default {
                 return response.json()
             })
             .then(datan => {
-                console.log(datan)
-                let statistics = datan.stat
+                // console.log(datan)
+                let statistics = datan.confStat
+                console.log(statistics)
                 this.$set(this.studentEvents, this.person_email, datan.checkedEvents)
                 console.log(this.studentEvents)
                 let ctx = document.getElementById('chart' + this.person_email)
                 let ctx2 = document.getElementById('chart2' + this.person_email)
-                makeChart('doughnut', [statistics.service, statistics.programming, 0, 0, statistics.engeniring, 0], ctx)
-                makeChart('bar', [statistics.service, statistics.programming, 0, 0, statistics.engeniring, 0], ctx2)
+                makeChart('doughnut', [statistics.service, statistics.programming, 0, 0, statistics.engineering, 0], ctx)
+                makeChart('bar', [statistics.service, statistics.programming, 0, 0, statistics.engineering, 0], ctx2)
                 document.getElementById(this.person_email + "x").style.display = 'none'
                 document.getElementById('chartDiv' + this.person_email).style.display = 'block'
             })
