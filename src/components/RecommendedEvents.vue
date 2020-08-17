@@ -174,6 +174,7 @@
 
 <script>
 import Footer from './footer.vue'
+import Swal from 'sweetalert2'
 export default {
     name: 'RecommendedEvents',
     components: { Footer },
@@ -253,10 +254,23 @@ export default {
         },
         nextQuestion(){
             if(this.questionIndex+1 === this.questionsData.length){
-                this.$swal({
+                // this.$swal({
+                //     icon: 'question',
+                //     // text: 'Завершить тест?'
+                //     text: JSON.stringify(this.results)
+                // });
+                Swal.fire({
                     icon: 'question',
-                    // text: 'Завершить тест?'
-                    text: JSON.stringify(this.results)
+                    title: 'Завершить тест?',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Да',
+                    cancelButtonText: 'Отмена'
+                }).then(() => {
+                    Swal.fire({
+                        text: JSON.stringify(this.results)
+                    });
                 });
             }
             else{
