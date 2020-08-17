@@ -125,40 +125,46 @@
 
                 <input class="btn btn-outline-primary" @click="Search()" type="submit" value="Завершить тест">
             </form> -->
-            <div class="card tblock">
-                <div class="card-body" style="padding: 27px 0px 0px">
-                    <h5 class="card-title" style="font-weight: 600;">Вопрос</h5>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item" style="text-align: left">
-                            <div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" name="tenth" id="1" class="custom-control-input" value="medicine">
-                                    <label class="custom-control-label" for="1">Ответ 1</label>
+            <div v-for="(q, index) in questionsData" :key="index">
+                <div class="card tblock" v-show="index === questionIndex">
+                    <div class="card-body" style="padding: 27px 0px 0px">
+                        <h5 class="card-title" style="font-weight: 600;">{{q.question}}</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item" style="text-align: left">
+                                <div>
+                                    <!-- <div class="custom-control custom-radio">
+                                        <input type="radio" name="tenth" id="1" class="custom-control-input" value="medicine">
+                                        <label class="custom-control-label" for="1">{{q.answer1}}</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" name="tenth" id="2" class="custom-control-input" value="medicine">
+                                        <label class="custom-control-label" for="2">{{q.answer2}}</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" name="tenth" id="3" class="custom-control-input" value="medicine">
+                                        <label class="custom-control-label" for="3">{{q.answer3}}</label>
+                                    </div> -->
+                                    <div class="custom-control custom-radio" v-for="(a, aindex) in q.answers" :key="aindex">
+                                        <input type="radio" :name="index" class="custom-control-input" :id="aindex+index+index" @click="answered(index, a.value)">
+                                        <label class="custom-control-label" :for="aindex+index+index">{{a.text}}</label>
+                                    </div>
                                 </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" name="tenth" id="2" class="custom-control-input" value="medicine">
-                                    <label class="custom-control-label" for="2">Ответ 2</label>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-12 col-md-6 backBtn">
+                                        <button class="btn btn-stylish" style="width: 80%;" @click="previousQuestion()">Назад</button>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <button class="btn btn-almbb-success" style="width: 80%;" @click="nextQuestion()">Вперед</button>
+                                    </div>
                                 </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" name="tenth" id="3" class="custom-control-input" value="medicine">
-                                    <label class="custom-control-label" for="3">Ответ 3</label>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-12 col-md-6 backBtn">
-                                    <button class="btn btn-stylish" style="width: 80%;" @click="previousQuestion()">Назад</button>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <button class="btn btn-almbb-success" style="width: 80%;" @click="nextQuestion()">Вперед</button>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="card-footer text-muted">
-                    1/10
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer text-muted">
+                        {{(index+1)+'/'+questionsData.length}}
+                    </div>
                 </div>
             </div>
         </div>
@@ -171,6 +177,28 @@ import Footer from './footer.vue'
 export default {
     name: 'RecommendedEvents',
     components: { Footer },
+    data(){
+        return{
+            questionIndex: 0,
+            results: [],
+            questionsData: [
+                {
+                    question: 'First question',
+                    answers: [
+                        {text: 'answer1.1', value: 'it'},
+                        {text: 'answer1.2', value: 'engineering'}
+                    ]
+                },
+                {
+                    question: 'Second question',
+                    answers: [
+                        {text: 'answer2.1', value: 'service'},
+                        {text: 'answer2.2', value: 'it'}
+                    ]
+                },
+            ],
+        }
+    },
     methods:{
         Search(){
             event.preventDefault()
@@ -221,16 +249,22 @@ export default {
             }
         },
         previousQuestion(){
-            this.$swal({
-                icon: 'error',
-                text: 'В разработке!'
-            });
+            if(this.questionIndex != 0) this.questionIndex--;
         },
         nextQuestion(){
-            this.$swal({
-                icon: 'error',
-                text: 'В разработке!'
-            });
+            if(this.questionIndex+1 === this.questionsData.length){
+                this.$swal({
+                    icon: 'question',
+                    // text: 'Завершить тест?'
+                    text: JSON.stringify(this.results)
+                });
+            }
+            else{
+                this.questionIndex++;
+            }
+        },
+        answered(index, value){
+            this.results[index] = value
         },
     }
 }            
