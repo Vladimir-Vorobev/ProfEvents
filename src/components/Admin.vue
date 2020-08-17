@@ -203,7 +203,7 @@
                                         <p><button type="submit" @click="add('!1', 'student')" class="btn btn-primary btn-lg" key="button">Обновить список</button></p>
                                     </div>
                                     <form key="form" id='formOne' v-if="ShowAddOne" style="text-align: left">
-                                        <div class="row">
+                                        <!-- <div class="row">
                                             <div class="col-12 col-md-6">
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
@@ -220,7 +220,7 @@
                                                     <input type="text" key="input" name="surname" class="form-control surname" aria-describedby="basic-addon2">
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="input-group mb-3">
@@ -231,9 +231,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- <p key="p">Email </p><input key="input" name="email">
-                                        <p key="p">Имя </p><input key="input" name="name">
-                                        <p key="p">Фамилия </p><input key="input" name="surname" style="margin-bottom: 0.7em"> -->
                                         <p><button type="submit" @click="add('one', 'student')" class="btn btn-primary btn-lg" key="button">Добавить ученика</button></p>
                                     </form>
                                 </transition-group>
@@ -460,22 +457,6 @@
                                             <div class="col-12 col-md-6">
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="basic-addon1">Имя</span>
-                                                    </div>
-                                                    <input type="text" key="input" name="name" class="form-control name" aria-describedby="basic-addon1">
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-6">
-                                                <div class="input-group mb-3">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="basic-addon2">Фамилия</span>
-                                                    </div>
-                                                    <input type="text" key="input" name="surname" class="form-control surname" aria-describedby="basic-addon2">
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-6">
-                                                <div class="input-group mb-3">
-                                                    <div class="input-group-prepend">
                                                         <span class="input-group-text" id="basic-addon2">Email</span>
                                                     </div>
                                                     <input type="text" key="input" name="email" class="form-control surname" aria-describedby="basic-addon2">
@@ -490,16 +471,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- <div class="row">
-                                            <div class="col-12">
-                                                <div class="input-group mb-3">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="basic-addon2">Email</span>
-                                                    </div>
-                                                    <input type="text" key="input" name="email" class="form-control surname" aria-describedby="basic-addon2">
-                                                </div>
-                                            </div>
-                                        </div> -->
                                         <p><button type="submit" @click="add('school-admin', 'school-admin')" class="btn btn-blue btn-lg" key="button">Добавить</button></p>
                                     </form>
                                 </transition-group>
@@ -523,24 +494,6 @@
                                         </div>
                                     </div>
                                     <form key="form" id='formOne' style="text-align: left" v-if="AddAdmin">
-                                        <div class="row">
-                                            <div class="col-12 col-md-6">
-                                                <div class="input-group mb-3">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="basic-addon1">Имя</span>
-                                                    </div>
-                                                    <input type="text" key="input" name="name" class="form-control name" aria-describedby="basic-addon1">
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-6">
-                                                <div class="input-group mb-3">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="basic-addon2">Фамилия</span>
-                                                    </div>
-                                                    <input type="text" key="input" name="surname" class="form-control surname" aria-describedby="basic-addon2">
-                                                </div>
-                                            </div>
-                                        </div>
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="input-group mb-3">
@@ -1052,18 +1005,18 @@ export default {
                         text: 'Введите email'
                     });
                 }
-                else if(form['name'].value == ''){
-                    this.$swal({
-                        icon: 'error',
-                        text: 'Введите имя'
-                    });
-                }
-                else if(form['surname'].value == ''){
-                    this.$swal({
-                        icon: 'error',
-                        text: 'Введите фамилию'
-                    });
-                }
+                // else if(form['name'].value == ''){
+                //     this.$swal({
+                //         icon: 'error',
+                //         text: 'Введите имя'
+                //     });
+                // }
+                // else if(form['surname'].value == ''){
+                //     this.$swal({
+                //         icon: 'error',
+                //         text: 'Введите фамилию'
+                //     });
+                // }
                 else if(value == 'school-admin' && form['school'].value == ''){
                     this.$swal({
                         icon: 'error',
@@ -1072,10 +1025,10 @@ export default {
                 }
                 else{
                     if(value == 'school-admin'){
-                        send({email: form['email'].value, name: form['name'].value, surname: form['surname'].value, school: form['school'].value}, this.email, 'uploadOne', type)
+                        send({email: form['email'].value, school: form['school'].value}, this.email, 'uploadOne', type)
                     }
                     else{
-                        send({email: form['email'].value, name: form['name'].value, surname: form['surname'].value}, this.email, 'uploadOne')
+                        send({email: form['email'].value}, this.email, 'uploadOne')
                     }
                 }
             }
@@ -1279,13 +1232,13 @@ export default {
                 cancelButtonText: 'Отмена'
             }).then((result) => {
                  if (result.value) {
-                     needle.post(this.$store.state.serverIp+'/api/uploadOne', {data: data, email: email, type: 'delete', dopType: type, sessionid: this.SessionID}, {"json": true}, function(err, res){
+                     needle.post(this.$store.state.serverIp+'/api/uploadOne', {data: data, email: this.email, type: 'delete', dopType: type, sessionid: this.SessionID}, {"json": true}, function(err, res){
                         if(err) throw err
                         if(res.body == 'OK'){
                             //alert('Файл успешно добавлен')
                             Vue.swal({
                                 icon: 'success',
-                                text: 'Ученик успешно удален'
+                                text: 'Админ успешно удален'
                             });
                             window.location.reload
                         }
