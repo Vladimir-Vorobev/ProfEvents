@@ -53,7 +53,7 @@ const routes = [
   { path: '/your-events', component: YourEvents },
   { path: '/registration', component: Registration },
   { path: '/login', component: LogIn },
-  { path: '/profile', component: Profile },
+  // { path: '/profile', component: Profile },
   { path: '/friend-statistics', component: FriendStatistics },
   { path: '/school-statistics', component: Statistics },
   { path: '/full-school-statistics', component: FullStatistics },
