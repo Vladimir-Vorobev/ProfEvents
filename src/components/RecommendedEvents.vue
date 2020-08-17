@@ -37,7 +37,6 @@
                 <div class="block">
                     <a href="#" class="btn btn-almbb-light" @click="resultShow = false" style="color: black">назад</a>
                     <canvas id="chart"></canvas>
-                    <a href="#" class="btn btn-rounded-almbb-success" @click="showResult()">Создать диаграмму</a>
                 </div>
             </div>
         </div>
