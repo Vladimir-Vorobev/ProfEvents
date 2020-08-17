@@ -211,7 +211,15 @@ export default {
             };
             this.person_date = personDate.toLocaleString("ru", options)
             if(data.class_number != undefined || data.simvol != undefined){
-                this.person_grade = data.class_number + ' ' + data.simvol
+                if(data.class_number != undefined && data.simvol == undefined){
+                    this.person_grade = data.class_number + ' -'
+                }
+                else if(data.class_number == undefined && data.simvol != undefined){
+                    this.person_grade = '- ' + data.simvol
+                }
+                else{
+                    this.person_grade = data.class_number + ' ' + data.simvol
+                }
             }
             else{
                 this.person_grade = 'Не указаны'
@@ -269,7 +277,8 @@ export default {
                     document.cookie = "email=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
                     document.cookie = "SessionID=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
                     // window.location.reload()
-                    window.location.pathname = "/login"
+                    // window.location.pathname = "/login"
+                    console.log('310 getAvatar')
                 }
                 else{
                     this.avatar = data.data
