@@ -304,8 +304,8 @@ export default {
                 console.log(this.studentEvents)
                 let ctx = document.getElementById('chart' + this.person_email)
                 let ctx2 = document.getElementById('chart2' + this.person_email)
-                makeChart('doughnut', [statistics.service, statistics.programming, 0, 0,  statistics.engeniring, 0], ctx)
-                makeChart('bar', [statistics.service, statistics.programming, 0, 0,  statistics.engeniring, 0], ctx2)
+                makeChart('doughnut', [statistics.service, statistics.programming, 0, 0, statistics.engeniring, 0], ctx)
+                makeChart('bar', [statistics.service, statistics.programming, 0, 0, statistics.engeniring, 0], ctx2)
                 document.getElementById(this.person_email + "x").style.display = 'none'
                 document.getElementById('chartDiv' + this.person_email).style.display = 'block'
             })
