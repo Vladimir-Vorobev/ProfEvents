@@ -138,6 +138,7 @@ export default {
         .catch(function(err) {
             console.log(err)
         })
+        
         // let eventsChose = JSON.parse(localStorage.eventsChosen)
         // for (let key in eventsChose){
         //     if( eventsChose[key] == true ){
