@@ -25,7 +25,7 @@
                                             <button class="btn btn-stylish" style="width: 80%;" @click="previousQuestion()">Назад</button>
                                         </div>
                                         <div class="col-12 col-md-6">
-                                            <button class="btn btn-almbb-success" style="width: 80%;" @click="nextQuestion()">Вперед</button>
+                                            <button class="btn btn-almbb-success" style="width: 80%;" @click="nextQuestion(index)">Вперед</button>
                                         </div>
                                     </div>
                                 </li>
@@ -250,7 +250,7 @@ export default {
         previousQuestion(){
             if(this.questionIndex != 0) this.questionIndex--;
         },
-        nextQuestion(){
+        nextQuestion(index){
             if(this.questionIndex+1 === this.questionsData.length){
                 Swal.fire({
                     icon: 'question',
@@ -279,6 +279,7 @@ export default {
                             else if(item == 'building') building++
                             else if(item == 'creativity') creativity++
                         }
+                        console.log(this.results)
                         this.results = []
                         this.results[0] = it
                         this.results[1] = engineering
@@ -292,7 +293,18 @@ export default {
                 });
             }
             else{
-                this.questionIndex++;
+                if(this.results[index] == undefined){
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Выберите один из ответов',
+                        showConfirmButton: false,
+                        timer: 1500,
+                        timerProgressBar: true,
+                    })
+                }
+                else{
+                    this.questionIndex++;
+                } 
             }
         },
         answered(index, value){
