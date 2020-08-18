@@ -42,7 +42,7 @@
                             <a href="#" class="btn btn-almbb-light" @click="doTestAgain()" style="color: black">Пройти заново</a>
                         </div>
                         <div class="col-12 col-lg-6">
-                            <a href="#" class="btn btn-almbb-light" @click="goToEvents()" style="color: black">Перейти на страницу мероприятий</a>
+                            <a href="#" class="btn btn-blue" @click="goToEvents()">Перейти на страницу мероприятий</a>
                         </div>
                     </div>
                 </div>
