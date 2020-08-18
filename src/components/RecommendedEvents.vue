@@ -31,7 +31,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="card-footer text-muted">
+                        <div class="card-footer text-muted" style="user-select: none">
                             {{(index+1)+'/'+questionsData.length}}
                         </div>
                     </div>
