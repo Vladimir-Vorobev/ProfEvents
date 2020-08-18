@@ -35,8 +35,16 @@
             </div>
             <div v-show="resultShow">
                 <div class="block">
-                    <a href="#" class="btn btn-almbb-light" @click="resultShow = false" style="color: black">назад</a>
-                    <canvas id="chart"></canvas>
+                    <h3>Результаты теста</h3>
+                    <canvas id="chart"></canvas> <br>
+                    <div class="row">
+                        <div class="col-12 col-lg-6">
+                            <a href="#" class="btn btn-almbb-light" @click="doTestAgain()" style="color: black">Пройти заново</a>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <a href="#" class="btn btn-almbb-light" @click="goToEvents()" style="color: black">Перейти на страницу мероприятий</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -58,17 +66,129 @@ export default {
             results: [],
             questionsData: [
                 {
-                    question: 'First question',
+                    question: 'Что Вам интереснее?',
                     answers: [
-                        {text: 'answer1.1', value: 'it'},
-                        {text: 'answer1.2', value: 'engineering'}
+                        {text: 'Взаимодействовать с людьми', value: 'service'},
+                        {text: 'Работать с техникой', value: 'engineering'}
                     ]
                 },
                 {
-                    question: 'Second question',
+                    question: 'Что Вам интереснее?',
                     answers: [
-                        {text: 'answer2.1', value: 'service'},
-                        {text: 'answer2.2', value: 'it'}
+                        {text: 'Перевозка и экспедирование грузов', value: 'logistics'},
+                        {text: 'Компьютерные технологии', value: 'it'}
+                    ]
+                },
+                {
+                    question: 'Что Вам интереснее?',
+                    answers: [
+                        {text: 'Работа с веб-сайтами', value: 'it'},
+                        {text: 'Проектирование садов и зеленых насаждений', value: 'building'}
+                    ]
+                },
+                {
+                    question: 'Что Вам интереснее?',
+                    answers: [
+                        {text: 'Создание собственного бренда одежды', value: 'creativity'},
+                        {text: 'Реставрация автомобилей/мотоциклов', value: 'logistics'}
+                    ]
+                },
+                {
+                    question: 'Что Вам интереснее?',
+                    answers: [
+                        {text: 'Проектирование промышленных машин', value: 'engineering'},
+                        {text: 'Ремонтные работы различной сложности', value: 'building'}
+                    ]
+                },
+                {
+                    question: 'Что Вам интереснее?',
+                    answers: [
+                        {text: 'Изучение химического состава различных веществ', value: 'engineering'},
+                        {text: 'Разработка системы отопления и водоснабжения', value: 'building'}
+                    ]
+                },
+                {
+                    question: 'Что Вам интереснее?',
+                    answers: [
+                        {text: 'Устранение технических неполадок в работе автомобиля/мотоцикла', value: 'logistics'},
+                        {text: 'Создание модных ювелирных украшений', value: 'creativity'}
+                    ]
+                },
+                {
+                    question: 'Что Вам интереснее?',
+                    answers: [
+                        {text: 'Процесс обучением других людей', value: 'service'},
+                        {text: 'Особенности подготовки воздушных судов к полету', value: 'logistics'}
+                    ]
+                },
+                {
+                    question: 'Что Вам интереснее?',
+                    answers: [
+                        {text: 'Защита информационных систем', value: 'it'},
+                        {text: 'Создание чертежей, графических моделей', value: 'engineering'}
+                    ]
+                },
+                {
+                    question: 'Что Вам интереснее?',
+                    answers: [
+                        {text: 'Сфера красоты', value: 'service'},
+                        {text: 'Разработка дизайна различных объявлений', value: 'creativity'}
+                    ]
+                },
+                {
+                    question: 'Что Вам интереснее?',
+                    answers: [
+                        {text: 'Тонкости поварского искусства', value: 'service'},
+                        {text: 'Проектировка строительных материалов', value: 'building'}
+                    ]
+                },
+                {
+                    question: 'Что Вам интереснее?',
+                    answers: [
+                        {text: 'Создание новых программных решений для различных предприятий', value: 'it'},
+                        {text: 'Создание анимированных образов для видеоигр', value: 'creativity'}
+                    ]
+                },
+                {
+                    question: 'Что Вам интереснее?',
+                    answers: [
+                        {text: 'Восстановление автомобиля после ДТП', value: 'logistics'},
+                        {text: 'Процесс строительства нового сооружения', value: 'building'}
+                    ]
+                },
+                {
+                    question: 'Что Вам интереснее?',
+                    answers: [
+                        {text: 'Лечить людей', value: 'service'},
+                        {text: 'Обеспечение бесперебойной работы сети', value: 'it'}
+                    ]
+                },
+                {
+                    question: 'Что Вам интереснее?',
+                    answers: [
+                        {text: 'Создание локаций для различных мероприятий', value: 'creativity'},
+                        {text: 'Работа с электрическими системами', value: 'building'}
+                    ]
+                },
+                {
+                    question: 'Что Вам интереснее?',
+                    answers: [
+                        {text: 'Оформление коммерческой ленты Instagram', value: 'creativity'},
+                        {text: 'Разработка роботов', value: 'engineering'}
+                    ]
+                },
+                {
+                    question: 'Что Вам интереснее?',
+                    answers: [
+                        {text: 'Разработка телекоммуникационных систем', value: 'it'},
+                        {text: 'Механизмы работы промышленного оборудования', value: 'logistics'}
+                    ]
+                },
+                {
+                    question: 'Что Вам интереснее?',
+                    answers: [
+                        {text: 'Помощь людям, находящимся в тяжелой жизненной ситуации', value: 'service'},
+                        {text: 'Создание прототипов', value: 'engineering'}
                     ]
                 },
             ],
@@ -144,15 +264,24 @@ export default {
                         let it = 0
                         let engineering = 0
                         let service = 0
+                        let logistics = 0
+                        let building = 0
+                        let creativity = 0
                         for (let item of this.results){
                             if(item == 'it') it++
                             else if(item == 'engineering') engineering++
                             else if(item == 'service') service++
+                            else if(item == 'logistics') logistics++
+                            else if(item == 'building') building++
+                            else if(item == 'creativity') creativity++
                         }
                         this.results = []
                         this.results[0] = it
                         this.results[1] = engineering
                         this.results[2] = service
+                        this.results[3] = logistics
+                        this.results[4] = building
+                        this.results[5] = creativity
                         this.resultShow = true
                         this.showResult()
                     }
@@ -171,7 +300,10 @@ export default {
             let it = this.results[0]
             let engineering = this.results[1]
             let service = this.results[2]
-            makeChart('doughnut', [service, it, 0, 0, engineering, 0], ctx)
+            let logistics = this.results[3]
+            let building = this.results[4]
+            let creativity = this.results[5]
+            makeChart('doughnut', [service, it, creativity, building, engineering, logistics], ctx)
             function makeChart(type, data, place){
                 let dispalyLable = true
                 if (document.documentElement.clientWidth < 768){
@@ -215,7 +347,12 @@ export default {
                 console.log(myChart)
             }
         },
-        
+        doTestAgain(){
+            document.location.href = '/recommended-events'
+        },
+        goToEvents(){
+            this.$router.push({ path: `/events` })
+        },
     }
 }            
 </script>
