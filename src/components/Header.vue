@@ -18,8 +18,8 @@
                         </router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link to="/recommended-events" class="router-link">
-                            <a class="nav-link" ref="recommendedEvents" style="color: #000 !important">Рекомендуемые мероприятия</a>
+                        <router-link to="/career-guidance" class="router-link">
+                            <a class="nav-link" ref="CareerGuidance" style="color: #000 !important">Тест на профориентацию</a>
                         </router-link>
                     </li>
                     <li class="nav-item dropdown">

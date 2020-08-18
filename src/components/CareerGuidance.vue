@@ -25,7 +25,7 @@
                                             <button class="btn btn-stylish" style="width: 80%;" @click="previousQuestion()">Назад</button>
                                         </div>
                                         <div class="col-12 col-md-6">
-                                            <button class="btn btn-indigo" style="width: 80%;" @click="nextQuestion()">Вперед</button>
+                                            <button class="btn btn-almbb-success" style="width: 80%;" @click="nextQuestion()">Вперед</button>
                                         </div>
                                     </div>
                                 </li>
@@ -61,7 +61,7 @@ import Footer from './footer.vue'
 import Swal from 'sweetalert2'
 import Chart from 'chart.js'
 export default {
-    name: 'RecommendedEvents',
+    name: 'CareerGuidance',
     components: { Footer },
     data(){
         return{

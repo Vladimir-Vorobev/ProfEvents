@@ -18,7 +18,7 @@ Vue.use(VueSweetalert2);
 
 
 import MainPage from './components/MainPage.vue'
-import RecommendedEvents from './components/RecommendedEvents.vue'
+import CareerGuidance from './components/CareerGuidance.vue'
 import AllEvents from './components/AllEvents.vue'
 import Registration from './components/Registration.vue'
 import YourEvents from './components/YourEvents.vue'
@@ -45,7 +45,7 @@ Vue.use(Vuex)
 
 const routes = [
   { path: '/', component: MainPage },
-  { path: '/recommended-events', component: RecommendedEvents },
+  { path: '/career-guidance', component: CareerGuidance },
   { path: '/events', component: AllEvents },
   // { path: '/it-events', component: AllEvents },
   // { path: '/engineering-events', component: AllEvents },
