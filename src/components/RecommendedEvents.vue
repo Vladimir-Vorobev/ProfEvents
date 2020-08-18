@@ -429,7 +429,7 @@ export default {
 .cr label {
 	display: inline-block;
 	cursor: pointer;
-	padding: 15px 15px;
+	padding: 15px 25px;
 	user-select: none;
     width: 100%;
 }
