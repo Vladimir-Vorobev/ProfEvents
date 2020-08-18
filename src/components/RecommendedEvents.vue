@@ -393,6 +393,9 @@ export default {
     border: 1.5px solid #818181; /* Белая рамка */
     border-radius: 10px; /* Радиус скругления */
 }
+.tblock{
+    margin-bottom: 1em;
+}
 @media (min-width: 768px) {  
     .tblock{
         margin-top: 10em;

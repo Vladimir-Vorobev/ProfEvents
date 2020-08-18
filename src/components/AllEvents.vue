@@ -434,7 +434,7 @@ export default {
     margin: 0.5em 0px;
 }
 .selectGroup .item:hover{
-    background: #ebecec;
+    background: rgba(236, 236, 236, 0.466);
 }
 .selectGroup .item.selected{
     background: #3F729B;
