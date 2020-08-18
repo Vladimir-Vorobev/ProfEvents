@@ -393,15 +393,17 @@ export default {
     border: 1.5px solid #818181; /* Белая рамка */
     border-radius: 10px; /* Радиус скругления */
 }
-.tblock{
-    position: fixed;
-    width: 80%;
-    top: 25%;
-    left: 10%;
-}
+@media (min-width: 768px) {  
+    .tblock{
+        margin-top: 10em;
+    }
+} 
 @media (max-width: 767px) {  
     .backBtn{
         margin-bottom: 0.5em
+    }
+    .tblock{
+        margin-top: 1em;
     }
 } 
 .block{
