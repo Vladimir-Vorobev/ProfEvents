@@ -5,13 +5,17 @@
                 <div v-for="(q, index) in questionsData" :key="index">
                     <div class="card tblock" v-show="index === questionIndex">
                         <div class="card-body" style="padding: 27px 0px 0px">
-                            <h5 class="card-title" style="font-weight: 600;">{{q.question}}</h5>
+                            <h4 class="card-title" style="font-weight: 600;">{{q.question}}</h4>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item" style="text-align: left">
-                                    <div>
-                                        <div class="custom-control custom-radio cr" v-for="(a, aindex) in q.answers" :key="aindex">
+                                    <div class="row">
+                                        <!-- <div class="custom-control custom-radio cr" v-for="(a, aindex) in q.answers" :key="aindex">
                                             <input type="radio" :name="index" class="custom-control-input" :id="aindex+index+index" @click="answered(index, a.value)">
                                             <label class="custom-control-label" :for="aindex+index+index" style="width: 100%;">{{a.text}}</label>
+                                        </div> -->
+                                        <div class="cr col-12" v-for="(a, aindex) in q.answers" :key="aindex">
+                                            <input type="radio" :name="index" class="myradio" :id="aindex+index+index" @click="answered(index, a.value)">
+                                            <label class="myradio-label" :for="aindex+index+index">{{a.text}}</label>
                                         </div>
                                     </div>
                                 </li>
@@ -413,5 +417,37 @@ export default {
 }
 .cr{
     font-size: 1.3em;
+}
+.cr {
+	display: block;
+	margin-right: 10px;
+    width: 100%;
+}
+.cr input[type=radio] {
+	display: none;
+}
+.cr label {
+	display: inline-block;
+	cursor: pointer;
+	padding: 15px 15px;
+	user-select: none;
+    width: 100%;
+}
+ 
+/* Checked */
+.cr input[type=radio]:checked + label {
+	background: #4285f4;
+    color: white;
+}
+ 
+/* Hover */
+.cr label:hover {
+	background-color: rgba(236, 236, 236, 0.466);
+}
+ 
+/* Disabled */
+.cr input[type=radio]:disabled + label {
+	background: #efefef;
+	color: #666;
 }
 </style>
