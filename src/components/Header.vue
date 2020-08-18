@@ -129,8 +129,8 @@ export default {
       },
       person_profile(){
         let userId = this.userId
-        // this.$router.replace({ path: `/user-profile/${userId}` }) //хз как без перезагрузки поправить
-        document.location.href = "/user-profile/" + userId
+        this.$router.replace({ path: `/user-profile/${userId}` }) //хз как без перезагрузки поправить
+        // document.location.href = "/user-profile/" + userId
       },
       animate_navbar(){
           if(event.target.classList.contains('useful') == false && event.target.classList.contains('user') == false){
