@@ -9,9 +9,9 @@
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item" style="text-align: left">
                                     <div>
-                                        <div class="custom-control custom-radio" v-for="(a, aindex) in q.answers" :key="aindex">
+                                        <div class="custom-control custom-radio cr" v-for="(a, aindex) in q.answers" :key="aindex">
                                             <input type="radio" :name="index" class="custom-control-input" :id="aindex+index+index" @click="answered(index, a.value)">
-                                            <label class="custom-control-label" :for="aindex+index+index">{{a.text}}</label>
+                                            <label class="custom-control-label" :for="aindex+index+index" style="width: 100%;">{{a.text}}</label>
                                         </div>
                                     </div>
                                 </li>
@@ -410,5 +410,8 @@ export default {
     box-shadow: 0px 2px 5px 1px rgba(34, 60, 80, 0.18);
     min-height: 300px;
     padding: 15px 20px;
+}
+.cr{
+    font-size: 1.3em;
 }
 </style>
