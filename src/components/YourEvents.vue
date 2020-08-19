@@ -207,7 +207,7 @@ export default {
                 reader.onload = function () {
                     data.push({file: reader.result, type: file.type})
                     if(i == len - 1){
-                        needle.post(url + '/api/moderateEvent', {type: 'student', images: data, email: email, sessionId: SessionID, data: events}, {"json": true}, function(err, res){
+                        needle.post(url + '/api/moderateEvent', {type: 'student', images: data, email: email, sessionid: SessionID, data: events}, {"json": true}, function(err, res){
                             if(err){
                                 this.$swal({
                                     icon: 'error',
