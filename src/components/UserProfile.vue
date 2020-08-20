@@ -92,17 +92,19 @@
             <div class="person_events" style="padding: 15px 0px 30px">
                 <div class="pblock">
                     <h4>Ближайшие мероприятия:</h4>
-                    <div class="row">
-                        <div class="col-12 col-md-5">
-                            <h5>Направеление:</h5> 
-                        </div>
-                        <div class="col-12 col-md-7">
-                            <select class="custom-select custom-select-sm mb-3 events" style="width: 100%;">
-                                <option value="" selected>Все</option>
-                                <option value="">IT</option>
-                                <option value="">Инженерия</option>
-                                <option value="">Сфера услуг</option>
-                            </select>
+                    <div v-if="studentEventsUpcoming[person_email] != undefined && studentEventsUpcoming[person_email].length == 0"><h3>Нет мероприятий</h3></div>
+                    <div class="card" v-for="item3 in studentEventsUpcoming[person_email]" :key="item3.value" style="margin-bottom: 1em">
+                        <div class="card-header">{{item3.data.date}}</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <h5 class="card-title col-12">{{item3.data.name}}</h5>
+                            </div>
+                            <p class="card-text"><i class="far fa-clock"></i> {{item3.data.time}}</p>
+                            <p class="card-text"><i class="far fa-user"></i> {{item3.data.places}}</p>
+                            <p class="card-text">Тип: {{item3.data.type}}</p>
+                            <p v-if="item3.status == 'checked'" class="card-text" style="color: green;">Участие подтверждено</p>
+                            <p v-if="item3.status == 'on_moderate'" class="card-text" style="color: #0099CC;">Участие проверяется модератором</p>
+                            <p v-if="item3.status == 'not_checked'" class="card-text" style="color: red;">Участие не подтверждено</p>
                         </div>
                     </div>
                 </div>
@@ -110,21 +112,8 @@
             <div class="person_events_archive" style="padding: 15px 0px 30px">
                 <div class="pblock">
                     <h4>Архив мероприятий:</h4>
-                    <div class="row">
-                        <div class="col-12 col-md-5">
-                            <h5>Направеление:</h5> 
-                        </div>
-                        <div class="col-12 col-md-7">
-                            <select class="custom-select custom-select-sm mb-3 events" style="width: 100%;">
-                                <option value="" selected>Все</option>
-                                <option value="">IT</option>
-                                <option value="">Инженерия</option>
-                                <option value="">Сфера услуг</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div v-if="studentEvents[person_email] != undefined && studentEvents[person_email].length == 0"><h3>Нет мероприятий</h3></div>
-                    <div class="card" v-for="item3 in studentEvents[person_email]" :key="item3.value" style="margin-bottom: 1em">
+                    <div v-if="studentEventsOld[person_email] != undefined && studentEventsOld[person_email].length == 0"><h3>Нет мероприятий</h3></div>
+                    <div class="card" v-for="item3 in studentEventsOld[person_email]" :key="item3.value" style="margin-bottom: 1em">
                         <div class="card-header">{{item3.data.date}}</div>
                         <div class="card-body">
                             <div class="row">
@@ -163,6 +152,8 @@ export default {
         person_school: ' ',
         person_email: '',
         studentEvents: [],
+        studentEventsOld: [],
+        studentEventsUpcoming: [],
         person_role: '',
         avatar: '',
       }
@@ -173,11 +164,11 @@ export default {
             headers: {id: this.id, email: this.email, sessionid: this.SessionID},
         })
         .then(response => {
-            console.log("res", response)
+            // console.log("res", response)
             return response.json()
         })
         .then(data => {
-            console.log(data)
+            // console.log(data)
             if(data == '310'){
                 // document.cookie = "email=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
                 // document.cookie = "SessionID=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
@@ -268,7 +259,7 @@ export default {
                 headers: {email: this.email, dopemail: this.person_email, sessionid: this.SessionID},
             })
             .then(response => {
-                console.log("res", response)
+                // console.log("res", response)
                 return response.json()
             })
             .then(data => {
@@ -282,7 +273,7 @@ export default {
                 }
                 else{
                     this.avatar = data.data
-                    console.log(data.data)
+                    // console.log(data.data)
                 }
             })
         },
@@ -294,15 +285,54 @@ export default {
                 headers: {adminemail: user_email, studemail: this.person_email, sessionid: SessionID, type: 'studentAll'},
             })
             .then(response => {
-                console.log("res", response)
+                // console.log("res", response)
                 return response.json()
             })
             .then(datan => {
                 // console.log(datan)
                 let statistics = datan.confStat
-                console.log(statistics)
+                // console.log(statistics)
                 this.$set(this.studentEvents, this.person_email, datan.checkedEvents)
-                console.log(this.studentEvents)
+                // console.log(this.studentEvents)
+
+                let dates = []
+                for(let event of this.studentEvents[this.person_email]){
+                    let eventDay = ''
+                    let eventMonth = ''
+                    let s = false
+                    for(let i = 0; i < event.data.date.length; i++){
+                        if(event.data.date[i] != ' ' && s == false) eventDay += event.data.date[i]
+                        else if(s == true) eventMonth += event.data.date[i]
+                        else{
+                            s = true
+                            continue
+                        }
+                    }
+                    dates.push({day: eventDay, month: eventMonth})
+                }
+                let months = {January: 0, February: 1, March: 2, April: 3, May: 4, June: 5, July: 6, August: 7, September: 8, October: 9, November: 10, December: 11,}
+                for(let event of dates){
+                    event.month = months[event.month]
+                }
+                let now = new Date();
+                let nowYear = now.getFullYear()
+                for(let [index, event] of dates.entries()){
+                    let date = new Date(nowYear, event.month, event.day)
+                    dates[index] = date
+                }
+                let eventsOld = []
+                let eventsUpComing = []
+                for(let [index, event] of dates.entries()){
+                    if(event < now){
+                        eventsOld.push(this.studentEvents[this.person_email][index])
+                    }
+                    else{
+                        eventsUpComing.push(this.studentEvents[this.person_email][index])
+                    }
+                }
+                this.$set(this.studentEventsOld, this.person_email, eventsOld)
+                this.$set(this.studentEventsUpcoming, this.person_email, eventsUpComing)
+
                 let ctx = document.getElementById('chart' + this.person_email)
                 let ctx2 = document.getElementById('chart2' + this.person_email)
                 makeChart('doughnut', [statistics.service, statistics.programming, 0, 0, statistics.engineering, 0], ctx)
