@@ -233,7 +233,7 @@ export default {
                         showConfirmButton: false,
                         timer: 2000
                     })
-                    // console.log('Error: ', error);
+                    console.log('Error: ', error);
                 };
             }
         },
