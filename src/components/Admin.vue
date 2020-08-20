@@ -841,7 +841,7 @@ export default {
                 if (document.documentElement.clientWidth < 768){
                     dispalyLable = false 
                 }
-                let myChart = new Chart(place, {
+                new Chart(place, {
                     type: type,
                     data: {
                         labels: ['Сфера услуг', 'IT', 'Творчество и Дизайн', 'Строительство', 'Инженерные технологии', 'Транспорт и логистика'],
@@ -875,7 +875,7 @@ export default {
                         }
                     }
                 });
-                console.log(myChart)
+                // console.log(myChart)
             }
         },
         showTeacherInfo(email){
