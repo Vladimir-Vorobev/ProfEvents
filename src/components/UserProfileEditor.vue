@@ -149,7 +149,7 @@ export default {
     },
     mounted(){
         let rec = false
-        console.log(this.$store.state.socketIp)
+        // console.log(this.$store.state.socketIp)
         let socket = require('socket.io-client')(this.$store.state.socketIp)
         socket.on('connect', () => {
             if(rec){
@@ -213,7 +213,7 @@ export default {
             let userid =  form.elements.userid.value
             let filedata = document.querySelector(".custom-file-input");
             let file = filedata.files[0]
-            console.log(file)
+            // console.log(file)
             if(password != password2){
             this.$swal({
                 icon: 'error',
@@ -304,7 +304,7 @@ export default {
                                 text: 'Непредвиденная ошибка, повторите попытку',
                                 timer: 2000
                             })
-                            console.log('Error: ', error);
+                            // console.log('Error: ', error);
                         };
                     }
                 }
@@ -339,11 +339,11 @@ export default {
                 headers: {email: this.email, sessionid: this.SessionID},
             })
             .then(response => {
-                console.log("res", response)
+                // console.log("res", response)
                 return response.json()
             })
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 if(data == '310'){
                     document.cookie = "email=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
                     document.cookie = "SessionID=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
@@ -351,7 +351,7 @@ export default {
                 }
                 else{
                     this.avatar = data.data
-                    console.log(data)
+                    // console.log(data)
                 }
             })
             fetch(this.$store.state.serverIp+'/api/getInformation', {
@@ -359,7 +359,7 @@ export default {
                 headers: {email: this.email, sessionid: this.SessionID},
             })
             .then(response => {
-                console.log("res", response)
+                // console.log("res", response)
                 return response.json()
             })
             .then(data => {
