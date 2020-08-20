@@ -279,7 +279,7 @@ export default {
                             else if(item == 'building') building++
                             else if(item == 'creativity') creativity++
                         }
-                        console.log(this.results)
+                        // console.log(this.results)
                         this.results = []
                         this.results[0] = it
                         this.results[1] = engineering
