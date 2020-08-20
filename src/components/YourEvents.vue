@@ -55,7 +55,7 @@ export default {
             headers: {studemail: this.email, sessionid: this.SessionID},
 		})
         .then(response => {
-            console.log("res", response)
+            // console.log("res", response)
             return response.json()
         })
         .then(data => {
@@ -64,7 +64,7 @@ export default {
                 document.cookie = "SessionID=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
                 window.location.href = '/login'
             }
-            console.log(data)
+            // console.log(data)
             this.data = data.checkedEvents
         })
         .catch(err => {
@@ -233,7 +233,7 @@ export default {
                         showConfirmButton: false,
                         timer: 2000
                     })
-                    console.log('Error: ', error);
+                    // console.log('Error: ', error);
                 };
             }
         },
