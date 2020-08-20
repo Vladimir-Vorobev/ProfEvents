@@ -304,7 +304,7 @@ export default {
                                 text: 'Непредвиденная ошибка, повторите попытку',
                                 timer: 2000
                             })
-                            // console.log('Error: ', error);
+                            console.log('Error: ', error);
                         };
                     }
                 }
