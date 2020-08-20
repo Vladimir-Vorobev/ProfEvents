@@ -55,7 +55,7 @@ export default {
             headers: {email: this.email, sessionid: this.SessionID},
         })
         .then(response => {
-            console.log("res", response)
+            // console.log("res", response)
             this.photo = []
             return response.json()
         })
@@ -141,7 +141,7 @@ export default {
                 reader.onload = function () {
                     data.push({file: reader.result, type: file.type, id: new Date().toISOString()})
                     if(i == len - 1){
-                        console.log(data)
+                        // console.log(data)
                         needle.post(url + '/api/uploadPortfolio', {images: data, email: email, sessionid: SessionID, type: 'update'}, {"json": true}, function(err, res){
                             if(err){
                                 Swal.fire({
@@ -168,7 +168,7 @@ export default {
                         showConfirmButton: false,
                         timer: 2000
                     })
-                    console.log('Error: ', error);
+                    // console.log('Error: ', error);
                 };
             }
         },

@@ -53,7 +53,7 @@ export default {
         addUser(){
             event.preventDefault();
             var formData = new FormData($('#form')[0]);
-            console.log(formData)
+            // console.log(formData)
             $.ajax({
                 url: 'http://79.143.29.112:3030/registration',
                 type: 'POST',
