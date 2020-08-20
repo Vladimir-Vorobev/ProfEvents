@@ -33,7 +33,7 @@
                                 <div class="col-6 text-muted">Школа: </div>
                                 <div class="col-6">{{person_school}}</div>
                             </div>
-                            <div class="row">
+                            <div class="row" v-if="person_role == 'Пользователь' || person_role == 'Ученик'">
                                 <div class="col-6 text-muted">Класс и символ: </div>
                                 <div class="col-6">{{person_grade}}</div>
                             </div>
