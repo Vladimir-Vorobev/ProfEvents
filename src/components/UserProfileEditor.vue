@@ -47,7 +47,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon4">@</span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Ник пользователя" aria-label="Короткое имя" aria-describedby="basic-addon4" disabled>
+                            <input name="userid" type="text" class="form-control userid" placeholder="Ник пользователя" aria-label="Короткое имя" aria-describedby="basic-addon4">
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
@@ -145,129 +145,55 @@ export default {
     },
     beforeMount(){
         if(this.email == '') window.location.pathname = "/login"
-        fetch(this.$store.state.serverIp+'/api/getAvatar', {
-            method: 'POST',
-            headers: {email: this.email, sessionid: this.SessionID},
-        })
-        .then(response => {
-            console.log("res", response)
-            return response.json()
-        })
-        .then(data => {
-            console.log(data)
-            if(data == '310'){
-                document.cookie = "email=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
-                document.cookie = "SessionID=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
-                window.location.reload()
-            }
-            else{
-                this.avatar = data.data
-                console.log(data)
+        this.showInfo()
+    },
+    mounted(){
+        let rec = false
+        console.log(this.$store.state.socketIp)
+        let socket = require('socket.io-client')(this.$store.state.socketIp)
+        socket.on('connect', () => {
+            if(rec){
+                socket.emit('recon', this.email)
             }
         })
-        fetch(this.$store.state.serverIp+'/api/getInformation', {
-            method: 'POST',
-            headers: {email: this.email, sessionid: this.SessionID},
+        socket.on('disconnect', () => {
+            rec = true
         })
-        .then(response => {
-            console.log("res", response)
-            return response.json()
+        socket.emit('new_user', this.email)
+        let numOfUploadedFiles = 0
+        socket.on('send_image', (data) => {
+            this.photo.push({contentType: data.photo.contentType, data: data.photo.data})
         })
-        .then(data => {
-            if(data == '310'){
-                document.cookie = "email=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
-                document.cookie = "SessionID=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
-                window.location.reload()
-            }
-            if(data.city != undefined){
-                document.querySelector(".city").value = data.city;
-            }
-            if(data.school != undefined){
-                document.querySelector(".school").value = data.school;
-            }
-            if(data.schoolType != undefined){
-                document.querySelector(".schoolType").value = data.schoolType;
-            }
-            // if(data.role != 'user' && data.role != 'student') {
-            //   this.role = true
-            // }
-            if(data.class_number != undefined){
-                document.querySelector(".class_number").value = data.class_number;
-            }
-            if(data.simvol != undefined){
-                document.querySelector(".simvol").value = data.simvol;
-            }
-            // if(data.statNumber != undefined){
-            //     var span = document.querySelector(".statNumber");
-            //     if ('textContent' in span) {
-            //     span.textContent = data.statNumber;
-            //     } else {
-            //     span.innerText = data.statNumber;
-            //     }
-            // }
-            this.userId = data.userId
-            document.querySelector(".name").value = data.name;
-            document.querySelector(".surname").value = data.surname;
-            document.querySelector(".email").value = data.email;
-            document.querySelector(".age").value = data.age;
-            if(data.role != 'user'){
-                document.querySelector(".email").disabled = true;
-                document.querySelector(".school").disabled = true;
-                document.querySelector(".class_number").disabled = true;
-                document.querySelector(".simvol").disabled = true;
-            }
-        })
-        .catch(err => {
-            console.log(err)
-        })
-        },
-        mounted(){
-            let rec = false
-            console.log(this.$store.state.socketIp)
-            let socket = require('socket.io-client')(this.$store.state.socketIp)
-            socket.on('connect', () => {
-                if(rec){
-                    socket.emit('recon', this.email)
-                }
-            })
-            socket.on('disconnect', () => {
-                rec = true
-            })
-            socket.emit('new_user', this.email)
-            let numOfUploadedFiles = 0
-            socket.on('send_image', (data) => {
-                this.photo.push({contentType: data.photo.contentType, data: data.photo.data})
-            })
-            socket.on('add_system_image', () => {
-                numOfUploadedFiles += 1
-                let pers = document.querySelector('.persents')
-                let num = numOfUploadedFiles / this.num * 100
-                anime({
-                    targets: 'progress',
-                    value: num,
-                    easing: 'linear'
-                });
-                anime({
-                    targets: pers,
-                    innerHTML: num + '%',
-                    easing: 'linear',
-                    round: 1,
-                });
-                pers.value = num
-                if(numOfUploadedFiles == this.num){
+        socket.on('add_system_image', () => {
+            numOfUploadedFiles += 1
+            let pers = document.querySelector('.persents')
+            let num = numOfUploadedFiles / this.num * 100
+            anime({
+                targets: 'progress',
+                value: num,
+                easing: 'linear'
+            });
+            anime({
+                targets: pers,
+                innerHTML: num + '%',
+                easing: 'linear',
+                round: 1,
+            });
+            pers.value = num
+            if(numOfUploadedFiles == this.num){
+                setTimeout(() => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Изображения успешно сохранены',
+                        timer: 2000
+                    })
                     setTimeout(() => {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Изображения успешно сохранены',
-                            timer: 2000
-                        })
-                        setTimeout(() => {
-                            window.location.reload()
-                        }, 2000);
+                        window.location.reload()
                     }, 2000);
-                }
-            })
-        },
+                }, 2000);
+            }
+        })
+    },
     methods: {
         updateUser(){
             event.preventDefault()
@@ -284,32 +210,29 @@ export default {
             let schoolType = form.elements.schoolType.value
             let class_number = form.elements.class_number.value
             let simvol = form.elements.simvol.value
+            let userid =  form.elements.userid.value
             let filedata = document.querySelector(".custom-file-input");
             let file = filedata.files[0]
             console.log(file)
             if(password != password2){
-            //alert("Пароли не совпадают")
             this.$swal({
                 icon: 'error',
                 text: 'Пароли не совпадают'
             });
             }
             else if(re.test(email) == false && email.trim() != ''){
-            //alert("Введен некорректный email")
             this.$swal({
                 icon: 'error',
                 text: 'Введен некорректный email'
             })
             }
             else if(password.length < 5 && password.trim() != ''){
-            //alert("Пароль слишком короткий")
             this.$swal({
                 icon: 'error',
                 text: 'Пароль слишком короткий'
             })
             }
             else if(password.length > 15){
-            //alert("Пароль слишком длинный")
             this.$swal({
                 icon: 'error',
                 text: 'Пароль слишком длинный'
@@ -328,6 +251,7 @@ export default {
                 if(schoolType.trim() != '' && schoolType != "Тип учебного заведения") dataq.schoolType = schoolType
                 if(class_number.trim() != '') dataq.class_number = class_number
                 if(simvol.trim() != '') dataq.simvol = simvol
+                if(userid.trim() != '') dataq.userId = userid
                 if(file != undefined){
                     let data = []
                     let len = 1
@@ -384,24 +308,101 @@ export default {
                         };
                     }
                 }
-                needle.post(this.$store.state.serverIp+'/api/updateInformation', {email: this.email, sessionid: this.SessionID, update: dataq}, {"json": true}, function(err){
-                    if (err) console.log(err)
-                    //window.location.reload()
+                needle('post',this.$store.state.serverIp+'/api/updateInformation', {email: this.email, sessionid: this.SessionID, update: dataq}, {"json": true})
+                .then( res =>{
+                    if(res.body == 'Id Occupied'){
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Данный id занят! \n Попробуйте другой',
+                            showConfirmButton: false,
+                            timer: 2000,
+                            timerProgressBar: true
+                        }).then(() =>{
+                            this.showInfo()
+                        })
+                    }
+                    else this.showInfo()
+                    
+                })
+                .catch(function(err) {
+                    console.log(err)
                 })
             }
         },
         backInProfile(){
-            //надо сделать переход назад к профилю пользователя, пока тут alert
-            // Vue.swal({
-            //     icon: 'error',
-            //     text: 'Функция временно не доступна!',
-            //     showConfirmButton: false,
-            //     timer: 1500,
-            //     timerProgressBar: true,
-            // });
             let userId = this.userId
             this.$router.push({ path: `/user-profile/${userId}` })
         },
+        showInfo(){
+            fetch(this.$store.state.serverIp+'/api/getAvatar', {
+                method: 'POST',
+                headers: {email: this.email, sessionid: this.SessionID},
+            })
+            .then(response => {
+                console.log("res", response)
+                return response.json()
+            })
+            .then(data => {
+                console.log(data)
+                if(data == '310'){
+                    document.cookie = "email=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
+                    document.cookie = "SessionID=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
+                    window.location.reload()
+                }
+                else{
+                    this.avatar = data.data
+                    console.log(data)
+                }
+            })
+            fetch(this.$store.state.serverIp+'/api/getInformation', {
+                method: 'POST',
+                headers: {email: this.email, sessionid: this.SessionID},
+            })
+            .then(response => {
+                console.log("res", response)
+                return response.json()
+            })
+            .then(data => {
+                if(data == '310'){
+                    document.cookie = "email=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
+                    document.cookie = "SessionID=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
+                    window.location.reload()
+                }
+                if(data.city != undefined){
+                    document.querySelector(".city").value = data.city;
+                }
+                if(data.school != undefined){
+                    document.querySelector(".school").value = data.school;
+                }
+                if(data.schoolType != undefined){
+                    document.querySelector(".schoolType").value = data.schoolType;
+                }
+                // if(data.role != 'user' && data.role != 'student') {
+                //   this.role = true
+                // }
+                if(data.class_number != undefined){
+                    document.querySelector(".class_number").value = data.class_number;
+                }
+                if(data.simvol != undefined){
+                    document.querySelector(".simvol").value = data.simvol;
+                }
+                this.userId = data.userId
+                document.querySelector(".userid").value = this.userId
+                document.querySelector(".name").value = data.name;
+                document.querySelector(".surname").value = data.surname;
+                document.querySelector(".email").value = data.email;
+                document.querySelector(".age").value = data.age;
+                if(data.role != 'user'){
+                    document.querySelector(".email").disabled = true;
+                    document.querySelector(".school").disabled = true;
+                    document.querySelector(".class_number").disabled = true;
+                    document.querySelector(".simvol").disabled = true;
+                }
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        }
     }
 }
 </script>
