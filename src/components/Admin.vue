@@ -568,7 +568,7 @@ export default {
                 headers: {email: email, password: crypto.createHash('md5').update(password).digest("hex")},
             })
             .then(response => {
-                console.log("res", response)
+                // console.log("res", response)
                 return response.json()
             })
             .then(data => {
@@ -596,7 +596,7 @@ export default {
                         text: 'Неверный email или пароль или у Вас нет доступа к административной панели'
                     });
                 }
-                console.log(data)
+                // console.log(data)
             })
             .catch(err => {
                 console.log(err)
@@ -611,11 +611,11 @@ export default {
                 headers: {email: email, sessionid: this.SessionID},
             })
             .then(response => {
-                console.log("res", response)
+                // console.log("res", response)
                 return response.json()
             })
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 if(this.role == 'teacher'){
                     for(let i = 0; i < data.length; i++){
                         people.push({person: data[i].name + ' ' + data[i].surname, email: data[i].email})
@@ -630,7 +630,7 @@ export default {
                             for(let i = 0; i < data.length; i++){
                                 this.students[email].push({student: data[i].name + ' ' + data[i].surname, email: data[i].email})
                             }
-                            console.log(this.students)
+                            // console.log(this.students)
                         }
                     }
                     else{
@@ -638,7 +638,7 @@ export default {
                             people.push({person: data[i].name + ' ' + data[i].surname, email: data[i].email})
                             this.data.push(data[i].email)
                             this.$set(this.students, data[i].email, [])
-                            console.log(this.students)
+                            // console.log(this.students)
                             //this.studentEvents.push([])
                         }
                         this.teachers = people
@@ -668,12 +668,12 @@ export default {
                 headers: {email: this.$store.state.email, sessionid: this.SessionID, school: this.schoolName},
             })
             .then(response => {
-                console.log("res", response)
+                // console.log("res", response)
                 return response.json()
             })
             .then(data => {
-                console.log(data)
-                console.log(data[0])
+                // console.log(data)
+                // console.log(data[0])
                 if(data[1].length == 0){
                     this.$swal({
                         icon: 'error',
@@ -684,7 +684,7 @@ export default {
                 for(let i = 0; i < data[0].length; i++){
                     people.push({person: data[0][i].name + ' ' + data[0][i].surname, email: data[0][i].email})
                     this.$set(this.students, data[0][i].email, [])
-                    console.log(this.students)
+                    // console.log(this.students)
                     //this.studentEvents.push([])
                 }
                 this.teachers = people
@@ -705,15 +705,15 @@ export default {
                     headers: {email: this.email, sessionid: this.SessionID},
                 })
                 .then(response => {
-                    console.log("res", response)
+                    // console.log("res", response)
                     return response.json()
                 })
                 .then(data => {
-                    console.log(data)
+                    // console.log(data)
                     for(let i = 0; i < data.length; i++){
                         this.$set(this.students_on_moderation, data[i].email, {name: data[i].name, surname: data[i].surname, events: data[i].events, email: data[i].email})
                     }
-                    console.log(this.students_on_moderation)
+                    // console.log(this.students_on_moderation)
                 })
                 .catch(err => {
                     console.log(err)
@@ -722,17 +722,17 @@ export default {
         },
         showInfo(email, teacherEmail){
             if(email == 'teacher' || email == 'school'){
-                console.log(email)
+                // console.log(email)
                 fetch(this.$store.state.serverIp+'/api/getRating', {
                     method: 'POST',
                     headers: {email: teacherEmail, sessionid: this.SessionID, type: email},
                 })
                 .then(response => {
-                    console.log("res", response)
+                    // console.log("res", response)
                     return response.json()
                 })
                 .then(data => {
-                    console.log(data)
+                    // console.log(data)
                     let ctx = document.getElementById('chart' + email)
                     let ctx2 = document.getElementById('chart2' + email)
                     makeChart('doughnut', [data.service, data.programming, 0, 0,  data.engineering, 0], ctx)
@@ -745,7 +745,7 @@ export default {
                 })
             }
             else if(this.role == 'teacher'){
-                console.log(event.target.className)
+                // console.log(event.target.className)
                 if(event.target.className != 'chartjs-render-monitor' && event.target.classList.contains('radio') == false && event.target.classList.contains('btn-almbb-small') == false){
                     for(let i = 0; i < this.students.length; i++){
                         if(document.getElementById(this.students[i].email + 'n').style.display == 'block' && this.students[i].email != email){
@@ -766,16 +766,16 @@ export default {
                                 headers: {adminemail: teacherEmail, studemail: email, sessionid: this.SessionID},
                             })
                             .then(response => {
-                                console.log("res", response)
+                                // console.log("res", response)
                                 return response.json()
                             })
                             .then(datan => {
                                 let statistics = datan.stat
                                 for(let i = 0; i < datan.checkedEvents.length; i++){
-                                    console.log(datan.checkedEvents[i].data)
+                                    // console.log(datan.checkedEvents[i].data)
                                     this.studentEvents[this.data.lastIndexOf(email)].push(datan.checkedEvents[i].data)
                                 }
-                                console.log(this.studentEvents)
+                                // console.log(this.studentEvents)
                                 let ctx = document.getElementById('chart' + email)
                                 let ctx2 = document.getElementById('chart2' + email)
                                 makeChart('doughnut', [statistics.service, statistics.programming, 0, 0,  statistics.engineering, 0], ctx)
@@ -791,10 +791,10 @@ export default {
                 }
             }
             else if(this.role == 'school-admin' || this.role == 'admin'){
-                console.log(this.students[teacherEmail])
+                // console.log(this.students[teacherEmail])
                 if(event.target.className != 'chartjs-render-monitor' && event.target.className != 'radio'){
                     for(let key in this.students[teacherEmail]){
-                        console.log(this.students[teacherEmail][key].email)
+                        // console.log(this.students[teacherEmail][key].email)
                         if(document.getElementById(this.students[teacherEmail][key].email + 'n').style.display == 'block' && this.students[teacherEmail][key].email != email){
                             document.getElementById(this.students[teacherEmail][key].email + 'n').style.display = 'none'
                             document.getElementById(this.students[teacherEmail][key].email).classList.remove('ar-show');
@@ -813,15 +813,15 @@ export default {
                                 headers: {studemail: email, adminemail: this.email, sessionid: this.SessionID},
                             })
                             .then(response => {
-                                console.log("res", response)
+                                // console.log("res", response)
                                 return response.json()
                             })
                             .then(datan => {
                                 let statistics = datan.stat
-                                console.log(datan)
+                                // console.log(datan)
                                 this.$set(this.studentEvents, email, datan.checkedEvents)
                                 //this.studentEvents[email].push(datan.checkedEvents)
-                                console.log(this.studentEvents)
+                                // console.log(this.studentEvents)
                                 let ctx = document.getElementById('chart' + email)
                                 let ctx2 = document.getElementById('chart2' + email)
                                 makeChart('doughnut', [statistics.service, statistics.programming, 0, 0,  statistics.engineering, 0], ctx)
@@ -947,7 +947,7 @@ export default {
                 headers: {email: email, sessionid: this.SessionID},
             })
             .then(response => {
-                console.log("res", response)
+                // console.log("res", response)
                 return response.json()
             })
             .then(data => {
@@ -964,7 +964,7 @@ export default {
                     headers: {email: this.email, sessionid: this.SessionID},
                 })
                 .then(response => {
-                    console.log("res", response)
+                    // console.log("res", response)
                     return response.json()
                 })
                 .then(data => {
@@ -972,7 +972,7 @@ export default {
                         people.push({person: data[i].name + ' ' + data[i].surname, email: data[i].email})
                     }
                     this.admins = people
-                    console.log(this.admins)
+                    // console.log(this.admins)
                 })
                 .catch(err => {
                     console.log(err)
@@ -1061,7 +1061,7 @@ export default {
                         },
                     })
                     .then(response => {
-                        console.log("res", response)
+                        // console.log("res", response)
                         return response.json()
                     })
                     .then((data) => {
@@ -1257,14 +1257,14 @@ export default {
                         },
                     })
                     .then(response => {
-                        console.log("res", response)
+                        // console.log("res", response)
                         return response.json()
                     })
                     .then((data) => {
                         if(data.res == 'OK'){
                             //alert('Файл успешно добавлен')
-                            console.log(this.schoolAdmins)
-                            console.log(type)
+                            // console.log(this.schoolAdmins)
+                            // console.log(type)
                             let str
                             if(type == 'student') str = 'students'
                             else if(type == 'teacher') str = 'teachers'
@@ -1298,7 +1298,7 @@ export default {
                 },
             })
             .then(response => {
-                console.log("res", response)
+                // console.log("res", response)
                 return response.json()
             })
             .then((data) => {
