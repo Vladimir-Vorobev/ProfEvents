@@ -96,7 +96,7 @@ export default {
           headers: {email: email, sessionid: SessionID},
         })
         .then(response => {
-            console.log("res", response)
+            // console.log("res", response)
             return response.json()
         })
         .then(data => {
