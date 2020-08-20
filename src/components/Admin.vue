@@ -6,10 +6,6 @@
                     <form class="formbox">
                         <h2>Войти</h2>
                         <div class="form-group row">
-                            <label for="exampleInputEmail1">Email адресс</label>
-                            <input name="email" class="form-control formInput" placeholder="example@gmail.com">
-                        </div>
-                        <div class="form-group row">
                             <label for="exampleInputPassword1">Пароль</label>
                             <input type="password" class="form-control formInput" name="password" placeholder="Пароль">
                         </div>
@@ -72,7 +68,7 @@
                                                 <div class="name row">
                                                     <div class="name_group col-10">{{ item.person }} </div>
                                                     <div class="col-1 ar-collapse" :id='item.email'></div>
-                                                    <div class="col-1" ><button class="btn btn-almbb-danger btn-almbb-small" @click="deletePerson(item.email, item.name, item.surname, 'student')"><i class="fas fa-trash-alt"></i></button></div>
+                                                    <div class="col-1" ><button class="btn btn-almbb-danger btn-almbb-small" @click="deletePerson(item.email, 'student')"><i class="fas fa-trash-alt"></i></button></div>
                                                 </div>
                                                 <div :id="item.email + 'n'" style="display: none;">
                                                     <div style="text-align: center;"><i class='fa fa-spinner fa-pulse fa-3x' :id='item.email + "x"' style="display: inline-block;"></i></div>
@@ -82,19 +78,19 @@
                                                         <!-- <input class="radio" :name="'full' + item.email" type="radio" value="full" @click="changeInfo(item.email, 'full')"> Полная статистика -->
                                                     
                                                         <div class="form-check col-12 col-md-4 radio">
-                                                            <input id="donaughtCheck" :name="'donaught' + item.email" type="radio" value="donaught" checked @click="changeInfo(item.email, 'donaught')">
+                                                            <input id="donaughtCheck" :name="'donaught' + item.email" class="radio" type="radio" value="donaught" checked @click="changeInfo(item.email, 'donaught')">
                                                             <label class="form-check-label" for="donaughtCheck">
                                                             Круговая диаграмма
                                                             </label>
                                                         </div>
                                                         <div class="form-check col-12 col-md-4 radio">
-                                                            <input id="barCheck" :name="'bar' + item.email" type="radio" value="bar" @click="changeInfo(item.email, 'bar')">
+                                                            <input id="barCheck" :name="'bar' + item.email" class="radio" type="radio" value="bar" @click="changeInfo(item.email, 'bar')">
                                                             <label class="form-check-label" for="barCheck">
                                                                 Столбчатая диаграмма
                                                             </label>
                                                         </div>
                                                         <div class="form-check col-12 col-md-4 radio">
-                                                            <input id="fullCheck" :name="'full' + item.email" type="radio" value="full" @click="changeInfo(item.email, 'full')">
+                                                            <input id="fullCheck" :name="'full' + item.email" class="radio" type="radio" value="full" @click="changeInfo(item.email, 'full')">
                                                             <label class="form-check-label" for="fullCheck">
                                                                 Полная статистика
                                                             </label>
@@ -110,7 +106,7 @@
                                                             <div class="card-body">
                                                                 <div class="row">
                                                                     <h5 class="card-title col-11">{{item3.name}}</h5>
-                                                                    <h5><button class="btn btn-almbb-danger btn-almbb-small" @click="deletePerson(item.email, item.name, item.surname, 'student')"> <i class="fas fa-trash-alt"></i> </button></h5>
+                                                                    <h5><button class="btn btn-almbb-danger btn-almbb-small" @click="deletePerson(item.email, 'student')"> <i class="fas fa-trash-alt"></i> </button></h5>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -246,7 +242,7 @@
                                                 <div class="name row">
                                                     <div class="name_group col-10">{{ item.person }}</div>
                                                     <div class="col-1 ar-collapse" :id='item.email'></div>
-                                                    <div class="col-1" ><button class="btn btn-almbb-danger btn-almbb-small" @click="deletePerson(item.email, item.name, item.surname, 'teacher')"> <i class="fas fa-trash-alt"></i> </button></div>
+                                                    <div class="col-1" ><button class="btn btn-almbb-danger btn-almbb-small" @click="deletePerson(item.email, 'teacher')"> <i class="fas fa-trash-alt"></i> </button></div>
                                                 </div>
                                                 <div :id='item.email + "s"' style="display: none;">
                                                     <div v-for="item2 in students[item.email]" :key="item2.student" :class="item2.email">
@@ -267,11 +263,11 @@
                                                                     <div class="chart-container" :id="'chartDiv2' + item2.email" style="display: none;"><canvas :id="'chart2' + item2.email"></canvas></div>
                                                                     <div :id="'chartDiv3' + item2.email" style="display: none;">
                                                                         <div v-if="studentEvents[item2.email] != undefined && studentEvents[item2.email].length == 0"><h3>Нет мероприятий</h3></div>
-                                                                        <div class="card" v-for="item3 in studentEvents[item2.email]" :key="item3.value">
-                                                                            <div class="card-header">{{item3.date}}</div>
+                                                                        <div class="card" v-for="item3 in studentEvents[item2.email]" :key="item3">
+                                                                            <div class="card-header">{{item3.data.date}}</div>
                                                                             <div class="card-body">
                                                                                 <div class="row">
-                                                                                    <h5 class="card-title col-11">{{item3.name}}</h5>
+                                                                                    <h5 class="card-title col-11">{{item3.data.name}}</h5>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -414,10 +410,10 @@
                                                                         <div :id="'chartDiv3' + item2.email" style="display: none;">
                                                                             <div v-if="studentEvents[item2.email] != undefined && studentEvents[item2.email].length == 0"><h3>Нет мероприятий</h3></div>
                                                                             <div class="card" v-for="item3 in studentEvents[item2.email]" :key="item3.value">
-                                                                                <div class="card-header">{{item3.date}}</div>
+                                                                                <div class="card-header">{{item3.data.date}}</div>
                                                                                 <div class="card-body">
                                                                                     <div class="row">
-                                                                                        <h5 class="card-title col-11">{{item3.name}}</h5>
+                                                                                        <h5 class="card-title col-11">{{item3.data.name}}</h5>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -437,7 +433,7 @@
                                                 <div class="person_box">
                                                     <div class="name row">
                                                         <div class="name_group col-11">{{ item.person }}</div>
-                                                        <div class="col-1" ><button class="btn btn-almbb-danger btn-almbb-small" @click="deletePerson(item.email, item.name, item.surname, 'school-admin')"><i class="fas fa-trash-alt"></i></button></div>
+                                                        <div class="col-1" ><button class="btn btn-almbb-danger btn-almbb-small" @click="deletePerson(item.email, 'school-admin')"><i class="fas fa-trash-alt"></i></button></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -487,7 +483,7 @@
                                                 <div class="person_box">
                                                     <div class="name row">
                                                         <div class="name_group col-11">{{ item.person }}</div>
-                                                        <div class="col-1" ><button class="btn btn-almbb-danger btn-almbb-small" @click="deletePerson(item.email, item.name, item.surname, 'admin')"><i class="fas fa-trash-alt"></i></button></div>
+                                                        <div class="col-1" ><button class="btn btn-almbb-danger btn-almbb-small" @click="deletePerson(item.email, 'admin')"><i class="fas fa-trash-alt"></i></button></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -521,7 +517,6 @@
 </template>
 
 <script>
-import needle from 'needle'
 import readXlsxFile from 'read-excel-file'
 import Chart from 'chart.js'
 import Footer from './footer.vue'
@@ -565,7 +560,7 @@ export default {
         loginUser(){
             event.preventDefault()
             let form = document.forms[0]
-            let email = form.elements.email.value
+            let email = this.$store.getters.email
             let password = form.elements.password.value
             let crypto = require('crypto')
             fetch(this.$store.state.serverIp+'/api/adminLogin', {
@@ -751,7 +746,7 @@ export default {
             }
             else if(this.role == 'teacher'){
                 console.log(event.target.className)
-                if(event.target.className != 'chartjs-render-monitor' && event.target.className != 'radio'){
+                if(event.target.className != 'chartjs-render-monitor' && event.target.classList.contains('radio') == false && event.target.classList.contains('btn-almbb-small') == false){
                     for(let i = 0; i < this.students.length; i++){
                         if(document.getElementById(this.students[i].email + 'n').style.display == 'block' && this.students[i].email != email){
                             document.getElementById(this.students[i].email + 'n').style.display = 'none'
@@ -1038,37 +1033,50 @@ export default {
                 }
                 else this.$swal('Файл не выбран');   //alert('Файл не выбран')
             }
+            let students = this.students
+            let teachers = this.teachers
+            let schoolAdmins = this.schoolAdmins
+            let admins = this.admins
             function send(data, email, url){
-                needle.post('http://78.155.219.12:3000/api/' + url, {data: data, email: email, type: 'update', doptype: type, sessionid: SessionID}, {"json": true}, function(err, res){
-                    if(err) throw err
-                    if(res.body == 'OK'){
-                        //alert('Файл успешно добавлен')
-                        Vue.swal({
-                            icon: 'success',
-                            text: 'Файл успешно добавлен'
-                        });
-                    }
-                    else if(res.body == 'User undefined'){
-                        //alert(res.body)
-                        Vue.swal('Пользователь с данной почтой не зарегистрирован');
-                    }
-                })
-                fetch('http://78.155.219.12:3000/api/' + url, {
-                    method: 'POST',
-                    body: JSON.stringify({data: data, email: email, type: 'update', doptype: type, sessionid: SessionID}),
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                })
-                .then(response => {
-                    console.log("res", response)
-                    return response.json()
+                // needle.post('http://78.155.219.12:3000/api/' + url, {data: data, email: email, type: 'update', doptype: type, sessionid: SessionID}, {"json": true}, function(err, res){
+                //     if(err) throw err
+                //     if(res.body == 'OK'){
+                //         //alert('Файл успешно добавлен')
+                //         Vue.swal({
+                //             icon: 'success',
+                //             text: 'Файл успешно добавлен'
+                //         });
+                //     }
+                //     else if(res.body == 'User undefined'){
+                //         //alert(res.body)
+                //         Vue.swal('Пользователь с данной почтой не зарегистрирован');
+                //     }
+                // })
+                new Promise(function(resolve) {
+                    fetch('http://78.155.219.12:3000/api/' + url, {
+                        method: 'POST',
+                        body: JSON.stringify({data: data, email: email, type: 'update', doptype: type, sessionid: SessionID}),
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                    })
+                    .then(response => {
+                        console.log("res", response)
+                        return response.json()
+                    })
+                    .then((data) => {
+                        resolve(data.res)
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
                 })
                 .then((data) => {
                     if(data == 'OK'){
-                        if(this.role == 'teacher') this.students.push({person: form['name'].value + ' ' + form['surname'].value, email: form['email'].value})
-                        else if(this.role == 'school-admin') this.teachers.push({person: form['name'].value + ' ' + form['surname'].value, email: form['email'].value})
-                        else if(this.role == 'admin') this.admins.push({person: form['name'].value + ' ' + form['surname'].value, email: form['email'].value})
+                        if(type == 'student') students.push({person: form['name'].value + ' ' + form['surname'].value, email: form['email'].value})
+                        else if(type == 'teacher') teachers.push({person: form['name'].value + ' ' + form['surname'].value, email: form['email'].value})
+                        else if(type == 'school-admin') schoolAdmins.push({person: form['name'].value + ' ' + form['surname'].value, email: form['email'].value})
+                        else if(type == 'admin') admins.push({person: form['name'].value + ' ' + form['surname'].value, email: form['email'].value})
                         Vue.swal({
                             icon: 'success',
                             text: 'Файл успешно добавлен'
@@ -1078,9 +1086,6 @@ export default {
                         //alert(res.body)
                         Vue.swal('Пользователь с данной почтой не зарегистрирован');
                     }
-                })
-                .catch(err => {
-                    console.log(err)
                 })
             }
         },
@@ -1215,12 +1220,10 @@ export default {
                 this.ShowAddOne = true
             }
         },
-        deletePerson(email, name, surname, type){
+        deletePerson(email, type){
             event.preventDefault()
             let data = {
                 email: email,
-                name: name,
-                surname: surname,
             }
             this.$swal({
                 icon: 'warning',
@@ -1232,20 +1235,56 @@ export default {
                 cancelButtonText: 'Отмена'
             }).then((result) => {
                  if (result.value) {
-                     needle.post(this.$store.state.serverIp+'/api/uploadOne', {data: data, email: this.email, type: 'delete', dopType: type, sessionid: this.SessionID}, {"json": true}, function(err, res){
-                        if(err) throw err
-                        if(res.body == 'OK'){
+                    //  needle.post(this.$store.state.serverIp+'/api/uploadOne', {data: data, email: this.email, type: 'delete', dopType: type, sessionid: this.SessionID}, {"json": true}, function(err, res){
+                    //     if(err) throw err
+                    //     if(res.body == 'OK'){
+                    //         //alert('Файл успешно добавлен')
+                    //         Vue.swal({
+                    //             icon: 'success',
+                    //             text: 'Админ успешно удален'
+                    //         });
+                    //     }
+                    //     else{
+                    //         //alert(res.body)
+                    //         Vue.swal(res.body);
+                    //     }
+                    // })
+                    fetch(this.$store.state.serverIp+'/api/uploadOne', {
+                        method: 'POST',
+                        body: JSON.stringify({data: data, email: this.email, type: 'delete', dopType: type, sessionid: this.SessionID}),
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                    })
+                    .then(response => {
+                        console.log("res", response)
+                        return response.json()
+                    })
+                    .then((data) => {
+                        if(data.res == 'OK'){
                             //alert('Файл успешно добавлен')
+                            console.log(this.schoolAdmins)
+                            console.log(type)
+                            let str
+                            if(type == 'student') str = 'students'
+                            else if(type == 'teacher') str = 'teachers'
+                            else if(type == 'school-admin') str = 'schoolAdmins'
+                            else if(type == 'admin') str = 'admins'
+                            for(let i = 0; i < this[str].length; i++){
+                                if(this[str][i].email == email) this[str].splice(i, 1)
+                            }
                             Vue.swal({
                                 icon: 'success',
                                 text: 'Админ успешно удален'
                             });
-                            window.location.reload
                         }
                         else{
                             //alert(res.body)
-                            Vue.swal(res.body);
+                            Vue.swal(data.res);
                         }
+                    })
+                    .catch(err => {
+                        console.log(err)
                     })
                 }
             })
