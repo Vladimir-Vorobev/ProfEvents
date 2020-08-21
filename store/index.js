@@ -4,7 +4,8 @@ export const APP_STORE = {
 		allEventsScroll: 0,
 		openDaysScroll: 0,
 		SessionID: 0,
-		serverIp: 'http://78.155.219.12:3000',
+		// serverIp: 'http://78.155.219.12:3000', //old
+		serverIp: 'http://82.148.18.9:3000'
 		socketIp: 'http://78.155.219.12:3001',
 	},
 	mutations: {
