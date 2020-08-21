@@ -11,7 +11,7 @@
                 </div>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent" @click="animate_navbar()">
-                <ul class="navbar-nav mr-auto" v-if="email != ''">
+                <ul class="navbar-nav mr-auto" v-if="showHeaderContent">
                     <li class="nav-item">
                         <router-link to="/events" class="router-link">
                             <a class="nav-link" ref="allEvents" style="color: #000 !important">Все мероприятия</a>
@@ -85,7 +85,7 @@ export default {
             loginText: 'Войти',
             userId: 0,
             role: '',
-            email: this.$store.getters.email,
+            showHeaderContent: false,
         }
     },
     beforeMount(){
@@ -113,6 +113,7 @@ export default {
             this.role = data.role
             document.querySelector('.login').style.display = 'none'
             document.querySelector('.person_menu').style.display = 'block'
+            this.showHeaderContent = true
         })
         .catch(err => {
             console.log(err)
