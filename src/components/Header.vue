@@ -11,7 +11,7 @@
                 </div>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent" @click="animate_navbar()">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav mr-auto" v-if="email != ''">
                     <li class="nav-item">
                         <router-link to="/events" class="router-link">
                             <a class="nav-link" ref="allEvents" style="color: #000 !important">Все мероприятия</a>
@@ -45,7 +45,7 @@
                         </div>
                     </li>
                 </ul>
-                <router-link to='/login' class="router-link login" style="display:block">
+                <router-link to='/login' class="router-link login ml-auto" style="display:block;">
                     <a type="button" class="btn btn-rounded-blue btn-lg" ref="login">{{loginText}}</a>
                 </router-link>
                 <div class="dropdown person_menu" style="display:none">
@@ -85,6 +85,7 @@ export default {
             loginText: 'Войти',
             userId: 0,
             role: '',
+            email: this.$store.getters.email,
         }
     },
     beforeMount(){
