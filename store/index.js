@@ -4,8 +4,8 @@ export const APP_STORE = {
 		allEventsScroll: 0,
 		openDaysScroll: 0,
 		SessionID: 0,
-		serverIp: 'http://82.148.18.9:3000',
-		socketIp: 'http://82.148.18.9:3001',
+		serverIp: 'https://makual.ru',
+		socketIp: 'https://makual.ru',
 	},
 	mutations: {
 		GET_USER_EMAIL(state, value) {
