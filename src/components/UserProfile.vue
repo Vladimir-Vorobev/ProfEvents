@@ -290,7 +290,7 @@ export default {
             })
             .then(datan => {
                 // console.log(datan)
-                let statistics = datan.confStat
+                let statistics = datan.stat
                 // console.log(statistics)
                 this.$set(this.studentEvents, this.person_email, datan.checkedEvents)
                 // console.log(this.studentEvents)
