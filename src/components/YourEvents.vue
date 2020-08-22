@@ -21,7 +21,7 @@
                         <div class="col-12 col-md-6">
                             <a :href="item.data.link" class="btn btn-blue">Перейти к мероприятию</a>
                         </div>
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-6" v-if="role != 'user'">
                             <button class="btn btn-blue" @click="moderate(item.data)">Отправить на модерацию</button>
                         </div>
                     </div>
@@ -47,6 +47,7 @@ export default {
             email: this.$store.getters.email,
             SessionID: this.$store.getters.SessionID,
             files: [],
+            role: '',
         }
     },
      beforeMount(){
@@ -66,6 +67,25 @@ export default {
             }
             // console.log(data)
             this.data = data.checkedEvents
+        })
+        .catch(err => {
+            console.log(err)
+        })
+        fetch(this.$store.state.serverIp+'/api/getInformation', {
+          method: 'POST',
+          headers: {email: this.email, sessionid: this.SessionID},
+        })
+        .then(response => {
+            // console.log("res", response)
+            return response.json()
+        })
+        .then(data => {
+            if(data == '310'){
+              document.cookie = "email=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
+              document.cookie = "SessionID=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
+              window.location.reload()
+            }
+            this.role = data.role
         })
         .catch(err => {
             console.log(err)

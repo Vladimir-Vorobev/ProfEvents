@@ -40,13 +40,13 @@
                     </div>
                     <div class="col-3 col-lg-1"><a class="btn btn-almbb-small btn-red-orange" style="border-radius: 50%; color: white" @click="showChoseModal()"><i class="fas fa-plus"></i></a></div>
                 </div>
-                <hr>
+                <!-- <hr>
                 <div class="row">
                     <div class="col-12 col-md-10" style="padding-right: 0px">
                         <input type="text" class="form-control" style="border-radius: 50px;">
                     </div>
                     <div class="col-12 col-md-2" style="padding: 0px"><button class="btn btn-blue btn-almbb-small">Найти</button></div>
-                </div>
+                </div> -->
             </div>
 
 

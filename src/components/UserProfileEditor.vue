@@ -110,12 +110,12 @@
                 </div>
                 <div class="form-group row">
                 <div class="col-12"> 
-                    <input type="password" class="form-control pass" name="password" placeholder="Новый пароль">
+                    <input type="password" class="form-control newPassword" name="newPassword" placeholder="Новый пароль">
                 </div>
                 </div>
                 <div class="form-group row">
                 <div class="col-12"> 
-                    <input name="password2" class="form-control returnpass" placeholder="Повторите пароль">
+                    <input name="returnNewPassword" class="form-control returnNewPassword" placeholder="Повторите пароль">
                 </div>
                 </div>
                 <div class="form-group"> 
@@ -203,8 +203,8 @@ export default {
             let surname = form.elements.surname.value
             let email = form.elements.email.value.replace(/\s/g, '')
             let age = form.elements.age.value
-            let password = form.elements.password.value
-            let password2 = form.elements.password2.value
+            let password = form.elements.newPassword.value
+            let password2 = form.elements.returnNewPassword.value
             let city = form.elements.city.value
             let school = form.elements.school.value
             let schoolType = form.elements.schoolType.value
@@ -251,7 +251,7 @@ export default {
                 if(schoolType.trim() != '' && schoolType != "Тип учебного заведения") dataq.schoolType = schoolType
                 if(class_number.trim() != '') dataq.class_number = class_number
                 if(simvol.trim() != '') dataq.simvol = simvol
-                if(userid.trim() != '') dataq.userId = userid
+                if(userid.trim() != '' && userid != this.userId) dataq.userId = userid
                 if(file != undefined){
                     let data = []
                     let len = 1
@@ -321,7 +321,17 @@ export default {
                             this.showInfo()
                         })
                     }
-                    else this.showInfo()
+                    else{
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Данные успешно измененны!',
+                            showConfirmButton: false,
+                            timer: 2000,
+                            timerProgressBar: true
+                        }).then(() =>{
+                            this.showInfo()
+                        })
+                    }
                     
                 })
                 .catch(function(err) {
