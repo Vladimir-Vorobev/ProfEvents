@@ -81,8 +81,6 @@ export default {
         })
         .then(data => {
             if(data == '310'){
-              console.log('ye ' + email + ' ' + SessionID)
-            //   alert('header ' + email + ' ' + SessionID)
               document.cookie = "email=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
               document.cookie = "SessionID=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT"
               window.location.reload()
