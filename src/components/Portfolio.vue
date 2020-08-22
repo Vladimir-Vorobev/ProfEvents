@@ -64,6 +64,7 @@ export default {
         let rec = false
         let socket = require('socket.io-client')(this.$store.state.socketIp)
         socket.on('connect', () => {
+            socket.emit('new_user', this.email)
             if(rec){
                 socket.emit('recon', this.email)
             }
@@ -71,7 +72,6 @@ export default {
         socket.on('disconnect', () => {
             rec = true
         })
-        socket.emit('new_user', this.email)
         let numOfUploadedFiles = 0
         socket.on('send_image', (data) => {
             this.photo.push({contentType: data.type, data: data.file, id: data.id})
