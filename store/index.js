@@ -5,7 +5,7 @@ export const APP_STORE = {
 		openDaysScroll: 0,
 		SessionID: 0,
 		serverIp: 'https://makual.ru',
-		socketIp: 'https://makual.ru/sockets',
+		socketIp: 'https://makual.ru',
 	},
 	mutations: {
 		GET_USER_EMAIL(state, value) {
