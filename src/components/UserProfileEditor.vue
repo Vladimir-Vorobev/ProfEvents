@@ -251,7 +251,7 @@ export default {
                 if(schoolType.trim() != '' && schoolType != "Тип учебного заведения") dataq.schoolType = schoolType
                 if(class_number.trim() != '') dataq.class_number = class_number
                 if(simvol.trim() != '') dataq.simvol = simvol
-                if(userid.trim() != '') dataq.userId = userid
+                if(userid.trim() != '' && userid != this.userId) dataq.userId = userid
                 if(file != undefined){
                     let data = []
                     let len = 1
