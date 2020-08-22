@@ -321,7 +321,17 @@ export default {
                             this.showInfo()
                         })
                     }
-                    else this.showInfo()
+                    else{
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Данные успешно измененны!',
+                            showConfirmButton: false,
+                            timer: 2000,
+                            timerProgressBar: true
+                        }).then(() =>{
+                            this.showInfo()
+                        })
+                    }
                     
                 })
                 .catch(function(err) {
