@@ -53,14 +53,14 @@
   ],
   "description": "## Project setup ``` npm install ```",
   "main": "babel.config.js",
-  "author": "",
+  "author": "DARK_LED",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Vladimir-Vorobev/lit-vue-dev.git"
+    "url": "git+https://github.com/Vladimir-VorobevProfEvents.git"
   },
   "bugs": {
-    "url": "https://github.com/Vladimir-Vorobev/lit-vue-dev/issues"
+    "url": "https://github.com/Vladimir-Vorobev/ProfEvents/issues"
   },
-  "homepage": "https://github.com/Vladimir-Vorobev/lit-vue-dev#readme"
+  "homepage": "https://github.com/Vladimir-Vorobev/ProfEvents#readme"
 }
