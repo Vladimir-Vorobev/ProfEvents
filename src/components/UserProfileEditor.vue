@@ -115,7 +115,7 @@
                 </div>
                 <div class="form-group row">
                 <div class="col-12"> 
-                    <input name="returnNewPassword" class="form-control returnNewPassword" placeholder="Повторите пароль">
+                    <input type="password" name="returnNewPassword" class="form-control returnNewPassword" placeholder="Повторите пароль">
                 </div>
                 </div>
                 <div class="form-group"> 
