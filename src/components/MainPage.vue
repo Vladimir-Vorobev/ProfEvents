@@ -1,11 +1,6 @@
 <template>
     <div class="main">
-        <div class="container warp">
-            <!-- <div class="name">ProfEvents</div>
-            <div class="row">
-                <p class="texta col-12 col-md-6"> <span style="font-weight: bold; color: #d61451">ProfEvents</span> - проект, помогающий в поиске профориентационных мероприятий. На этом сайте Вы сможете искать, фильтровать и участвовать в профориентационных мероприятиях из различных сфер: программирование, инженеерия, медицина и многое другое. Если Вы еще сомневаетесь, какое мероприятие Вам подходит, пройдите наш тест на профориентацию и почитайте подобранную литературу, и мы поможем с выбором. Вы никогда не пропустите нужное Вам мероприятие, ведь мы напомним Вам о нем за час. Чтобы не было скучно одному, делитесь своей статистикой посещения с друзьями, создав уникальный код, тогда всегда можно вспомнить, какие мероприятия Вы посетили. Если Вы директор школы или учитель, мы представим Вам статистику Ваших учеников. Кроме того, у нас Вы можете найти информацию о днях открытых дверей в различных учебных заведениях и посмотреть информацию о ведущих ВУЗах.</p>
-                <div class="photo col-12 col-md-6"><img src="./../assets/for_main.jpg" alt="">ProfEvents - сделай шаг на встречу профессиональному будущему</div>
-            </div> -->
+        <!-- <div class="container warp">
             <div class="name">ProfEvents</div>
             <div class="description">
                 <div>Поисковый сервис профориентационных мероприятий</div> <br>
@@ -41,6 +36,66 @@
                 <p>Делиться фотографиями с мероприятий</p>
                 <p>Регистрация на мероприятия</p>
             </div>
+        </div> -->
+        <div class="warp">
+            <div class="block1">
+                <div class="row" style="max-width: 100%;">
+                    <div class="col-12 col-lg-5" style="vertical-align: center; text-align: left; padding-left: 3em;">
+                        <div style="font-weight: bolder; font-size: 2.3em; color: black; margin-top: 1.5em">Поисковый сервис профориентационных мероприятий</div>
+                        <div style="font-size: 1em; color: black; margin-top: 1em">Здесь вы сможете найти самые интересные и бесплатные профориентационные мероприятия</div>
+                    </div>
+                    <div class="col-12 col-lg-7" style="padding-right: 0em;">
+                        <img style="margin-right: -15px;" class="ml-auto" src="mainPic.png">
+                    </div>
+                </div>
+            </div>
+            <div class="block2">
+                <div class="row br2" style="max-width: 100%;">
+                    <div class="col-12 col-lg-4">
+                        <div class="check-circle"><i class="far fa-check-circle"></i></div>
+                        <p class="circle_des">Возможность приглашать пользователей</p>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <div class="check-circle"><i class="far fa-check-circle"></i></div>
+                        <p class="circle_des">Делиться фотографиями с мероприятий</p>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <div class="check-circle"><i class="far fa-check-circle"></i></div>
+                        <p class="circle_des">Регистрация на мероприятия</p>
+                    </div>
+                </div>
+            </div>
+            <div class="block3">
+                <div class="row br3" style="max-width: 100%;">
+                    <div class="col-12 col-lg-4">
+                        <div><img src="for_user.png"></div>
+                        <div class="for_block">Для обучающихся</div>
+                        <ul class="for_ul">
+                            <li><span>Профориентационный тест, помогающий выбрать нужные мероприятия</span></li>
+                            <li><span>Поиск профориентационных мероприятий по критериям</span></li>
+                            <li><span>Формирование портфолио</span></li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <div><img src="for_teachers.png"></div>
+                        <div class="for_block">Для учителей</div>
+                        <ul class="for_ul">
+                            <li><span>Подбор актуальных мероприятий</span></li>
+                            <li><span>Учет посещения мероприятий по классам</span></li>
+                            <li><span>Учет посещения ДО и Внеурочной деятельности* (дополнительная функция)</span></li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <div><img src="for_administrations.png"></div>
+                        <div class="for_block">Для администрации</div>
+                        <ul class="for_ul">
+                            <li><span>Статистика посещений профориентационных</span></li>
+                            <li><span>мероприятий школьниками</span></li>
+                            <li><span>Доступ к полной статистике по школе посещения ДО и внеурочной деятельности* (дополнительная функция)</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="footer"><Footer></Footer></div> 
     </div>
@@ -59,7 +114,7 @@ export default {
     flex: 1 0 auto;
     padding-top: 110px !important;
     background-color: #fff;
-    padding: 0px 30px;
+    padding: 0px;
 }
 .footer{
     flex: 0 0 auto;
@@ -96,5 +151,58 @@ export default {
   object-fit: cover;
   width: 100%;
   height: 100%;
+}
+
+.block1{
+    font-family: 'PT Mono', monospace;
+    min-height: 500px;
+    padding: 0px;
+}
+.block1 img{
+    display: block;
+    max-width: 100%;
+}
+.block2{
+    font-family: 'PT Mono', monospace;
+    min-height: 535px;
+    background-color: #efefef;
+}
+.block3{
+    font-family: 'PT Mono', monospace;
+    min-height: 535px;
+}
+.check-circle{
+    font-size: 8em;
+    color: rgb(32, 32, 32);
+}
+.br2{
+    padding: 7%;
+}
+.br3{
+    padding: 7%;
+}
+.circle_des{
+    font-size: bold;
+}
+.for_block{
+    margin-top: 0.5em;
+    padding: 12px;
+    border-radius: 50px;
+    background-color: #c60000;
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.for_ul{
+    margin-top: 0.4em;
+    font-size: 0.7em;
+}
+.for_ul li{
+    color: #c60000;
+    font-size: 1.5em;
+}
+.for_ul li span{
+    color: black;
+    font-size: 0.8em;
 }
 </style>
