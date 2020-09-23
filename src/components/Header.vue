@@ -1,5 +1,5 @@
 <template>
-        <nav class="navbar navbar-expand-lg navbar-light  fixed-top navStyle">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top navStyle">
             <router-link to="/" class="router-link">
                 <a class="navbar-brand logo" ref="home" style="color: #000000"><span style="color: #c60000">prof</span>events<span style="color: #c60000; letter-spacing: -8px;">___</span></a>
             </router-link>

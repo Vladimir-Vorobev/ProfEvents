@@ -1,47 +1,10 @@
 <template>
     <div class="main">
-        <!-- <div class="container warp">
-            <div class="name">ProfEvents</div>
-            <div class="description">
-                <div>Поисковый сервис профориентационных мероприятий</div> <br>
-                <div>Здесь вы сможете найти самые интересные и бесплатные профориентационные мероприятия.</div>
-            </div>
-            <div class="row for_who" >
-                <div class="col-12 col-lg-4">
-                    <h4 style="border-bottom: 1px solid black">Для обучающихся</h4> 
-                    <ul class="list">
-                        <li>Профориентационный тест, помогающий выбрать нужные мероприятия</li>
-                        <li>Поиск профориентационных мероприятий по критериям</li>
-                        <li>Формирование портфолио</li>
-                    </ul>
-                </div>
-                <div class="col-12 col-lg-4">
-                    <h4 style="border-bottom: 1px solid black">Для учителей</h4> 
-                    <ul class="list">
-                        <li>Подбор актуальных мероприятий</li>
-                        <li>Учет посещения мероприятий по классам</li>
-                        <li>Учет посещения ДО и Внеурочной деятельности* <small>(дополнительная функция)</small></li>
-                    </ul>
-                </div>
-                <div class="col-12 col-lg-4">
-                    <h4 style="border-bottom: 1px solid black">Для администрации</h4> 
-                    <ul class="list">
-                        <li>Статистика посещений профориентационных мероприятий школьниками</li>
-                        <li>Доступ к полной статистике по школе посещения ДО и внеурочной деятельности* <small>(дополнительная функция)</small></li>
-                    </ul>
-                </div>
-            </div> <hr>
-            <div>
-                <p>Возможность приглашать пользователей на профориентационные мероприятия</p> 
-                <p>Делиться фотографиями с мероприятий</p>
-                <p>Регистрация на мероприятия</p>
-            </div>
-        </div> -->
         <div class="warp">
-            <div class="block1">
+            <div class="block1" style="max-width: 100%;">
                 <div class="row" style="max-width: 100%;">
                     <div class="col-12 col-lg-5" style="vertical-align: center; text-align: left; padding-left: 3em;">
-                        <div style="font-weight: bolder; font-size: 2.3em; color: black; margin-top: 1.5em">Поисковый сервис профориентационных мероприятий</div>
+                        <div class="textheader">Поисковый сервис профориентационных мероприятий</div>
                         <div style="font-size: 1em; color: black; margin-top: 1em">Здесь вы сможете найти самые интересные и бесплатные профориентационные мероприятия</div>
                     </div>
                     <div class="col-12 col-lg-7" style="padding-right: 0em;">
@@ -50,7 +13,7 @@
                 </div>
             </div>
             <div class="block2">
-                <div class="row br2" style="max-width: 100%;">
+                <div class="row br2" style="max-width: 100%; margin-left: 0px;">
                     <div class="col-12 col-lg-4">
                         <div class="check-circle"><i class="far fa-check-circle"></i></div>
                         <p class="circle_des">Возможность приглашать пользователей</p>
@@ -66,7 +29,7 @@
                 </div>
             </div>
             <div class="block3">
-                <div class="row br3" style="max-width: 100%;">
+                <div class="row br3" style="max-width: 100%; margin-left: 0px;">
                     <div class="col-12 col-lg-4">
                         <div><img src="for_user.png"></div>
                         <div class="for_block">Для обучающихся</div>
@@ -204,5 +167,21 @@ export default {
 .for_ul li span{
     color: black;
     font-size: 0.8em;
+}
+.textheader{
+    font-weight: bolder; 
+    font-size: 2.3em; 
+    color: black; 
+}
+@media (max-width: 767px) { 
+    .textheader{
+        font-size: 1.4em; 
+    }
+}
+@media (min-width: 768px) { 
+    .textheader{
+        font-size: 2.3em; 
+        margin-top: 1.5em
+    }
 }
 </style>
