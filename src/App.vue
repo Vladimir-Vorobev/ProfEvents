@@ -3,7 +3,7 @@
     <page-header></page-header>
     <router-view></router-view>
     <CookieNotify></CookieNotify>
-    <div style="display:none;" class="btn-scrollup-gradient-aqua scrollup"></div>
+    <div style="display:none;" class="btn-scrollup-red-orange scrollup"></div>
   </div>
 </template>
 

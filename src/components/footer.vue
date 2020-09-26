@@ -8,10 +8,17 @@
                 </router-link>
             </div>
             <div class="col-12 col-lg-4 lb2">
-                <a href="#" class="link_Led">Разработано DARK_LED</a>
+                <a href="#" class="links">Разработано DARK_LED</a>
             </div>
-            <div class="col-12 col-lg-4 lb3">
+            <div class="col-12 col-lg-2 lb3">
                 <a href="#" class="links" @click="findBug()">Нашли ошибку?</a>
+            </div>
+            <div class="col-12 col-lg-2 lb3">
+                <div class="icons">
+                    <div class="icon"><a href="#"><i class="fab fa-instagram"></i></a></div>
+                    <div class="icon"><a href="#"><i class="fab fa-vk"></i></a></div>
+                    <div class="icon"><a href="#"><i class="fab fa-facebook"></i></a></div>
+                </div>
             </div>
         </div>
     </footer>
@@ -64,20 +71,17 @@ export default {
 
 <style scoped>
 footer {
-    background-color: #f8f9fa;
+    background-color: #efefef;
 }
 .links{
-    color: #6C757D;
+    color: black;
     cursor: pointer;
     text-decoration: none;
+    font-family: 'PT Mono', monospace;
+    font-weight: bold;
 }
 .links:hover{
     color: #EF5B65;
-    text-decoration: none;
-}
-.link_Led{
-    color: black;
-    cursor: pointer;
     text-decoration: none;
 }
 .link_Led:hover{
@@ -111,5 +115,19 @@ footer {
         .lb3{
             text-align: center !important;
         }
+}
+.icons{
+    display: table;
+    width: 100%;
+}
+.icon{
+    display: table-cell;
+}
+.icon a{
+    text-decoration: none;
+    color: #c60000;
+}
+.icon a:hover{
+    color: #e90000;
 }
 </style>

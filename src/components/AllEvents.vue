@@ -1,35 +1,6 @@
 <template>
     <div class="main">
         <div class="container warp">
-            <!-- <div class="card">
-                <div class="card-body row">
-                    <div class="col-md-5 col-12"> <p class="card-text" style="font-weight: bold; font-size: 1.3em">Сортировка мероприятий: </p> </div> 
-                    <div class="col-md-7 col-12" v-if="this.$route.path == '/it-events'"> 
-                        <select class="custom-select custom-select-sm mb-3 events" onchange="location.href=this.value">
-                            <option value="/it-events" selected>IT</option>
-                            <option value="/engineering-events">Инженерия</option>
-                            <option value="/service-events">Сфера услуг</option>
-                        </select>
-                    </div>
-                    <div class="col-md-7 col-12" v-else-if="this.$route.path == '/service-events'"> 
-                        <select class="custom-select custom-select-sm mb-3 events" onchange="location.href=this.value">
-                            <option value="/it-events">IT</option>
-                            <option value="/engineering-events">Инженерия</option>
-                            <option value="/service-events" selected>Сфера услуг</option>
-                        </select>
-                    </div>
-                    <div class="col-md-7 col-12" v-else> 
-                        <select class="custom-select custom-select-sm mb-3 events" onchange="location.href=this.value">
-                            <option value="/it-events">IT</option>
-                            <option value="/engineering-events" selected>Инженерия</option>
-                            <option value="/service-events">Сфера услуг</option>
-                        </select>
-                    </div>
-                </div>
-            </div> -->
-
-
-            
             <div class="ChosenClassList">
                 <div class="row align-items-end">
                     <div class="col-12 col-lg-3" style="font-weight: bold; font-size: 1.3em; margin-top: 0.5em">Направления: </div>

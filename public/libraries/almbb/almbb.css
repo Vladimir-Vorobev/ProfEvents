@@ -881,7 +881,6 @@
   border-radius: 50%;
   position: fixed;
   color: #fff;
-  bottom: 45px;
   padding: 7px 10px;
   cursor: pointer;
   text-align: center;
@@ -985,7 +984,8 @@
   .btn-scrollup-unique,
   .btn-scrollup-unique-dark,
   .btn-scrollup-warning-dark {
-    right: 15px
+    right: 15px;
+    bottom: 45px
   }
   .btn-scrollup-almbb-danger:after,
   .btn-scrollup-almbb-info:after,
@@ -1047,7 +1047,8 @@
   .btn-scrollup-unique,
   .btn-scrollup-unique-dark,
   .btn-scrollup-warning-dark {
-    right: 160px
+    right: 90px;
+    bottom: 80px
   }
 }
 .btn-scrollup-almbb-danger:after,
