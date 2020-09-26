@@ -37,6 +37,10 @@
                         <span class="badge badge-pill badge-primary" id="programmingbadge" style="display: none; margin-right: 0.5em">IT <a class="deleteDirection" @click="delActive('programming')">&times;</a></span>
                         <span class="badge badge-pill badge-primary" id="engineeringbadge" style="display: none; margin-right: 0.5em">Инженерия <a class="deleteDirection" @click="delActive('engineering')">&times;</a></span>
                         <span class="badge badge-pill badge-primary" id="servicebadge" style="display: none;">Сфера услуг <a class="deleteDirection" @click="delActive('service')">&times;</a></span>
+                        <span class="badge badge-pill badge-primary" id="artbadge" style="display: none;">Дизайн <a class="deleteDirection" @click="delActive('art')">&times;</a></span>
+                        <span class="badge badge-pill badge-primary" id="buildbadge" style="display: none;">Сфера строительства <a class="deleteDirection" @click="delActive('build')">&times;</a></span>
+                        <span class="badge badge-pill badge-primary" id="transportbadge" style="display: none;">Сфера транспорта <a class="deleteDirection" @click="delActive('transport')">&times;</a></span>
+                        <span class="badge badge-pill badge-primary" id="soft-skillsbadge" style="display: none;">Soft-skills <a class="deleteDirection" @click="delActive('soft-skills')">&times;</a></span>
                     </div>
                     <div class="col-3 col-lg-1"><a class="btn btn-almbb-small btn-red-orange" style="border-radius: 50%; color: white" @click="showChoseModal()"><i class="fas fa-plus"></i></a></div>
                 </div>
@@ -60,11 +64,15 @@
                         <div class="row item" id="programming-item" @click="Chose('programming')">IT</div>
                         <div class="row item" id="engineering-item" @click="Chose('engineering')">Инженерия</div>
                         <div class="row item" id="service-item" @click="Chose('service')">Сфера услуг</div>
+                        <div class="row item" id="art-item" @click="Chose('art')">Дизайн</div>
+                        <div class="row item" id="build-item" @click="Chose('build')">Сфера строительства</div>
+                        <div class="row item" id="transport-item" @click="Chose('transport')">Сфера транспорта</div>
+                        <div class="row item" id="soft-skills-item" @click="Chose('soft-skills')">Soft-skills</div>
                     </div>
                 </div>
             </div>
 
-            <div v-if="data.length == 0"><h3>Вы не выбрали ни одно направление</h3></div>
+            <div v-if="data.length == 0"><h3>Нет мероприятий по выбранным направлениям</h3></div>
             <div class="card" v-for="(item, index) in data" :key="item.value">
                 <div class="card-header">{{item.date}}</div>
                 <div class="card-body">
@@ -106,7 +114,11 @@ export default {
             let eventsChose = {
                 programming: false,
                 engineering: false,
-                service: false
+                service: false,
+                build: false,
+                transport: false,
+                art: false,
+                'soft-skills': false,
             }
             localStorage.eventsChosen = JSON.stringify(eventsChose)
         }
@@ -133,7 +145,15 @@ export default {
                     this.data = this.data.concat(res.body[key])
                 }
             }
-            this.allEventsCategoriesData = {engineering: res.body['engineering'], programming: res.body['programming'], service: res.body['service']}
+            this.allEventsCategoriesData = {
+                engineering: res.body.engineering,
+                programming: res.body.programming,
+                service: res.body.service,
+                build: res.body.build,
+                transport: res.body.transport,
+                art: res.body.art,
+                'soft-skills': res.body['soft-skills'],
+            }
         })
         .catch(function(err) {
             console.log(err)
@@ -159,6 +179,10 @@ export default {
                 if(event.id == '/events/allEvents/it') event.mainType = 'programming'
                 else if(event.id == "/events/allEvents/inj") event.mainType = 'engineering'
                 else if(event.id == "/events/allEvents/service") event.mainType = 'service'
+                else if(event.id == "/events/allEvents/transport") event.mainType = 'transport'
+                else if(event.id == "/events/allEvents/build") event.mainType = 'build'
+                else if(event.id == "/events/allEvents/art") event.mainType = 'art'
+                else if(event.id == "/events/allEvents/soft-skills") event.mainType = 'soft-skills'
                 needle('post',this.$store.state.serverIp+'/api/checkedEventsUpdate', {email: email, events: event, sessionid: SessionID}, {"json": true})
                 .then(res => {
                     if(res.body == '310'){

@@ -20,10 +20,10 @@
                 <div class="justify-content-center h2">Загрузка портфолио</div>
                 <div style="text-align: center;"><i class='fa fa-spinner fa-pulse fa-3x'></i></div>
             </div>
-            <div v-for="item in photo" :key="item.data">
+            <div v-for="item in photo" :key="item.id">
                 <div class="form-group text-center my-sm-2 block" v-lazy-container="{ selector: 'img' }" :id="item.id">
                     <a class="delItem" @click="delete_portfolio(item.id)"><i class="fas fa-times"></i></a>
-                    <img :data-src="item.data" alt="" >
+                    <img :data-src="item.file" alt="" >
                 </div>
             </div>
         </div>
@@ -74,7 +74,13 @@ export default {
         })
         let numOfUploadedFiles = 0
         socket.on('send_image', (data) => {
-            this.photo.push({contentType: data.type, data: data.file, id: data.id})
+            new Promise(function(resolve) {
+                resolve(data)
+            })
+            .then((data) => {
+                console.log(this.photo)
+                this.photo.push(data)
+            })
         })
         socket.on('add_system_image', () => {
             numOfUploadedFiles += 1
