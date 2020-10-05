@@ -1,7 +1,7 @@
 <template>
     <div class="main">
-        <div class="container warp">
-            <div class="person_info row" >
+        <div class="warp">
+            <!-- <div class="person_info row" >
                 <div class="col-12 col-md-4" style="padding: 30px 15px 15px">
                     <div class="photo pblock">
                         <div class="avatar" v-lazy-container="{ selector: 'img' }">
@@ -58,8 +58,6 @@
                     <h4>Статистика:</h4>
                     <div style="text-align: center;"><i class='fa fa-spinner fa-pulse fa-3x' :id='person_email + "x"' style="display: inline-block;"></i></div>
                     <form :id="'form' + person_email" class="row">
-                        <!-- <input class="radio" :name="'donaught' + person_email" type="radio" value="donaught" checked @click="changeInfo(person_email, 'donaught')"> Круговая диаграмма
-                        <input class="radio" :name="'bar' + person_email" type="radio" value="bar" @click="changeInfo(person_email, 'bar')"> Столбчатая диаграмма -->
                         <div class="form-check col-12 col-md-6">
                             <input id="donaughtCheck" class="radio" :name="'donaught' + person_email" type="radio" value="donaught" checked @click="changeInfo(person_email, 'donaught')">
                             <label class="form-check-label" for="donaughtCheck">
@@ -72,21 +70,9 @@
                                 Столбчатая диаграмма
                             </label>
                         </div>
-                        <!-- <input class="radio" :name="'full' + person_email" type="radio" value="full" @click="changeInfo(person_email)"> Полная статистика -->
                     </form>
                     <div class="chart-container" :id="'chartDiv' + person_email" style="display: none;"><canvas :id="'chart' + person_email"></canvas></div>
                     <div class="chart-container" :id="'chartDiv2' + person_email" style="display: none;"><canvas :id="'chart2' + person_email"></canvas></div>
-                    <!-- <div :id="'chartDiv3' + person_email" style="display: none;">
-                        <div v-if="studentEvents[person_email] != undefined && studentEvents[person_email].length == 0"><h3>Нет мероприятий</h3></div>
-                        <div class="card" v-for="item3 in studentEvents[person_email]" :key="item3.value">
-                            <div class="card-header">{{item3.date}}</div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <h5 class="card-title col-11">{{item3.name}}</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
             </div>
             <div class="person_events" style="padding: 15px 0px 30px">
@@ -126,6 +112,36 @@
                             <p v-if="item3.status == 'on_moderate'" class="card-text" style="color: #0099CC;">Участие проверяется модератором</p>
                             <p v-if="item3.status == 'not_checked'" class="card-text" style="color: red;">Участие не подтверждено</p>
                         </div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="row" style="max-width: 100%;">
+                <div class="col-2 col-lg-1"><img src="/user_profile.png" style="max-height: 53px;"></div>
+                <div class="col-10 col-lg-3"><button class="btn btn-rounded-outline-elegant-dark btn-almbb-small">Редактировать</button></div>
+                <div class="col-12 col-lg-8 nameandstatus" style="padding-right: 0em;">
+                    <div class="name">Имя Фамилия</div>
+                    <div class="status">Online</div>
+                </div>
+            </div>
+            <br>
+            <div class="row information mr-0" style="max-width: 100%;">
+                <div class="col-5">
+                    <div class="photo ml-auto mr-auto">
+                        <div class="fototext">Фото</div>
+                    </div>
+                </div>
+                <div class="col-7 info row mt-auto mb-auto">
+                    <div class="list col-12 col-lg-6">
+                        <p class="item">Роль:</p>
+                        <p class="item">Дата рождения:</p>
+                        <p class="item">Школа:</p>
+                        <p class="item">Класс и символ:</p>
+                    </div>
+                    <div class="listr col-12 col-lg-6">
+                        <p class="itemr">Пользователь</p>
+                        <p class="itemr">20 января 2020 г.</p>
+                        <p class="itemr">ГБОУ «Школа № 1329»</p>
+                        <p class="itemr">9 «Б»</p>
                     </div>
                 </div>
             </div>
@@ -431,8 +447,75 @@ export default {
     padding: 30px 0px 0px;
     min-height: 100vh;
     margin-bottom: 0px;
+    background-color: white;
 }
-.card{ 
+
+.nameandstatus{
+    background-color: #c60000;
+    border-radius: 50px;
+    text-align: left;
+    vertical-align: middle;
+    font-family: 'PT Mono', monospace;
+    font-weight: bold;
+
+    display: table;
+}
+.name{
+    display: table-cell;
+
+    font-size: 1.6em;
+    color: white;
+    padding-left: 1em;
+}
+.status{
+    display: table-cell;
+    vertical-align:middle;
+    text-align: center;
+
+    color: black;
+    background-color: white;
+    border: 2px black solid;
+    border-radius: 50px;
+}
+.information{
+    min-height: 450px;
+}
+.photo{
+    background-color: lightgray;
+    border-radius: 50%;
+    min-height: 450px;
+    min-width: 450px; /* ломает все на мобилках */
+    max-width: 450px;
+
+    display: table;
+}
+.fototext{
+    display: table-cell; 
+    vertical-align: middle; 
+    text-align: center; 
+    font-size: 3em;
+    color: white;
+    font-family: 'PT Mono', monospace;
+}
+.list{
+    border-right: 3px solid #c60000;
+}
+.listr{
+    padding-left: 30px !important;
+}
+.item{
+    font-family: 'PT Mono', monospace;
+    text-align: left;
+}
+.itemr{
+    font-family: 'PT Mono', monospace;
+    text-align: left;
+    font-weight: bold;
+    color: black;
+    font-size: 1.1em;
+}
+
+/* .card{ 
     margin-top: 10px !important;
 }
 .card-body{ 
@@ -461,8 +544,6 @@ export default {
 }
 .avatar{
     display: block;
-    /* max-width: 100%;
-    max-height: 100%; */
     max-width: 310px;
     max-height: 310px;
     min-width: 310px;
@@ -478,6 +559,5 @@ export default {
 
 .info{
     text-align: left;
-}
-
+} */
 </style>
