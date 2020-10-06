@@ -117,17 +117,18 @@
             </div> -->
             <div class="row justify-content-center" style="max-width: 100%; margin: 0px 0px;">
                 <div class="col-4 col-lg-1"><img src="/user_profile.png" style="max-height: 53px;"></div>
-                <div class="col-8 col-lg-3"><button class="btn btn-rounded-outline-elegant-dark btn-almbb-small">Редактировать</button></div>
-                <div class="col-12 col-lg-7 nameandstatus" style="padding-right: 0em;">
-                    <div class="name">Имя Фамилия</div>
+                <div class="col-8 col-lg-3"><button @click="GoToEditor()" class="btn btn-rounded-outline-elegant-dark btn-almbb-small">Редактировать</button></div>
+                <div class="col-12 col-lg-8 nameandstatus" style="padding-right: 0em;">
+                    <div class="name">{{person_name}}</div>
                     <div class="status">Online</div>
                 </div>
             </div>
             <br>
             <div class="row information" style="max-width: 100%; margin: 0px 0px;">
                 <div class="col-12 col-lg-5">
-                    <div class="photo ml-auto mr-auto">
-                        <div class="fototext">Фото</div>
+                    <div class="photo ml-auto mr-auto" v-lazy-container="{ selector: 'img' }">
+                        <!-- <div class="fototext">Фото</div> -->
+                        <img :data-src="avatar.file" alt="">
                     </div>
                 </div>
                 <div class="col-12 col-lg-7 info mt-auto mb-auto">
@@ -139,18 +140,18 @@
                             <p class="item">Класс и символ:</p>
                         </div>
                         <div class="listr col-6 col-lg-6">
-                            <p class="itemr">Пользователь</p>
-                            <p class="itemr">20 января 2020 г.</p>
-                            <p class="itemr">ГБОУ «Школа № 1329»</p>
-                            <p class="itemr">9 «Б»</p>
+                            <p class="itemr">{{person_role}}</p>
+                            <p class="itemr">{{person_date}}</p>
+                            <p class="itemr">{{person_school}}</p>
+                            <p class="itemr">{{person_grade}}</p>
                         </div>
                     </div>
                     <div class="frandevents">
-                        <div class="itemcir">
+                        <div @click="PersonFriends()" class="itemcir">
                             <div class="cir">22</div>
                             <div class="l">друга</div>
                         </div>
-                        <div class="itemcir">
+                        <div @click="PersonEvents()" class="itemcir">
                             <div class="cir">30</div>
                             <div class="l">мероприятий</div>
                         </div>
@@ -161,13 +162,28 @@
                 <div class="mt-auto mb-auto">Статистика</div>
             </div>
             <div class="stat">
-                
+                <!-- <div style="text-align: center;"><i class='fa fa-spinner fa-pulse fa-3x' :id='person_email + "x"' style="display: inline-block;"></i></div> -->
+                <div class="chart-container" :id="'chartDiv' + person_email" style="display: block;"><canvas class="mr-auto ml-auto statchar" :id="'chart' + person_email"></canvas></div>
             </div>
             <div class="blocksheader">
                 <div class="mt-auto mb-auto">Ближайшие мероприятия</div>
             </div>
             <div class="nearevents">
-                
+                <div v-if="studentEventsUpcoming[person_email] != undefined && studentEventsUpcoming[person_email].length == 0"><h3>Нет мероприятий</h3></div>
+                <div class="card" v-for="item3 in studentEventsUpcoming[person_email]" :key="item3.value" style="margin-bottom: 1em">
+                    <div class="card-header">{{item3.data.date}}</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <h5 class="card-title col-12">{{item3.data.name}}</h5>
+                        </div>
+                        <p class="card-text"><i class="far fa-clock"></i> {{item3.data.time}}</p>
+                        <p class="card-text"><i class="far fa-user"></i> {{item3.data.places}}</p>
+                        <p class="card-text">Тип: {{item3.data.type}}</p>
+                        <p v-if="item3.status == 'checked'" class="card-text" style="color: green;">Участие подтверждено</p>
+                        <p v-if="item3.status == 'on_moderate'" class="card-text" style="color: #0099CC;">Участие проверяется модератором</p>
+                        <p v-if="item3.status == 'not_checked'" class="card-text" style="color: red;">Участие не подтверждено</p>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="footer"><Footer></Footer></div> 
@@ -384,7 +400,8 @@ export default {
                 console.log(err)
             })
             function makeChart(type, data, place){
-                let dispalyLable = true
+                // let dispalyLable = true
+                let dispalyLable = false
                 if (document.documentElement.clientWidth < 768){
                     dispalyLable = false 
                 }
@@ -396,20 +413,20 @@ export default {
                             label: '# of Votes',
                             data: data,
                             backgroundColor: [
-                                'rgba(255, 99, 132, 0.5)',
-                                'rgba(54, 162, 235, 0.5)',
-                                'rgba(255, 206, 86, 0.5)',
-                                'rgba(75, 192, 192, 0.5)',
-                                'rgba(153, 102, 255, 0.5)',
-                                'rgba(255, 159, 64, 0.5)'
+                                '#c60000',
+                                '#c60000',
+                                '#c60000',
+                                '#c60000',
+                                '#c60000',
+                                '#c60000'
                             ],
                             borderColor: [
-                                'rgba(255, 99, 132, 1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
+                                '#c60000',
+                                '#c60000',
+                                '#c60000',
+                                '#c60000',
+                                '#c60000',
+                                '#c60000'
                             ],
                             borderWidth: 1,
                             hoverBorderWidth: 5,
@@ -464,7 +481,7 @@ export default {
 .main{
     display: flex;
 	flex-direction: column;
-    padding-top: 95px !important;
+    padding-top: 120px !important;
 }
 .main{
     height: 100%;
@@ -511,37 +528,47 @@ export default {
     min-width: 450px; /* ломает все на мобилках */
     /* max-width: 450px; */
 
-    display: table;
+    /* display: table; */
+    /* overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+.photo img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
 }
 @media (max-width: 767px) {  
     .photo{
         min-height: 310px;
-        min-width: 310px; /* ломает все на мобилках */
+        min-width: 310px; 
         max-width: 310px;
     }
 }
 @media (min-width: 768px) and (max-width: 1024px) {  
     .photo{
         min-height: 410px;
-        min-width: 410px; /* ломает все на мобилках */
+        min-width: 410px; 
         max-width: 410px;
     }
 }
 @media (min-width: 1025px) {  
     .photo{
         min-height: 450px;
-        min-width: 450px; /* ломает все на мобилках */
+        min-width: 450px;
         max-width: 450px;
     }
 }
-.fototext{
+/* .fototext{
     display: table-cell; 
     vertical-align: middle; 
     text-align: center; 
     font-size: 3em;
     color: white;
     font-family: 'PT Mono', monospace;
-}
+} */
 .list{
     border-right: 3px solid #c60000;
 }
@@ -602,8 +629,9 @@ export default {
     min-width: 50px;
     max-width: 50px;
     display: inline-block;
-    margin-right: 1em;
+    margin-right: 2em;
     text-align: center;
+    cursor: pointer;
 }
 .itemcir .cir{
     font-size: 30px;
@@ -642,12 +670,40 @@ export default {
         font-size: 2.5em;
     }
 }
-.stat{
-    min-height: 500px;
-    max-height: 500px;
+@media (max-width: 768px) {  
+    .statchar{
+        min-height: 180px;
+        max-height: 360px;
+    }
+    .stat{
+        min-height: 180px;
+        max-height: 400px;
+    }
+}
+@media (min-width: 769px) {  
+    .statchar{
+        /* min-height: 450px; */
+        max-height: 630px;
+    }
+    .stat{
+        min-height: 500px;
+        max-height: 500px;
+    }
+}
+@media (min-width: 1140px) {  
+    .statchar{
+        /* min-height: 450px; */
+        max-height: 700px;
+        max-width: 1200px;
+    }
+    .stat{
+        min-height: 500px;
+        max-height: 700px;
+    }
 }
 .nearevents{
     min-height: 500px;
+    padding: 0px 30px;
 }
 /* .card{ 
     margin-top: 10px !important;
