@@ -115,35 +115,59 @@
                     </div>
                 </div>
             </div> -->
-            <div class="row" style="max-width: 100%;">
-                <div class="col-2 col-lg-1"><img src="/user_profile.png" style="max-height: 53px;"></div>
-                <div class="col-10 col-lg-3"><button class="btn btn-rounded-outline-elegant-dark btn-almbb-small">Редактировать</button></div>
-                <div class="col-12 col-lg-8 nameandstatus" style="padding-right: 0em;">
+            <div class="row justify-content-center" style="max-width: 100%; margin: 0px 0px;">
+                <div class="col-4 col-lg-1"><img src="/user_profile.png" style="max-height: 53px;"></div>
+                <div class="col-8 col-lg-3"><button class="btn btn-rounded-outline-elegant-dark btn-almbb-small">Редактировать</button></div>
+                <div class="col-12 col-lg-7 nameandstatus" style="padding-right: 0em;">
                     <div class="name">Имя Фамилия</div>
                     <div class="status">Online</div>
                 </div>
             </div>
             <br>
-            <div class="row information mr-0" style="max-width: 100%;">
-                <div class="col-5">
+            <div class="row information" style="max-width: 100%; margin: 0px 0px;">
+                <div class="col-12 col-lg-5">
                     <div class="photo ml-auto mr-auto">
                         <div class="fototext">Фото</div>
                     </div>
                 </div>
-                <div class="col-7 info row mt-auto mb-auto">
-                    <div class="list col-12 col-lg-6">
-                        <p class="item">Роль:</p>
-                        <p class="item">Дата рождения:</p>
-                        <p class="item">Школа:</p>
-                        <p class="item">Класс и символ:</p>
+                <div class="col-12 col-lg-7 info mt-auto mb-auto">
+                    <div class="row ml-auto mr-auto">
+                        <div class="list col-6 col-lg-6">
+                            <p class="item">Роль:</p>
+                            <p class="item">Дата рождения:</p>
+                            <p class="item">Школа:</p>
+                            <p class="item">Класс и символ:</p>
+                        </div>
+                        <div class="listr col-6 col-lg-6">
+                            <p class="itemr">Пользователь</p>
+                            <p class="itemr">20 января 2020 г.</p>
+                            <p class="itemr">ГБОУ «Школа № 1329»</p>
+                            <p class="itemr">9 «Б»</p>
+                        </div>
                     </div>
-                    <div class="listr col-12 col-lg-6">
-                        <p class="itemr">Пользователь</p>
-                        <p class="itemr">20 января 2020 г.</p>
-                        <p class="itemr">ГБОУ «Школа № 1329»</p>
-                        <p class="itemr">9 «Б»</p>
+                    <div class="frandevents">
+                        <div class="itemcir">
+                            <div class="cir">22</div>
+                            <div class="l">друга</div>
+                        </div>
+                        <div class="itemcir">
+                            <div class="cir">30</div>
+                            <div class="l">мероприятий</div>
+                        </div>
                     </div>
                 </div>
+            </div>
+            <div class="blocksheader">
+                <div class="mt-auto mb-auto">Статистика</div>
+            </div>
+            <div class="stat">
+                
+            </div>
+            <div class="blocksheader">
+                <div class="mt-auto mb-auto">Ближайшие мероприятия</div>
+            </div>
+            <div class="nearevents">
+                
             </div>
         </div>
         <div class="footer"><Footer></Footer></div> 
@@ -482,12 +506,33 @@ export default {
 }
 .photo{
     background-color: lightgray;
-    border-radius: 50%;
-    min-height: 450px;
+    border-radius: 100%;
+    /* min-height: 450px;
     min-width: 450px; /* ломает все на мобилках */
-    max-width: 450px;
+    /* max-width: 450px; */
 
     display: table;
+}
+@media (max-width: 767px) {  
+    .photo{
+        min-height: 310px;
+        min-width: 310px; /* ломает все на мобилках */
+        max-width: 310px;
+    }
+}
+@media (min-width: 768px) and (max-width: 1024px) {  
+    .photo{
+        min-height: 410px;
+        min-width: 410px; /* ломает все на мобилках */
+        max-width: 410px;
+    }
+}
+@media (min-width: 1025px) {  
+    .photo{
+        min-height: 450px;
+        min-width: 450px; /* ломает все на мобилках */
+        max-width: 450px;
+    }
 }
 .fototext{
     display: table-cell; 
@@ -500,9 +545,6 @@ export default {
 .list{
     border-right: 3px solid #c60000;
 }
-.listr{
-    padding-left: 30px !important;
-}
 .item{
     font-family: 'PT Mono', monospace;
     text-align: left;
@@ -512,9 +554,101 @@ export default {
     text-align: left;
     font-weight: bold;
     color: black;
-    font-size: 1.1em;
 }
-
+@media (max-width: 767px) {  
+    .item{
+        font-size: 0.9em;
+    }
+    .itemr{
+        font-size: 1em;
+    }
+    .info{
+        padding: 1em 2px;
+    }
+    .listr{
+        padding-left: 15px !important;
+    }
+}
+@media (min-width: 768px) {  
+    .item{
+        font-size: 1em;
+    }
+    .itemr{
+        font-size: 1.1em;
+    }
+    .listr{
+        padding-left: 30px !important;
+    }
+}
+.frandevents{
+    min-width: 100%;
+    max-height: 60px;
+    min-height: 60px;
+    display: block;
+    padding: 0px 15px;
+}
+@media (max-width: 768px) {  
+    .frandevents{
+        text-align: center;
+    }
+}
+@media (min-width: 769px) {  
+    .frandevents{
+        text-align: left;
+    }
+}
+.itemcir{
+    min-height: 60px;
+    min-width: 50px;
+    max-width: 50px;
+    display: inline-block;
+    margin-right: 1em;
+    text-align: center;
+}
+.itemcir .cir{
+    font-size: 30px;
+    min-width: 50px;
+    max-width: 50px;
+    min-height: 50px;
+    border-radius: 100%;
+    border: #c60000 3px solid;
+    color: #c60000;
+}
+.itemcir .l{
+    font-size: 15px;
+}
+.blocksheader{
+    background-color: #efefef;
+    font-family: 'PT Mono', monospace;
+    font-weight: bold;
+    vertical-align: middle;
+    color: black;
+}
+@media (max-width: 1024px) {  
+    .blocksheader{
+        min-height: 140px;
+        max-height: 140px;
+        line-height: 140px;
+        margin: 1.5em 0px 1em;
+        font-size: 2em;
+    }
+}
+@media (min-width: 1025px) {  
+    .blocksheader{
+        min-height: 240px;
+        max-height: 240px;
+        line-height: 240px;
+        margin: 2.5em 0px 1em;
+        font-size: 2.5em;
+    }
+}
+.stat{
+    min-height: 500px;
+    max-height: 500px;
+}
+.nearevents{
+    min-height: 500px;
+}
 /* .card{ 
     margin-top: 10px !important;
 }
