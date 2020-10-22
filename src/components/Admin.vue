@@ -1290,7 +1290,7 @@ export default {
             })
         },
         moderate_event(event, status, studEmail){
-            fetch('http://78.155.219.12:3000/api/moderateEvent', {
+            fetch(this.$store.state.serverIp+'/api/moderateEvent', {
                 method: 'POST',
                 body: JSON.stringify({email: this.email, type: 'teacher', sessionid: this.SessionID, action: status, data: event, studEmail: studEmail}),
                 headers: {
