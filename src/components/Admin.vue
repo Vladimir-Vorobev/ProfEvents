@@ -735,8 +735,8 @@ export default {
                     // console.log(data)
                     let ctx = document.getElementById('chart' + email)
                     let ctx2 = document.getElementById('chart2' + email)
-                    makeChart('doughnut', [data.service, data.programming, 0, 0,  data.engineering, 0], ctx)
-                    makeChart('bar', [data.service, data.programming, 0, 0,  data.engineering, 0], ctx2)
+                    makeChart('doughnut', [data.service, data.programming, data.art, data.build, data.engineering, data.transport, data['soft-skills']], ctx)
+                    makeChart('bar', [data.service, data.programming, data.art, data.build, data.engineering, data.transport, data['soft-skills']], ctx2)
                     document.getElementById(email + "x").style.display = 'none'
                     document.getElementById('chartDiv' + email).style.display = 'block'
                 })
@@ -778,8 +778,8 @@ export default {
                                 // console.log(this.studentEvents)
                                 let ctx = document.getElementById('chart' + email)
                                 let ctx2 = document.getElementById('chart2' + email)
-                                makeChart('doughnut', [statistics.service, statistics.programming, 0, 0,  statistics.engineering, 0], ctx)
-                                makeChart('bar', [statistics.service, statistics.programming, 0, 0,  statistics.engineering, 0], ctx2)
+                                makeChart('doughnut', [statistics.service, statistics.programming, statistics.art, statistics.build, statistics.engineering, statistics.transport, statistics['soft-skills']], ctx)
+                                makeChart('bar', [statistics.service, statistics.programming, statistics.art, statistics.build, statistics.engineering, statistics.transport, statistics['soft-skills']], ctx2)
                                 document.getElementById(email + "x").style.display = 'none'
                                 document.getElementById('chartDiv' + email).style.display = 'block'
                             })
@@ -824,8 +824,8 @@ export default {
                                 // console.log(this.studentEvents)
                                 let ctx = document.getElementById('chart' + email)
                                 let ctx2 = document.getElementById('chart2' + email)
-                                makeChart('doughnut', [statistics.service, statistics.programming, 0, 0,  statistics.engineering, 0], ctx)
-                                makeChart('bar', [statistics.service, statistics.programming, 0, 0,  statistics.engineering, 0], ctx2)
+                                makeChart('doughnut', [statistics.service, statistics.programming, statistics.art, statistics.build, statistics.engineering, statistics.transport, statistics['soft-skills']], ctx)
+                                makeChart('bar', [statistics.service, statistics.programming, statistics.art, statistics.build, statistics.engineering, statistics.transport, statistics['soft-skills']], ctx2)
                                 document.getElementById(email + "x").style.display = 'none'
                                 document.getElementById('chartDiv' + email).style.display = 'block'
                             })
@@ -844,7 +844,7 @@ export default {
                 new Chart(place, {
                     type: type,
                     data: {
-                        labels: ['Сфера услуг', 'IT', 'Творчество и Дизайн', 'Строительство', 'Инженерные технологии', 'Транспорт и логистика'],
+                        labels: ['Сфера услуг', 'IT', 'Творчество и Дизайн', 'Строительство', 'Инженерные технологии', 'Транспорт и логистика', 'Soft-skills'],
                         datasets: [{
                             label: '# of Votes',
                             data: data,
@@ -990,7 +990,6 @@ export default {
         },
         add(value, type){
             event.preventDefault()
-            let SessionID = this.SessionID
             let form
             if(value != '!1'){
                 form = document.getElementById('formOne')
@@ -1020,74 +1019,49 @@ export default {
                 }
                 else{
                     if(value == 'school-admin'){
-                        send({email: form['email'].value, school: form['school'].value}, this.email, 'uploadOne', type)
+                        this.send({email: form['email'].value, school: form['school'].value}, this.email, this.$store.state.serverIp + '/api/uploadOne', type)
                     }
                     else{
-                        send({email: form['email'].value}, this.email, 'uploadOne')
+                        this.send({email: form['email'].value}, this.email, this.$store.state.serverIp + '/api/uploadOne', type)
                     }
                 }
             }
             else{
                 if(this.classData.length != 0){
-                    send(this.classData, this.email, 'uploadTable')
+                    this.send(this.classData, this.email, this.$store.state.serverIp + '/api/uploadTable', type)
                 }
                 else this.$swal('Файл не выбран');   //alert('Файл не выбран')
             }
-            let students = this.students
-            let teachers = this.teachers
-            let schoolAdmins = this.schoolAdmins
-            let admins = this.admins
-            function send(data, email, url){
-                // needle.post('http://78.155.219.12:3000/api/' + url, {data: data, email: email, type: 'update', doptype: type, sessionid: SessionID}, {"json": true}, function(err, res){
-                //     if(err) throw err
-                //     if(res.body == 'OK'){
-                //         //alert('Файл успешно добавлен')
-                //         Vue.swal({
-                //             icon: 'success',
-                //             text: 'Файл успешно добавлен'
-                //         });
-                //     }
-                //     else if(res.body == 'User undefined'){
-                //         //alert(res.body)
-                //         Vue.swal('Пользователь с данной почтой не зарегистрирован');
-                //     }
-                // })
-                new Promise(function(resolve) {
-                    fetch('http://78.155.219.12:3000/api/' + url, {
-                        method: 'POST',
-                        body: JSON.stringify({data: data, email: email, type: 'update', doptype: type, sessionid: SessionID}),
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                    })
-                    .then(response => {
-                        // console.log("res", response)
-                        return response.json()
-                    })
-                    .then((data) => {
-                        resolve(data.res)
-                    })
-                    .catch(err => {
-                        console.log(err)
-                    })
-                })
-                .then((data) => {
-                    if(data == 'OK'){
-                        if(type == 'student') students.push({person: form['name'].value + ' ' + form['surname'].value, email: form['email'].value})
-                        else if(type == 'teacher') teachers.push({person: form['name'].value + ' ' + form['surname'].value, email: form['email'].value})
-                        else if(type == 'school-admin') schoolAdmins.push({person: form['name'].value + ' ' + form['surname'].value, email: form['email'].value})
-                        else if(type == 'admin') admins.push({person: form['name'].value + ' ' + form['surname'].value, email: form['email'].value})
-                        Vue.swal({
-                            icon: 'success',
-                            text: 'Файл успешно добавлен'
-                        });
-                    }
-                    else if(data == 'User undefined'){
-                        //alert(res.body)
-                        Vue.swal('Пользователь с данной почтой не зарегистрирован');
-                    }
-                })
-            }
+        },
+        send(data, email, url, type){
+            fetch(url, {
+                method: 'POST',
+                body: JSON.stringify({data: data, email: email, type: 'update', doptype: type, sessionid: this.SessionID}),
+                headers: {
+                    "Content-Type": "application/json"
+                },
+            })
+            .then(response => {
+                // console.log("res", response)
+                return response.json()
+            })
+            .then((res) => {
+                if(res.res == 'OK'){
+                    Vue.swal({
+                        icon: 'success',
+                        text: 'Роль успешно обновлена'
+                    });
+                }
+                else if(res.res == "'User undefined'"){
+                    Vue.swal({
+                        icon: 'error',
+                        text: 'Пользователь с данной почтой не зарегистрирован'
+                    });
+                }
+            })
+            .catch(err => {
+                console.log(err)
+            })
         },
         showList(){
             event.preventDefault()

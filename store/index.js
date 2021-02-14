@@ -5,7 +5,7 @@ export const APP_STORE = {
 		openDaysScroll: 0,
 		SessionID: 0,
 		serverIp: 'https://profeventsserver.tk',
-		socketIp: 'https://profeventsserver.tk:3001',
+		socketIp: 'https://profeventsserver.tk/sock',
 	},
 	mutations: {
 		GET_USER_EMAIL(state, value) {

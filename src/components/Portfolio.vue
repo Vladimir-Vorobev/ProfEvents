@@ -16,14 +16,16 @@
             </div>
         </div>
         <div class="img justify-content-center">
-            <div v-if="photo.length == 0">
+        {{photos}}
+            <div v-if="photos.length == 0">
+                {{photos.length}}
                 <div class="justify-content-center h2">Загрузка портфолио</div>
                 <div style="text-align: center;"><i class='fa fa-spinner fa-pulse fa-3x'></i></div>
             </div>
-            <div v-for="item in photo" :key="item.id">
-                <div class="form-group text-center my-sm-2 block" v-lazy-container="{ selector: 'img' }" :id="item.id">
+            <div v-for="item in photos" :key="item">
+                <div class="form-group text-center my-sm-2 block" :id="item.id">
                     <a class="delItem" @click="delete_portfolio(item.id)"><i class="fas fa-times"></i></a>
-                    <img :data-src="item.file" alt="" >
+                    <img :src="item.file" alt="" >
                 </div>
             </div>
         </div>
@@ -43,7 +45,7 @@ export default {
     components: { Footer },
     data(){
         return{
-            photo: [],
+            photos: [],
             email: this.$store.state.email,
             SessionID: this.$store.state.SessionID,
             num: 0,
@@ -73,14 +75,10 @@ export default {
             rec = true
         })
         let numOfUploadedFiles = 0
-        socket.on('send_image', (data) => {
-            new Promise(function(resolve) {
-                resolve(data)
-            })
-            .then((data) => {
-                console.log(this.photo)
-                this.photo.push(data)
-            })
+        socket.on('send_image', (res) => {
+            console.log(res)
+            this.photos.splice(this.photos.length, 1, res)
+            console.log(this.photos)
         })
         socket.on('add_system_image', () => {
             numOfUploadedFiles += 1

@@ -150,8 +150,9 @@ export default {
     mounted(){
         let rec = false
         // console.log(this.$store.state.socketIp)
-        let socket = require('socket.io-client')(this.$store.state.socketIp)
-        socket.on('connect', () => {
+        let socket = require('socket.io-client').connect(this.$store.state.socketIp)
+        socket.on('connection', () => {
+            alert()
             socket.emit('new_user', this.email)
             if(rec){
                 socket.emit('recon', this.email)

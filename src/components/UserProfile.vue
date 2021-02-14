@@ -345,7 +345,7 @@ export default {
                 return response.json()
             })
             .then(datan => {
-                // console.log(datan)
+                console.log(datan)
                 let statistics = datan.stat
                 // console.log(statistics)
                 this.$set(this.studentEvents, this.person_email, datan.checkedEvents)
@@ -391,8 +391,8 @@ export default {
 
                 let ctx = document.getElementById('chart' + this.person_email)
                 let ctx2 = document.getElementById('chart2' + this.person_email)
-                makeChart('doughnut', [statistics.service, statistics.programming, 0, 0, statistics.engineering, 0], ctx)
-                makeChart('bar', [statistics.service, statistics.programming, 0, 0, statistics.engineering, 0], ctx2)
+                makeChart('doughnut', [statistics.service, statistics.programming, statistics.art, statistics.build, statistics.engineering, statistics.transport, statistics['soft-skills']], ctx)
+                makeChart('bar', [statistics.service, statistics.programming, statistics.art, statistics.build, statistics.engineering, statistics.transport, statistics['soft-skills']], ctx2)
                 document.getElementById(this.person_email + "x").style.display = 'none'
                 document.getElementById('chartDiv' + this.person_email).style.display = 'block'
             })
@@ -408,7 +408,7 @@ export default {
                 new Chart(place, {
                     type: type,
                     data: {
-                        labels: ['Сфера услуг', 'IT', 'Творчество и Дизайн', 'Строительство', 'Инженерные технологии', 'Транспорт и логистика'],
+                        labels: ['Сфера услуг', 'IT', 'Творчество и Дизайн', 'Строительство', 'Инженерные технологии', 'Транспорт и логистика', 'Soft-skills'],
                         datasets: [{
                             label: '# of Votes',
                             data: data,
