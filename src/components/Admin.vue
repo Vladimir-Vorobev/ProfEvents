@@ -576,7 +576,7 @@ export default {
                     //alert('Пользователь не найден')
                     this.$swal({
                         icon: 'error',
-                        text: 'Пользователь не найден'
+                        text: 'Неверный пароль!'
                     });
                 }
                 else if(data != 'user' && data != 'student'){
@@ -1388,5 +1388,8 @@ export default {
     .moderationImg{
         width: 250px !important;
     }   
+}
+.moderationImg{
+    object-fit: contain;
 }
 </style>
