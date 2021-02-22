@@ -608,7 +608,7 @@ export default {
             let people = []
             fetch(this.$store.state.serverIp+'/api/getAdminList', {
                 method: 'POST',
-                headers: {email: email, sessionid: this.SessionID},
+                headers: {email: this.email, dopemail: email, sessionid: this.SessionID},
             })
             .then(response => {
                 // console.log("res", response)
