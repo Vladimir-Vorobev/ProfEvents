@@ -21,7 +21,7 @@
                         <div class="col-12 col-md-6">
                             <a :href="item.data.link" class="btn btn-blue">Перейти к мероприятию</a>
                         </div>
-                        <div class="col-12 col-md-6" v-if="role != 'user'">
+                        <div class="col-12 col-md-6" v-if="role == 'student'">
                             <button class="btn btn-blue" @click="moderate(item.data)">Отправить на модерацию</button>
                         </div>
                     </div>

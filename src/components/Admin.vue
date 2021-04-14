@@ -576,7 +576,7 @@ export default {
                     //alert('Пользователь не найден')
                     this.$swal({
                         icon: 'error',
-                        text: 'Пользователь не найден'
+                        text: 'Неверный пароль!'
                     });
                 }
                 else if(data != 'user' && data != 'student'){
@@ -608,7 +608,7 @@ export default {
             let people = []
             fetch(this.$store.state.serverIp+'/api/getAdminList', {
                 method: 'POST',
-                headers: {email: email, sessionid: this.SessionID},
+                headers: {email: this.email, dopemail: email, sessionid: this.SessionID},
             })
             .then(response => {
                 // console.log("res", response)
@@ -1388,5 +1388,8 @@ export default {
     .moderationImg{
         width: 250px !important;
     }   
+}
+.moderationImg{
+    object-fit: contain;
 }
 </style>
